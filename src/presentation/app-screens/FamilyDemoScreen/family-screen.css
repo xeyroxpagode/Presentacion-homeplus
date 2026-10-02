@@ -1,0 +1,31 @@
+.family-workspace { position: relative; flex: 1; min-height: 0; margin: 0 var(--home-screen-padding); }
+.family-screen-heading { padding: 8px 0 12px; }
+.family-screen-heading h1 { margin: 0; font-size: 26px; font-weight: 700; line-height: 1.2; }
+.family-switch { display: flex; padding: 3px; height: 46px; border-radius: 9999px; background: rgb(26 24 22 / 0.08); }
+.family-switch > span { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 16px; color: var(--home-muted); border-radius: 9999px; }
+.family-switch > span[data-selected='true'] { background: var(--home-surface); color: var(--home-brand); font-weight: 600; box-shadow: 0 1px 3px rgb(26 24 22 / 0.12); }
+.family-demo-screen[data-family-view='feed'] .family-switch { opacity: 0; visibility: hidden; }
+.family-content-layer { position: absolute; left: 0; right: 0; top: 110px; opacity: 0; visibility: hidden; transform: translateY(4px); transition: opacity var(--motion-replace-duration) var(--motion-easing), transform var(--motion-reframe-duration) var(--motion-easing), visibility 0s var(--motion-reframe-duration); }
+.family-content-layer[data-present='true'] { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.family-member-card { display: flex; gap: 12px; align-items: center; padding: 14px; margin-bottom: 10px; border: 1px solid var(--home-border); border-radius: 16px; background: var(--home-surface); }
+.family-member-card > div { flex: 1; }
+.family-member-card h2,.family-member-card h3,.family-member-card p { margin: 0; }
+.family-member-card h2 { font-size: 30px; font-weight: 650; }
+.family-member-card h3 { font-size: 18px; font-weight: 550; }
+.family-member-card p { font-size: 14px; color: var(--home-muted); }
+.family-tomi { min-height: 108px; background: var(--home-brand-soft); }
+.family-tomi p { font-size: 20px; color: var(--home-ink-secondary); }
+.family-tomi > svg { color: var(--home-brand); }
+.family-avatar { flex: none; display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 50%; color: white; font-size: 16px; font-weight: 600; }
+.family-avatar-tomi { background: #B57A1A; }
+.family-avatar-mom { background: #7A3D8A; }
+.family-avatar-dad { background: #2D6A8A; }
+.family-tomi .family-avatar { width: 50px; height: 50px; font-size: 24px; }
+.family-map-slot { width: 100%; height: 200px; border-radius: 16px; background: #EBEEE6; }
+.family-map-product { transform: none; }
+.family-now { display: flex; gap: 10px; align-items: center; padding: 12px 12px; margin-top: 10px; background: var(--home-brand-soft); border: 1px solid color-mix(in srgb, var(--home-brand) 22%, transparent); border-left: 4px solid var(--home-brand); border-radius: 12px; }
+.family-now .family-avatar { width: 42px; height: 42px; }
+.family-now strong { font-size: 20px; font-weight: 650; }
+.family-now p { margin: 3px 0 0; font-size: 14px; color: var(--home-ink-secondary); }
+.family-now b { color: var(--home-brand); font-size: 19px; font-weight: 700; margin-left: 3px; }
+.family-feed-product { top: 54px; }

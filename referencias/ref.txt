@@ -1,0 +1,148 @@
+1ra Screen
+Mama da por hecho q papa pago el seguro del auto-> factura de seguro d auto que despues cae y desaparece
+
+Papa cree q el hijo hizo las compras-> bolsa de compras que despues cae y desaparece
+
+a que hora era el turno-> mensaje
+
+hay algo para cenar-> mensaje
+
+despues haceme acordar-> representar con icono/emoji pero q no sea un nativo ios/android sino uno piola de una persona hablando
+
+alguien pago la luz-> mensaje
+
+quien compra lo que falta-> mensaje
+
+se rompio la heladera¿donde esta la garantia? -> mensaje 
+
+ya lo hice yo ->persona hablando
+
+todo esto hay q intentar hacer q vayan apareciendo a cada tecla q presionemos, asi el colo puede ir hablando y van apareciendo, aunque hay un grupo q tienen q aparecer todos juntos, capaz faltan 2 o 3 mas
+
+pizzarra out
+marco de pizarra out
+el caos familiar out
+imaginen un martes cualquiera out
+
+
+2da Screen
+
+el problema out
+
+La informacion ya existe se mantiene
+
+un chat.un calendario. una carpeta… out
+
+el problema es tener que reconstruirla cada vez out
+
+homeplus logo out
+
+6 apps 1 familia 0 coordinacion hacer q se entienda porque existe no q este debajo a la derecha timido
+
+los iconos aprovechar a poner iconos de apps reales en Banco Drive Whastapp Notas Ubicacion y Calendario
+
+3ra screen
+
+Completa out
+
+4ta screen
+
+hay q rediseñarla para q todo el texto c vaya al choto pero los celus estan bien
+
+d ultima hago rapido una screenshot y ponemos eso almenos
+
+5ta screen
+
+lo mismo de los textos, c van todos
+
+y con el grafico q hizo hay q encontrar la manera d pasarlo a algo en un celular y hacer q la gente pueda entender eso
+
+6ta screen
+
+lo mismo de los textos
+
+aca si ya tengo la screen toda en la cabeza, cuando nombras los lugares q necesitamos ir haciendo aparecer en el mapa, q el proximo estado sea zoom out al celu y aparece la screen como el celu ese q ya esta ahi y despues para cuando vos preguntas lo del tecnico ahi recien aparece 
+
+7ma screen
+
+Coordinar no es vigilar lo unico q queda el resto se va todo
+
+8va screen
+
+del lado izquierdo Planes y asoma del otro lado el lado derecho pero sin aparecer en pantalla corte 3/4 d pantalla planes con un celu en planner y despues pasa al reves, 3/4 del lado derecho porque aparece inventario pero en si lo q hay esta casi excelente
+
+solo sacaria las explicaciones
+
+“cuando algo hace falta puede sumarse automaticamente a la lista de compras”
+
+“para ordenar un objetivo que avanza en varias etapas”
+
+tambien podemos hacer q el telefono aparezca despues d q la pregunta escencial aparezca en pantalla mientras la decis osea vos decis que falta en casa y esa frase desaparece y aparece el telefono en el mismo lugar
+
+homeplus logo out
+
+9na screen
+
+el dinero del hogar se queda
+
+las preguntas se quedan pero van apareciendo poco a poco
+
+el celu se queda donde esta
+
+solo sacamos el parrafo ese q esta d gratis ahi
+
+10ma screen
+
+lo mismo de 3/4 y 3/4 izq der
+
+assets:
+sacar oracion d gratis
+
+screen de assets simulada almenos donde aparezca, ps5 qsy q esto q lo otro
+
+Homecolud:
+sacar la oracion d gratis, la d arriba y la d abajo
+
+screen de homecloud con fotos, nota d voz y despues salimos del album y mostranos q hay bands d albums
+
+11va screen 
+
+afuera pasa a ser negro total osea se mantiene como espacio negro pero todo out
+
+12va screen
+
+sin cambios
+
+13va screen
+
+screen 12 pero en vez de explicaciones usamos esos mismos espacios para indicar que apps usamos para frontend y backend, cuando decimos q usamos ia para algunas cosas va en el medio y aparecen ahi los iconos d las ias q usamos para armar geni
+
+14va screen
+
+y si nisiquiera tuvieramos que saber como?
+
+lo unico q se mantiene y queda central, el resto out
+
+15va screen
+
+este es geni -> Geni
+
+parrafo y explicacion out
+
+el celu c queda
+
+16va screen
+
+la misma pregunta distintas respuestas queda igual q el celu
+
+el resto out
+
+17va screen
+
+geni interpreta y propone la decision es nuestra queda, pero tenemos q poner 1 celu que muestre asi nomas q confirmamos algo
+
+el resto out
+
+18va screen
+
+negro total pero con homeplus en letras y logo blanco y abajo los avatares y nombres nuestros, y cerca de finalizar aparece el muchas gracias

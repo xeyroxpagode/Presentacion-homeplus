@@ -1,0 +1,7 @@
+.feed-household-post { margin: 0; padding: 16px; background: var(--home-surface); border: 1px solid var(--home-border); border-radius: 16px; }
+.feed-author { display: flex; align-items: center; gap: 8px; padding-bottom: 16px; border-bottom: 1px solid var(--home-divider); }
+.feed-author strong { font-size: 15px; font-weight: 600; }
+.feed-author p { font-size: 11px; color: var(--home-muted); margin: 2px 0 0; }
+.feed-message { margin: 16px 0; font-size: 22px; line-height: 1.25; font-weight: 500; letter-spacing: -0.3px; color: var(--home-ink); }
+.feed-question { margin: 0; padding: 12px; border-radius: 12px; background: var(--home-brand-soft); color: var(--home-ink); font-size: 24px; font-weight: 600; line-height: 1.18; letter-spacing: -0.4px; }
+.feed-reply { display: flex; gap: 8px; align-items: center; color: var(--home-brand); font-size: 14px; font-weight: 500; margin-top: 16px; }

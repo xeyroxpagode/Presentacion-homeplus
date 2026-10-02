@@ -1,0 +1,228 @@
+/* S13: same geometry as S12, gaining depth. Role captions enrich each side,
+   then Figma + a discreet AI presence settle onto the central bridge.
+   Polish: brand color lives only in the marks (crossfaded per side); panels
+   mount with presence; the center enters intentionally; the bridge firms up
+   once connected. */
+
+.s13-stage {
+  position: absolute;
+  inset: 0;
+  background: #060404;
+  animation: s13-scene-in var(--motion-replace-duration) var(--motion-easing) both;
+}
+
+.s13-core-glow {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--motion-spatial-wipe-duration) var(--motion-easing);
+}
+
+.s13-core-glow[data-visible='true'] { opacity: 0.2; }
+
+.s13-panels {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.s13-panel {
+  width: 460px;
+  padding: 40px 44px;
+  border: 1px solid rgb(245 241 235 / 0.09);
+  border-radius: 24px;
+  background: rgb(245 241 235 / 0.02);
+  animation: s13-panel-in var(--motion-spatial-wipe-duration) var(--motion-easing) backwards;
+}
+
+.s13-title {
+  margin: 0;
+  font-size: 80px;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--presentation-text);
+}
+
+.s13-desc {
+  margin: 10px 0 0;
+  font-size: 24px;
+  line-height: 1.3;
+  color: var(--presentation-text-secondary);
+}
+
+.s13-tech {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.s13-tech li {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.s13-tech img {
+  width: 52px;
+  height: 52px;
+  flex: none;
+}
+
+.s13-mark {
+  position: relative;
+  display: block;
+  width: 52px;
+  height: 52px;
+  flex: none;
+}
+
+.s13-mark img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  transition: opacity var(--motion-reframe-duration) var(--motion-easing);
+}
+
+.s13-mark .s13-mark-tint { opacity: 0; }
+.s13-mark[data-tint='true'] .s13-mark-tint { opacity: 1; }
+.s13-mark[data-tint='true'] .s13-mark-mono { opacity: 0; }
+
+.s13-tech-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.s13-tech-copy > span {
+  font-size: 28px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--presentation-text);
+}
+
+.s13-role {
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1.3;
+  color: var(--presentation-text-secondary);
+  animation: s13-role-in var(--motion-reframe-duration) var(--motion-easing) backwards;
+}
+
+.s13-center {
+  position: relative;
+  width: 140px;
+  flex: none;
+  align-self: stretch;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.s13-center[data-visible='true'] {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.s13-center-item {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+  opacity: 0;
+  translate: 0 10px;
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    translate var(--motion-reframe-duration) var(--motion-easing);
+}
+
+.s13-center[data-visible='true'] .s13-center-item {
+  opacity: 1;
+  translate: 0 0;
+}
+
+.s13-center[data-visible='true'] .s13-center-item:last-child {
+  transition-delay: 110ms;
+}
+
+.s13-center-item:first-child { top: 12%; }
+.s13-center-item:last-child { bottom: 12%; }
+
+.s13-center-item img {
+  width: 48px;
+  height: 48px;
+}
+
+.s13-center-item span {
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: var(--presentation-text);
+}
+
+.s13-center-item em {
+  font-style: normal;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--presentation-text-secondary);
+}
+
+.s13-bridge {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 140px;
+  height: 2px;
+  margin-left: -70px;
+  background: linear-gradient(90deg, transparent, var(--presentation-accent) 30%, var(--presentation-accent) 70%, transparent);
+  opacity: 0.8;
+  pointer-events: none;
+  transition: opacity var(--motion-reframe-duration) var(--motion-easing);
+}
+
+.s13-bridge-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 14px;
+  margin: -7px;
+  border-radius: 50%;
+  border: 2px solid var(--presentation-accent);
+  background: #060404;
+  scale: 1;
+  transition: scale var(--motion-reframe-duration) var(--motion-easing);
+}
+
+.s13-stage[data-step='3'] .s13-bridge { opacity: 1; }
+.s13-stage[data-step='3'] .s13-bridge-node { scale: 1.15; }
+
+@keyframes s13-scene-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes s13-panel-in {
+  from { opacity: 0; translate: 0 14px; scale: 0.983; }
+  to { opacity: 1; translate: 0 0; scale: 1; }
+}
+
+@keyframes s13-role-in {
+  from { opacity: 0; translate: 0 8px; }
+  to { opacity: 1; translate: 0 0; }
+}

@@ -1,0 +1,10 @@
+{
+  "description": "Easily create and manage blank .make files for streamlined project organization, ideal for developers and teams looking to enhance workflow efficiency.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

@@ -1,0 +1,76 @@
+/* S09: the phone stays fixed on the left while the idea anchors the right
+   side and the four questions accumulate one by one, older ones stepping back. */
+
+.s09-scene {
+  position: absolute;
+  inset: 0;
+  background: #060404;
+  animation: s09-scene-in var(--motion-replace-duration) var(--motion-easing) both;
+}
+
+.s09-phone-motion {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  animation: s09-phone-in var(--motion-reframe-duration) var(--motion-easing) both;
+}
+
+.s09-phone-slot {
+  position: absolute;
+  top: 50px;
+  left: 250px;
+}
+
+.s09-screen-fill { height: 100%; }
+
+.s09-copy {
+  position: absolute;
+  left: 600px;
+  top: 0;
+  width: 560px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 26px;
+}
+
+.s09-idea {
+  margin: 0 0 6px;
+  font-size: 60px;
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--presentation-text);
+}
+
+.s09-question {
+  margin: 0;
+  font-size: 33px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  color: var(--presentation-text);
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity var(--motion-replace-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing);
+}
+
+.s09-question[data-present='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+.s09-question[data-past='true'] { opacity: 0.45; }
+
+@keyframes s09-scene-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes s09-phone-in {
+  from { opacity: 0; translate: 0 16px; }
+  to { opacity: 1; translate: 0 0; }
+}

@@ -1,0 +1,285 @@
+.opening-sequence {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+}
+
+.opening-sequence .ambient-glow {
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    left var(--motion-reframe-duration) var(--motion-easing),
+    top var(--motion-reframe-duration) var(--motion-easing),
+    width var(--motion-reframe-duration) var(--motion-easing),
+    height var(--motion-reframe-duration) var(--motion-easing);
+}
+
+/* Only the brand's light settles after blackout; scene timings stay unchanged. */
+.opening-sequence[data-opening-scene='2'] > .opening-stage-light {
+  transition-delay: calc(var(--opening-reveal-delay) + var(--motion-exit-duration));
+}
+
+.opening-sequence[data-opening-scene='2'] > .opening-brand-depth {
+  transition-delay: var(--opening-reveal-delay);
+}
+
+.opening-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Presence is state-driven; CSS interpolates without remounting or timers. */
+.chaos-scene {
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.93);
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.chaos-scene[data-active='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1);
+  transition-delay: 0s;
+}
+
+.attention-element {
+  position: absolute;
+  visibility: hidden;
+  transition: visibility 0s var(--motion-reframe-duration);
+}
+
+.attention-element-content {
+  opacity: 0;
+  transform: translateY(18px) scale(0.96) rotate(var(--attention-rotation));
+  transform-origin: center;
+  transition:
+    opacity var(--motion-exit-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    filter var(--motion-reframe-duration) var(--motion-easing);
+}
+
+.attention-element[data-present='true'] { visibility: visible; transition-delay: 0s; }
+.attention-element[data-present='true'] .attention-element-content {
+  opacity: 1;
+  transform: translateY(0) scale(1) rotate(var(--attention-rotation));
+  transition-duration: var(--motion-accumulate-duration), var(--motion-reframe-duration), var(--motion-reframe-duration);
+}
+
+.attention-element[data-element='insurance']:not([data-present='true']) .attention-element-content,
+.attention-element[data-element='groceries']:not([data-present='true']) .attention-element-content {
+  transform: translateY(-54px) scale(0.97) rotate(var(--attention-rotation));
+}
+
+.attention-element[data-fall='true']:not([data-present='true']) .attention-element-content {
+  transform: translateY(154px) scale(0.88) rotate(calc(var(--attention-rotation) + 9deg));
+}
+
+.attention-element[data-secondary='true'][data-present='true'] .attention-element-content {
+  opacity: var(--opening-secondary-opacity);
+  filter: blur(var(--opening-secondary-blur));
+}
+
+/* Controlled depth at the accumulated state, without moving the composition. */
+.chaos-scene[data-step='10'] {
+  --opening-bubble: var(--opening-middle-surface);
+  --opening-bubble-focus: var(--opening-focus-surface);
+  --opening-border: var(--opening-depth-border);
+}
+
+.chaos-scene[data-step='10'] .attention-element[data-secondary='true'][data-present='true'] .attention-element-content {
+  transform: translateY(-4px) scale(var(--opening-far-scale)) rotate(var(--attention-rotation));
+}
+
+.chaos-scene[data-step='10'] .attention-element[data-element='appointment'] {
+  --opening-bubble: var(--opening-distant-surface);
+}
+
+.chaos-scene[data-step='10'] .attention-element[data-element='dinner'][data-present='true'] .attention-element-content {
+  opacity: 0.88;
+  transform: translateY(-5px) scale(0.98) rotate(var(--attention-rotation));
+}
+
+.chaos-scene[data-step='10'] .attention-element[data-element='electricity'][data-present='true'] .attention-element-content {
+  opacity: 0.96;
+  transform: translateY(-2px) scale(0.99) rotate(var(--attention-rotation));
+}
+
+.chaos-scene[data-step='10'] .attention-element[data-element='shopping'][data-present='true'] .attention-element-content {
+  opacity: 0.93;
+  transform: translateY(3px) scale(0.97) rotate(var(--attention-rotation));
+}
+
+.chaos-scene[data-step='10'] .attention-element[data-element='electricity'] {
+  --opening-bubble: var(--opening-near-surface);
+}
+
+.chaos-scene[data-step='10'] .attention-element[data-element='warranty'][data-present='true'] .attention-element-content {
+  transform: translateY(-4px) scale(var(--opening-near-scale)) rotate(var(--attention-rotation));
+}
+
+.chaos-scene[data-step='10'] .message-bubble { box-shadow: 0 8px 24px rgb(0 0 0 / 0.2); }
+.chaos-scene[data-step='10'] .message-bubble[data-emphasis='true'] {
+  border-color: var(--opening-focus-border);
+  box-shadow: 0 22px 46px rgb(0 0 0 / 0.38);
+}
+
+.message-bubble {
+  position: relative;
+  padding: 24px 30px;
+  border: 1px solid var(--opening-border);
+  border-radius: 22px 22px 22px 7px;
+  background: var(--opening-bubble);
+  box-shadow: 0 12px 32px rgb(0 0 0 / 0.16);
+}
+
+.message-bubble p {
+  margin: 0;
+  color: var(--presentation-text);
+  font-size: var(--opening-message-size);
+  font-weight: 450;
+  line-height: 1.3;
+  letter-spacing: -0.8px;
+}
+
+.message-bubble[data-emphasis='true'] { background: var(--opening-bubble-focus); }
+.message-bubble[data-emphasis='true'] p { font-size: 34px; font-weight: 500; }
+.message-bubble-tail { position: absolute; left: 0; bottom: -15px; width: 22px; height: 18px; fill: var(--opening-bubble); }
+.message-bubble[data-emphasis='true'] .message-bubble-tail { fill: var(--opening-bubble-focus); }
+
+.spoken-fragment { display: flex; align-items: center; gap: 14px; }
+.spoken-fragment img { flex: none; }
+.spoken-fragment p {
+  margin: 0;
+  max-width: 260px;
+  font-size: var(--opening-voice-size);
+  line-height: 1.3;
+  font-weight: 450;
+  color: var(--presentation-text);
+  letter-spacing: -0.5px;
+}
+
+.insurance-document { position: relative; }
+.insurance-document img { display: block; width: 100%; }
+.insurance-copy { position: absolute; left: 34px; top: 36px; }
+.insurance-copy span { font-size: 18px; font-weight: 500; letter-spacing: 3px; color: var(--presentation-text-secondary); }
+.insurance-copy p { margin: 16px 0 0; font-size: 38px; line-height: 1.1; font-weight: 550; letter-spacing: -1px; }
+.grocery-illustration { display: block; }
+.information-fragments { display: block; opacity: var(--opening-fragment-opacity); }
+
+.fragmented-scene { visibility: hidden; opacity: 0; transition: opacity var(--motion-reframe-duration) var(--motion-easing), visibility 0s var(--motion-reframe-duration); }
+.fragmented-scene[data-phase='active'], .fragmented-scene[data-phase='converging'] { visibility: visible; opacity: 1; transition-delay: 0s; }
+
+.information-statement {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 760px;
+  margin: 0;
+  text-align: center;
+  font-size: var(--opening-statement-size);
+  line-height: 1.06;
+  font-weight: 550;
+  letter-spacing: -3.4px;
+  opacity: 1;
+  transform: translate(-50%, -50%);
+  transition: transform var(--motion-reframe-duration) var(--motion-easing), opacity var(--motion-replace-duration) var(--motion-easing);
+}
+
+.fragmented-scene[data-phase='hidden'] .information-statement { opacity: 0; transform: translate(-50%, -45%); }
+.information-statement[data-family='true'] { transform: translate(-50%, calc(-50% - 145px)) scale(0.7); }
+.information-statement[data-present='false'] { opacity: 0; }
+
+.service-icon {
+  position: absolute;
+  left: var(--service-x);
+  top: var(--service-y);
+  width: var(--opening-service-size);
+  height: var(--opening-service-size);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, calc(-50% + 14px)) scale(0.88) rotate(var(--service-rotation));
+  transition:
+    left var(--motion-reframe-duration) var(--motion-easing),
+    top var(--motion-reframe-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    opacity var(--motion-accumulate-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.service-icon img { display: block; width: 100%; height: 100%; filter: drop-shadow(0 10px 18px rgb(0 0 0 / 0.14)); }
+.service-icon[data-present='true'] { visibility: visible; opacity: 0.92; transform: translate(-50%, -50%) scale(1) rotate(var(--service-rotation)); transition-delay: 0s; }
+.fragmented-scene[data-step='6'] .service-icon[data-present='true'] {
+  left: var(--service-group-x);
+  top: var(--service-group-y);
+  opacity: var(--opening-service-background-opacity);
+  transform: translate(-50%, -50%) scale(var(--opening-group-icon-scale)) rotate(0deg);
+}
+
+.family-center {
+  position: absolute;
+  left: 50%;
+  top: 390px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -50%) scale(0.9);
+  transition: top var(--motion-reframe-duration) var(--motion-easing), transform var(--motion-reframe-duration) var(--motion-easing), opacity var(--motion-enter-duration) var(--motion-easing), visibility 0s var(--motion-reframe-duration);
+}
+
+.family-center img { display: block; }
+.family-center[data-present='true'] { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); transition-delay: 0s; }
+.family-center[data-metrics='true'] { top: var(--opening-family-top); transform: translate(-50%, -50%) scale(0.76); }
+
+.fragmented-metrics {
+  position: absolute;
+  top: 264px;
+  left: 218px;
+  right: 218px;
+  display: flex;
+  justify-content: space-between;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(18px) scale(0.96);
+  transition: opacity var(--motion-replace-duration) var(--motion-easing), transform var(--motion-reframe-duration) var(--motion-easing), visibility 0s var(--motion-reframe-duration);
+}
+
+.fragmented-metrics[data-present='true'] { opacity: 1; visibility: visible; transform: translateY(0) scale(1); transition-delay: 0s; }
+.fragmented-metric { display: flex; flex-direction: column; align-items: center; width: 236px; gap: 22px; }
+.metric-number { font-size: var(--opening-number-size); line-height: 1; font-weight: 550; letter-spacing: -8px; }
+.metric-zero { color: var(--presentation-accent); }
+.metric-label { font-size: var(--opening-label-size); line-height: 1.2; font-weight: 550; letter-spacing: 2.4px; }
+.fragmented-metric:first-child .metric-label { letter-spacing: 3.2px; }
+.fragmented-metric:last-child .metric-label { font-size: var(--opening-coordination-label-size); letter-spacing: 1px; }
+
+/* Dispersion → order, keeping the family at the conceptual center until blackout. */
+.fragmented-scene[data-phase='converging'] .service-icon[data-present='true'] { left: 640px; top: 360px; opacity: 0; transform: translate(-50%, -50%) scale(0.32) rotate(0deg); }
+.fragmented-scene[data-phase='converging'] .information-statement { opacity: 0; }
+.fragmented-scene[data-phase='converging'] .fragmented-metrics { opacity: 0; transform: translateY(20px) scale(0.9); }
+.fragmented-scene[data-phase='converging'] .family-center { top: 360px; opacity: 0; transform: translate(-50%, -50%) scale(0.8); transition-delay: 0s, 0s, var(--motion-exit-duration), 0s; }
+
+.opening-blackout { position: absolute; inset: 0; z-index: 3; background: var(--presentation-blackout); pointer-events: none; opacity: 0; }
+.opening-blackout[data-active='true'] { animation: opening-blackout var(--opening-reveal-delay) var(--motion-easing) both; }
+@keyframes opening-blackout { 0% { opacity: 0; } 48%, 66% { opacity: 1; } 100% { opacity: 0; } }
+
+.homeplus-reveal {
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px) scale(0.96);
+  transition: opacity var(--motion-exit-duration) var(--motion-easing), transform var(--motion-reframe-duration) var(--motion-easing), visibility 0s var(--motion-exit-duration);
+}
+
+.homeplus-reveal[data-active='true'] { opacity: 1; visibility: visible; transform: translateY(0) scale(1); transition-duration: var(--motion-enter-duration), var(--motion-reframe-duration), 0s; transition-delay: var(--opening-reveal-delay); }
+.homeplus-signature { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.homeplus-signature h1 { margin: 0; font-size: var(--opening-wordmark-size); line-height: 1; font-weight: 550; letter-spacing: -2.8px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .opening-blackout { display: none; }
+  .attention-element[data-secondary='true'] .attention-element-content { filter: none; }
+}

@@ -1,0 +1,133 @@
+/* S18: final silence. Brand reveals, the team fades in with a soft stagger,
+   then the thanks lands. Everything stays mounted so reverse is exact. */
+
+.s18-closing {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #060404;
+  pointer-events: none;
+  animation: s18-veil-in var(--motion-blackout-duration) var(--motion-easing) both;
+}
+
+.s18-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  visibility: hidden;
+  scale: 0.96;
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    scale var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.s18-brand[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  scale: 1;
+  transition-delay: 0s;
+}
+
+.s18-wordmark {
+  margin: 0;
+  font-size: 64px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--presentation-text);
+}
+
+.s18-team {
+  display: flex;
+  align-items: flex-start;
+  gap: 56px;
+  margin-top: 52px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.s18-team[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.s18-team[data-present='false'] .s18-member { transition-delay: 0s; }
+
+.s18-member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing);
+}
+
+.s18-team[data-present='true'] .s18-member {
+  opacity: 1;
+  transform: none;
+}
+
+.s18-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1px solid rgb(245 241 235 / 0.22);
+  background: rgb(245 241 235 / 0.07);
+  color: var(--presentation-text);
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.s18-name {
+  margin: 0;
+  font-size: 22px;
+  line-height: 1.3;
+  font-weight: 500;
+  color: var(--presentation-text);
+  white-space: nowrap;
+}
+
+.s18-thanks {
+  margin: 48px 0 0;
+  font-size: 76px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--presentation-text);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.s18-thanks[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+@keyframes s18-veil-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

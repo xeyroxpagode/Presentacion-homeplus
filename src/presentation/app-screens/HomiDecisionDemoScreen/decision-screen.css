@@ -1,0 +1,35 @@
+/* S17 decision beat: Homi proposes, the human decides. Reuses the Homi
+   assistant chrome; only the decision row is new. */
+
+.homi-decision-row {
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity var(--motion-replace-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.homi-decision-row[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.homi-decision-confirm { flex: 1.2; }
+.homi-dismiss {
+  flex: 1;
+  height: 54px;
+  border: 1px solid var(--home-border);
+  border-radius: 14px;
+  background: var(--home-surface);
+  color: var(--home-ink);
+  font-family: inherit;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: default;
+}

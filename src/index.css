@@ -1,0 +1,181 @@
+@import 'tailwindcss';
+
+html,
+body,
+#root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  overscroll-behavior: none;
+  background: var(--presentation-background);
+}
+
+body {
+  font-family: var(--presentation-font);
+  color: var(--presentation-text);
+  -webkit-font-smoothing: antialiased;
+}
+
+.presentation-viewport {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background: var(--presentation-background);
+}
+
+/* All composition coordinates remain in the 1280 × 720 logical canvas. */
+.presentation-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--canvas-width);
+  height: var(--canvas-height);
+  overflow: hidden;
+  isolation: isolate;
+  transform-origin: center;
+  background: var(--presentation-background);
+}
+
+.presentation-scene {
+  position: absolute;
+  inset: 0;
+}
+
+.state-test-dot {
+  width: var(--state-test-dot-size);
+  height: var(--state-test-dot-size);
+  border-radius: 50%;
+  background: var(--presentation-accent);
+}
+
+.state-test-label {
+  margin: 0;
+  font-size: var(--state-test-font-size);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  color: var(--presentation-text-secondary);
+}
+
+.presentation-dev {
+  position: absolute;
+  bottom: var(--presentation-safe-area);
+  left: var(--presentation-safe-area);
+  z-index: 10;
+  margin: 0;
+  color: var(--presentation-text-secondary);
+  font: var(--dev-font-size) / 1.5 var(--presentation-mono-font);
+  pointer-events: none;
+}
+
+.ambient-glow {
+  position: absolute;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    color-mix(in srgb, var(--presentation-accent) var(--glow-strength), transparent),
+    transparent 72%
+  );
+  filter: blur(var(--glow-blur));
+  pointer-events: none;
+}
+
+.phone-frame-slot {
+  position: relative;
+  flex: none;
+}
+
+.phone-frame {
+  position: relative;
+  width: var(--phone-width);
+  height: var(--phone-height);
+  padding: var(--phone-bezel);
+  border: 1px solid var(--phone-edge);
+  border-radius: var(--phone-radius);
+  background: var(--phone-body);
+  box-shadow: var(--phone-shadow);
+  transform: scale(var(--phone-scale));
+  transform-origin: top left;
+}
+
+.phone-frame-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--phone-screen-radius);
+  background: var(--app-background);
+  color: var(--app-text);
+  isolation: isolate;
+}
+
+.homeplus-logo {
+  display: block;
+  flex: none;
+  object-fit: contain;
+}
+
+/* Finite, attention-driven primitives; scenes choose when to use them. */
+.motion-enter {
+  animation: attention-enter var(--motion-enter-duration) var(--motion-easing) both;
+}
+
+.motion-exit {
+  opacity: 0;
+  animation: attention-exit var(--motion-exit-duration) var(--motion-easing) both;
+}
+
+.motion-replace {
+  animation: attention-fade var(--motion-replace-duration) var(--motion-easing) both;
+}
+
+.motion-accumulate {
+  animation: attention-enter var(--motion-accumulate-duration) var(--motion-easing) both;
+}
+
+.motion-reframe {
+  transition:
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    opacity var(--motion-reframe-duration) var(--motion-easing);
+}
+
+.motion-spatial-wipe {
+  animation: attention-wipe var(--motion-spatial-wipe-duration) var(--motion-easing) both;
+}
+
+.motion-blackout {
+  position: absolute;
+  inset: 0;
+  background: var(--presentation-blackout);
+  animation: attention-fade var(--motion-blackout-duration) var(--motion-easing) both;
+}
+
+@keyframes attention-enter {
+  from { opacity: 0; translate: 0 var(--motion-enter-distance); }
+  to { opacity: 1; translate: 0 0; }
+}
+
+@keyframes attention-exit {
+  from { opacity: 1; }
+  to { opacity: 0; translate: 0 calc(-1 * var(--motion-enter-distance)); }
+}
+
+@keyframes attention-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes attention-wipe {
+  from { clip-path: inset(0 100% 0 0); }
+  to { clip-path: inset(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .presentation-canvas *,
+  .presentation-canvas *::before,
+  .presentation-canvas *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

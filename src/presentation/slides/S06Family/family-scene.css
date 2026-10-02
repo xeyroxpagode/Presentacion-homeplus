@@ -1,0 +1,64 @@
+.product-family-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--motion-replace-duration) var(--motion-easing), visibility 0s var(--motion-replace-duration);
+}
+.product-family-layer[data-present='true'] { opacity: 1; visibility: visible; transition-delay: 0s; }
+
+.home-planner-sequence > .home-phone-position { transition: opacity var(--motion-reframe-duration) var(--motion-easing); }
+.home-planner-sequence[data-map-expanded='true'] > .home-phone-position { opacity: 0.12; }
+.home-planner-sequence[data-product-screen='family'] .family-demo-screen .home-top-bar,
+.home-planner-sequence[data-product-screen='family'] .family-demo-screen .home-navigation { opacity: 1; }
+
+.family-map-stage {
+  position: absolute;
+  left: var(--map-slot-x);
+  top: var(--map-slot-y);
+  width: var(--map-slot-width);
+  height: var(--map-slot-height);
+  z-index: 2;
+  opacity: 0;
+  visibility: hidden;
+  font-family: 'HomePlus DM Sans', sans-serif;
+  pointer-events: none;
+  transform-origin: 0 0;
+  transition:
+    transform var(--motion-spatial-wipe-duration) var(--motion-easing),
+    opacity var(--motion-replace-duration) var(--motion-easing),
+    visibility 0s var(--motion-spatial-wipe-duration);
+}
+.family-map-stage[data-in-flight='true'] { will-change: transform, opacity; }
+.family-map-stage[data-present='true'] { opacity: 1; visibility: visible; transition-delay: 0s; }
+.family-map-stage[data-expanded='true'] { left: 100px; top: 100px; width: 1080px; height: 520px; }
+
+/* The light and the surface travel inside the same node: the product UI grows
+   onto the stage and recedes back, rather than a new card appearing on top. */
+.family-map-glow {
+  left: 50%;
+  top: 50%;
+  width: 150%;
+  height: 165%;
+  --glow-strength: 52%;
+  opacity: 0;
+  transition: opacity var(--motion-spatial-wipe-duration) var(--motion-easing);
+}
+.family-map-stage[data-expanded='true'] .family-map-glow { opacity: 0.16; }
+
+.family-map-surface {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  background: #EBEEE6;
+  box-shadow: 0 6px 18px rgb(26 24 22 / 0.16);
+}
+.family-map-stage[data-expanded='true'] .family-map-surface {
+  border-radius: 28px;
+  box-shadow: 0 54px 120px rgb(0 0 0 / 0.55), 0 18px 48px rgb(0 0 0 / 0.35);
+}
+.family-map-stage[data-in-flight='true'] .family-map-surface {
+  border-radius: 22px;
+  box-shadow: 0 30px 70px rgb(0 0 0 / 0.42);
+}

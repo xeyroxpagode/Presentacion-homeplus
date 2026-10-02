@@ -1,0 +1,59 @@
+/* Wrapper only: the frozen opening keeps its own styles and compositions. */
+.opening-to-home {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s;
+}
+
+.opening-to-home[data-active='false'] {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px) scale(0.94);
+  transition-delay: 0s, 0s, var(--motion-reframe-duration);
+}
+
+.home-scene {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.96);
+  pointer-events: none;
+  transition:
+    opacity var(--motion-enter-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.home-scene[data-active='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: var(--motion-exit-duration), var(--motion-exit-duration), 0s;
+}
+
+.home-phone-position {
+  position: absolute;
+  left: 570px;
+  top: 50px;
+}
+
+/* The final attention belongs to the three pending items, not the app chrome. */
+.home-scene[data-home-step='5'] .home-top-bar,
+.home-scene[data-home-step='5'] .home-section-heading {
+  opacity: var(--home-final-chrome-opacity);
+}
+
+.home-scene[data-home-step='5'] .home-current-date {
+  opacity: var(--home-final-date-opacity);
+}
+
+.home-scene[data-home-step='5'] .home-navigation {
+  opacity: var(--home-final-navigation-opacity);
+}

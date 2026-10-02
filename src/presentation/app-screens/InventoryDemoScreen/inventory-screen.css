@@ -1,0 +1,33 @@
+.inventory-workspace { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+.inventory-heading { flex: none; margin: 0 var(--home-screen-padding); padding: 8px 0 10px; }
+.inventory-heading h1 { margin: 0; color: var(--home-ink); font-size: 26px; line-height: 1.2; font-weight: 700; }
+
+.inventory-filters { flex: none; display: flex; gap: 8px; margin: 0 var(--home-screen-padding) 12px; }
+.inventory-filter { display: flex; align-items: center; height: 38px; padding: 0 16px; border-radius: 9999px; background: rgb(26 24 22 / 0.06); color: var(--home-muted); font-size: 14px; font-weight: 500; white-space: nowrap; }
+.inventory-filter[aria-selected='true'] { background: var(--home-brand-soft); color: var(--home-brand); font-weight: 600; }
+
+.inventory-card { margin: 0 var(--home-screen-padding); overflow: hidden; border: 1px solid var(--home-border); border-radius: var(--home-card-radius); background: var(--home-surface); }
+.inventory-row { position: relative; display: flex; align-items: center; gap: 12px; min-height: 62px; padding: 9px 12px; background: var(--home-surface); transition: background-color var(--motion-reframe-duration) var(--motion-easing), opacity var(--motion-replace-duration) var(--motion-easing); }
+.inventory-row + .inventory-row::before { content: ''; position: absolute; top: 0; left: 20px; right: 0; height: 1px; background: var(--home-divider); }
+.inventory-tile { flex: none; display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 12px; background: var(--home-brand-soft); color: var(--home-brand); font-size: 19px; font-weight: 600; }
+.inventory-row-copy { flex: 1; min-width: 0; }
+.inventory-row-title { margin: 0; color: var(--home-ink); font-size: 19px; line-height: 1.25; font-weight: 500; }
+.inventory-row-meta { margin: 2px 0 0; color: var(--home-muted); font-size: 12px; line-height: 1.35; }
+.inventory-status { flex: none; font-size: 11px; font-weight: 700; padding: 3px 9px; border-radius: 9999px; }
+.inventory-status-low { background: #fef4e2; color: #b57a1a; }
+.inventory-status-out { background: #fce8e7; color: #c23a30; }
+
+.inventory-shopping { display: flex; align-items: center; gap: 12px; margin: 12px var(--home-screen-padding) 0; padding: 12px 14px; border: 1px solid var(--home-border); border-radius: var(--home-card-radius); background: var(--home-surface); transition: border-color var(--motion-reframe-duration) var(--motion-easing), background-color var(--motion-reframe-duration) var(--motion-easing); }
+.inventory-count { flex: none; display: flex; align-items: center; justify-content: center; min-width: 34px; height: 34px; padding: 0 8px; border-radius: 50%; background: var(--home-brand); color: var(--home-surface); font-size: 16px; font-weight: 700; }
+
+/* Final focus: each urgent product reads on its own row (name, tile and a
+   soft terracotta bar) instead of one continuous block; only non-urgent
+   products step back. The shopping list stays the second strong focus. */
+.inventory-demo-screen[data-focus-shortages='true'] .inventory-row-title { font-size: 21px; }
+.inventory-demo-screen[data-focus-shortages='true'] .inventory-row-meta { font-size: 13.5px; }
+.inventory-demo-screen[data-focus-shortages='true'] .inventory-status { font-size: 12px; }
+.inventory-demo-screen[data-focus-shortages='true'] .inventory-row[data-highlight='true'] .inventory-row-title { color: var(--home-brand); font-weight: 600; }
+.inventory-demo-screen[data-focus-shortages='true'] .inventory-row[data-highlight='true'] .inventory-tile { background: var(--home-brand); color: var(--home-surface); }
+.inventory-demo-screen[data-focus-shortages='true'] .inventory-row[data-highlight='true']::before { content: ''; position: absolute; left: 0; top: 10px; bottom: 10px; width: 4px; border-radius: 4px; background: var(--home-brand); }
+.inventory-demo-screen[data-focus-shortages='true'] .inventory-row[data-dim='true'] { opacity: 0.45; }
+.inventory-demo-screen[data-focus-shortages='true'] .inventory-shopping { border-color: var(--home-brand); background: var(--home-brand-soft); }
