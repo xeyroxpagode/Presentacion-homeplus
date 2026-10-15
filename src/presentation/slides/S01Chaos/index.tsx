@@ -1,5 +1,6 @@
 import { Suspense, lazy } from 'react'
 import type { SlideProps } from '../../presentationTypes'
+import S01PhoneDive from './S01PhoneDive'
 import { DioramaFloor, DioramaTable, FridgeUnit } from './DioramaStage'
 import { isS01ThreeRenderer } from './three/s01ThreeConfig'
 import {
@@ -97,6 +98,8 @@ export default function S01Chaos({ stepIndex, active = true }: SlideProps & { ac
           <GroceryBag />
         </div>
       </div>
+      {/* S02 V1.6 — Phone Dive terminal (capa propia, diorama intacto). */}
+      <S01PhoneDive step={step} />
     </div>
   )
 }

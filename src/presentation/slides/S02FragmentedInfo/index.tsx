@@ -1,18 +1,19 @@
-// S02 V1.5 CINEMATIC — «Una cosa estaba en un chat viejo…»
-// Reemplaza la escena antigua de íconos (V1.3) y el chat del dentista.
-// Una instancia persistente de WhatsApp + una de Calendario + un wallpaper.
-// Todo el estado visual deriva de (stepIndex, progress): forward, reverse e
-// interrupciones convergen al estado destino sin ownerships colgados.
+// S02 V1.6 CINEMATIC — «Una cosa estaba en un chat viejo…»
+// Una instancia persistente de WhatsApp + una de Calendario + wallpaper.
+// Todo el estado visual deriva de (stepIndex, progress): forward, reverse
+// e interrupciones convergen al estado destino sin ownerships colgados.
+//
+// Step0 = cola del Phone Dive (dDIVE 0.55→1, geometría compartida con S01
+// vía phoneDive.ts): F0 coincide con el último fotograma de S01, F100 es
+// exactamente S02.0. Sin fundidos a negro ni pantallas intermedias.
 
-import { useMemo } from 'react'
+import { useMemo, useRef } from 'react'
 import type { SlideProps } from '../../presentationTypes'
 import {
+  HISTORY_VIEWPORT_H,
   HISTORY_VIEWPORT_Y,
   MOTHER_TEXT,
-  QUESTION_LINES,
   SENT_TEXT,
-  SENDER_LABEL,
-  WARRANTY_TEXT,
   buildHistory,
   type HistoryBlock,
 } from './s02Data'
@@ -25,12 +26,26 @@ import {
   useStepProgress,
   type Rect,
 } from './useStepProgress'
+import { D_SPLICE, diveBezelVisible, diveFrame } from './phoneDive'
+import { useHistoryLayout } from './historyLayout'
+import ChatFaceStatic from './PhoneFace'
+import QuestionSVG from './QuestionSVG'
+import { REACTION_ORDER, ReactionGlyph } from './Reactions'
+import {
+  ChatWallpaper,
+  Composer,
+  HistoryBlocks,
+  HistoryMeasurer,
+  IN_X,
+  StatusBar,
+  WaHeader,
+} from './WhatsApp'
 import './s02-cinematic.css'
 
 type Phase = 'active' | 'converging' | 'hidden'
 type Props = SlideProps & { phase?: Phase }
 
-// ---------- Geometría maestra (targets nominales §03–§17) ----------
+// ---------- Geometría maestra ----------
 const WA_FULL: Rect = { x: 0, y: 0, w: 1280, h: 720 }
 const CAL_FULL: Rect = WA_FULL
 const OFF_LEFT: Rect = { x: -1400, y: 22, w: 1203, h: 676 }
@@ -75,137 +90,22 @@ const WA_IN_KEYS: ReadonlyArray<readonly [number, Rect]> = [
   [1, WA_FULL],
 ]
 
-// Morph burbuja → fondo (§15). R1 con overscan garantizado.
+// Morph burbuja → fondo (§16). R1 con overscan garantizado.
 const MORPH_R1: Rect = { x: -128, y: -86, w: 1536, h: 892 }
-// R0 = rectángulo seleccionado real (misma pieza que el long-press, §18).
-// NOTA QA: nominal §14 (265,228,675,127); se conserva centro y tipografía
-// con el tamaño real medido (655×146) para no cambiar el wrapping.
-const SEL_RECT: Rect = { x: 274, y: 218, w: 655, h: 146 }
-const NORM_RECT: Rect = { x: 245, y: 250, w: 655, h: 146 }
+// R0 = geometría final del long-press (misma pieza, §15/§18).
+// Burbuja de Mamá en flujo: X38, Y253 (madre) — determinista por layout.
+const SEL_X = 55
+const SEL_Y = 240
 
-// ---------- Piezas iOS ----------
-function StatusBar() {
-  return (
-    <div className="s02-statusbar" aria-hidden="true">
-      <span className="s02-status-time">16:05</span>
-      <span className="s02-status-icons">
-        <svg width="20" height="12" viewBox="0 0 20 12"><rect x="0" y="7" width="3" height="5" rx="0.8" fill="currentColor" /><rect x="4.5" y="5" width="3" height="7" rx="0.8" fill="currentColor" /><rect x="9" y="3" width="3" height="9" rx="0.8" fill="currentColor" /><rect x="13.5" y="1" width="3" height="11" rx="0.8" fill="currentColor" opacity="0.35" /></svg>
-        <svg width="17" height="12" viewBox="0 0 17 12"><path d="M8.5 9.6a1.6 1.6 0 1 1 0 3.2 1.6 1.6 0 0 1 0-3.2zM8.5 6c1.9 0 3.6.8 4.8 2l-1.8 1.8A4.4 4.4 0 0 0 8.5 8.4c-1.2 0-2.2.5-3 1.4L3.7 8C4.9 6.8 6.6 6 8.5 6zM8.5 2c2.9 0 5.6 1.2 7.5 3.1L14.2 7A8.6 8.6 0 0 0 8.5 4.4c-2.2 0-4.2.9-5.7 2.6L1 5.1A12.6 12.6 0 0 1 8.5 2z" fill="currentColor" transform="translate(0,-2)" /></svg>
-        <svg width="26" height="12" viewBox="0 0 26 12"><rect x="0.5" y="0.5" width="21" height="11" rx="3" fill="none" stroke="currentColor" opacity="0.4" /><rect x="2.5" y="2.5" width="15" height="7" rx="1.6" fill="currentColor" /><rect x="23" y="4" width="2.4" height="4" rx="1.2" fill="currentColor" opacity="0.4" /></svg>
-      </span>
-    </div>
-  )
-}
-
-// Foto de garantía: documento cotidiano fotografiado (asset local inline).
-function WarrantyPhoto() {
-  return (
-    <svg className="s02-warranty-photo" viewBox="0 0 583 173" role="img" aria-label="Foto de la garantía de la heladera">
-      <defs>
-        <linearGradient id="s02desk" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0" stopColor="#6b5d4f" /><stop offset="0.55" stopColor="#57493d" /><stop offset="1" stopColor="#463c32" />
-        </linearGradient>
-        <linearGradient id="s02paper" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#f4efe4" /><stop offset="0.7" stopColor="#e9e2d2" /><stop offset="1" stopColor="#d9d1bd" />
-        </linearGradient>
-        <linearGradient id="s02glare" x1="0" y1="0" x2="1" y2="0.6">
-          <stop offset="0" stopColor="#ffffff" stopOpacity="0.22" /><stop offset="0.4" stopColor="#ffffff" stopOpacity="0" /><stop offset="1" stopColor="#000000" stopOpacity="0.18" />
-        </linearGradient>
-        <filter id="s02soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="6" /></filter>
-      </defs>
-      <rect width="583" height="173" fill="url(#s02desk)" />
-      <ellipse cx="300" cy="150" rx="230" ry="26" fill="#000" opacity="0.35" filter="url(#s02soft)" />
-      <g transform="rotate(-3 291 86)">
-        <rect x="120" y="8" width="350" height="158" rx="3" fill="#000" opacity="0.45" filter="url(#s02soft)" transform="translate(7 9)" />
-        <rect x="120" y="8" width="350" height="158" rx="3" fill="url(#s02paper)" />
-        <rect x="120" y="8" width="350" height="158" rx="3" fill="url(#s02glare)" />
-        <text x="295" y="42" textAnchor="middle" fontFamily="Georgia, serif" fontSize="26" letterSpacing="6" fill="#3a3428">GARANTÍA</text>
-        <rect x="150" y="54" width="290" height="2" fill="#8a7f68" />
-        <text x="150" y="76" fontFamily="Georgia, serif" fontSize="11" fill="#4a4436">Heladera · Modelo H-320 · Serie 884102</text>
-        {Array.from({ length: 7 }).map((_, i) => (
-          <rect key={i} x={150 + (i % 3) * 8} y={88 + i * 10} width={264 - (i % 3) * 22 - (i * 7) % 30} height="4" rx="2" fill="#a09a86" opacity="0.85" />
-        ))}
-        <rect x="150" y="150" width="90" height="7" rx="3.5" fill="none" stroke="#6a6350" strokeWidth="1" />
-      </g>
-    </svg>
-  )
-}
-
-function ChatWallpaper() {
-  return <div className="s02-chat-wallpaper" aria-hidden="true" />
-}
-
-// ---------- Historial ----------
-function BubbleShell({ x, w, children, kind }: { x: number; w: number; children: React.ReactNode; kind: 'in' | 'out' }) {
-  return (
-    <div className={`s02-bubble s02-bubble-${kind}`} style={{ left: x, width: w }}>
-      {children}
-    </div>
-  )
-}
-
-function HistoryBlocks({ blocks, showSent, sentPop, hideMother }: { blocks: HistoryBlock[]; showSent: boolean; sentPop: number; hideMother: boolean }) {
-  return (
-    <>
-      {blocks.map((b, i) => {
-        if (b.kind === 'chip') {
-          return (
-            <div key={i} className="s02-date-chip" style={{ top: b.top }}>
-              <span>{b.label}</span>
-            </div>
-          )
-        }
-        if (b.kind === 'warranty') {
-          return (
-            <div key={i} className="s02-msg-block" style={{ top: b.top, height: b.h }}>
-              <BubbleShell x={220} w={630} kind="in">
-                <div className="s02-sender">Tomi</div>
-                <WarrantyPhoto />
-                <div className="s02-bubble-text s02-bubble-text-hero">{WARRANTY_TEXT}<span className="s02-stamp">19:46</span></div>
-              </BubbleShell>
-            </div>
-          )
-        }
-        if (b.kind === 'msg') {
-          const m = b.msg
-          const out = m.from === 'papa'
-          return (
-            <div key={m.id} className="s02-msg-block" style={{ top: b.top, height: b.h }}>
-              <BubbleShell x={out ? 735 : 245} w={out ? 410 : 620} kind={out ? 'out' : 'in'}>
-                {!out && <div className="s02-sender">{SENDER_LABEL[m.from]}</div>}
-                <div className="s02-bubble-text">{m.text}<span className="s02-stamp">{m.time}</span></div>
-              </BubbleShell>
-            </div>
-          )
-        }
-        if (b.kind === 'mother') {
-          return (
-            <div key="mother" className="s02-msg-block" style={{ top: b.top, height: b.h, visibility: hideMother ? 'hidden' : 'visible' }}>
-              <div style={{ position: 'absolute', top: 12, left: 0, right: 0, height: 146 }}>
-                <BubbleShell x={245} w={655} kind="in">
-                  <div className="s02-sender">Mamá ❤️</div>
-                  <div className="s02-bubble-text s02-bubble-text-hero">{MOTHER_TEXT}<span className="s02-stamp">20:14</span></div>
-                </BubbleShell>
-              </div>
-            </div>
-          )
-        }
-        // sent
-        if (!showSent) return null
-        return (
-          <div
-            key="sent"
-            className="s02-msg-block"
-            style={{ top: b.top, height: b.h, opacity: sentPop, transform: `scale(${0.92 + 0.08 * sentPop})`, transformOrigin: '100% 100%' }}
-          >
-            <BubbleShell x={735} w={410} kind="out">
-              <div className="s02-bubble-text s02-bubble-text-hero">{SENT_TEXT}<span className="s02-stamp">16:05</span></div>
-            </BubbleShell>
-          </div>
-        )
-      })}
-    </>
-  )
+// Atenuación de calendario (§11): F0 0 · F25 .08 · F50 .25 · F75 .43 · F100 .50.
+function attentionDim(p: number): number {
+  const keys: Array<readonly [number, number]> = [[0, 0], [0.25, 0.08], [0.5, 0.25], [0.75, 0.43], [1, 0.5]]
+  for (let i = 0; i < keys.length - 1; i++) {
+    const [t0, v0] = keys[i]!
+    const [t1, v1] = keys[i + 1]!
+    if (p <= t1) return lerp(v0, v1, smootherstep((p - t0) / (t1 - t0)))
+  }
+  return 0.5
 }
 
 // ---------- Teclado iOS (landscape 16:9, español) ----------
@@ -235,56 +135,109 @@ function Keyboard({ typed, opacity }: { typed: string; opacity: number }) {
   )
 }
 
+// Bloque de historial para la superficie dinámica (usa anchos del layout).
+function DynBlocks({ blocks, tops, showSent, sentPop, hideMother }: { blocks: HistoryBlock[]; tops: Map<string, number>; showSent: boolean; sentPop: number; hideMother: boolean }) {
+  return <HistoryBlocks blocks={blocks} tops={tops} showSent={showSent} sentPop={sentPop} hideMother={hideMother} />
+}
+
 // ---------- Componente principal ----------
 export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props) {
   const step = Math.min(Math.max(stepIndex, 0), 8)
   const p = useStepProgress(step, phase)
   const history = useMemo(() => buildHistory(), [])
+  const measureRef = useRef<HTMLDivElement | null>(null)
+  // Layout medido (alturas reales de burbuja): única autoridad de tops,
+  // scroll anchors y geometría de selección/morph. Estimador sólo pre-medición.
+  const layout = useHistoryLayout(history.blocks, measureRef)
 
-  const motherBubbleTop = history.motherTop + 12
-  const SCROLL_TO = motherBubbleTop - 140
-  const SCROLL_S3 = history.sentTop - 494
-  const SCROLL_END = history.contentH - 502
+  // ================= STEP 0 — cola del Phone Dive =================
+  if (step === 0) {
+    const d = D_SPLICE + (1 - D_SPLICE) * smootherstep(p)
+    const frame = diveFrame(d)
+    const bezel = diveBezelVisible(frame.screen)
+    // El home indicator viaja dentro de la propia superficie (entra
+    // deslizándose con el acoplamiento final, sin duplicados).
+    return (
+      <div className="s02-stage opening-layer" data-phase={phase} data-step={step} aria-hidden={phase !== 'active'}>
+        <div className="s02-dive">
+          {bezel && (
+            <div
+              className="s02-phone-body"
+              style={{
+                left: frame.body.x, top: frame.body.y, width: frame.body.w, height: frame.body.h,
+                transform: `rotate(${frame.tilt.toFixed(2)}deg)`,
+              }}
+              aria-hidden="true"
+            >
+              <div className="s02-phone-notch" />
+            </div>
+          )}
+          <div
+            className="s02-phone-screen"
+            style={{ left: frame.screen.x, top: frame.screen.y, width: frame.screen.w, height: frame.screen.h }}
+          >
+            {/* El mapa es coords de stage; el bloque contenedor es la pantalla. */}
+            <div
+              className="s02-phone-surface"
+              style={{ transform: `translate(${(frame.map.offX - frame.screen.x).toFixed(1)}px, ${(frame.map.offY - frame.screen.y).toFixed(1)}px) scale(${frame.map.scale.toFixed(4)})` }}
+            >
+              <ChatFaceStatic />
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  const motherTopStage = HISTORY_VIEWPORT_Y + 141 // Y253: burbuja de Mamá en reposo
+  const SCROLL_TO = layout.motherTop - 141 // burbuja de Mamá → Y253 de stage
+  const SCROLL_S3 = layout.sentTop - HISTORY_VIEWPORT_H + 22 // recientes, gap 22
+  const SCROLL_END = layout.sentTop + layout.sentH + 22 - HISTORY_VIEWPORT_H // tras envío, gap 22
   const SCROLL_FROM = SCROLL_END
 
   // ----- scroll / viewport por step -----
+  // Steps 1–2: WhatsApp conserva el estado S02.0 (garantía, scroll 0).
+  // Step 3+: historial reciente (preparado mientras está fuera de pantalla).
   let scrollTop = 0
-  let viewportH = 510
+  let viewportH = HISTORY_VIEWPORT_H
   let blurPx = 0
   let scrollbarOpacity = 0
-  if (step >= 3 && step <= 8) {
-    if (step === 3) scrollTop = SCROLL_S3
-    else if (step === 4) {
-      const ms = p * 1550
-      const kbIn = smootherstep(clamp01(ms / 220))
-      const kbOut = smootherstep(clamp01((ms - 1300) / 250))
-      const kbP = kbIn * (1 - kbOut)
-      viewportH = lerp(510, 300, kbP)
-      const kbScroll = history.sentTop - 300 + 16
-      scrollTop = ms < 1300 ? lerp(SCROLL_S3, kbScroll, kbP) : lerp(kbScroll, SCROLL_END, kbOut)
-    } else if (step === 5) {
-      const frac = scrollFraction(p)
-      scrollTop = SCROLL_FROM + (SCROLL_TO - SCROLL_FROM) * frac
-      // Velocidad instantánea → estela (0 en F100).
-      const e = 0.004
-      const v = ((scrollFraction(Math.min(1, p + e)) - scrollFraction(Math.max(0, p - e))) / (2 * e)) * (SCROLL_FROM - SCROLL_TO) / 1150 * 16.7
-      blurPx = p >= 1 ? 0 : Math.min(5, Math.abs(v) / 55)
-      scrollbarOpacity = p > 0 && p < 1 ? 0.55 : 0
-    } else {
-      scrollTop = SCROLL_TO
-    }
+  if (step === 3) {
+    scrollTop = SCROLL_S3
+  } else if (step === 4) {
+    const ms = p * 1550
+    const kbIn = smootherstep(clamp01(ms / 220))
+    const kbOut = smootherstep(clamp01((ms - 1300) / 250))
+    const kbP = kbIn * (1 - kbOut)
+    viewportH = lerp(HISTORY_VIEWPORT_H, 298, kbP)
+    const kbScroll = layout.sentTop - 298 + 16
+    scrollTop = ms < 1300 ? lerp(SCROLL_S3, kbScroll, kbP) : lerp(kbScroll, SCROLL_END, kbOut)
+  } else if (step === 5) {
+    const frac = scrollFraction(p)
+    scrollTop = SCROLL_FROM + (SCROLL_TO - SCROLL_FROM) * frac
+    // Velocidad instantánea → estela (0 en F100), máx. 3px lógicos.
+    const e = 0.004
+    const v = ((scrollFraction(Math.min(1, p + e)) - scrollFraction(Math.max(0, p - e))) / (2 * e)) * (SCROLL_FROM - SCROLL_TO) / 560 * 16.7
+    blurPx = p >= 1 ? 0 : Math.min(3, Math.abs(v) / 55)
+    scrollbarOpacity = p > 0 && p < 1 ? 0.55 : 0
+  } else {
+    // Steps 1–2: S02.0 (garantía). Steps 6–8: mensaje de Mamá.
+    scrollTop = step <= 2 ? 0 : SCROLL_TO
   }
 
   // ----- Step 4: microsecuencia de input (una sola autoridad: ms) -----
   const ms4 = step === 4 ? p * 1550 : 0
-  const kbP4 = step === 4 ? smootherstep(clamp01(ms4 / 220)) * (1 - smootherstep(clamp01((ms4 - 1300) / 250))) : step > 4 ? 0 : 0
+  const kbIn4 = step === 4 ? smootherstep(clamp01(ms4 / 220)) : 0
+  const kbOut4 = step === 4 ? smootherstep(clamp01((ms4 - 1300) / 250)) : 0
+  const kbP4 = kbIn4 * (1 - kbOut4)
   const typedCount = step === 4 ? Math.floor(clamp01((ms4 - 220) / 750) * SENT_TEXT.length) : 0
   // El texto vive en UN solo lugar por frame: antes del envío en el input,
   // desde el envío sólo en la burbuja. F100: composer vacío.
   const typed = step === 4 && ms4 < 1080 ? SENT_TEXT.slice(0, typedCount) : ''
   const sentVisible = step > 4 || (step === 4 && ms4 >= 1080)
   const sendPop = step === 4 ? smootherstep(clamp01((ms4 - 1080) / 220)) : 1
-  const composerY = lerp(620, 410, step === 4 ? smootherstep(clamp01(ms4 / 220)) * (1 - smootherstep(clamp01((ms4 - 1300) / 250))) : 0)
+  const composerY = lerp(621, 410, step === 4 ? kbP4 : 0)
+  const composerH = lerp(74, 64, step === 4 ? kbP4 : 0)
   const keyboardY = lerp(720, 474, kbP4)
   const showKeyboard = step === 4 && kbP4 > 0.01
 
@@ -293,8 +246,7 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
   let calRect: Rect = OFF_RIGHT
   let waVisible = true
   let calVisible = false
-  if (step === 0) { waRect = WA_FULL; calVisible = false }
-  else if (step === 1) {
+  if (step === 1) {
     const q = smootherstep(p)
     waRect = trackRect(WA_OUT_KEYS, q)
     calRect = trackRect(CAL_IN_KEYS, q)
@@ -316,13 +268,17 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
   const calRadius = (cardness(calRect) * 26) / Math.max(0.5, calScale)
   const waShadow = cardness(waRect) > 0.02 ? '0 30px 80px rgba(0,0,0,0.45)' : 'none'
   const calShadow = cardness(calRect) > 0.02 ? '0 30px 80px rgba(0,0,0,0.45)' : 'none'
+  // Status bar sistémica única durante el App Switcher (§7): las barras de
+  // cada tarjeta se ocultan y una sola instancia global toma el control.
+  const switching = (step === 1 || step === 3) && cardness(waRect) > 0.03 && cardness(calRect) > 0.03
 
   // ----- Atención (dim calendario) -----
-  const dim2 = step === 2 ? smootherstep(p) * 0.52 : step === 3 ? (1 - smootherstep(clamp01(p / 0.33))) * 0.52 : 0
+  const dim2 = step === 2 ? attentionDim(p) : step === 3 ? 0.5 * (1 - smootherstep(clamp01(p / 0.4))) : 0
 
   // ----- Long-press (step 6) + morph (step 7): UNA pieza persistente -----
   const showElevated = step === 6 || step === 7
-  let elevRect: Rect = SEL_RECT
+  const R0: Rect = { x: SEL_X, y: SEL_Y, w: history.motherW, h: layout.motherH }
+  let elevRect: Rect = R0
   let elevScale = 1
   let backdrop = 0
   let chromeOpacity = 1 // reacciones + menú
@@ -331,43 +287,40 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
     elevScale = 1 - 0.015 * press
     const lift = smootherstep(clamp01((p - 0.25) / 0.4))
     elevRect = {
-      x: lerp(NORM_RECT.x, SEL_RECT.x, lift),
-      y: lerp(NORM_RECT.y, SEL_RECT.y, lift),
-      w: NORM_RECT.w, h: NORM_RECT.h,
+      x: lerp(IN_X, SEL_X, lift),
+      y: lerp(motherTopStage, SEL_Y, lift),
+      w: history.motherW, h: layout.motherH,
     }
     backdrop = smootherstep(clamp01((p - 0.25) / 0.35))
     chromeOpacity = smootherstep(clamp01((p - 0.64) / 0.19))
   }
   // Morph
   let morphQ = 0
-  let morphColor = '#1f2c34'
   let morphTextOpacity = 1
   if (step === 7) {
     morphQ = smootherstep(p)
     elevRect = {
-      x: lerp(SEL_RECT.x, MORPH_R1.x, morphQ),
-      y: lerp(SEL_RECT.y, MORPH_R1.y, morphQ),
-      w: lerp(SEL_RECT.w, MORPH_R1.w, morphQ),
-      h: lerp(SEL_RECT.h, MORPH_R1.h, morphQ),
+      x: lerp(R0.x, MORPH_R1.x, morphQ),
+      y: lerp(R0.y, MORPH_R1.y, morphQ),
+      w: lerp(R0.w, MORPH_R1.w, morphQ),
+      h: lerp(R0.h, MORPH_R1.h, morphQ),
     }
     // Sin backdrop separado: la propia superficie ocluye WhatsApp.
     chromeOpacity = 1 - clamp01(p / 0.15)
-    morphTextOpacity = 1 - clamp01(p / 0.3)
-    const c0 = [31, 44, 52]
-    const c1 = [6, 4, 4]
-    morphColor = `rgb(${c0.map((c, i) => Math.round(lerp(c, c1[i]!, morphQ))).join(',')})`
+    morphTextOpacity = 1 - clamp01((p - 0.08) / 0.38)
   }
   const morphRadius = step === 7 ? 22 * (1 - morphQ) : 22
-  const morphGlow = step === 7 ? Math.pow(morphQ, 2) * 0.14 : 0
+  // Color de la materia: #1f2c34 (burbuja) → #080504 (negro cálido).
+  const morphBg = step === 7
+    ? `rgb(${[31, 44, 52].map((c, i) => Math.round(lerp(c, [8, 5, 4][i]!, morphQ))).join(',')})`
+    : undefined
 
   // ----- Pregunta (step 8) -----
-  const qP = step === 8 ? smootherstep(p) : 0
+  const qP = step === 8 ? clamp01(p) : 0
   const showEditorial = step === 7 || step === 8
 
   // Home indicator del sistema: oculto con teclado y en fondo editorial.
   const homeOpacity = showKeyboard ? 0 : step === 7 ? 1 - morphQ : step === 8 ? 0 : 1
-
-  const revealBlack = step === 0 ? 1 - p : 0
 
   return (
     <div className="s02-stage opening-layer" data-phase={phase} data-step={step} aria-hidden={phase !== 'active'}>
@@ -379,8 +332,9 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
         className="s02-appcard"
         aria-label="WhatsApp"
         data-app="whatsapp"
+        data-naked={switching}
         style={{
-          transform: `translate(${waRect.x}px, ${waRect.y}px)`,
+          transform: `translate(${waRect.x.toFixed(1)}px, ${waRect.y.toFixed(1)}px)`,
           visibility: waVisible ? 'visible' : 'hidden',
         }}
       >
@@ -388,68 +342,37 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
         <div
           className="s02-appscale"
           style={{
-            transform: `scale(${waScale})`,
-            borderRadius: waRadius,
+            transform: `scale(${waScale.toFixed(4)})`,
+            borderRadius: waRadius.toFixed(1),
             boxShadow: waShadow,
           }}
         >
           <StatusBar />
-          <header className="s02-wa-header">
-            <span className="s02-wa-back">‹</span>
-            <span className="s02-wa-avatar" aria-hidden="true">F</span>
-            <span className="s02-wa-title">
-              <strong>Familia ❤️</strong>
-              <small>Tomi, Mamá ❤️, Papá</small>
-            </span>
-            <span className="s02-wa-actions" aria-hidden="true">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#8696a0" strokeWidth="1.8"><path d="M23 7l-7 5 7 5V7z" /><rect x="1" y="5" width="15" height="14" rx="2.5" /></svg>
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#8696a0" strokeWidth="1.8"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8 10a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2z" /></svg>
-            </span>
-          </header>
+          <WaHeader />
           <ChatWallpaper />
           <div className="s02-history" style={{ top: HISTORY_VIEWPORT_Y, height: viewportH }}>
             <div
               className="s02-history-inner"
               style={{
-                height: history.contentH,
-                transform: `translateY(${-scrollTop}px)`,
+                height: layout.contentH,
+                transform: `translateY(${-scrollTop.toFixed(1)}px)`,
                 filter: blurPx > 0.05 ? `blur(${blurPx.toFixed(2)}px)` : 'none',
               }}
             >
-              <HistoryBlocks blocks={history.blocks} showSent={sentVisible} sentPop={sendPop} hideMother={step >= 6} />
+              <DynBlocks blocks={history.blocks} tops={layout.tops} showSent={sentVisible} sentPop={sendPop} hideMother={step >= 6} />
             </div>
             {step === 5 && (
               <div
                 className="s02-scrollbar"
                 style={{
                   opacity: scrollbarOpacity,
-                  height: Math.max(28, (510 / history.contentH) * 510),
-                  top: (scrollTop / history.contentH) * 510,
+                  height: Math.max(28, (HISTORY_VIEWPORT_H / layout.contentH) * HISTORY_VIEWPORT_H),
+                  top: (scrollTop / layout.contentH) * HISTORY_VIEWPORT_H,
                 }}
               />
             )}
           </div>
-          <div className="s02-composer" style={{ top: composerY }}>
-            <span className="s02-composer-plus" aria-hidden="true">+</span>
-            <div className="s02-composer-input">
-              {typed.length === 0 ? (
-                <span className="s02-composer-placeholder">Mensaje</span>
-              ) : (
-                <span className="s02-composer-text">{typed}<span className="s02-caret" /></span>
-              )}
-            </div>
-            {typed.length > 0 ? (
-              <span
-                className="s02-sendbtn"
-                style={step === 4 && ms4 >= 1080 && ms4 < 1130 ? { transform: 'scale(0.88)' } : undefined}
-                aria-hidden="true"
-              >↑</span>
-            ) : (
-              <span className="s02-composer-mic" aria-hidden="true">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#8696a0" strokeWidth="1.8"><rect x="9" y="2" width="6" height="12" rx="3" /><path d="M5 10a7 7 0 0 0 14 0M12 19v3" /></svg>
-              </span>
-            )}
-          </div>
+          <Composer text={typed} sendPulse={step === 4 && ms4 >= 1080 && ms4 < 1130} top={composerY} height={composerH} />
           {showKeyboard && (
             <div className="s02-keyboard-slot" style={{ top: keyboardY }}>
               <Keyboard typed={typed} opacity={kbP4} />
@@ -464,27 +387,28 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
         className="s02-appcard"
         aria-label="Calendario"
         data-app="calendar"
+        data-naked={switching}
         style={{
-          transform: `translate(${calRect.x}px, ${calRect.y}px)`,
+          transform: `translate(${calRect.x.toFixed(1)}px, ${calRect.y.toFixed(1)}px)`,
           visibility: calVisible ? 'visible' : 'hidden',
         }}
       >
         <div
           className="s02-appscale s02-cal"
           style={{
-            transform: `scale(${calScale})`,
-            borderRadius: calRadius,
+            transform: `scale(${calScale.toFixed(4)})`,
+            borderRadius: calRadius.toFixed(1),
             boxShadow: calShadow,
           }}
         >
-          <StatusBar />
+          <StatusBar onDark={false} />
           <header className="s02-cal-header">
             <span className="s02-cal-today">Hoy</span>
-            <strong>Noviembre 2026</strong>
+            <strong>Noviembre</strong>
             <span className="s02-cal-plus" aria-hidden="true">+</span>
           </header>
           <div className="s02-cal-day">
-            <span className="s02-cal-dow">lunes</span>
+            <span className="s02-cal-dow">jueves</span>
             <span className="s02-cal-dnum">16</span>
           </div>
           <div className="s02-cal-event s02-cal-school">
@@ -501,59 +425,65 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
         {cardness(calRect) > 0.25 && <div className="s02-card-label">Calendario</div>}
       </section>
 
-      {/* Atención al expositor (§10): overlay editorial uniforme. */}
-      {dim2 > 0.001 && <div className="s02-attention" style={{ opacity: dim2 }} aria-hidden="true" />}
+      {/* Status bar sistémica única durante el App Switcher. */}
+      {switching && (
+        <div className="s02-sysbar" aria-hidden="true">
+          <StatusBar />
+        </div>
+      )}
+
+      {/* Atención al expositor (§11): overlay editorial uniforme. */}
+      {dim2 > 0.001 && <div className="s02-attention" style={{ opacity: dim2.toFixed(3) }} aria-hidden="true" />}
 
       {/* ============ INTERACCIÓN: long-press (misma pieza del historial) ============ */}
-      {showElevated && step === 6 && <div className="s02-backdrop" style={{ opacity: backdrop }} aria-hidden="true" />}
+      {showElevated && step === 6 && <div className="s02-backdrop" style={{ opacity: backdrop.toFixed(3) }} aria-hidden="true" />}
+      {/* El backdrop se retira con fundido rápido al iniciar el morph (sin pop). */}
+      {showElevated && step === 7 && morphQ < 0.12 && (
+        <div className="s02-backdrop" style={{ opacity: (1 - smootherstep(morphQ / 0.12)).toFixed(3) }} aria-hidden="true" />
+      )}
       {showElevated && (
         <div
           className="s02-elevated"
           style={{
             left: elevRect.x, top: elevRect.y, width: elevRect.w, height: elevRect.h,
-            transform: `scale(${elevScale})`,
-            borderRadius: morphRadius,
-            background: step === 7 ? morphColor : undefined,
-            boxShadow: step === 7 && morphGlow > 0.005 ? `0 0 120px rgba(231,100,63,${morphGlow.toFixed(3)})` : undefined,
+            transform: `scale(${elevScale.toFixed(4)})`,
+            borderRadius: morphRadius.toFixed(1),
+            background: morphBg,
           }}
         >
-          <div className="s02-elevated-text" style={{ opacity: morphTextOpacity }}>
+          {step === 7 && <div className="s02-morph-warm" style={{ opacity: morphQ.toFixed(3) }} aria-hidden="true" />}
+          <div className="s02-elevated-text" style={{ opacity: morphTextOpacity.toFixed(3) }}>
             <div className="s02-sender">Mamá ❤️</div>
             <div className="s02-bubble-text s02-bubble-text-hero">{MOTHER_TEXT}<span className="s02-stamp">20:14</span></div>
           </div>
           {step === 6 && (
             <>
-              <div className="s02-reactions" style={{ opacity: chromeOpacity, transform: `translateY(${((1 - chromeOpacity) * 8).toFixed(1)}px)` }} aria-hidden="true">
-                {['👍', '❤️', '😂', '😮', '😢', '🙏'].map(e => <span key={e}>{e}</span>)}
+              <div className="s02-reactions" style={{ opacity: chromeOpacity.toFixed(3), transform: `translateY(${((1 - chromeOpacity) * 8).toFixed(1)}px)` }} aria-hidden="true">
+                {REACTION_ORDER.map(k => <span key={k}><ReactionGlyph kind={k} /></span>)}
               </div>
-              <div className="s02-ctxmenu" style={{ opacity: chromeOpacity, transform: `translateY(${((1 - chromeOpacity) * 8).toFixed(1)}px)` }} aria-hidden="true">
+              <div className="s02-ctxmenu" style={{ opacity: chromeOpacity.toFixed(3), transform: `translateY(${((1 - chromeOpacity) * 8).toFixed(1)}px)` }} aria-hidden="true">
                 {['Responder', 'Reenviar', 'Copiar', 'Destacar'].map(a => <span key={a}>{a}</span>)}
               </div>
             </>
           )}
-          {step === 7 && chromeOpacity > 0.001 && <div className="s02-morph-fade" style={{ opacity: chromeOpacity }} />}
         </div>
       )}
 
       {/* ============ FONDO EDITORIAL + PREGUNTA ============ */}
-      {showEditorial && step === 8 && <div className="s02-editorial" aria-hidden="true" />}
+      {showEditorial && (step === 8 || morphQ > 0.55) && <div className="s02-editorial" style={step === 7 ? { opacity: smootherstep((morphQ - 0.55) / 0.45).toFixed(3) } : undefined} aria-hidden="true" />}
       {step === 8 && (
-        <div
-          className="s02-question"
-          style={{ opacity: qP, transform: `translateY(${((1 - qP) * 8).toFixed(2)}px)` }}
-          role="heading"
-          aria-level={1}
-        >
-          {QUESTION_LINES.map(l => <span key={l} className="s02-question-line">{l}</span>)}
+        <div className="s02-question-wrap" role="heading" aria-level={1}>
+          <QuestionSVG revealP={qP} idSuffix="s02" />
         </div>
       )}
 
       {/* Home indicator del sistema: ownership único. */}
-      <div className="s02-home" style={{ opacity: homeOpacity }} aria-hidden="true"><span /></div>
+      <div className="s02-home" style={{ opacity: homeOpacity.toFixed(3) }} aria-hidden="true"><span /></div>
 
-      {/* Reveal S01→S02: la interfaz ya está montada debajo del negro. */}
-      {step === 0 && revealBlack > 0.001 && <div className="s02-reveal" style={{ opacity: revealBlack }} aria-hidden="true" />}
+      {/* Medidor oculto de alturas reales (historyLayout). */}
+      <div ref={measureRef} style={{ position: 'absolute', top: 0, left: 0 }}>
+        <HistoryMeasurer blocks={history.blocks} />
+      </div>
     </div>
   )
 }
-

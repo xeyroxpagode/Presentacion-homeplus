@@ -29,8 +29,9 @@ export default function OpeningSequence({ slideIndex, stepIndex }: OpeningSequen
       />
       <div aria-hidden="true" className="opening-blackout" data-active={slideIndex === 2} />
       <S03HomePlus active={slideIndex === 2} />
-      {/* S02 V1.5: puente tipográfico S02.8→S03 (letra «o» de «hogar»).
-          S03 intacta: el overlay cubre su entrada 1400 ms y se retira. */}
+      {/* S02 V1.6: portal vectorial S02.8→S03 (contraforma de la «g» de
+          «hogar», línea 2; 1200 ms). S03 intacta: el overlay la revela
+          exclusivamente a través de la abertura y se retira. */}
       {slideIndex === 2 && <LetterPortalBridge />}
     </div>
   )

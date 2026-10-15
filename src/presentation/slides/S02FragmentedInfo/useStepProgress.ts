@@ -102,15 +102,17 @@ export function trackRect(keys: ReadonlyArray<readonly [number, Rect]>, t: numbe
 }
 
 // ---- Scroll: curva monótona C1 por los checkpoints de avance espacial ----
-// Fracciones del recorrido total; tangente cero sólo en los extremos.
+// Curva canónica V1.6 §14 (recorrido acumulado vs. progreso temporal):
+// F0 0% · F10 8% · F25 35% · F50 78% · F75 96% · F90 99% · F100 100%.
+// Tangente cero sólo en los extremos; aceleración decidida sin microparadas.
 
 const SCROLL_KEYS: ReadonlyArray<readonly [number, number]> = [
   [0, 0],
-  [0.1, 0.03],
-  [0.25, 0.1],
-  [0.5, 0.48],
-  [0.75, 0.9],
-  [0.9, 0.98],
+  [0.1, 0.08],
+  [0.25, 0.35],
+  [0.5, 0.78],
+  [0.75, 0.96],
+  [0.9, 0.99],
   [1, 1],
 ]
 
