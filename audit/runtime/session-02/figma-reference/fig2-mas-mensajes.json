@@ -1,0 +1,134 @@
+{
+  "navScreenId": "mensajes",
+  "headings": [],
+  "tabs": [
+    {
+      "t": "Ir a Inicio",
+      "al": "Ir a Inicio",
+      "fs": "16px"
+    },
+    {
+      "t": "Ir a Familia",
+      "al": "Ir a Familia",
+      "fs": "16px"
+    },
+    {
+      "t": "Ir a Calendario",
+      "al": "Ir a Calendario",
+      "fs": "16px"
+    },
+    {
+      "t": "Abrir Más opciones",
+      "al": "Abrir Más opciones",
+      "fs": "16px"
+    }
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nMensajes\n👨‍👩‍👧‍👦\nFamilia García\n8\nMariana · compramos pan?\nTEMAS\nTemas\nSeparan las conversaciones sobre algo concreto para que puedas retomarlas después.\nEntendido\nA\nArreglo del baño\n12:43\nMariana · El técnico viene mañana\n4\nV\nVacaciones Córdoba\nAyer\nMartina · Miren este hotel\nC\nColegio Martina\nAyer\nMariana · Reunión jueves 18:00\nINTEGRANTES\nM\nMariana\n12:31\n¿A qué hora llegás?\n1\nJ\nJuan\nTodavía no hay mensajes\nMa\nMartina\nAyer\nNos vemos a las cinco\nFamilia: quiero compartir esto con la casa · Tema: quiero que hablemos de esto · Direct: quiero hablar con esta persona.",
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "role": null
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "role": null
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "role": null
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "role": null
+    },
+    {
+      "al": "Volver",
+      "t": "Volver",
+      "role": null
+    },
+    {
+      "al": "Más opciones",
+      "t": "Más opciones",
+      "role": null
+    },
+    {
+      "al": "Abrir Familia García, conversación familiar",
+      "t": "👨‍👩‍👧‍👦 Familia García 8 Mariana · compramos pan",
+      "role": null
+    },
+    {
+      "al": "Nuevo tema",
+      "t": "Nuevo tema",
+      "role": null
+    },
+    {
+      "al": "Cerrar",
+      "t": "Cerrar",
+      "role": null
+    },
+    {
+      "al": null,
+      "t": "Entendido",
+      "role": null
+    },
+    {
+      "al": "Abrir Arreglo del baño",
+      "t": "A Arreglo del baño 12:43 Mariana · El técnico viene ",
+      "role": null
+    },
+    {
+      "al": "Abrir Vacaciones Córdoba",
+      "t": "V Vacaciones Córdoba Ayer Martina · Miren este hotel",
+      "role": null
+    },
+    {
+      "al": "Abrir Colegio Martina",
+      "t": "C Colegio Martina Ayer Mariana · Reunión jueves 18:0",
+      "role": null
+    },
+    {
+      "al": "Abrir Mariana",
+      "t": "M Mariana 12:31 ¿A qué hora llegás? 1",
+      "role": null
+    },
+    {
+      "al": "Abrir Juan",
+      "t": "J Juan Todavía no hay mensajes",
+      "role": null
+    },
+    {
+      "al": "Abrir Martina",
+      "t": "Ma Martina Ayer Nos vemos a las cinco",
+      "role": null
+    },
+    {
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "role": "tab"
+    },
+    {
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "role": "tab"
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "role": "button"
+    },
+    {
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "role": "tab"
+    },
+    {
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "role": "tab"
+    }
+  ]
+}

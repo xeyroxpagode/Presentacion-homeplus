@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": null,
+  "rootChildren": [
+    "DIV#root.",
+    "SCRIPT#."
+  ],
+  "headings": [],
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "al": null,
+      "text": "Omitir",
+      "testid": "obv3-omit",
+      "x": 353,
+      "y": 8,
+      "w": 57,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "TEXTAREA",
+      "role": null,
+      "al": "Qué tenés dando vueltas hoy",
+      "text": "Qué tenés dando vueltas hoy",
+      "testid": "obv3-input",
+      "x": 33,
+      "y": 307,
+      "w": 324,
+      "h": 96,
+      "selected": null
+    }
+  ],
+  "bodyText": "Omitir\n¿Qué tenés dando vueltas hoy?\npagar la luz\ncomprar detergente\n¿cuándo?\n¿Qué tenés dando vueltas hoy?"
+}

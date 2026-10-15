@@ -1,0 +1,155 @@
+/* S14: the S13 stack echoes behind and fades as two navigation paths
+   accumulate; a quiet vertical cut interrupts the flow, then everything
+   clears for a single question. */
+
+.s14-stage {
+  position: absolute;
+  inset: 0;
+  background: #060404;
+  animation: s14-scene-in var(--motion-replace-duration) var(--motion-easing) both;
+}
+
+.s14-echo {
+  position: absolute;
+  inset: 0;
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.s14-stage[data-step='0'] .s14-echo,
+.s14-stage[data-step='1'] .s14-echo,
+.s14-stage[data-step='2'] .s14-echo,
+.s14-stage[data-step='3'] .s14-echo { visibility: visible; transition-delay: 0s; }
+.s14-stage[data-step='0'] .s14-echo { opacity: 1; }
+.s14-stage[data-step='1'] .s14-echo { opacity: 0.35; }
+.s14-stage[data-step='2'] .s14-echo { opacity: 0.22; }
+.s14-stage[data-step='3'] .s14-echo { opacity: 0.12; }
+.s14-stage[data-step='4'] .s14-echo { opacity: 0; visibility: hidden; }
+
+.s14-routes {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  transition: opacity var(--motion-reframe-duration) var(--motion-easing);
+}
+
+.s14-routes[data-dim='true'] { opacity: 0.5; }
+
+.s14-route {
+  display: flex;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.s14-route[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.s14-route-step {
+  display: flex;
+  align-items: center;
+}
+
+.s14-route-arrow {
+  margin: 0 14px;
+  font-size: 22px;
+  color: var(--presentation-text-secondary);
+}
+
+.s14-node {
+  padding: 10px 22px;
+  border: 1px solid rgb(245 241 235 / 0.16);
+  border-radius: 9999px;
+  background: #0d0a08;
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 500;
+  color: var(--presentation-text);
+  white-space: nowrap;
+}
+
+.s14-node-action {
+  border-color: rgb(230 92 27 / 0.55);
+  color: var(--presentation-accent);
+  font-weight: 600;
+}
+
+.s14-barrier {
+  position: absolute;
+  left: 50%;
+  top: 200px;
+  bottom: 200px;
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, transparent, #b09a86 30%, #b09a86 70%, transparent);
+  opacity: 0;
+  transform: scaleY(0);
+  transition:
+    opacity var(--motion-replace-duration) var(--motion-easing),
+    transform var(--motion-spatial-wipe-duration) var(--motion-easing);
+}
+
+.s14-barrier[data-present='true'] {
+  opacity: 1;
+  transform: scaleY(1);
+}
+
+.s14-question {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.s14-question[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.s14-question-line {
+  display: block;
+  font-size: 112px;
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+  color: var(--presentation-text);
+}
+
+.s14-question-line-quiet {
+  font-size: 68px;
+  font-weight: 500;
+  color: #c7a084;
+}
+
+@keyframes s14-scene-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

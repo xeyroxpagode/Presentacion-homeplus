@@ -1,0 +1,242 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "finanzas",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Finanzas",
+      "fs": "28px",
+      "fw": "600",
+      "color": "rgb(26, 23, 20)"
+    },
+    {
+      "tag": "H2",
+      "text": "Mes seleccionado",
+      "fs": "18px",
+      "fw": "700",
+      "color": "rgb(26, 23, 20)"
+    },
+    {
+      "tag": "H2",
+      "text": "Tu dinero",
+      "fs": "18px",
+      "fw": "700",
+      "color": "rgb(26, 23, 20)"
+    },
+    {
+      "tag": "H2",
+      "text": "Límites de gasto",
+      "fs": "18px",
+      "fw": "700",
+      "color": "rgb(26, 23, 20)"
+    }
+  ],
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "sel": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "sel": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "al": "Volver a Más",
+      "t": "Volver a Más",
+      "tid": null,
+      "sel": null,
+      "x": 8,
+      "y": 77
+    },
+    {
+      "al": "Personal",
+      "t": "Personal",
+      "tid": null,
+      "sel": null,
+      "x": 264,
+      "y": 83
+    },
+    {
+      "al": "Hogar",
+      "t": "Hogar",
+      "tid": null,
+      "sel": null,
+      "x": 347,
+      "y": 83
+    },
+    {
+      "al": "Resumen",
+      "t": "Resumen",
+      "tid": null,
+      "sel": null,
+      "x": 20,
+      "y": 133
+    },
+    {
+      "al": "Movimientos",
+      "t": "Movimientos",
+      "tid": null,
+      "sel": null,
+      "x": 150,
+      "y": 133
+    },
+    {
+      "al": "Pagos",
+      "t": "Pagos",
+      "tid": null,
+      "sel": null,
+      "x": 280,
+      "y": 133
+    },
+    {
+      "al": "Ver período anterior",
+      "t": "Ver período anterior",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 193
+    },
+    {
+      "al": "Ver período siguiente",
+      "t": "Ver período siguiente",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 193
+    },
+    {
+      "al": "Resumen ARS",
+      "t": "ARS",
+      "tid": null,
+      "sel": null,
+      "x": 20,
+      "y": 289
+    },
+    {
+      "al": "Resumen USD",
+      "t": "USD",
+      "tid": null,
+      "sel": null,
+      "x": 215,
+      "y": 289
+    },
+    {
+      "al": "Ver análisis detallado",
+      "t": "Ver análisis",
+      "tid": null,
+      "sel": null,
+      "x": 316,
+      "y": 501
+    },
+    {
+      "al": "Organizar dinero",
+      "t": "Organizar",
+      "tid": null,
+      "sel": null,
+      "x": 327,
+      "y": 794
+    },
+    {
+      "al": "Administrar límites de gasto",
+      "t": "Administrar",
+      "tid": null,
+      "sel": null,
+      "x": 313,
+      "y": 1253
+    },
+    {
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "sel": "false",
+      "x": 5,
+      "y": 845
+    },
+    {
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "sel": "false",
+      "x": 89,
+      "y": 845
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "sel": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "sel": "false",
+      "x": 257,
+      "y": 845
+    },
+    {
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "sel": "true",
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "finance-root",
+    "finance-header",
+    "finance-scope-switch",
+    "finance-scope-switch-thumb",
+    "finance-tab-bar",
+    "finance-tabs",
+    "finance-tabs-thumb",
+    "finance-content",
+    "finance-resumen",
+    "resumen-period",
+    "resumen-mes",
+    "resumen-currency-switch",
+    "resumen-currency-switch-thumb",
+    "resumen-metrics",
+    "resumen-metric-income",
+    "resumen-metric-expense",
+    "resumen-metric-balance",
+    "resumen-tu-dinero",
+    "tu-dinero-metrics",
+    "resumen-limites",
+    "limite-general-under",
+    "limite-general-copy",
+    "limites-categorias",
+    "limite-categoria-over",
+    "limite-categoria-under",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nFinanzas\nPersonal\nHogar\nResumen\nMovimientos\nPagos\nSEPTIEMBRE 2026\nMes seleccionado\nARS\nUSD\nIngresó\n2.450.000 ARS\nGastamos\n1.987.500 ARS\nBalance\n+462.500 ARS\nVer análisis\nTu dinero\nDisponible\n+318.450 ARS\nOrganizado\n+241.900 ARS\nSin organizar\n+76.550 ARS\nOrganizar\nLímites de gasto\nGastaste\n1.125.000 ARS\nde\n1.500.000 ARS\nTe quedan 375.000 ARS\nSalud\n115%\n207.000 ARS de 180.000 ARS\nTe pasaste 27.000 ARS\nAlimentos\n73%\n438.000 ARS de 600.000 ARS\nTe quedan 162.000 ARS\n+1 más\nAdministrar"
+}

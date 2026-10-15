@@ -1,0 +1,148 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "asset-detail",
+  "headings": [],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "x": 12,
+      "y": 87
+    },
+    {
+      "role": null,
+      "al": "Agregar a Toby",
+      "t": "Agregar a Toby",
+      "tid": null,
+      "x": 322,
+      "y": -7
+    },
+    {
+      "role": null,
+      "al": "Administrar Toby",
+      "t": "Administrar Toby",
+      "tid": null,
+      "x": 370,
+      "y": -7
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Editar",
+      "tid": null,
+      "x": 363,
+      "y": 55
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Ver Casa Córdoba",
+      "tid": null,
+      "x": 12,
+      "y": 184
+    },
+    {
+      "role": null,
+      "al": "Ver Baño y corte",
+      "t": "Baño y corte Mañana · 10:00",
+      "tid": null,
+      "x": 21,
+      "y": 289
+    },
+    {
+      "role": null,
+      "al": "Ver Libreta sanitaria",
+      "t": "Libreta sanitaria Registro / permiso · desde 10 feb 2026 · 1 documento",
+      "tid": null,
+      "x": 21,
+      "y": 411
+    },
+    {
+      "role": null,
+      "al": "Ver Vacuna anual",
+      "t": "Vacuna anual Hoy · Vet Sur $25.000",
+      "tid": null,
+      "x": 21,
+      "y": 663
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nToby\nPerro · Labrador\nPERSONAS Y UBICACIÓN\nEditar\nAhora con Juan\nEstá en Casa Córdoba\nA cargo de Juan\nVer Casa Córdoba\nPRÓXIMO\nBaño y corte\nMañana · 10:00\nDATOS Y DOCUMENTOS\nLibreta sanitaria\nRegistro / permiso · desde 10 feb 2026 · 1 documento\nEdad\n4 años\nVeterinaria\nVet Sur\nHISTORIAL\nVacuna anual\nHoy · Vet Sur\n$25.000"
+}

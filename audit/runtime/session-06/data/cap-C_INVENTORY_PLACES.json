@@ -1,0 +1,31 @@
+{
+  "name": "C_INVENTORY_PLACES",
+  "module": "C",
+  "surface": "Inventory by place (Heladera / Alacena / Baño / Cocina)",
+  "nav": "Inventario → Ver lugares",
+  "shell": "PhoneFrame 390x844, bezel 10px #1A1714, radius 48px",
+  "notes": [],
+  "clicks": [
+    "G",
+    "Familia García Coordinador",
+    "Buscar",
+    "2",
+    "Volver",
+    "Productos",
+    "Lista de compras",
+    "Nuevo lugar",
+    "Heladera 3",
+    "Alacena 2",
+    "Baño 1",
+    "Cocina 1",
+    "Sin lugar 1",
+    "Administrar lugares",
+    "Ir a Inicio",
+    "Ir a Familia",
+    "Abrir acciones rápidas",
+    "Ir a Calendario",
+    "Abrir Más opciones"
+  ],
+  "text": "9:41\nG\nFamilia García\nCoordinador\n2\nInventario\nProductos\nLista de compras\nLugares\nHeladera\n3\nAlacena\n2\nBaño\n1\nCocina\n1\nSin lugar\n1\nAdministrar lugares",
+  "consoleErrors": []
+}

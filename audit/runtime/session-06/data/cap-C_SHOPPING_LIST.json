@@ -1,0 +1,33 @@
+{
+  "name": "C_SHOPPING_LIST",
+  "module": "C",
+  "surface": "Shopping list (Lista de compras)",
+  "nav": "Inventario → Lista de compras",
+  "source": "src/inventory/ShoppingList.tsx (27868 B)",
+  "shell": "PhoneFrame 390x844, bezel 10px #1A1714, radius 48px",
+  "notes": [],
+  "clicks": [
+    "G",
+    "Familia García Coordinador",
+    "Buscar",
+    "2",
+    "Volver",
+    "Productos",
+    "Lista de compras",
+    "Me encargo",
+    "Cambiar",
+    "Café ×2",
+    "Detergente ×2",
+    "Pan ×2",
+    "Frutas variadas ×3",
+    "+ Agregar",
+    "Empezar compra",
+    "Ir a Inicio",
+    "Ir a Familia",
+    "Abrir acciones rápidas",
+    "Ir a Calendario",
+    "Abrir Más opciones"
+  ],
+  "text": "9:41\nG\nFamilia García\nCoordinador\n2\nInventario\nProductos\nLista de compras\n4 productos\nSin encargado\nMe encargo\nCambiar\nCafé\n×2\nDetergente\n×2\nPan\n×2\nFrutas variadas\n×3\n+ Agregar\nEmpezar compra",
+  "consoleErrors": []
+}

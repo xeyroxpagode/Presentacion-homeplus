@@ -1,0 +1,282 @@
+{
+  "[data-testid=\"finance-tabs\"]": {
+    "tag": "DIV",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgb(244, 240, 235)",
+    "br": "24px",
+    "border": "none",
+    "pad": "4px 4px 4px 4px",
+    "shadow": "none",
+    "gap": "0px",
+    "height": "48px",
+    "box": "398x48@16,129",
+    "text": "Resumen Movimientos Pagos"
+  },
+  "[data-testid=\"finance-tabs-thumb\"]": {
+    "tag": "SPAN",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgb(255, 255, 255)",
+    "br": "20px",
+    "border": "none",
+    "pad": "0px 0px 0px 0px",
+    "shadow": "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba(26, 24, 22, 0.04) 0px 1px 2px 0px",
+    "gap": "normal",
+    "height": "40px",
+    "box": "130x40@20,133",
+    "text": ""
+  },
+  "[data-testid=\"finance-scope-switch\"]": {
+    "tag": "DIV",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgb(244, 240, 235)",
+    "br": "20px",
+    "border": "none",
+    "pad": "4px 4px 4px 4px",
+    "shadow": "none",
+    "gap": "4px",
+    "height": "40px",
+    "box": "153.7x40@260,79",
+    "text": "Personal Hogar"
+  },
+  "[data-testid=\"finance-scope-switch-thumb\"]": {
+    "tag": "SPAN",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgb(255, 255, 255)",
+    "br": "14px",
+    "border": "none",
+    "pad": "0px 0px 0px 0px",
+    "shadow": "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba(26, 24, 22, 0.04) 0px 1px 2px 0px",
+    "gap": "normal",
+    "height": "32px",
+    "box": "62.8x32@347,83",
+    "text": ""
+  },
+  "[data-testid=\"resumen-currency-switch\"]": {
+    "tag": "DIV",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgb(244, 240, 235)",
+    "br": "20px",
+    "border": "none",
+    "pad": "4px 4px 4px 4px",
+    "shadow": "none",
+    "gap": "0px",
+    "height": "40px",
+    "box": "398x40@16,285",
+    "text": "ARS USD"
+  },
+  "[data-testid=\"resumen-currency-switch-thumb\"]": {
+    "tag": "SPAN",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgb(255, 255, 255)",
+    "br": "14px",
+    "border": "none",
+    "pad": "0px 0px 0px 0px",
+    "shadow": "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba(26, 24, 22, 0.04) 0px 1px 2px 0px",
+    "gap": "normal",
+    "height": "32px",
+    "box": "195x32@20,289",
+    "text": ""
+  },
+  "[data-testid=\"homecloud-tabs\"]": null,
+  "[data-testid=\"homecloud-tabs-thumb\"]": null,
+  "[data-testid=\"movimientos-filter\"]": null,
+  "[data-testid=\"analisis-tabs\"]": null,
+  "[data-testid=\"limites-segment\"]": null,
+  "header": {
+    "tag": "HEADER",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "br": "0px",
+    "border": "none",
+    "pad": "0px 0px 0px 0px",
+    "shadow": "none",
+    "gap": "8px",
+    "height": "44px",
+    "box": "398x44@16,77",
+    "text": "Finanzas Personal Hogar"
+  },
+  "[data-nav-screen-id]": {
+    "tag": "DIV",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "br": "0px",
+    "border": "none",
+    "pad": "0px 0px 0px 0px",
+    "shadow": "none",
+    "gap": "normal",
+    "height": "763px",
+    "box": "430x763@0,73",
+    "text": "Finanzas Personal Hogar Resumen Movimientos Pagos SEPTIEMBRE 2026 Mes selecciona"
+  },
+  "segmentLabels": [
+    {
+      "t": "Personal",
+      "fs": "12px",
+      "fw": "700",
+      "lh": "16px",
+      "col": "rgb(107, 101, 96)",
+      "box": "50.9x16"
+    },
+    {
+      "t": "Hogar",
+      "fs": "12px",
+      "fw": "700",
+      "lh": "16px",
+      "col": "rgb(201, 79, 46)",
+      "box": "34.8x16"
+    },
+    {
+      "t": "Resumen",
+      "fs": "14px",
+      "fw": "800",
+      "lh": "20px",
+      "col": "rgb(201, 79, 46)",
+      "box": "63.2x20"
+    },
+    {
+      "t": "Movimientos",
+      "fs": "14px",
+      "fw": "800",
+      "lh": "20px",
+      "col": "rgb(107, 101, 96)",
+      "box": "88.3x20"
+    },
+    {
+      "t": "Pagos",
+      "fs": "14px",
+      "fw": "800",
+      "lh": "20px",
+      "col": "rgb(107, 101, 96)",
+      "box": "40.4x20"
+    },
+    {
+      "t": "ARS",
+      "fs": "12px",
+      "fw": "700",
+      "lh": "16px",
+      "col": "rgb(201, 79, 46)",
+      "box": "23.4x16"
+    },
+    {
+      "t": "USD",
+      "fs": "12px",
+      "fw": "700",
+      "lh": "16px",
+      "col": "rgb(107, 101, 96)",
+      "box": "23.9x16"
+    }
+  ],
+  "shell": [
+    {
+      "tag": "HEADER",
+      "cls": "",
+      "bg": "rgba(0, 0, 0, 0)",
+      "br": "0px",
+      "border": "none",
+      "shadow": "none",
+      "h": 44,
+      "backdrop": "none",
+      "box": "398x44@16,77"
+    },
+    {
+      "tag": "HEADER",
+      "cls": "",
+      "bg": "rgba(0, 0, 0, 0)",
+      "br": "0px",
+      "border": "none",
+      "shadow": "none",
+      "h": 24,
+      "backdrop": "none",
+      "box": "398x24@16,249"
+    },
+    {
+      "tag": "HEADER",
+      "cls": "",
+      "bg": "rgba(0, 0, 0, 0)",
+      "br": "0px",
+      "border": "none",
+      "shadow": "none",
+      "h": 24,
+      "backdrop": "none",
+      "box": "398x24@16,594"
+    },
+    {
+      "tag": "HEADER",
+      "cls": "",
+      "bg": "rgba(0, 0, 0, 0)",
+      "br": "0px",
+      "border": "none",
+      "shadow": "none",
+      "h": 24,
+      "backdrop": "none",
+      "box": "398x24@16,887"
+    }
+  ],
+  "navLabels": [
+    {
+      "al": "Ir a Inicio",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(107, 101, 96)",
+      "box": "84x66"
+    },
+    {
+      "al": "Ir a Familia",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(107, 101, 96)",
+      "box": "84x66"
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(255, 255, 255)",
+      "box": "84x66"
+    },
+    {
+      "al": "Ir a Calendario",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(107, 101, 96)",
+      "box": "84x66"
+    },
+    {
+      "al": "Abrir Más opciones",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(255, 255, 255)",
+      "box": "84x66"
+    }
+  ],
+  "bodyFont": "\"DM Sans\", system-ui, sans-serif"
+}

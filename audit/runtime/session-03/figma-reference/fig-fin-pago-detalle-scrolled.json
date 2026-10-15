@@ -1,0 +1,326 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "finanzas",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Finanzas",
+      "fs": "28px",
+      "fw": "600"
+    },
+    {
+      "tag": "H2",
+      "text": "Tarjetas",
+      "fs": "18px",
+      "fw": "700"
+    },
+    {
+      "tag": "H2",
+      "text": "Pagos pendientes",
+      "fs": "18px",
+      "fw": "700"
+    },
+    {
+      "tag": "H2",
+      "text": "Internet",
+      "fs": "22px",
+      "fw": "800"
+    }
+  ],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "sel": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "sel": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver a Más",
+      "t": "Volver a Más",
+      "tid": null,
+      "sel": null,
+      "x": 8,
+      "y": 77
+    },
+    {
+      "role": "radio",
+      "al": "Personal",
+      "t": "Personal",
+      "tid": null,
+      "sel": null,
+      "x": 264,
+      "y": 83
+    },
+    {
+      "role": "radio",
+      "al": "Hogar",
+      "t": "Hogar",
+      "tid": null,
+      "sel": null,
+      "x": 347,
+      "y": 83
+    },
+    {
+      "role": "radio",
+      "al": "Resumen",
+      "t": "Resumen",
+      "tid": null,
+      "sel": null,
+      "x": 20,
+      "y": 133
+    },
+    {
+      "role": "radio",
+      "al": "Movimientos",
+      "t": "Movimientos",
+      "tid": null,
+      "sel": null,
+      "x": 150,
+      "y": 133
+    },
+    {
+      "role": "radio",
+      "al": "Pagos",
+      "t": "Pagos",
+      "tid": null,
+      "sel": null,
+      "x": 280,
+      "y": 133
+    },
+    {
+      "role": null,
+      "al": "Abrir Papelera de pagos",
+      "t": "Abrir Papelera de pagos",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 90
+    },
+    {
+      "role": null,
+      "al": "Nuevo pago",
+      "t": "Nuevo pago",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 90
+    },
+    {
+      "role": null,
+      "al": "Visa, Resumen pendiente, 53.850 ARS, En 17 días",
+      "t": "Visa Resumen pendiente 53.850 ARS Pagaste 30.000 ARS En 17 días Pagar ",
+      "tid": "pago-tarjeta-card-visa",
+      "sel": null,
+      "x": 16,
+      "y": 182
+    },
+    {
+      "role": null,
+      "al": "Amex, Deuda actual, 45.000 ARS, Sin resumen pendiente",
+      "t": "Amex Deuda actual 45.000 ARS Sin resumen pendiente Pagar tarjeta",
+      "tid": "pago-tarjeta-card-amex",
+      "sel": null,
+      "x": 212,
+      "y": 182
+    },
+    {
+      "role": null,
+      "al": "Naranja, Deuda actual, 0 ARS, Saldo sin establecer",
+      "t": "Naranja Deuda actual 0 ARS Saldo sin establecer Pagar tarjeta",
+      "tid": "pago-tarjeta-card-naranja",
+      "sel": null,
+      "x": 408,
+      "y": 182
+    },
+    {
+      "role": null,
+      "al": "Internet, 38.450 ARS, Vencido, Pago recurrente",
+      "t": "Internet Venció hace 5 días 38.450 ARS",
+      "tid": "pago-due-due-internet",
+      "sel": null,
+      "x": 16,
+      "y": 447
+    },
+    {
+      "role": null,
+      "al": "Alquiler, 850.000 ARS, Pendiente",
+      "t": "Alquiler Vence hoy 850.000 ARS",
+      "tid": "pago-due-due-alquiler",
+      "sel": null,
+      "x": 16,
+      "y": 559
+    },
+    {
+      "role": null,
+      "al": "Netflix, 6.900 ARS, Pendiente, Pago recurrente",
+      "t": "Netflix En 3 días 6.900 ARS",
+      "tid": "pago-due-due-netflix",
+      "sel": null,
+      "x": 16,
+      "y": 671
+    },
+    {
+      "role": null,
+      "al": "Seguro del auto, 62.800 ARS, Pendiente, Pago recurrente",
+      "t": "Seguro del auto En 5 días 62.800 ARS",
+      "tid": "pago-due-due-seguro",
+      "sel": null,
+      "x": 16,
+      "y": 740
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "sel": "false",
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "sel": "false",
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "sel": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "sel": "false",
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "sel": "true",
+      "x": 341,
+      "y": 845
+    },
+    {
+      "role": null,
+      "al": "Cerrar",
+      "t": "Cerrar",
+      "tid": null,
+      "sel": null,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "role": null,
+      "al": "Cerrar hoja",
+      "t": "Cerrar hoja",
+      "tid": null,
+      "sel": null,
+      "x": 378,
+      "y": 444
+    },
+    {
+      "role": null,
+      "al": "Registrar pago",
+      "t": "Registrar pago",
+      "tid": "payment-register-action",
+      "sel": null,
+      "x": 16,
+      "y": 812
+    },
+    {
+      "role": null,
+      "al": "Editar",
+      "t": "Editar",
+      "tid": "payment-edit-action",
+      "sel": null,
+      "x": 16,
+      "y": 876
+    },
+    {
+      "role": null,
+      "al": "Omitir",
+      "t": "Omitir",
+      "tid": "payment-cancel-action",
+      "sel": null,
+      "x": 222,
+      "y": 876
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "finance-root",
+    "finance-header",
+    "finance-scope-switch",
+    "finance-scope-switch-thumb",
+    "finance-tab-bar",
+    "finance-tabs",
+    "finance-tabs-thumb",
+    "finance-content",
+    "pagos-surface",
+    "pagos-utility-row",
+    "pagos-tarjetas",
+    "pago-tarjeta-card-visa",
+    "pago-tarjeta-card-amex",
+    "pago-tarjeta-card-naranja",
+    "pagos-pendientes",
+    "pago-due-due-internet",
+    "pago-due-due-alquiler",
+    "pago-due-due-netflix",
+    "pago-due-due-seguro",
+    "floating-nav-indicator",
+    "sheet-payment-detail",
+    "payment-detail-header",
+    "payment-detail-status",
+    "payment-detail-due-date",
+    "payment-detail-recurrence",
+    "payment-actions",
+    "payment-register-action",
+    "payment-edit-action",
+    "payment-cancel-action"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nFinanzas\nPersonal\nHogar\nResumen\nMovimientos\nPagos\nTarjetas\nVisa\nResumen pendiente\n53.850 ARS\nPagaste 30.000 ARS\nEn 17 días\nPagar restante\nAmex\nDeuda actual\n45.000 ARS\nSin resumen pendiente\nPagar tarjeta\nNaranja\nDeuda actual\n0 ARS\nSaldo sin establecer\nPagar tarjeta\nPagos pendientes\nVENCIDOS · 1\nInternet\nVenció hace 5 días\n38.450 ARS\nHOY · 1\nAlquiler\nVence hoy\n850.000 ARS\nPRÓXIMOS · 2\nNetflix\nEn 3 días\n6.900 ARS\nSeguro del auto\nEn 5 días\n62.800 ARS\nInternet\nFinanzas de Familia García\nPAGO\nInternet\n38.450 ARS\nEstado\nVencido\nVencimiento\n20 de septiembre\nCategoría\nServicios y facturas\nRepetición\nSe repite cada mes\nRegistrar pago\nEditar\nOmitir"
+}

@@ -1,0 +1,28 @@
+{
+  "name": "B_FAMILY_PLACES",
+  "module": "B",
+  "surface": "Family / Lugares",
+  "nav": "Familia → Lugares",
+  "shell": "PhoneFrame 390x844, bezel 10px #1A1714, radius 48px",
+  "notes": [],
+  "clicks": [
+    "G",
+    "Familia García Coordinador",
+    "Buscar",
+    "2",
+    "Familia",
+    "Mapa",
+    "Lugares",
+    "🏠 Casa 2 personas ahora",
+    "🏫 Colegio 1 persona ahora",
+    "🏢 Trabajo 1 persona ahora",
+    "+ Agregar lugar",
+    "Ir a Inicio",
+    "Ir a Familia",
+    "Abrir acciones rápidas",
+    "Ir a Calendario",
+    "Abrir Más opciones"
+  ],
+  "text": "9:41\nG\nFamilia García\nCoordinador\n2\nFamilia\nMapa\nLugares\nLugares\n🏠\nCasa\n2 personas ahora\n🏫\nColegio\n1 persona ahora\n🏢\nTrabajo\n1 persona ahora\n+\nAgregar lugar",
+  "consoleErrors": []
+}

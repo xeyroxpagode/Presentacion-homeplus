@@ -1,0 +1,219 @@
+{
+  "navScreenId": "calendario",
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nTarea\nPagar expensas\nCompletada\nDETALLE\nFecha\nHoy\nResponsable\nG\nGabriel\nPrioridad\nSin prioridad\nPide revisión\nAl completarla espera tu visto bueno\nACTIVIDAD\nSe creó hace 3 días\nGabriel la completó · hace 1 h\n¿Qué necesitás?\n✦\nPreguntarle a Homi\nPedile algo sobre tu hogar\nACCIONES RÁPIDAS\nPlanificar\nTarea · Evento · Plan\nRegistrar movimiento\nGasto · Ingreso · Transferencia\nCapturar momento\nFoto · Video · Palabras",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "G",
+      "x": 16,
+      "y": 14,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Familia García Coordinador",
+      "x": 60,
+      "y": 11,
+      "w": 258,
+      "h": 50,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Buscar",
+      "x": 318,
+      "y": 14,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "2",
+      "x": 370,
+      "y": 14,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Volver",
+      "x": 8,
+      "y": 77,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Opciones de la tarea",
+      "x": 366,
+      "y": 138,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Fecha Hoy",
+      "x": 20,
+      "y": 256,
+      "w": 390,
+      "h": 67,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Responsable G Gabriel",
+      "x": 20,
+      "y": 324,
+      "w": 390,
+      "h": 69,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Prioridad Sin prioridad",
+      "x": 20,
+      "y": 393,
+      "w": 390,
+      "h": 67,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": "switch",
+      "text": "Pide revisión Al completarla espera tu visto bue",
+      "x": 20,
+      "y": 461,
+      "w": 390,
+      "h": 67,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": "tab",
+      "text": "Ir a Inicio",
+      "x": 5,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": "false"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "tab",
+      "text": "Ir a Familia",
+      "x": 89,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": "false"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "button",
+      "text": "Abrir acciones rápidas",
+      "x": 173,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": "tab",
+      "text": "Ir a Calendario",
+      "x": 257,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": "true"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "tab",
+      "text": "Abrir Más opciones",
+      "x": 341,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": "false"
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Cerrar acciones rápidas",
+      "x": 0,
+      "y": 0,
+      "w": 430,
+      "h": 932,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "✦ Preguntarle a Homi Pedile algo sobre tu hogar",
+      "x": 20,
+      "y": 602,
+      "w": 390,
+      "h": 64,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Planificar Tarea · Evento · Plan",
+      "x": 20,
+      "y": 704,
+      "w": 390,
+      "h": 64,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Registrar movimiento Gasto · Ingreso · Transfere",
+      "x": 20,
+      "y": 778,
+      "w": 390,
+      "h": 64,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Capturar momento Foto · Video · Palabras",
+      "x": 20,
+      "y": 852,
+      "w": 390,
+      "h": 64,
+      "selected": null
+    }
+  ],
+  "fontSizes": [
+    "9px",
+    "10px",
+    "11px",
+    "12px",
+    "13px",
+    "14px",
+    "15px",
+    "15.96px",
+    "16px",
+    "17px",
+    "22px"
+  ]
+}

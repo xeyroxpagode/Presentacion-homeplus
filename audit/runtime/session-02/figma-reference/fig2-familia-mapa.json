@@ -1,0 +1,124 @@
+{
+  "navScreenId": "familia",
+  "headings": [],
+  "tabs": [
+    {
+      "t": "Ir a Inicio",
+      "al": "Ir a Inicio",
+      "fs": "16px"
+    },
+    {
+      "t": "Ir a Familia",
+      "al": "Ir a Familia",
+      "fs": "16px"
+    },
+    {
+      "t": "Ir a Calendario",
+      "al": "Ir a Calendario",
+      "fs": "16px"
+    },
+    {
+      "t": "Abrir Más opciones",
+      "al": "Abrir Más opciones",
+      "fs": "16px"
+    }
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nFamilia\nMapa\nLugares\nFamilia García\n4 integrantes\nG\nGabriel\nTrabajo · hace 1 h\nM\nMariana\nCasa · ahora\nJ\nJuan\nCasa · hace 30 min\nMa\nMartina\nColegio · hace 2 min\nADMINISTRAR\nDatos de la familia\nNombre, foto, dirección\nInvitaciones\nCódigo y QR para nuevos miembros\nSeguridad y SOS\nConfigurar contactos de emergencia",
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "role": null
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "role": null
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "role": null
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "role": null
+    },
+    {
+      "al": "Familia",
+      "t": "Familia",
+      "role": "radio"
+    },
+    {
+      "al": "Mapa",
+      "t": "Mapa",
+      "role": "radio"
+    },
+    {
+      "al": "Lugares",
+      "t": "Lugares",
+      "role": "radio"
+    },
+    {
+      "al": null,
+      "t": "G Gabriel Trabajo · hace 1 h",
+      "role": null
+    },
+    {
+      "al": null,
+      "t": "M Mariana Casa · ahora",
+      "role": null
+    },
+    {
+      "al": null,
+      "t": "J Juan Casa · hace 30 min",
+      "role": null
+    },
+    {
+      "al": null,
+      "t": "Ma Martina Colegio · hace 2 min",
+      "role": null
+    },
+    {
+      "al": null,
+      "t": "Datos de la familia Nombre, foto, dirección",
+      "role": null
+    },
+    {
+      "al": null,
+      "t": "Invitaciones Código y QR para nuevos miembros",
+      "role": null
+    },
+    {
+      "al": null,
+      "t": "Seguridad y SOS Configurar contactos de emergencia",
+      "role": null
+    },
+    {
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "role": "tab"
+    },
+    {
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "role": "tab"
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "role": "button"
+    },
+    {
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "role": "tab"
+    },
+    {
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "role": "tab"
+    }
+  ]
+}

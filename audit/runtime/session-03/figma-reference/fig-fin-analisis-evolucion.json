@@ -1,0 +1,168 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "finance-analisis",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Análisis",
+      "fs": "28px",
+      "fw": "700"
+    },
+    {
+      "tag": "H2",
+      "text": "Evolución",
+      "fs": "18px",
+      "fw": "700"
+    }
+  ],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "sel": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "sel": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "sel": null,
+      "x": 8,
+      "y": 89
+    },
+    {
+      "role": null,
+      "al": "Mes anterior",
+      "t": "Mes anterior",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 169
+    },
+    {
+      "role": null,
+      "al": "Mes siguiente",
+      "t": "Mes siguiente",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 169
+    },
+    {
+      "role": "radio",
+      "al": "Gastos",
+      "t": "Gastos",
+      "tid": null,
+      "sel": null,
+      "x": 20,
+      "y": 233
+    },
+    {
+      "role": "radio",
+      "al": "Ingresos",
+      "t": "Ingresos",
+      "tid": null,
+      "sel": null,
+      "x": 150,
+      "y": 233
+    },
+    {
+      "role": "radio",
+      "al": "Evolución",
+      "t": "Evolución",
+      "tid": null,
+      "sel": null,
+      "x": 280,
+      "y": 233
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "sel": "false",
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "sel": "false",
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "sel": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "sel": "false",
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "sel": "true",
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "analisis-screen",
+    "analisis-period",
+    "analisis-tabs",
+    "analisis-tabs-thumb",
+    "analisis-evolucion",
+    "analisis-evolucion-comparacion",
+    "analisis-comparacion-gastos",
+    "analisis-comparacion-ingresos",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nAnálisis\nFamilia García · ARS\nSEPTIEMBRE 2026\nGastos\nIngresos\nEvolución\nEvolución\nGastos\nSEPTIEMBRE 2026\n399.900 ARS\nAGOSTO 2026\n227.000 ARS\n172.900 ARS más que agosto\nIngresos\nSEPTIEMBRE 2026\n2.535.000 ARS\nAGOSTO 2026\n2.560.000 ARS\n25.000 ARS menos que agosto"
+}

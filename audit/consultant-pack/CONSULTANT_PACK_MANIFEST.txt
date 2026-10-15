@@ -1,0 +1,36 @@
+HomePlus Consultant Pack Manifest
+Generated: 2026-10-06
+
+Core consultant files:
+- README_START_HERE.md
+- 00_CONSULTANT_BOOTSTRAP_PROMPT.md
+- 01_CURRENT_IMPLEMENTATION_STATE.md
+- 02_PROGRESS_LEDGER_TEMPLATE.md
+- 03_FINAL_CONSULTANT_HANDOFF.md
+- 04_UPLOAD_MANIFEST.md
+- 05_HUMAN_QUICKSTART.md
+- 06_PHASE0_FIRST_OPENCODE_PROMPT.md
+- 07_REPAIR_PROMPT_TEMPLATE.md
+- 08_IMPLEMENTATION_PROMPT_TEMPLATE.md
+- CONSULTANT_PACK_MANIFEST.txt
+
+Companion authority files to upload:
+- audit/08_FINAL_RECONSTRUCTION_BLUEPRINT.md
+- audit/08_MOTION_IMPLEMENTATION_ARCHITECTURE.md
+- audit/08_CINEMATIC_ENHANCEMENT_MAP.csv
+- audit/08_IMPLEMENTATION_CHECKLIST.md
+- audit/08_ACCEPTANCE_TEST_MATRIX.csv
+- audit/08_PERFORMANCE_QA_SPEC.md
+- audit/09_CINEMATIC_ASSET_SYSTEM.md
+- audit/09_ASSET_DEPENDENCY_MATRIX.csv
+- audit/09_SHARED_OBJECT_DECISIONS.md
+- audit/10_IMPLEMENTATION_RISK_REGISTER.md
+- audit/10_OPENCODE_EXECUTION_GUARDRAILS.md
+
+Current status:
+- implementation not started
+- next action: Phase 0 baseline / lock
+- first prompt: audit/consultant-pack/06_PHASE0_FIRST_OPENCODE_PROMPT.md
+
+Optional local package:
+- audit/HomePlus_Consultant_Pack.zip

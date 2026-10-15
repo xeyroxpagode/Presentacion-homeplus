@@ -1,0 +1,38 @@
+.finance-workspace { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+/* The real FinanzasScreen carries no account row (the shell owns it); the
+   household scope pill already states "Familia García". Hiding only the row
+   frees the space the payments section needs. */
+.finance-demo-screen .home-top-bar { display: none; }
+.finance-heading { flex: none; margin: 0 var(--home-screen-padding); padding: 6px 0 6px; }
+.finance-heading h1 { margin: 0; color: var(--home-ink); font-size: 26px; line-height: 1.2; font-weight: 700; }
+
+.finance-scope { flex: none; display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; margin: 0 var(--home-screen-padding) 6px; padding: 0 12px; height: 28px; border: 1px solid var(--home-border); border-radius: 9999px; background: var(--home-surface); color: var(--home-ink); font-size: 13px; font-weight: 500; }
+.finance-scope > svg { color: var(--home-muted); }
+
+.finance-tabs { flex: none; display: flex; gap: 8px; margin: 0 var(--home-screen-padding) 8px; padding: 3px; border-radius: 9999px; background: rgb(26 24 22 / 0.06); }
+.finance-tab { flex: 1; display: flex; align-items: center; justify-content: center; height: 34px; border-radius: 9999px; color: var(--home-muted); font-size: 13px; font-weight: 500; white-space: nowrap; }
+.finance-tab[aria-selected='true'] { background: var(--home-surface); color: var(--home-brand); font-weight: 600; box-shadow: 0 1px 3px rgb(26 24 22 / 0.1); }
+
+.finance-hero { margin: 0 var(--home-screen-padding) 4px; padding: 9px 14px; border-radius: 16px; background: var(--home-brand); color: #fff; }
+.finance-hero-scope { margin: 0 0 1px; font-size: 12px; font-weight: 500; opacity: 0.75; }
+.finance-hero-balance { margin: 0; font-size: 29px; line-height: 1.1; font-weight: 700; font-variant-numeric: tabular-nums; }
+.finance-hero-baseline { margin: 1px 0 0; font-size: 12px; opacity: 0.75; }
+
+.finance-section-label { margin: 0; padding: 6px var(--home-screen-padding) 5px; color: var(--home-muted); font-size: 11px; line-height: 1.3; font-weight: 600; letter-spacing: 0.66px; text-transform: uppercase; }
+.finance-card { flex: none; margin: 0 var(--home-screen-padding); overflow: hidden; border: 1px solid var(--home-border); border-radius: var(--home-card-radius); background: var(--home-surface); }
+.finance-payment-row { position: relative; display: flex; align-items: center; gap: 12px; min-height: 48px; padding: 7px 14px; }
+.finance-payment-row + .finance-payment-row::before { content: ''; position: absolute; top: 0; left: 20px; right: 0; height: 1px; background: var(--home-divider); }
+.finance-row-copy { flex: 1; min-width: 0; }
+.finance-row-title { margin: 0; color: var(--home-ink); font-size: 17px; line-height: 1.25; font-weight: 500; }
+.finance-row-meta { margin: 2px 0 0; color: var(--home-muted); font-size: 12px; line-height: 1.35; }
+.finance-row-meta[data-overdue='true'] { color: #c23a30; }
+.finance-row-meta[data-paid='true'] { color: #2d7a51; font-weight: 600; }
+.finance-amount { margin: 0; flex: none; color: var(--home-ink); font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.finance-categories { display: flex; flex-direction: column; gap: 6px; margin: 0 var(--home-screen-padding); }
+.finance-category { padding: 7px 12px; border: 1px solid var(--home-border); border-radius: 12px; background: var(--home-surface); }
+.finance-category-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.finance-category-head .finance-row-title { font-size: 15px; }
+.finance-category-head .finance-amount { font-size: 14px; }
+.finance-bar { height: 6px; border-radius: 9999px; background: #f0efeb; overflow: hidden; }
+.finance-bar > span { display: block; height: 100%; border-radius: 9999px; background: var(--home-brand); }

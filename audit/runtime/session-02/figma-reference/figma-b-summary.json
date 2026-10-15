@@ -1,0 +1,17 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "errors": [],
+  "keys": [
+    "home",
+    "familia",
+    "calendario",
+    "mas",
+    "cal-Tareas",
+    "cal-Calendario",
+    "cal-Planes",
+    "cal-Ir a Inicio",
+    "cal-Ir a Familia",
+    "cal-Ir a Calendario",
+    "cal-Abrir Más opciones"
+  ]
+}

@@ -1,0 +1,685 @@
+{
+ "errors": [],
+ "results": [
+  {
+   "label": "Opening",
+   "expected": "S01_step00",
+   "actual": "S01_step00",
+   "press": 0,
+   "htmlStable": true,
+   "geomStable": true,
+   "docStable": true,
+   "runningAnimations": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "samples": [
+    {
+     "at": 0,
+     "htmlHash": "1d23fc61b5f2",
+     "geomHash": "d2cbd4e22dab",
+     "geomCount": 506,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 2500,
+     "htmlHash": "1d23fc61b5f2",
+     "geomHash": "d2cbd4e22dab",
+     "geomCount": 506,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 5000,
+     "htmlHash": "1d23fc61b5f2",
+     "geomHash": "d2cbd4e22dab",
+     "geomCount": 506,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 7500,
+     "htmlHash": "1d23fc61b5f2",
+     "geomHash": "d2cbd4e22dab",
+     "geomCount": 506,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 10000,
+     "htmlHash": "1d23fc61b5f2",
+     "geomHash": "d2cbd4e22dab",
+     "geomCount": 506,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    }
+   ],
+   "shotA": "hold/Opening__S01_step00__t0.png",
+   "shotB": "hold/Opening__S01_step00__t10s.png"
+  },
+  {
+   "label": "Home",
+   "expected": "S04_step03",
+   "actual": "S04_step03",
+   "press": 22,
+   "htmlStable": true,
+   "geomStable": true,
+   "docStable": true,
+   "runningAnimations": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "samples": [
+    {
+     "at": 0,
+     "htmlHash": "92f482ac3108",
+     "geomHash": "ef31aa6773ce",
+     "geomCount": 509,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 2500,
+     "htmlHash": "92f482ac3108",
+     "geomHash": "ef31aa6773ce",
+     "geomCount": 509,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 5000,
+     "htmlHash": "92f482ac3108",
+     "geomHash": "ef31aa6773ce",
+     "geomCount": 509,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 7500,
+     "htmlHash": "92f482ac3108",
+     "geomHash": "ef31aa6773ce",
+     "geomCount": 509,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 10000,
+     "htmlHash": "92f482ac3108",
+     "geomHash": "ef31aa6773ce",
+     "geomCount": 509,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    }
+   ],
+   "shotA": "hold/Home__S04_step03__t0.png",
+   "shotB": "hold/Home__S04_step03__t10s.png"
+  },
+  {
+   "label": "Planner",
+   "expected": "S05_step02",
+   "actual": "S05_step02",
+   "press": 27,
+   "htmlStable": true,
+   "geomStable": true,
+   "docStable": true,
+   "runningAnimations": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "samples": [
+    {
+     "at": 0,
+     "htmlHash": "66fcf80f180d",
+     "geomHash": "9c176974b700",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 2500,
+     "htmlHash": "66fcf80f180d",
+     "geomHash": "9c176974b700",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 5000,
+     "htmlHash": "66fcf80f180d",
+     "geomHash": "9c176974b700",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 7500,
+     "htmlHash": "66fcf80f180d",
+     "geomHash": "9c176974b700",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 10000,
+     "htmlHash": "66fcf80f180d",
+     "geomHash": "9c176974b700",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    }
+   ],
+   "shotA": "hold/Planner__S05_step02__t0.png",
+   "shotB": "hold/Planner__S05_step02__t10s.png"
+  },
+  {
+   "label": "Family",
+   "expected": "S06_step03",
+   "actual": "S06_step03",
+   "press": 32,
+   "htmlStable": true,
+   "geomStable": true,
+   "docStable": true,
+   "runningAnimations": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "samples": [
+    {
+     "at": 0,
+     "htmlHash": "1a4fea2e645c",
+     "geomHash": "14a91fe33e98",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 2500,
+     "htmlHash": "1a4fea2e645c",
+     "geomHash": "14a91fe33e98",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 5000,
+     "htmlHash": "1a4fea2e645c",
+     "geomHash": "14a91fe33e98",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 7500,
+     "htmlHash": "1a4fea2e645c",
+     "geomHash": "14a91fe33e98",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 10000,
+     "htmlHash": "1a4fea2e645c",
+     "geomHash": "14a91fe33e98",
+     "geomCount": 512,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    }
+   ],
+   "shotA": "hold/Family__S06_step03__t0.png",
+   "shotB": "hold/Family__S06_step03__t10s.png"
+  },
+  {
+   "label": "Finance",
+   "expected": "S09_step04",
+   "actual": "S09_step04",
+   "press": 46,
+   "htmlStable": true,
+   "geomStable": true,
+   "docStable": true,
+   "runningAnimations": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "samples": [
+    {
+     "at": 0,
+     "htmlHash": "7f892d0a8a2e",
+     "geomHash": "1af459a384ac",
+     "geomCount": 114,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 2500,
+     "htmlHash": "7f892d0a8a2e",
+     "geomHash": "1af459a384ac",
+     "geomCount": 114,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 5000,
+     "htmlHash": "7f892d0a8a2e",
+     "geomHash": "1af459a384ac",
+     "geomCount": 114,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 7500,
+     "htmlHash": "7f892d0a8a2e",
+     "geomHash": "1af459a384ac",
+     "geomCount": 114,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 10000,
+     "htmlHash": "7f892d0a8a2e",
+     "geomHash": "1af459a384ac",
+     "geomCount": 114,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    }
+   ],
+   "shotA": "hold/Finance__S09_step04__t0.png",
+   "shotB": "hold/Finance__S09_step04__t10s.png"
+  },
+  {
+   "label": "Assets-HomeCloud",
+   "expected": "S10_step04",
+   "actual": "S10_step04",
+   "press": 51,
+   "htmlStable": true,
+   "geomStable": true,
+   "docStable": true,
+   "runningAnimations": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "samples": [
+    {
+     "at": 0,
+     "htmlHash": "5101cd744844",
+     "geomHash": "b76f499c32a0",
+     "geomCount": 178,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 2500,
+     "htmlHash": "5101cd744844",
+     "geomHash": "b76f499c32a0",
+     "geomCount": 178,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 5000,
+     "htmlHash": "5101cd744844",
+     "geomHash": "b76f499c32a0",
+     "geomCount": 178,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 7500,
+     "htmlHash": "5101cd744844",
+     "geomHash": "b76f499c32a0",
+     "geomCount": 178,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 10000,
+     "htmlHash": "5101cd744844",
+     "geomHash": "b76f499c32a0",
+     "geomCount": 178,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    }
+   ],
+   "shotA": "hold/Assets_HomeCloud__S10_step04__t0.png",
+   "shotB": "hold/Assets_HomeCloud__S10_step04__t10s.png"
+  },
+  {
+   "label": "Homi",
+   "expected": "S16_step04",
+   "actual": "S16_step04",
+   "press": 76,
+   "htmlStable": true,
+   "geomStable": true,
+   "docStable": true,
+   "runningAnimations": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "samples": [
+    {
+     "at": 0,
+     "htmlHash": "adaeae454b2c",
+     "geomHash": "abbe82e533d2",
+     "geomCount": 69,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 2500,
+     "htmlHash": "adaeae454b2c",
+     "geomHash": "abbe82e533d2",
+     "geomCount": 69,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 5000,
+     "htmlHash": "adaeae454b2c",
+     "geomHash": "abbe82e533d2",
+     "geomCount": 69,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 7500,
+     "htmlHash": "adaeae454b2c",
+     "geomHash": "abbe82e533d2",
+     "geomCount": 69,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 10000,
+     "htmlHash": "adaeae454b2c",
+     "geomHash": "abbe82e533d2",
+     "geomCount": 69,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    }
+   ],
+   "shotA": "hold/Homi__S16_step04__t0.png",
+   "shotB": "hold/Homi__S16_step04__t10s.png"
+  },
+  {
+   "label": "Closing",
+   "expected": "S18_step03",
+   "actual": "S18_step03",
+   "press": 84,
+   "htmlStable": true,
+   "geomStable": true,
+   "docStable": true,
+   "runningAnimations": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "samples": [
+    {
+     "at": 0,
+     "htmlHash": "bc03d58e1c94",
+     "geomHash": "220388cbab2b",
+     "geomCount": 20,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 2500,
+     "htmlHash": "bc03d58e1c94",
+     "geomHash": "220388cbab2b",
+     "geomCount": 20,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 5000,
+     "htmlHash": "bc03d58e1c94",
+     "geomHash": "220388cbab2b",
+     "geomCount": 20,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 7500,
+     "htmlHash": "bc03d58e1c94",
+     "geomHash": "220388cbab2b",
+     "geomCount": 20,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    },
+    {
+     "at": 10000,
+     "htmlHash": "bc03d58e1c94",
+     "geomHash": "220388cbab2b",
+     "geomCount": 20,
+     "doc": {
+      "sw": 1280,
+      "cw": 1280,
+      "sh": 720,
+      "ch": 720
+     },
+     "runningAnimations": 0
+    }
+   ],
+   "shotA": "hold/Closing__S18_step03__t0.png",
+   "shotB": "hold/Closing__S18_step03__t10s.png"
+  }
+ ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "B_FAMILY_MAP_MEMBER_SHEET",
+  "module": "B",
+  "surface": "Family / Mapa → contextual member sheet",
+  "nav": "Mapa → member / place pin",
+  "shell": "PhoneFrame 390x844, bezel 10px #1A1714, radius 48px",
+  "notes": [],
+  "clicks": [
+    "G",
+    "Familia García Coordinador",
+    "Buscar",
+    "2",
+    "Volver",
+    "Ver tareas de Juan 2 pendientes",
+    "Permisos Rol: Adolescente",
+    "Privacidad Qué comparte con la familia",
+    "Ir a Inicio",
+    "Ir a Familia",
+    "Abrir acciones rápidas",
+    "Ir a Calendario",
+    "Abrir Más opciones"
+  ],
+  "text": "9:41\nG\nFamilia García\nCoordinador\n2\nIntegrante\nMa\nMartina\nAdolescente\nColegio · hace 2 min\nACTIVIDAD HOY\n08:01\nLlegó al Colegio\n07:30\nSalió de Casa\nTAREAS\nVer tareas de Juan\n2 pendientes\nCONFIGURACIÓN\nPermisos\nRol: Adolescente\nPrivacidad\nQué comparte con la familia\nEmail\nmartina@email.com",
+  "consoleErrors": []
+}

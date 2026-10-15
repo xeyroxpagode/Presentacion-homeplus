@@ -1,0 +1,176 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "homecloud",
+  "headings": [],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "x": 12,
+      "y": 81
+    },
+    {
+      "role": null,
+      "al": "Opciones de carpeta",
+      "t": "Opciones de carpeta",
+      "tid": null,
+      "x": 366,
+      "y": 81
+    },
+    {
+      "role": "radio",
+      "al": "Archivos",
+      "t": "Archivos",
+      "tid": null,
+      "x": 24,
+      "y": 148
+    },
+    {
+      "role": "radio",
+      "al": "Recuerdos",
+      "t": "Recuerdos",
+      "tid": null,
+      "x": 215,
+      "y": 148
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "",
+      "tid": null,
+      "x": 20,
+      "y": 196
+    },
+    {
+      "role": null,
+      "al": "Agregar archivo a Casa",
+      "t": "Agregar archivo a Casa",
+      "tid": null,
+      "x": 366,
+      "y": 200
+    },
+    {
+      "role": null,
+      "al": "Ver subidas (1 en curso)",
+      "t": "1 subida",
+      "tid": null,
+      "x": 20,
+      "y": 256
+    },
+    {
+      "role": "button",
+      "al": "Manual lavarropas",
+      "t": "Manual lavarropas ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 300
+    },
+    {
+      "role": null,
+      "al": "Opciones de Manual lavarropas",
+      "t": "⋯",
+      "tid": null,
+      "x": 170,
+      "y": 445
+    },
+    {
+      "role": "button",
+      "al": "Escritura departamento",
+      "t": "Escritura departamento ⋯",
+      "tid": null,
+      "x": 221,
+      "y": 300
+    },
+    {
+      "role": null,
+      "al": "Opciones de Escritura departamento",
+      "t": "⋯",
+      "tid": null,
+      "x": 371,
+      "y": 445
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "homecloud-screen",
+    "homecloud-header",
+    "homecloud-tabs",
+    "homecloud-tabs-thumb",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nCasa\nArchivos\nRecuerdos\n1 subida\nManual lavarropas\n⋯\nEscritura departamento\n⋯"
+}

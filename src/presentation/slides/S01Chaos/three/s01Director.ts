@@ -1,0 +1,736 @@
+// S01 CINEMATIC FINAL PRIME — state machine determinista (steps 0–5).
+// Autoridad = (previousStep, currentStep). Forward dramatiza; reverse restaura
+// el F100 del destino sin drama. Step 5 = acumulación + staging + PHONE PORTAL;
+// su F100 es PHONE_INSIDE (pantalla negra llenando el viewport).
+// Cada frame se escribe en un objeto persistente (sin alloc por frame).
+// Interrupción: todo script mezcla desde los params actuales en 120–220 ms.
+
+import {
+  DEG,
+  s01AnchorByStep,
+  s01Anchors,
+  s01BeatDuration,
+  s01Docs,
+  s01Geo,
+  s01Loose,
+  s01Smoke,
+  s01SmokeMaxOpacity,
+  s01Timings,
+  type Vec3,
+} from './s01CinematicConfig'
+import { s01PortalFinal, s01ScreenFrame } from './s01Portal'
+
+export type Pose = { p: Vec3; r: Vec3; v: number }
+export type S01Frame = {
+  camPos: Vec3
+  camTarget: Vec3
+  camUp: Vec3
+  blackout: number
+  pantry: [number, number, number]
+  fTop: number
+  fBot: number
+  fLift: number
+  fRoll: number
+  fShift: number
+  drawer: number
+  manualCover: number
+  policy: { p: Vec3; r: Vec3 }
+  docs: Pose[]
+  loose: { p: Vec3; r: Vec3 }[]
+  list: { p: Vec3; r: Vec3 }
+  smoke: { p: Vec3; s: number; o: number }[]
+}
+
+type Ease = (u: number) => number
+const easeInOut: Ease = (u) => (u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2)
+const easeOut: Ease = (u) => 1 - Math.pow(1 - u, 3)
+const easeOutBack: Ease = (u) => {
+  const c = 0.55
+  const t = u - 1
+  return 1 + (c + 1) * t * t * t + c * t * t
+}
+const clamp01 = (u: number) => (u < 0 ? 0 : u > 1 ? 1 : u)
+const lerp = (a: number, b: number, u: number) => a + (b - a) * u
+const lerp3 = (a: Vec3, b: Vec3, u: number): Vec3 => [lerp(a[0], b[0], u), lerp(a[1], b[1], u), lerp(a[2], b[2], u)]
+const smooth = (u: number) => u * u * (3 - 2 * u)
+
+function makeFrame(): S01Frame {
+  return {
+    camPos: [0, 0, 0],
+    camTarget: [0, 0, 0],
+    camUp: [0, 1, 0],
+    blackout: 1,
+    pantry: [0, 0, 0],
+    fTop: 0,
+    fBot: 0,
+    fLift: 0,
+    fRoll: 0,
+    fShift: 0,
+    drawer: 0,
+    manualCover: 0,
+    policy: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
+    docs: s01Docs.map(() => ({ p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3, v: 0 })),
+    loose: s01Loose.map(() => ({ p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 })),
+    list: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
+    smoke: s01Smoke.map(() => ({ p: [0, 0, 0] as Vec3, s: 0.001, o: 0 })),
+  }
+}
+
+/** Slide de acumulación de la póliza a la cima de la pila: llega ÚLTIMA
+ *  como cierre visual. Final = [-0.18,~0.936,-0.44] sobre stack. */
+const POLICY_ACCUM = { p: [-0.13, 0.051, -0.06] as Vec3, r: [0, 0.12, 0] as Vec3 }
+/** Slide final post-aterrizaje por documento (m, en su heading). */
+const DOC_SLIDE = [0.04, 0.06, 0.02, 0.02, 0, 0.02]
+
+export class S01Director {
+  /** Estado visible del beat actual (lectura directa desde useFrame). */
+  readonly frame = makeFrame()
+  step = 0
+  reduced = false
+  /** Reloj local del beat en curso (ms). La QA lo lee para capturar fases. */
+  elapsed = 0
+  /** Aspect del canvas (el portal final depende de él). */
+  aspect = 16 / 9
+
+  private params: Record<string, number> = {}
+  private channels: { key: string; from: number; to: number; t0: number; t1: number; ease: Ease }[] = []
+  private mode: 'idle' | 'tween' | 'script3' | 'script5' = 'idle'
+  private scriptEnd = 0
+  private camFrom: Vec3 = [0, 0, 0]
+  private camTargetFrom: Vec3 = [0, 0, 0]
+  private blendFrom: Record<string, number> | null = null
+  private target: Record<string, number> = {}
+
+  constructor() {
+    this.reduced = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    this.f100(0, this.params)
+    this.f100(0, this.target)
+    this.writeFrame()
+  }
+
+  /** Montaje / deep-link: salto directo al F100 del step (sin re-drama). */
+  init(step: number, aspect = 16 / 9) {
+    this.aspect = aspect
+    this.step = Math.min(Math.max(step, 0), 5)
+    this.f100(this.step, this.params)
+    this.f100(this.step, this.target)
+    this.channels = []
+    this.mode = 'idle'
+    this.elapsed = 0
+    this.blendFrom = null
+    this.writeFrame()
+  }
+
+  /** Cambio de step: la autoridad es (previousStep, currentStep). */
+  setStep(next: number) {
+    const target = Math.min(Math.max(next, 0), 5)
+    const prev = this.step
+    if (target === prev) return
+    const forward = target > prev
+    this.step = target
+    this.elapsed = 0
+    this.f100(target, this.target)
+    this.channels = []
+    this.blendFrom = { ...this.params }
+
+    if (this.reduced) {
+      this.mode = 'tween'
+      this.blendFrom = null
+      this.tweenAll([0, s01Timings.reduced.snap], forward ? easeOut : easeInOut)
+      return
+    }
+    if (forward && target === 3) {
+      this.mode = 'script3'
+      this.scriptEnd = s01Timings.fridgeFail.end
+      this.camFrom = [...this.frame.camPos] as Vec3
+      this.camTargetFrom = [...this.frame.camTarget] as Vec3
+      return
+    }
+    if (forward && target === 5) {
+      this.mode = 'script5'
+      this.scriptEnd = s01Timings.enter5.portal[1]
+      return
+    }
+    this.mode = 'tween'
+    this.blendFrom = null
+    if (forward && target === 1) this.buildEnter1()
+    else if (forward && target === 2) this.buildEnter2()
+    else if (forward && target === 4) this.buildEnter4()
+    else this.buildReverse(target)
+  }
+
+  /** Inspección dev-only: ?s01InspectPortal=0..1 (pose del portal de step 5). */
+  debugPortal(u: number, aspect = 16 / 9) {
+    this.aspect = aspect
+    this.step = 5
+    const t = s01Timings.enter5.portal[0] + clamp01(u) * (s01Timings.enter5.portal[1] - s01Timings.enter5.portal[0])
+    this.f100(5, this.params)
+    this.sampleScript5(t, this.params)
+    this.mode = 'idle'
+    this.elapsed = t
+    this.writeFrame()
+  }
+
+  /** ¿Sigue animando? El Canvas mantiene frameloop="demand" con invalidate. */
+  get animating() {
+    return this.mode !== 'idle'
+  }
+
+  /** Duración del beat actual (para QA). */
+  beatDuration() {
+    if (this.mode === 'script5') return this.scriptEnd
+    if (this.mode === 'script3') return this.scriptEnd
+    if (this.mode === 'tween') return this.tweenEnd()
+    return s01BeatDuration[this.step] ?? 1000
+  }
+
+  /** Actualiza el frame. Devuelve true si la animación sigue viva. */
+  update(dt: number, aspect = 16 / 9) {
+    if (this.mode === 'idle') return false
+    this.aspect = aspect
+    this.elapsed += dt
+    if (this.mode === 'tween') this.applyTween()
+    else if (this.mode === 'script3') this.applyScript3(this.elapsed)
+    else this.sampleScript5(this.elapsed, this.params)
+    // Interrupción / entrada: mezcla desde el estado previo (120–220 ms).
+    if (this.blendFrom && (this.mode === 'script3' || this.mode === 'script5')) {
+      const bu = easeOut(clamp01(this.elapsed / 180))
+      for (const key of Object.keys(this.params)) {
+        const from = this.blendFrom[key] ?? this.params[key]
+        this.params[key] = lerp(from, this.params[key], bu)
+      }
+      if (this.elapsed >= 180) this.blendFrom = null
+    }
+    const end = this.mode === 'tween' ? this.tweenEnd() : this.scriptEnd
+    if (this.elapsed >= end) {
+      if (this.mode === 'tween') {
+        for (const ch of this.channels) this.params[ch.key] = ch.to
+      } else {
+        this.f100(this.step, this.params)
+      }
+      this.mode = 'idle'
+      this.blendFrom = null
+    }
+    this.writeFrame()
+    return this.mode !== 'idle'
+  }
+
+  /* ---------------- F100 por step (destino de forward y reverse) -------- */
+
+  private f100(step: number, out: Record<string, number>) {
+    const anchor = s01Anchors[s01AnchorByStep[Math.min(Math.max(step, 0), 5)]]
+    if (step === 5) {
+      // PHONE_INSIDE: cámara alineada al screen (pose frontal ideal, §76).
+      const fin = s01PortalFinal(this.aspect)
+      out['camPos.0'] = fin.pos[0]
+      out['camPos.1'] = fin.pos[1]
+      out['camPos.2'] = fin.pos[2]
+      out['camTarget.0'] = fin.target[0]
+      out['camTarget.1'] = fin.target[1]
+      out['camTarget.2'] = fin.target[2]
+      out['camUp.0'] = fin.up[0]
+      out['camUp.1'] = fin.up[1]
+      out['camUp.2'] = fin.up[2]
+    } else {
+      out['camPos.0'] = anchor.pos[0]
+      out['camPos.1'] = anchor.pos[1]
+      out['camPos.2'] = anchor.pos[2]
+      out['camTarget.0'] = anchor.target[0]
+      out['camTarget.1'] = anchor.target[1]
+      out['camTarget.2'] = anchor.target[2]
+      out['camUp.0'] = 0
+      out['camUp.1'] = 1
+      out['camUp.2'] = 0
+    }
+    out['blackout'] = step === 0 ? 1 : 0
+
+    const open = step >= 2 ? 1 : 0
+    out['pantry.0'] = open * s01Geo.pantry.leafA_L.open
+    out['pantry.1'] = open * s01Geo.pantry.leafA_R.open
+    out['pantry.2'] = open * s01Geo.pantry.leafB_R.open
+
+    out['fTop'] = step >= 3 ? s01Geo.fridge.topRest : 0
+    out['fBot'] = step >= 3 ? s01Geo.fridge.botRest : 0
+    out['fLift'] = 0
+    out['fRoll'] = 0
+    out['fShift'] = 0
+    out['drawer'] = step >= 3 ? s01Geo.docTower.drawerTravel : 0
+    out['manualCover'] = step >= 3 ? 57 * DEG : 0
+
+    out['policy.p.0'] = step >= 5 ? POLICY_ACCUM.p[0] : 0
+    out['policy.p.1'] = step >= 5 ? POLICY_ACCUM.p[1] : 0
+    out['policy.p.2'] = step >= 5 ? POLICY_ACCUM.p[2] : 0
+    out['policy.r.0'] = step >= 5 ? POLICY_ACCUM.r[0] : 0
+    out['policy.r.1'] = step >= 5 ? POLICY_ACCUM.r[1] : 0
+    out['policy.r.2'] = step >= 5 ? POLICY_ACCUM.r[2] : 0
+
+    s01Docs.forEach((d, i) => {
+      const pose = step >= 5 ? 'accum' : step >= 3 ? 'land' : 'origin'
+      const p = d[pose]
+      const r = d[`${pose}Rot` as 'accumRot' | 'landRot' | 'originRot']
+      out[`docs.${i}.p.0`] = p[0]
+      out[`docs.${i}.p.1`] = p[1]
+      out[`docs.${i}.p.2`] = p[2]
+      out[`docs.${i}.r.0`] = r[0]
+      out[`docs.${i}.r.1`] = r[1]
+      out[`docs.${i}.r.2`] = r[2]
+      out[`docs.${i}.v`] = pose === 'origin' ? 0 : 1
+    })
+
+    s01Loose.forEach((l, i) => {
+      const p = step >= 5 ? l.accum : l.home
+      const r = step >= 5 ? l.accumRot : l.homeRot
+      out[`loose.${i}.p.0`] = p[0]
+      out[`loose.${i}.p.1`] = p[1]
+      out[`loose.${i}.p.2`] = p[2]
+      out[`loose.${i}.r.0`] = r[0]
+      out[`loose.${i}.r.1`] = r[1]
+      out[`loose.${i}.r.2`] = r[2]
+    })
+
+    const listP = step >= 5 ? s01Geo.listAccum : s01Geo.listHome
+    out['list.p.0'] = listP[0]
+    out['list.p.1'] = listP[1]
+    out['list.p.2'] = listP[2]
+    out['list.r.0'] = 0
+    out['list.r.1'] = step >= 5 ? 0.25 : -0.2
+    out['list.r.2'] = 0
+
+    // Humo: REGLA ABSOLUTA — en F100 siempre 0 (el humo es un evento).
+    s01Smoke.forEach((s, i) => {
+      out[`smoke.${i}.p.0`] = s.origin[0]
+      out[`smoke.${i}.p.1`] = s.origin[1]
+      out[`smoke.${i}.p.2`] = s.origin[2]
+      out[`smoke.${i}.s`] = 0.001
+      out[`smoke.${i}.o`] = 0
+    })
+  }
+
+  /* ---------------- construcción de transiciones ---------------- */
+
+  private addTween(key: string, t0: number, t1: number, ease: Ease) {
+    this.channels.push({ key, from: this.params[key] ?? 0, to: this.target[key] ?? 0, t0, t1, ease })
+  }
+
+  private addCamTween(t0: number, t1: number, ease: Ease) {
+    for (let i = 0; i < 3; i++) {
+      this.addTween(`camPos.${i}`, t0, t1, ease)
+      this.addTween(`camTarget.${i}`, t0, t1, ease)
+      this.addTween(`camUp.${i}`, t0, t1, ease)
+    }
+  }
+
+  private tweenEnd() {
+    let end = 0
+    for (const ch of this.channels) if (ch.t1 > end) end = ch.t1
+    return end
+  }
+
+  private tweenAll(range: [number, number], ease: Ease) {
+    for (const key of Object.keys(this.target)) this.addTween(key, range[0], range[1], ease)
+  }
+
+  private buildEnter1() {
+    const t = s01Timings.enter1
+    this.addTween('blackout', t.blackout[0], t.blackout[1], easeOut)
+    this.addCamTween(t.cam[0], t.cam[1], easeInOut)
+  }
+
+  private buildEnter2() {
+    const t = s01Timings.enter2
+    this.addCamTween(t.cam[0], t.cam[1], easeInOut)
+    // Stagger orgánico con overshoot (A-L 170, A-R 235, B-R 305).
+    for (let i = 0; i < 3; i++) this.addTween(`pantry.${i}`, t.doors[i][0], t.doors[i][1], easeOutBack)
+  }
+
+  private buildEnter4() {
+    this.addCamTween(s01Timings.enter4.cam[0], s01Timings.enter4.cam[1], easeInOut)
+  }
+
+  /** Reverse: restaura el F100 del destino. Sin drama, sin humo, sin shake. */
+  private buildReverse(target: number) {
+    const t = s01Timings.reverse
+    for (const key of Object.keys(this.target)) {
+      if (key.startsWith('camPos.') || key.startsWith('camTarget.') || key.startsWith('camUp.')) continue
+      if (key.startsWith('docs.') && key.endsWith('.v')) {
+        const from = this.params[key] ?? 0
+        const to = this.target[key] ?? 0
+        this.channels.push({ key, from, to, t0: t.state[1] * 0.72, t1: t.state[1], ease: easeInOut })
+        continue
+      }
+      if (key.startsWith('pantry.') && target <= 1) {
+        // 2→1: cierre limpio con leve stagger, sin overshoot.
+        const i = Number(key.split('.')[1] ?? 0)
+        this.channels.push({
+          key,
+          from: this.params[key] ?? 0,
+          to: this.target[key] ?? 0,
+          t0: t.pantry[0] - 60 + i * 20,
+          t1: t.pantry[0] - 60 + i * 20 + (t.pantry[1] - t.pantry[0]),
+          ease: easeInOut,
+        })
+        continue
+      }
+      this.addTween(key, t.state[0], t.state[1], easeInOut)
+    }
+    if (target === 0) this.addTween('blackout', t.blackout[0], t.blackout[1], easeInOut)
+    this.addCamTween(t.cam[0], target === 0 ? t.blackout[1] : t.cam[1], easeInOut)
+  }
+
+  private applyTween() {
+    for (const ch of this.channels) {
+      if (this.elapsed < ch.t0) continue
+      const u = clamp01((this.elapsed - ch.t0) / Math.max(1, ch.t1 - ch.t0))
+      this.params[ch.key] = lerp(ch.from, ch.to, ch.ease(u))
+    }
+  }
+
+  /* ---------------- beat 3: script de fallo ---------------- */
+
+  private applyScript3(t: number) {
+    const T = s01Timings.fridgeFail
+    // Cámara asentada a los 180 ms; quieta durante todo el evento.
+    const uCam = clamp01(t / (T.cam[1] - T.cam[0]))
+    const eCam = easeInOut(uCam)
+    const to = s01Anchors.A_FRIDGE
+    for (let i = 0; i < 3; i++) {
+      this.params[`camPos.${i}`] = lerp(this.camFrom[i], to.pos[i], eCam)
+      this.params[`camTarget.${i}`] = lerp(this.camTargetFrom[i], to.target[i], eCam)
+      this.params[`camUp.${i}`] = i === 1 ? 1 : 0
+    }
+    this.params['blackout'] = 0
+
+    // Puertas: un solo rebound hacia 11°/8° (§40).
+    const F = s01Geo.fridge
+    this.params['fTop'] = door3Phase(t, T.topDoorPeak, T.topDoorMid, T.topDoorRest, F.topMax, F.topRebound, F.topRest)
+    this.params['fBot'] = door3Phase(t, T.botDoorPeak, T.botDoorMid, T.botDoorRest, F.botMax, F.botRebound, F.botRest)
+    // Drawer prismático: 0→.12 (375–455), →.86 (455–690), →1 (690–760).
+    const travel = s01Geo.docTower.drawerTravel
+    this.params['drawer'] = drawer3Phase(t, T.drawerA, T.drawerB, T.drawerC, travel)
+
+    // Cuerpo: keyframes diseñados §39 (vuelve EXACTAMENTE a base).
+    const { lift, roll, shift } = fridgeBody(t)
+    this.params['fLift'] = lift
+    this.params['fRoll'] = roll
+    this.params['fShift'] = shift
+
+    // Documentación: Bézier cúbica determinista por hoja (§42–§49).
+    s01Docs.forEach((d, i) => {
+      if (t < d.release) {
+        setPose(this.params, `docs.${i}`, d.origin, d.originRot, 0)
+        return
+      }
+      const u = clamp01((t - d.release) / d.dur)
+      const p = cubic(d.origin, d.controlA, d.controlB, d.land, u)
+      p[1] += d.arc * 4 * u * (1 - u)
+      // Slide post-aterrizaje (DOC_01 0.04, DOC_02 0.06).
+      const slide = DOC_SLIDE[i] * clamp01((t - d.release - d.dur) / 120)
+      if (slide > 0) {
+        p[0] += Math.sin(d.landRot[1]) * slide
+        p[2] += Math.cos(d.landRot[1]) * slide
+      }
+      const e = smooth(u)
+      const wob = Math.sin(Math.PI * u)
+      const r: Vec3 = [
+        lerp(d.originRot[0], d.landRot[0], e) + 0.22 * wob * Math.sin(u * Math.PI * 2 + i),
+        lerp(d.originRot[1], d.landRot[1], e) + 0.3 * wob * Math.sin(u * Math.PI + i * 0.7),
+        lerp(d.originRot[2], d.landRot[2], e) + 0.15 * wob * Math.sin(u * Math.PI * 2 + 1 + i),
+      ]
+      setPose(this.params, `docs.${i}`, p, r, 1)
+    })
+
+    // Manual: tapa 3°→62°→49°→57° tras el contacto (§49).
+    const land = 835 + 560
+    this.params['manualCover'] = manualCoverAt(t, land)
+
+    // Humo: evento puro, opacidad ≤ 0.30, muere a 0 (§51–§52).
+    s01Smoke.forEach((s, i) => {
+      if (t < s.start) {
+        this.params[`smoke.${i}.o`] = 0
+        this.params[`smoke.${i}.s`] = 0.001
+        return
+      }
+      const u = (t - s.start) / s.life
+      if (u < 1) {
+        this.params[`smoke.${i}.p.0`] = s.origin[0] + s.drift * Math.sin(u * 2.2)
+        this.params[`smoke.${i}.p.1`] = s.origin[1] + s.rise * u
+        this.params[`smoke.${i}.p.2`] = s.origin[2] + s.drift * 0.3 * u
+        this.params[`smoke.${i}.s`] = 0.14 + 0.26 * Math.pow(u, 0.7)
+        this.params[`smoke.${i}.o`] = Math.min(s01SmokeMaxOpacity, s01SmokeMaxOpacity * Math.sin(Math.PI * Math.pow(u, 0.85)))
+      } else {
+        this.params[`smoke.${i}.o`] = 0
+        this.params[`smoke.${i}.s`] = 0.001
+      }
+    })
+  }
+
+  /* ----------- beat 5: acumulación + staging + portal --------------- */
+
+  private sampleScript5(t: number, out: Record<string, number>) {
+    const T = s01Timings.enter5
+    // Base: estado post-fridge (F100 paso 4) como punto de partida analítico.
+    this.f100(4, out)
+    out['blackout'] = 0
+
+    // Acumulación 0–720: sólo documentación liviana (§54). Nada vuela.
+    const uD = (i: number) => easeInOut(clamp01((t - i * T.docsStagger) / (T.docs[1] - T.docs[0])))
+    s01Docs.forEach((d, i) => {
+      const u = uD(i)
+      const p = lerp3(d.land, d.accum, u)
+      const r = lerp3(d.landRot, d.accumRot, u)
+      setPose(out, `docs.${i}`, p, r, 1)
+    })
+    const uL = easeInOut(clamp01(t / (T.loose[1] - T.loose[0])))
+    s01Loose.forEach((l, i) => {
+      const p = lerp3(l.home, l.accum, uL)
+      const r = lerp3(l.homeRot, l.accumRot, uL)
+      out[`loose.${i}.p.0`] = p[0]
+      out[`loose.${i}.p.1`] = p[1]
+      out[`loose.${i}.p.2`] = p[2]
+      out[`loose.${i}.r.0`] = r[0]
+      out[`loose.${i}.r.1`] = r[1]
+      out[`loose.${i}.r.2`] = r[2]
+    })
+    const uLi = easeInOut(clamp01((t - T.list[0]) / (T.list[1] - T.list[0])))
+    out['list.p.0'] = lerp(s01Geo.listHome[0], s01Geo.listAccum[0], uLi)
+    out['list.p.1'] = lerp(s01Geo.listHome[1], s01Geo.listAccum[1], uLi)
+    out['list.p.2'] = lerp(s01Geo.listHome[2], s01Geo.listAccum[2], uLi)
+    out['list.r.1'] = lerp(-0.2, 0.14, uLi)
+    // Póliza: llega ÚLTIMA (ventana [260,700]) como cierre visual.
+    const uP = easeInOut(clamp01((t - T.policy[0]) / (T.policy[1] - T.policy[0])))
+    out['policy.p.0'] = lerp(0, POLICY_ACCUM.p[0], uP)
+    out['policy.p.1'] = lerp(0, POLICY_ACCUM.p[1], uP)
+    out['policy.p.2'] = lerp(0, POLICY_ACCUM.p[2], uP)
+    out['policy.r.1'] = lerp(0, POLICY_ACCUM.r[1], uP)
+
+    // Cámara: HOLD wide hasta holdUntil; luego UN SOLO DIVE CONTINUO
+    // WIDE→BLACK (§32-36): sin staging perceptible, sin hold, sin velocity=0
+    // intermedio. Dolly+reframe+align simultáneos; align desde 15%; a 50%
+    // claramente frontal; a 80-85% casi screen-normal; a 100% alineado.
+    // Screen-space converge monótonamente al centro (target lerp smooth).
+    // Velocity: 0 al arrancar, máx ~55-75%, 0 sólo en BLACK (ease único).
+    const wide = s01Anchors.A_WIDE
+    const fin = s01PortalFinal(this.aspect)
+    const setCam = (pos: Vec3, tgt: Vec3, up: Vec3) => {
+      out['camPos.0'] = pos[0]
+      out['camPos.1'] = pos[1]
+      out['camPos.2'] = pos[2]
+      out['camTarget.0'] = tgt[0]
+      out['camTarget.1'] = tgt[1]
+      out['camTarget.2'] = tgt[2]
+      out['camUp.0'] = up[0]
+      out['camUp.1'] = up[1]
+      out['camUp.2'] = up[2]
+    }
+    const UP: Vec3 = [0, 1, 0]
+    if (t < T.holdUntil) {
+      setCam([...wide.pos] as Vec3, [...wide.target] as Vec3, UP)
+      return
+    }
+    // DIVE ÚNICO [holdUntil → portal[1]] ≈1350ms, un solo velocity profile.
+    const diveDur = T.portal[1] - T.holdUntil
+    const pu = clamp01((t - T.holdUntil) / diveDur)
+    const ePos = easeInOut(pu)
+    const pos: Vec3 = lerp3(wide.pos, fin.pos, ePos)
+    // Reframe monótono al centro: wide.target → screen center con easeOut
+    // (el target lidera a la posición: convergencia monótona verificada
+    // analíticamente, sin overshoot ni retorno lateral).
+    const uT = easeOut(pu)
+    const tgt = lerp3(wide.target, fin.target, uT)
+    // Align angular desde 15%: up wide→screen up gradual.
+    const uU = smooth(clamp01((pu - 0.15) / 0.85))
+    const up: Vec3 = [lerp(0, fin.up[0], uU), lerp(1, fin.up[1], uU), lerp(0, fin.up[2], uU)]
+    setCam(pos, tgt, up)
+  }
+
+  /* ---------------- salida al frame de consumo ---------------- */
+
+  private writeFrame() {
+    const f = this.frame
+    const p = this.params
+    f.camPos[0] = p['camPos.0']
+    f.camPos[1] = p['camPos.1']
+    f.camPos[2] = p['camPos.2']
+    f.camTarget[0] = p['camTarget.0']
+    f.camTarget[1] = p['camTarget.1']
+    f.camTarget[2] = p['camTarget.2']
+    f.camUp[0] = p['camUp.0'] ?? 0
+    f.camUp[1] = p['camUp.1'] ?? 1
+    f.camUp[2] = p['camUp.2'] ?? 0
+    f.blackout = p['blackout']
+    f.pantry[0] = p['pantry.0']
+    f.pantry[1] = p['pantry.1']
+    f.pantry[2] = p['pantry.2']
+    f.fTop = p['fTop']
+    f.fBot = p['fBot']
+    f.fLift = p['fLift']
+    f.fRoll = p['fRoll']
+    f.fShift = p['fShift']
+    f.drawer = p['drawer']
+    f.manualCover = p['manualCover'] ?? 0
+    f.policy.p[0] = p['policy.p.0'] ?? 0
+    f.policy.p[1] = p['policy.p.1'] ?? 0
+    f.policy.p[2] = p['policy.p.2'] ?? 0
+    f.policy.r[0] = p['policy.r.0'] ?? 0
+    f.policy.r[1] = p['policy.r.1'] ?? 0
+    f.policy.r[2] = p['policy.r.2'] ?? 0
+    for (let i = 0; i < f.docs.length; i++) {
+      const d = f.docs[i]
+      d.p[0] = p[`docs.${i}.p.0`]
+      d.p[1] = p[`docs.${i}.p.1`]
+      d.p[2] = p[`docs.${i}.p.2`]
+      d.r[0] = p[`docs.${i}.r.0`]
+      d.r[1] = p[`docs.${i}.r.1`]
+      d.r[2] = p[`docs.${i}.r.2`]
+      d.v = p[`docs.${i}.v`]
+    }
+    for (let i = 0; i < f.loose.length; i++) {
+      const l = f.loose[i]
+      l.p[0] = p[`loose.${i}.p.0`]
+      l.p[1] = p[`loose.${i}.p.1`]
+      l.p[2] = p[`loose.${i}.p.2`]
+      l.r[0] = p[`loose.${i}.r.0`]
+      l.r[1] = p[`loose.${i}.r.1`]
+      l.r[2] = p[`loose.${i}.r.2`]
+    }
+    for (let c = 0; c < 3; c++) {
+      f.list.p[c] = p[`list.p.${c}`]
+      f.list.r[c] = p[`list.r.${c}`]
+    }
+    for (let i = 0; i < f.smoke.length; i++) {
+      const s = f.smoke[i]
+      s.p[0] = p[`smoke.${i}.p.0`]
+      s.p[1] = p[`smoke.${i}.p.1`]
+      s.p[2] = p[`smoke.${i}.p.2`]
+      s.s = p[`smoke.${i}.s`]
+      s.o = p[`smoke.${i}.o`]
+    }
+  }
+}
+
+function setPose(params: Record<string, number>, key: string, p: Vec3, r: Vec3, v: number) {
+  params[`${key}.p.0`] = p[0]
+  params[`${key}.p.1`] = p[1]
+  params[`${key}.p.2`] = p[2]
+  params[`${key}.r.0`] = r[0]
+  params[`${key}.r.1`] = r[1]
+  params[`${key}.r.2`] = r[2]
+  params[`${key}.v`] = v
+}
+
+/** Bézier cúbica 3D determinista (sin linear lerp, sin physics). */
+function cubic(p0: Vec3, p1: Vec3, p2: Vec3, p3: Vec3, u: number): Vec3 {
+  const v = 1 - u
+  const a = v * v * v
+  const b = 3 * v * v * u
+  const c = 3 * v * u * u
+  const d = u * u * u
+  return [
+    a * p0[0] + b * p1[0] + c * p2[0] + d * p3[0],
+    a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1],
+    a * p0[2] + b * p1[2] + c * p2[2] + d * p3[2],
+  ]
+}
+
+/** Puerta con un solo rebound: 0 → peak → mid → rest. */
+function door3Phase(
+  t: number,
+  peak: [number, number],
+  mid: [number, number],
+  rest: [number, number],
+  max: number,
+  rebound: number,
+  settled: number,
+) {
+  if (t < peak[0]) return 0
+  if (t < peak[1]) return lerp(0, max, easeOut(clamp01((t - peak[0]) / (peak[1] - peak[0]))))
+  if (t < mid[1]) return lerp(max, rebound, easeInOut(clamp01((t - peak[1]) / Math.max(1, mid[1] - peak[1]))))
+  if (t < rest[1]) return lerp(rebound, settled, easeInOut(clamp01((t - mid[1]) / Math.max(1, rest[1] - mid[1]))))
+  return settled
+}
+
+/** Drawer prismático en fracciones del recorrido (§41). */
+function drawer3Phase(t: number, a: [number, number], b: [number, number], c: [number, number], travel: number) {
+  if (t < a[0]) return 0
+  if (t < a[1]) return travel * 0.12 * easeOut(clamp01((t - a[0]) / (a[1] - a[0])))
+  if (t < b[1]) return travel * lerp(0.12, 0.86, easeInOut(clamp01((t - a[1]) / Math.max(1, b[1] - a[1]))))
+  if (t < c[1]) return travel * lerp(0.86, 1, easeInOut(clamp01((t - b[1]) / Math.max(1, c[1] - b[1]))))
+  return travel
+}
+
+/** Tapa del manual: contacto sobre canto → 62° → 49° → settle 57°. */
+function manualCoverAt(t: number, land: number) {
+  const c3 = 3 * DEG
+  if (t < land) return c3
+  if (t < land + 35) return lerp(c3, 62 * DEG, easeOut((t - land) / 35))
+  if (t < land + 75) return lerp(62 * DEG, 49 * DEG, easeInOut((t - land - 35) / 40))
+  if (t < land + 105) return lerp(49 * DEG, 57 * DEG, easeInOut((t - land - 75) / 30))
+  return 57 * DEG
+}
+
+/** Cuerpo de heladera: keyframes diseñados §39, base exacta al final. */
+function fridgeBody(t: number) {
+  const T = s01Timings.fridgeFail
+  // Microtirón 90 → centro 165 → base 190.
+  if (t >= 90 && t < 190) {
+    if (t < 125) {
+      const u = (t - 90) / 35
+      return {
+        lift: lerp(0, 0.004, u),
+        roll: lerp(0, -0.35 * DEG, u),
+        shift: lerp(0, -0.018, u),
+      }
+    }
+    if (t < 165) {
+      const u = (t - 125) / 40
+      return {
+        lift: lerp(0.004, 0.002, u),
+        roll: lerp(-0.35 * DEG, 0.22 * DEG, u),
+        shift: lerp(-0.018, 0.012, u),
+      }
+    }
+    const u = (t - 165) / 25
+    return {
+      lift: lerp(0.002, 0, u),
+      roll: lerp(0.22 * DEG, -0.08 * DEG, u),
+      shift: lerp(0.012, -0.004, u),
+    }
+  }
+  if (t >= 190 && t < 205) {
+    const u = (t - 190) / 15
+    return { lift: 0, roll: lerp(-0.08 * DEG, 0, u), shift: lerp(-0.004, 0, u) }
+  }
+  // Golpe principal 205 → 255.
+  if (t >= T.golpe[0] && t < T.golpe[1]) {
+    const u = easeOut((t - T.golpe[0]) / (T.golpe[1] - T.golpe[0]))
+    return { lift: 0.018 * u, roll: 1.05 * DEG * u, shift: 0.028 * u }
+  }
+  // Rebound 255 → 310.
+  if (t >= T.rebound[0] && t < T.rebound[1]) {
+    const u = easeInOut((t - T.rebound[0]) / (T.rebound[1] - T.rebound[0]))
+    return {
+      lift: lerp(0.018, 0.004, u),
+      roll: lerp(1.05 * DEG, -0.32 * DEG, u),
+      shift: lerp(0.028, -0.009, u),
+    }
+  }
+  // Recupero 310 → 375: todo vuelve EXACTAMENTE a base.
+  if (t >= T.recover[0] && t < T.recover[1]) {
+    const u = easeInOut((t - T.recover[0]) / (T.recover[1] - T.recover[0]))
+    return {
+      lift: lerp(0.004, 0, u),
+      roll: lerp(-0.32 * DEG, 0, u),
+      shift: lerp(-0.009, 0, u),
+    }
+  }
+  return { lift: 0, roll: 0, shift: 0 }
+}
+
+/** Triedro del screen para QA (upside-down guarantee §77). */
+export function s01ScreenUpCheck() {
+  const f = s01ScreenFrame()
+  return { up: f.up, topIsBack: f.up[2] < -0.9 }
+}
+
+/** Singleton del módulo: una sola autoridad de estado para toda la escena. */
+export const s01Director = new S01Director()

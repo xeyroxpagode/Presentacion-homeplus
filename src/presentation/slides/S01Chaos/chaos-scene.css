@@ -1,0 +1,486 @@
+/* S01 V2.1 — "Imaginen un martes cualquiera": cocina-diorama 2.5D.
+   Estado puro derivado de data-step / data-present / data-invade; el CSS
+   interpola sin timers ni remounts. En reduced motion el motor global
+   (index.css) apaga transitions/animations y cada beat muestra su estado
+   semántico final. */
+
+.chaos-scene {
+  --chaos-easing: cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.chaos-scene[data-active='true'] {
+  opacity: 1;
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+/* ---- Cámara virtual: un rig, transform-origin (0,0), fórmula
+   dx=640-scale*cx / dy=360-scale*cy. Fondo y halo viven fuera del rig. ---- */
+
+.chaos-camera {
+  position: absolute;
+  inset: 0;
+  transform-origin: 0 0;
+  transition: transform 560ms var(--chaos-easing);
+  will-change: transform;
+}
+
+/* S01.1 — foco (375,389), escala 3.00 */
+.chaos-scene[data-step='1'] .chaos-camera {
+  transform: translate(-485px, -807px) scale(3);
+  transition-duration: 500ms;
+}
+
+/* S01.2 — foco (655,338), escala 2.45 */
+.chaos-scene[data-step='2'] .chaos-camera {
+  transform: translate(-964.75px, -468.1px) scale(2.45);
+  transition-duration: 520ms;
+}
+
+/* S01.3 — foco (810,382), escala 1.53 */
+.chaos-scene[data-step='3'] .chaos-camera {
+  transform: translate(-599.3px, -224.46px) scale(1.53);
+  transition-duration: 520ms;
+}
+
+/* S01.4 — retroceso a identidad en 560ms */
+.chaos-scene[data-step='4'] .chaos-camera {
+  transform: translate(0px, 0px) scale(1);
+  transition-duration: 560ms;
+}
+
+/* S01.0 / S01.5 — cámara identidad, del todo inmóvil en el clímax */
+.chaos-scene[data-step='0'] .chaos-camera,
+.chaos-scene[data-step='5'] .chaos-camera {
+  transform: translate(0px, 0px) scale(1);
+}
+
+/* Dev-only (?s01Camera=off): plano general fijo en todos los beats.
+   Va al final de la cascada de cámara para ganar la especificidad. */
+.chaos-scene[data-camera-off='true'] .chaos-camera {
+  transform: translate(0px, 0px) scale(1);
+}
+
+/* ---- Escenografía: capas en profundidad (§7 del contrato). ---- */
+
+.chaos-floor,
+.chaos-table {
+  position: absolute;
+  inset: 0;
+}
+
+.chaos-floor { z-index: 2; }
+.chaos-table { z-index: 20; }
+
+.chaos-fridge-rig {
+  position: absolute;
+  left: 865px;
+  top: 185px;
+  width: 200px;
+  height: 390px;
+  z-index: 18;
+}
+
+.chaos-fridge-body {
+  position: absolute;
+  inset: 0;
+}
+
+.chaos-floor svg,
+.chaos-table svg,
+.chaos-fridge-body svg,
+.chaos-prop > svg,
+.chaos-drawer > svg,
+.chaos-door svg,
+.chaos-smoke svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---- Reveal por exposición (iluminación, no muebles volando). ---- */
+
+@keyframes chaos-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.stage-reveal {
+  animation: chaos-reveal 280ms var(--chaos-easing) both;
+}
+
+.stage-floor { animation-delay: 60ms; }
+.stage-table { animation-delay: 140ms; }
+
+/* ---- Heladera: sacudida seca, puertas con bisagra y luz interior. ---- */
+
+.chaos-scene[data-step='3'] .chaos-fridge-rig {
+  animation: s01-fridge-shake 135ms var(--chaos-easing) 340ms both;
+}
+
+@keyframes s01-fridge-shake {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  35% { transform: translate(-3px, -4px) rotate(-0.6deg); }
+  70% { transform: translate(2px, 1px) rotate(0.3deg); }
+  100% { transform: translate(0px, 0px) rotate(0deg); }
+}
+
+.chaos-door {
+  position: absolute;
+  transform-origin: left center;
+  transform: perspective(900px) rotateY(0deg);
+  transition: transform 420ms var(--chaos-easing);
+}
+
+.chaos-door-top { left: 15px; top: 29px; width: 148px; height: 138px; }
+.chaos-door-bottom { left: 15px; top: 175px; width: 148px; height: 192px; }
+
+/* Apertura residual ≤4° persistente desde la falla en adelante. */
+.chaos-scene[data-step='3'] .chaos-door-top,
+.chaos-scene[data-step='4'] .chaos-door-top,
+.chaos-scene[data-step='5'] .chaos-door-top {
+  transform: perspective(900px) rotateY(4deg);
+}
+
+.chaos-scene[data-step='3'] .chaos-door-bottom,
+.chaos-scene[data-step='4'] .chaos-door-bottom,
+.chaos-scene[data-step='5'] .chaos-door-bottom {
+  transform: perspective(900px) rotateY(3deg);
+}
+
+.chaos-scene[data-step='3'] .chaos-door-top {
+  animation: s01-door-top 300ms var(--chaos-easing) 390ms both;
+}
+
+.chaos-scene[data-step='3'] .chaos-door-bottom {
+  animation: s01-door-bottom 300ms var(--chaos-easing) 390ms both;
+}
+
+@keyframes s01-door-top {
+  0% { transform: perspective(900px) rotateY(0deg); }
+  45% { transform: perspective(900px) rotateY(10deg); }
+  100% { transform: perspective(900px) rotateY(4deg); }
+}
+
+@keyframes s01-door-bottom {
+  0% { transform: perspective(900px) rotateY(0deg); }
+  45% { transform: perspective(900px) rotateY(8deg); }
+  100% { transform: perspective(900px) rotateY(3deg); }
+}
+
+/* Luz interior en la junta de las puertas: una interrupción breve y queda
+   atenuada; nunca en bucle. */
+.chaos-light {
+  position: absolute;
+  left: 21px;
+  top: 167px;
+  width: 128px;
+  height: 5px;
+  border-radius: 3px;
+  background: #f2e4c8;
+  box-shadow:
+    0 0 18px 4px rgb(242 228 200 / 0.4),
+    0 0 5px 1px rgb(242 228 200 / 0.55);
+  opacity: 0.9;
+  animation: chaos-reveal 280ms var(--chaos-easing) 240ms both;
+  transition:
+    opacity 300ms var(--chaos-easing),
+    box-shadow 300ms var(--chaos-easing);
+}
+
+.chaos-scene[data-step='3'] .chaos-light,
+.chaos-scene[data-step='4'] .chaos-light,
+.chaos-scene[data-step='5'] .chaos-light {
+  opacity: 0.22;
+  box-shadow: 0 0 9px 2px rgb(242 228 200 / 0.12);
+}
+
+.chaos-scene[data-step='3'] .chaos-light {
+  animation: s01-light-fail 280ms var(--chaos-easing) 450ms both;
+}
+
+@keyframes s01-light-fail {
+  0% { opacity: 0.9; }
+  40% { opacity: 0.08; }
+  60% { opacity: 0.55; }
+  100% { opacity: 0.22; }
+}
+
+/* Humo: un puff tenue gris, sube 40px y se disipa. Sin fuego ni loop. */
+.chaos-smoke {
+  position: absolute;
+  left: 134px;
+  top: -35px;
+  width: 108px;
+  height: 78px;
+  opacity: 0;
+}
+
+.chaos-scene[data-step='3'] .chaos-smoke {
+  animation: s01-smoke-puff 370ms ease-out 480ms both;
+}
+
+@keyframes s01-smoke-puff {
+  0% { opacity: 0; transform: translate(0px, 10px) scale(0.9); }
+  45% { opacity: 0.28; }
+  100% { opacity: 0; transform: translate(0px, -30px) scale(1.18); }
+}
+
+/* ---- Cajón integrado: abre hacia el espectador (+24px en Y proyectada),
+   conservando el borde unido a la mesa. ---- */
+
+.chaos-drawer {
+  position: absolute;
+  left: 636px;
+  top: 446px;
+  width: 132px;
+  height: 35px;
+  z-index: 59;
+  opacity: 0;
+  animation: chaos-reveal 280ms var(--chaos-easing) 280ms both;
+  transition: transform 270ms var(--chaos-easing);
+}
+
+.chaos-drawer[data-open='true'] {
+  transform: translate(1px, 24px);
+  transition-delay: 780ms;
+}
+
+.chaos-drawer[data-open='false'] {
+  transition-delay: 0ms;
+}
+
+/* ---- Recorte de extracción: sólo es visible lo que está por encima de la
+   boca del cajón (y<470). Las hojas nacen ocultas detrás del frente. ---- */
+
+.chaos-doc-clip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 470px;
+  overflow: hidden;
+  z-index: 50;
+}
+
+/* ---- Utilería genérica: presencia + invasión del clímax. ---- */
+
+.chaos-prop {
+  position: absolute;
+  opacity: 0;
+  visibility: hidden;
+  transform: var(--prop-hidden);
+  transition:
+    opacity 260ms var(--chaos-easing),
+    transform 260ms var(--chaos-easing),
+    visibility 0s 280ms;
+}
+
+.chaos-prop[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: var(--prop-settled);
+  transition-duration: var(--chaos-dur, 320ms), var(--chaos-dur, 320ms), 0s;
+  transition-delay: var(--chaos-delay, 0ms), var(--chaos-delay, 0ms), 0s;
+}
+
+/* S01.5: los asuntos previos invaden el centro; la cámara no se mueve. */
+.chaos-prop[data-invade='true'] {
+  transform: var(--prop-invade, var(--prop-settled));
+  transition-duration: var(--chaos-invade-dur, 340ms), var(--chaos-invade-dur, 340ms), 0s;
+  transition-delay: var(--chaos-invade-delay, 0ms), var(--chaos-invade-delay, 0ms), 0s;
+}
+
+/* Reversa S01.5 → S01.4: retirar la saturación sin esperar colas. */
+.chaos-scene[data-step='4'] .chaos-prop[data-invade='false'][data-present='true'] {
+  transition-duration: 340ms, 340ms, 0s;
+  transition-delay: 0ms, 0ms, 0s;
+}
+
+/* ---- Objetos narrativos (coordenadas world 1280×720). ---- */
+
+/* S01.1 — seguro + llaves. */
+.chaos-policy {
+  left: 254px; top: 354px; width: 213px; height: 77px;
+  z-index: 45;
+  --prop-hidden: translate(-35px, 10px) rotate(-6deg) scale(1);
+  --prop-settled: translate(0px, 0px) rotate(-2deg) scale(1);
+  --chaos-delay: 100ms; --chaos-dur: 300ms;
+  --prop-invade: translate(144px, 9px) rotate(5deg) scale(1);
+  --chaos-invade-delay: 0ms; --chaos-invade-dur: 380ms;
+}
+
+.chaos-keys {
+  left: 353px; top: 341px; width: 139px; height: 90px;
+  z-index: 54;
+  --prop-hidden: translate(0px, -52px) rotate(-7deg) scale(1);
+  --prop-settled: translate(0px, 0px) rotate(5deg) scale(1);
+  --chaos-delay: 170ms; --chaos-dur: 280ms;
+  --prop-invade: translate(132px, 22px) rotate(-5deg) scale(1);
+  --chaos-invade-delay: 60ms; --chaos-invade-dur: 360ms;
+}
+
+/* Sombra de contacto de las llaves: coincide con el aterrizaje (330–450). */
+.chaos-keys .key-contact {
+  opacity: 0;
+  transition: opacity 130ms linear 160ms;
+}
+
+.chaos-keys[data-present='true'] .key-contact {
+  opacity: 1;
+  transition-delay: 330ms;
+}
+
+/* S01.2 — bolsa + lista. */
+.chaos-bag {
+  left: 510px; top: 234px; width: 153px; height: 178px;
+  z-index: 56;
+  --prop-hidden: translate(16px, 10px) rotate(0deg) scale(0.96);
+  --prop-settled: translate(0px, 0px) rotate(0deg) scale(1);
+  --chaos-delay: 110ms; --chaos-dur: 320ms;
+  --prop-invade: translate(4px, 17px) rotate(1deg) scale(1);
+  --chaos-invade-delay: 130ms; --chaos-invade-dur: 290ms;
+}
+
+.chaos-list {
+  left: 646px; top: 366px; width: 151px; height: 67px;
+  --prop-hidden: translate(18px, 8px) rotate(10deg) scale(1);
+  --prop-settled: translate(0px, 0px) rotate(4deg) scale(1);
+  --chaos-delay: 240ms; --chaos-dur: 340ms;
+  --prop-invade: translate(-125px, 16px) rotate(-8deg) scale(1);
+  --chaos-invade-delay: 130ms; --chaos-invade-dur: 300ms;
+}
+
+/* Al aterrizar la carpeta (beats 3–4), la lista es desplazada hacia el
+   centro-izquierda para conservar los tres grupos legibles. */
+.chaos-scene[data-step='3'] .chaos-list[data-present='true'] {
+  transform: translate(-72px, 14px) rotate(4deg) scale(1);
+  transition-duration: 300ms, 300ms, 0s;
+  transition-delay: 1020ms, 1020ms, 0s;
+}
+
+.chaos-scene[data-step='4'] .chaos-list[data-present='true'] {
+  transform: translate(-72px, 14px) rotate(4deg) scale(1);
+  transition-delay: 0ms, 0ms, 0s;
+}
+
+/* S01.3 — carpeta + papeles de la búsqueda: emergen del cajón con arco. */
+.chaos-folder {
+  left: 653px; top: 365px; width: 120px; height: 75px;
+  --prop-hidden: translate(0px, 118px) rotate(6deg) scale(1);
+  --prop-settled: translate(0px, 0px) rotate(-4deg) scale(1);
+  --chaos-delay: 990ms; --chaos-dur: 290ms;
+  --rise-from: 118px; --rise-delay: 990ms; --rise-dur: 290ms;
+  --rise-rot0: 6deg; --rise-rot-mid: -12deg; --rise-rot-end: -4deg; --rise-mid-x: -14px;
+  --prop-invade: translate(-5px, -6px) rotate(-6deg) scale(1);
+  --chaos-invade-delay: 240ms; --chaos-invade-dur: 330ms;
+}
+
+.chaos-doc-1 {
+  left: 676px; top: 375px; width: 105px; height: 56px;
+  --prop-hidden: translate(0px, 105px) rotate(8deg) scale(1);
+  --prop-settled: translate(0px, 0px) rotate(6deg) scale(1);
+  --chaos-delay: 1130ms; --chaos-dur: 370ms;
+  --rise-from: 105px; --rise-delay: 1130ms; --rise-dur: 370ms;
+  --rise-rot0: 8deg; --rise-rot-mid: 14deg; --rise-rot-end: 6deg; --rise-mid-x: 10px;
+  --prop-invade: translate(-72px, 7px) rotate(12deg) scale(1);
+  --chaos-invade-delay: 260ms; --chaos-invade-dur: 310ms;
+}
+
+.chaos-doc-2 {
+  left: 723px; top: 385px; width: 103px; height: 53px;
+  --prop-hidden: translate(0px, 95px) rotate(-10deg) scale(1);
+  --prop-settled: translate(0px, 0px) rotate(-9deg) scale(1);
+  --chaos-delay: 1180ms; --chaos-dur: 320ms;
+  --rise-from: 95px; --rise-delay: 1180ms; --rise-dur: 320ms;
+  --rise-rot0: -10deg; --rise-rot-mid: -16deg; --rise-rot-end: -9deg; --rise-mid-x: -8px;
+  --prop-invade: translate(-12px, 9px) rotate(-13deg) scale(1);
+  --chaos-invade-delay: 280ms; --chaos-invade-dur: 290ms;
+}
+
+.chaos-doc-3 {
+  left: 711px; top: 354px; width: 94px; height: 62px;
+  --prop-hidden: translate(0px, 120px) rotate(10deg) scale(1);
+  --prop-settled: translate(0px, 0px) rotate(8deg) scale(1);
+  --chaos-delay: 1300ms; --chaos-dur: 320ms;
+  --rise-from: 120px; --rise-delay: 1300ms; --rise-dur: 320ms;
+  --rise-rot0: 10deg; --rise-rot-mid: 16deg; --rise-rot-end: 8deg; --rise-mid-x: 16px;
+  --prop-invade: translate(-138px, 13px) rotate(10deg) scale(1);
+  --chaos-invade-delay: 300ms; --chaos-invade-dur: 270ms;
+}
+
+/* Emergencia con punto alto y aterrizaje (sólo dentro del beat 3);
+   el estado base coincide con el 100% de la animación: sin saltos al
+   navegar adelante/atrás y reversa limpia por transition. */
+.chaos-scene[data-step='3'] .chaos-doc-clip .chaos-search-doc[data-present='true'] {
+  animation: s01-doc-rise var(--rise-dur, 300ms) var(--chaos-easing) var(--rise-delay, 0ms) both;
+}
+
+@keyframes s01-doc-rise {
+  0% {
+    transform: translate(0px, var(--rise-from, 110px)) rotate(var(--rise-rot0, 0deg)) scale(1);
+  }
+  62% {
+    transform: translate(var(--rise-mid-x, 0px), -7px) rotate(var(--rise-rot-mid, 0deg)) scale(1);
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(var(--rise-rot-end, 0deg)) scale(1);
+  }
+}
+
+/* S01.5 — extras con origen físico: sobre del seguro, detrás de la lista
+   y interior del cajón/carpeta. Cruzan desde su fuente hasta el tablero. */
+.chaos-extra-auto {
+  left: 300px; top: 357px; width: 117px; height: 56px;
+  z-index: 44;
+  --prop-hidden: translate(0px, 0px) rotate(0deg) scale(1);
+  --prop-settled: translate(31px, 28px) rotate(-12deg) scale(1);
+  --chaos-delay: 400ms; --chaos-dur: 320ms;
+}
+
+.chaos-extra-list {
+  left: 648px; top: 368px; width: 89px; height: 60px;
+  --prop-hidden: translate(0px, 0px) rotate(0deg) scale(1);
+  --prop-settled: translate(-90px, 35px) rotate(14deg) scale(1);
+  --chaos-delay: 420ms; --chaos-dur: 300ms;
+}
+
+.chaos-extra-w1 {
+  left: 675px; top: 373px; width: 98px; height: 65px;
+  --prop-hidden: translate(0px, 120px) rotate(0deg) scale(1);
+  --prop-settled: translate(-212px, 20px) rotate(-17deg) scale(1);
+  --chaos-delay: 520ms; --chaos-dur: 340ms;
+}
+
+.chaos-extra-w2 {
+  left: 690px; top: 375px; width: 88px; height: 68px;
+  --prop-hidden: translate(0px, 122px) rotate(0deg) scale(1);
+  --prop-settled: translate(1px, 27px) rotate(17deg) scale(1);
+  --chaos-delay: 545ms; --chaos-dur: 315ms;
+}
+
+.chaos-extra-w3 {
+  left: 661px; top: 371px; width: 116px; height: 64px;
+  --prop-hidden: translate(0px, 124px) rotate(0deg) scale(1);
+  --prop-settled: translate(83px, -8px) rotate(-8deg) scale(1);
+  --chaos-delay: 570ms; --chaos-dur: 290ms;
+}
+
+
+/* ---- Lookdev 3D (?dev=1&s01Renderer=three) — contención mínima ---- */
+
+.chaos-three {
+  position: absolute;
+  inset: 0;
+}
+
+.chaos-three canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

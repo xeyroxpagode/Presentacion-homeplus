@@ -1,0 +1,61 @@
+export const tokens = {
+  canvas: { width: 1280, height: 720, safeArea: 48 },
+  colors: {
+    background: '#0B0908',
+    blackout: '#000000',
+    text: '#F5F1EB',
+    textSecondary: '#A49B94',
+    // Warm orange derived visually from the original PNG in assets/.
+    accent: '#E65C1B',
+  },
+  typography: {
+    sans: 'Inter, "Segoe UI", Arial, sans-serif',
+    mono: '"Cascadia Code", Consolas, monospace',
+    devSize: 14,
+  },
+  // Light surfaces from the real app reference, independent of the dark stage.
+  app: { background: '#F6F5F2', surface: '#FFFFFF', text: '#1A1816', accent: '#C96B45' },
+  glow: { x: 640, y: 360, size: 900, aspect: 0.65, blur: 120, intensity: 0.65, opacity: 0.14 },
+  phone: {
+    width: 300,
+    height: 620,
+    bezel: 8,
+    radius: 46,
+    screenRadius: 38,
+    body: '#141210',
+    edge: '#35302B',
+    shadow: '0 18px 48px rgb(0 0 0 / 0.28)',
+  },
+  logo: { size: 72 },
+  stateTest: { dotSize: 8, fontSize: 18 },
+} as const
+
+// One source of truth for CSS and React geometry. Applied at startup in main.tsx.
+export const themeVariables: Record<string, string> = {
+  '--canvas-width': `${tokens.canvas.width}px`,
+  '--canvas-height': `${tokens.canvas.height}px`,
+  '--presentation-safe-area': `${tokens.canvas.safeArea}px`,
+  '--presentation-background': tokens.colors.background,
+  '--presentation-blackout': tokens.colors.blackout,
+  '--presentation-text': tokens.colors.text,
+  '--presentation-text-secondary': tokens.colors.textSecondary,
+  '--presentation-accent': tokens.colors.accent,
+  '--presentation-font': tokens.typography.sans,
+  '--presentation-mono-font': tokens.typography.mono,
+  '--dev-font-size': `${tokens.typography.devSize}px`,
+  '--app-background': tokens.app.background,
+  '--app-surface': tokens.app.surface,
+  '--app-text': tokens.app.text,
+  '--app-accent': tokens.app.accent,
+  '--glow-blur': `${tokens.glow.blur}px`,
+  '--phone-width': `${tokens.phone.width}px`,
+  '--phone-height': `${tokens.phone.height}px`,
+  '--phone-bezel': `${tokens.phone.bezel}px`,
+  '--phone-radius': `${tokens.phone.radius}px`,
+  '--phone-screen-radius': `${tokens.phone.screenRadius}px`,
+  '--phone-body': tokens.phone.body,
+  '--phone-edge': tokens.phone.edge,
+  '--phone-shadow': tokens.phone.shadow,
+  '--state-test-dot-size': `${tokens.stateTest.dotSize}px`,
+  '--state-test-font-size': `${tokens.stateTest.fontSize}px`,
+}

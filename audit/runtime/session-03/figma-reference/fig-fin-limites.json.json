@@ -1,0 +1,220 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "finance-limites",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Límites de gasto",
+      "fs": "28px",
+      "fw": "800",
+      "color": "rgb(26, 23, 20)"
+    },
+    {
+      "tag": "H2",
+      "text": "General",
+      "fs": "18px",
+      "fw": "700",
+      "color": "rgb(26, 23, 20)"
+    },
+    {
+      "tag": "H2",
+      "text": "Por categoría",
+      "fs": "18px",
+      "fw": "700",
+      "color": "rgb(26, 23, 20)"
+    }
+  ],
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "sel": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "sel": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "al": "Volver a Finanzas",
+      "t": "Volver a Finanzas",
+      "tid": null,
+      "sel": null,
+      "x": 8,
+      "y": 89
+    },
+    {
+      "al": "Crear límite",
+      "t": "Crear límite",
+      "tid": "limites-create",
+      "sel": null,
+      "x": 370,
+      "y": 89
+    },
+    {
+      "al": "Mes anterior",
+      "t": "Mes anterior",
+      "tid": null,
+      "sel": null,
+      "x": 110,
+      "y": 149
+    },
+    {
+      "al": "Mes siguiente",
+      "t": "Mes siguiente",
+      "tid": null,
+      "sel": null,
+      "x": 276,
+      "y": 149
+    },
+    {
+      "al": "Mensual",
+      "t": "Mensual",
+      "tid": null,
+      "sel": null,
+      "x": 20,
+      "y": 213
+    },
+    {
+      "al": "Anual",
+      "t": "Anual",
+      "tid": null,
+      "sel": null,
+      "x": 215,
+      "y": 213
+    },
+    {
+      "al": "Límite general. Gastaste 1.125.000 ARS de 1.500.000 ARS. Te quedan 375.000 ARS",
+      "t": "Gastaste 1.125.000 ARS de 1.500.000 ARS Te quedan 375.000 ARS",
+      "tid": "limite-general-under",
+      "sel": null,
+      "x": 16,
+      "y": 301
+    },
+    {
+      "al": "Salud. 207.000 ARS de 180.000 ARS. Superaste el límite por 27.000 ARS",
+      "t": "Salud 207.000 de 180.000 Superaste por 27.000",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 504
+    },
+    {
+      "al": "Alimentación. 438.000 ARS de 600.000 ARS. Te quedan 162.000 ARS",
+      "t": "Alimentación 438.000 de 600.000 Te quedan 162.000",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 573
+    },
+    {
+      "al": "Transporte. 12.000 ARS de 90.000 ARS. Te quedan 78.000 ARS",
+      "t": "Transporte 12.000 de 90.000 Te quedan 78.000",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 642
+    },
+    {
+      "al": null,
+      "t": "Agregar límite por categoría",
+      "tid": "limites-agregar-categoria",
+      "sel": null,
+      "x": 204,
+      "y": 706
+    },
+    {
+      "al": "Administrar categorías",
+      "t": "Administrar categorías",
+      "tid": "limites-administrar-categorias",
+      "sel": null,
+      "x": 16,
+      "y": 778
+    },
+    {
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "sel": "false",
+      "x": 5,
+      "y": 845
+    },
+    {
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "sel": "false",
+      "x": 89,
+      "y": 845
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "sel": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "sel": "false",
+      "x": 257,
+      "y": 845
+    },
+    {
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "sel": "true",
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "limites-screen",
+    "limites-create",
+    "limites-period-row",
+    "limites-period",
+    "limites-segment",
+    "limites-segment-thumb",
+    "limites-general",
+    "limite-general-under",
+    "limite-general-copy",
+    "limites-categorias",
+    "limite-categoria-lim-salud",
+    "limite-categoria-fila-lim-salud",
+    "limite-categoria-lim-alimentos",
+    "limite-categoria-fila-lim-alimentos",
+    "limite-categoria-lim-transporte",
+    "limite-categoria-fila-lim-transporte",
+    "limites-agregar-categoria",
+    "limites-administrar-categorias",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nLímites de gasto\nARS\nSEPTIEMBRE 2026\nMensual\nAnual\nGeneral\nGastaste\n1.125.000 ARS\nde\n1.500.000 ARS\nTe quedan 375.000 ARS\nPor categoría\nSalud\n207.000 de 180.000\nSuperaste por 27.000\nAlimentación\n438.000 de 600.000\nTe quedan 162.000\nTransporte\n12.000 de 90.000\nTe quedan 78.000\nAgregar límite por categoría\nAdministrar categorías"
+}

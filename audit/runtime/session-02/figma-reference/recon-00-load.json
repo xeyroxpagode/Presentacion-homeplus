@@ -1,0 +1,21 @@
+{
+  "navScreen": null,
+  "navScreenId": null,
+  "title": "Figma Make App",
+  "bodyText": "Omitir\n¿Qué tenés dando vueltas hoy?\npagar la luz\ncomprar detergente\n¿cuándo?\n¿Qué tenés dando vueltas hoy?",
+  "buttons": [
+    {
+      "tag": "BUTTON",
+      "text": "Omitir",
+      "r": {
+        "x": 353,
+        "y": 8,
+        "w": 57,
+        "h": 44
+      }
+    }
+  ],
+  "headings": [
+    "Omitir"
+  ]
+}

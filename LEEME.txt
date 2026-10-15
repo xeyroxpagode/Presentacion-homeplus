@@ -1,0 +1,26 @@
+HOMEPLUS — PRESENTACIÓN FINAL
+
+Este ZIP contiene la presentación final S01–S18 y el build generado.
+
+FORMA RECOMENDADA DE ABRIRLA (Windows)
+1. Descomprimí todo el ZIP.
+2. Asegurate de tener Node.js instalado.
+3. Hacé doble clic en ABRIR_PRESENTACION.bat.
+4. La presentación se abrirá en http://localhost:8443/
+
+CONTROLES
+- Flecha derecha: avanzar
+- Flecha izquierda: volver
+- Espacio: avanzar
+
+NOTA
+La primera vez, si faltan dependencias, el script las instala automáticamente.
+No cierres la ventana negra mientras estés usando la presentación.
+
+CONTENIDO
+- src/: código de la presentación
+- assets/: recursos visuales
+- dist/: build final
+- .figma/: configuración requerida por el proyecto exportado de Figma Make
+
+No se incluyen node_modules, historial .git, referencias internas ni capturas de QA para mantener el archivo liviano.

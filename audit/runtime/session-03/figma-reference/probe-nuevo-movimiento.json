@@ -1,0 +1,213 @@
+{
+  "[data-testid=\"movimientos-filter\"]": [
+    {
+      "tag": "DIV",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgb(244, 240, 235)",
+      "br": "20px",
+      "border": "none",
+      "pad": "4px 4px 4px 4px",
+      "shadow": "none",
+      "box": "398x44",
+      "txt": "Gastos Ingresos Transferencias"
+    }
+  ],
+  "[data-testid=\"movimientos-filter\"] button": [
+    {
+      "tag": "BUTTON",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(255, 255, 255)",
+      "bg": "rgb(201, 79, 46)",
+      "br": "20px 0px 0px 20px",
+      "border": "none",
+      "pad": "0px 10px 0px 10px",
+      "shadow": "none",
+      "box": "130x36",
+      "txt": "Gastos"
+    },
+    {
+      "tag": "BUTTON",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(255, 255, 255)",
+      "bg": "rgb(201, 79, 46)",
+      "br": "0px",
+      "border": "none",
+      "pad": "0px 10px 0px 10px",
+      "shadow": "none",
+      "box": "130x36",
+      "txt": "Ingresos"
+    },
+    {
+      "tag": "BUTTON",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(255, 255, 255)",
+      "bg": "rgb(201, 79, 46)",
+      "br": "0px 20px 20px 0px",
+      "border": "none",
+      "pad": "0px 10px 0px 10px",
+      "shadow": "none",
+      "box": "130x36",
+      "txt": "Transferencias"
+    }
+  ],
+  "[data-testid=\"analisis-tabs\"]": [],
+  "[data-testid=\"analisis-tabs-thumb\"]": [],
+  "[data-testid=\"limites-segment\"]": [],
+  "[data-testid=\"limites-segment-thumb\"]": [],
+  "[data-testid=\"floating-nav-indicator\"]": [
+    {
+      "tag": "SPAN",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgba(231, 100, 63, 0.78)",
+      "br": "9999px",
+      "border": "1px solid rgba(255, 255, 255, 0.32)",
+      "pad": "0px 0px 0px 0px",
+      "shadow": "none",
+      "box": "52x52",
+      "txt": ""
+    }
+  ],
+  "[data-testid=\"sheet-new-movement\"]": [
+    {
+      "tag": "DIV",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "br": "0px",
+      "border": "none",
+      "pad": "0px 0px 0px 0px",
+      "shadow": "none",
+      "box": "430x932",
+      "txt": "Nuevo movimiento Finanzas de Familia García Gasto Ingreso Tr"
+    }
+  ],
+  "[data-testid=\"finance-sheet-primary\"]": [
+    {
+      "tag": "BUTTON",
+      "fs": "15px",
+      "fw": "800",
+      "lh": "22.5px",
+      "col": "rgb(255, 255, 255)",
+      "bg": "rgb(201, 79, 46)",
+      "br": "16px",
+      "border": "none",
+      "pad": "0px 0px 0px 0px",
+      "shadow": "none",
+      "box": "257.3x52",
+      "txt": "Registrar gasto"
+    }
+  ],
+  "[data-testid=\"new-movement-mode\"]": [
+    {
+      "tag": "DIV",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgb(244, 240, 235)",
+      "br": "24px",
+      "border": "none",
+      "pad": "4px 4px 4px 4px",
+      "shadow": "none",
+      "box": "398x48",
+      "txt": "Gasto Ingreso Transferencia"
+    }
+  ],
+  "[data-testid=\"new-movement-mode-thumb\"]": [
+    {
+      "tag": "SPAN",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgb(255, 255, 255)",
+      "br": "20px",
+      "border": "none",
+      "pad": "0px 0px 0px 0px",
+      "shadow": "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba",
+      "box": "130x40",
+      "txt": ""
+    }
+  ],
+  "[data-testid=\"new-movement-category\"]": [
+    {
+      "tag": "SELECT",
+      "fs": "15px",
+      "fw": "600",
+      "lh": "normal",
+      "col": "rgb(138, 129, 120)",
+      "bg": "rgb(255, 255, 255)",
+      "br": "14px",
+      "border": "1px solid rgb(222, 213, 203)",
+      "pad": "0px 12px 0px 12px",
+      "shadow": "none",
+      "box": "398x50",
+      "txt": "Sin categoría Gimnasio Almacenamiento y herramientas del hog"
+    }
+  ],
+  "[data-testid=\"payment-register-action\"]": [],
+  "[role=dialog]": [],
+  "[role=dialog] [aria-label=\"Cerrar hoja\"]": [],
+  "topbar": {
+    "avatar": {
+      "tag": "BUTTON",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "br": "9999px",
+      "border": "1px solid rgb(238, 231, 224)",
+      "pad": "0px 0px 0px 0px",
+      "shadow": "none",
+      "box": "44x44",
+      "txt": "G"
+    },
+    "badge": {
+      "btn": {
+        "tag": "BUTTON",
+        "fs": "16px",
+        "fw": "400",
+        "lh": "24px",
+        "col": "rgb(26, 23, 20)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "br": "0px",
+        "border": "none",
+        "pad": "0px 0px 0px 0px",
+        "shadow": "none",
+        "box": "44x44",
+        "txt": "2"
+      },
+      "inner": [
+        {
+          "tag": "SPAN",
+          "fs": "10px",
+          "fw": "700",
+          "lh": "12px",
+          "col": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "br": "0px",
+          "border": "none",
+          "pad": "0px 3px 0px 3px",
+          "shadow": "none",
+          "box": "11.9x12",
+          "txt": "2"
+        }
+      ]
+    }
+  }
+}

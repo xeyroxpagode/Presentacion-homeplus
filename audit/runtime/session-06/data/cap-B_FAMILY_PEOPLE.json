@@ -1,0 +1,32 @@
+{
+  "name": "B_FAMILY_PEOPLE",
+  "module": "B",
+  "surface": "Family / Familia (people)",
+  "nav": "bottomnav Familia",
+  "source": "src/screens/Familia.tsx",
+  "shell": "PhoneFrame 390x844, bezel 10px #1A1714, radius 48px",
+  "notes": [],
+  "clicks": [
+    "G",
+    "Familia García Coordinador",
+    "Buscar",
+    "2",
+    "Familia",
+    "Mapa",
+    "Lugares",
+    "G Gabriel Trabajo · hace 1 h",
+    "M Mariana Casa · ahora",
+    "J Juan Casa · hace 30 min",
+    "Ma Martina Colegio · hace 2 min",
+    "Datos de la familia Nombre, foto, dirección",
+    "Invitaciones Código y QR para nuevos miembros",
+    "Seguridad y SOS Configurar contactos de emergencia",
+    "Ir a Inicio",
+    "Ir a Familia",
+    "Abrir acciones rápidas",
+    "Ir a Calendario",
+    "Abrir Más opciones"
+  ],
+  "text": "9:41\nG\nFamilia García\nCoordinador\n2\nFamilia\nMapa\nLugares\nFamilia García\n4 integrantes\nG\nGabriel\nTrabajo · hace 1 h\nM\nMariana\nCasa · ahora\nJ\nJuan\nCasa · hace 30 min\nMa\nMartina\nColegio · hace 2 min\nADMINISTRAR\nDatos de la familia\nNombre, foto, dirección\nInvitaciones\nCódigo y QR para nuevos miembros\nSeguridad y SOS\nConfigurar contactos de emergencia",
+  "consoleErrors": []
+}

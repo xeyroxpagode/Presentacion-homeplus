@@ -1,0 +1,2584 @@
+{
+  "reducedMotion": false,
+  "states": {
+    "S14_step04": {
+      "state": "Barrier#13:4",
+      "slideIndex": "13",
+      "stepIndex": "4",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s14-scene-in",
+          "cls": "s14-stage",
+          "tag": "DIV",
+          "text": "Figma Diseño IA ¿Y si ni siquiera tuviéramos que saber cómo?",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s13-scene-in",
+          "cls": "s13-stage",
+          "tag": "DIV",
+          "text": "Figma Diseño IA",
+          "state": "finished",
+          "t": 320
+        }
+      ],
+      "homi": {
+        "greeting": [],
+        "userBubble": [],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [],
+        "answerSwap": [],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [],
+        "chips": [],
+        "composer": [],
+        "assistantSub": []
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "¿Y si ni siquiera",
+          "tuviéramos que saber cómo?"
+        ]
+      },
+      "phone": null,
+      "phoneCount": 0
+    },
+    "S15_step00": {
+      "state": "HOMI Action#14:0",
+      "slideIndex": "14",
+      "stepIndex": "0",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s15-scene-in",
+          "cls": "s15-scene",
+          "tag": "DIV",
+          "text": "Homi 9:41 Homi Asistente del hogar ¿En qué te ayudo? Pedile algo a Hom",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s15-phone-in",
+          "cls": "s15-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar ¿En qué te ayudo? Pedile algo a Homi…",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "¿En qué te ayudo?",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "rect": [
+              745,
+              356,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "context": [],
+        "chips": [],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [
+          {
+            "text": "Homi",
+            "vis": true,
+            "op": "1",
+            "fontSize": "110px"
+          }
+        ],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "Homi",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "¿En qué te ayudo?",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S15_step01": {
+      "state": "HOMI Action#14:1",
+      "slideIndex": "14",
+      "stepIndex": "1",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s15-scene-in",
+          "cls": "s15-scene",
+          "tag": "DIV",
+          "text": "Homi 9:41 Homi Asistente del hogar Agendá que mañana Tomi tiene entren",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s15-phone-in",
+          "cls": "s15-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar Agendá que mañana Tomi tiene entrenamien",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "Agendá que mañana Tomi tiene entrenamiento una hora más tarde.",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "rect": [
+              745,
+              356,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "context": [],
+        "chips": [],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [
+          {
+            "text": "Homi",
+            "vis": true,
+            "op": "1",
+            "fontSize": "110px"
+          }
+        ],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "Homi",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "Agendá que mañana Tomi tiene entrenamiento una hora más tarde.",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S15_step02": {
+      "state": "HOMI Action#14:2",
+      "slideIndex": "14",
+      "stepIndex": "2",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s15-scene-in",
+          "cls": "s15-scene",
+          "tag": "DIV",
+          "text": "Homi 9:41 Homi Asistente del hogar Agendá que mañana Tomi tiene entren",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s15-phone-in",
+          "cls": "s15-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar Agendá que mañana Tomi tiene entrenamien",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "Agendá que mañana Tomi tiene entrenamiento una hora más tarde.",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "Voy a actualizar el entrenamiento de Tomi para mañana y avisar a la fa",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              345,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "context": [],
+        "chips": [],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [
+          {
+            "text": "Homi",
+            "vis": true,
+            "op": "1",
+            "fontSize": "110px"
+          }
+        ],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "Homi",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "Agendá que mañana Tomi tiene entrenamiento una hora más tarde.",
+          "Voy a actualizar el entrenamiento de Tomi para mañana y avisar a la familia.",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S15_step03": {
+      "state": "HOMI Action#14:3",
+      "slideIndex": "14",
+      "stepIndex": "3",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s15-scene-in",
+          "cls": "s15-scene",
+          "tag": "DIV",
+          "text": "Homi 9:41 Homi Asistente del hogar Agendá que mañana Tomi tiene entren",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s15-phone-in",
+          "cls": "s15-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar Agendá que mañana Tomi tiene entrenamien",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "Agendá que mañana Tomi tiene entrenamiento una hora más tarde.",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "Voy a actualizar el entrenamiento de Tomi para mañana y avisar a la fa",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              345,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [
+          {
+            "text": "Confirmar",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "context": [],
+        "chips": [],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [
+          {
+            "text": "Homi",
+            "vis": true,
+            "op": "1",
+            "fontSize": "110px"
+          }
+        ],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "Homi",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "Agendá que mañana Tomi tiene entrenamiento una hora más tarde.",
+          "Voy a actualizar el entrenamiento de Tomi para mañana y avisar a la familia.",
+          "Confirmar",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S15_step04": {
+      "state": "HOMI Action#14:4",
+      "slideIndex": "14",
+      "stepIndex": "4",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s15-scene-in",
+          "cls": "s15-scene",
+          "tag": "DIV",
+          "text": "Homi 9:41 Homi Asistente del hogar Agendá que mañana Tomi tiene entren",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s15-phone-in",
+          "cls": "s15-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar Agendá que mañana Tomi tiene entrenamien",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "Agendá que mañana Tomi tiene entrenamiento una hora más tarde.",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "Voy a actualizar el entrenamiento de Tomi para mañana y avisar a la fa",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              345,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [
+          {
+            "text": "Confirmado Entrenamiento actualizado · Avisé a la familia",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "context": [],
+        "chips": [],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [
+          {
+            "text": "Homi",
+            "vis": true,
+            "op": "1",
+            "fontSize": "110px"
+          }
+        ],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "Homi",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "Agendá que mañana Tomi tiene entrenamiento una hora más tarde.",
+          "Voy a actualizar el entrenamiento de Tomi para mañana y avisar a la familia.",
+          "Confirmado",
+          "Entrenamiento actualizado · Avisé a la familia",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S16_step00": {
+      "state": "HOMI Context#15:0",
+      "slideIndex": "15",
+      "stepIndex": "0",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s16-scene-in",
+          "cls": "s16-scene",
+          "tag": "DIV",
+          "text": "La misma pregunta. Distinto contexto. 9:41 Homi Asistente del hogar ¿E",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s16-phone-in",
+          "cls": "s16-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar ¿En qué te ayudo? Pedile algo a Homi…",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "¿En qué te ayudo?",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "persona": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "rect": [
+              745,
+              497,
+              270,
+              32
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "chips": [
+          {
+            "text": "",
+            "vis": false
+          },
+          {
+            "text": "",
+            "vis": false
+          },
+          {
+            "text": "",
+            "vis": false
+          }
+        ],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [
+          {
+            "text": "La misma pregunta.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          },
+          {
+            "text": "Distinto contexto.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          }
+        ],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "La misma pregunta.",
+          "Distinto contexto.",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "¿En qué te ayudo?",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S16_step01": {
+      "state": "HOMI Context#15:1",
+      "slideIndex": "15",
+      "stepIndex": "1",
+      "animationsRunning": 4,
+      "animations": [
+        {
+          "name": "s16-scene-in",
+          "cls": "s16-scene",
+          "tag": "DIV",
+          "text": "La misma pregunta. Distinto contexto. 9:41 Homi Asistente del hogar ¿Q",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s16-phone-in",
+          "cls": "s16-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar ¿Qué tengo que hacer hoy? J Juli Colegio",
+          "state": "finished",
+          "t": 420
+        },
+        {
+          "name": "homi-swap-in",
+          "cls": "homi-persona-swap",
+          "tag": "DIV",
+          "text": "J Juli Colegio",
+          "state": "finished",
+          "t": 420
+        },
+        {
+          "name": "homi-swap-in",
+          "cls": "homi-answer-swap",
+          "tag": "DIV",
+          "text": "Hoy tenés Educación Física a la mañana, llevar la autorización y la ta",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "¿Qué tengo que hacer hoy?",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "persona": [
+          {
+            "text": "J Juli Colegio",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "personaSwap": [
+          {
+            "text": "J Juli Colegio",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "0px"
+          }
+        ],
+        "proposal": [
+          {
+            "text": "Hoy tenés Educación Física a la mañana, llevar la autorización y la ta",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              371,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [
+          {
+            "text": "Hoy tenés Educación Física a la mañana, llevar la autorización y la ta",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "0px"
+          }
+        ],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "chips": [
+          {
+            "text": "",
+            "vis": false
+          },
+          {
+            "text": "",
+            "vis": false
+          },
+          {
+            "text": "",
+            "vis": false
+          }
+        ],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [
+          {
+            "text": "La misma pregunta.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          },
+          {
+            "text": "Distinto contexto.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          }
+        ],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "La misma pregunta.",
+          "Distinto contexto.",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "¿Qué tengo que hacer hoy?",
+          "J",
+          "Juli",
+          "Colegio",
+          "Hoy tenés Educación Física a la mañana, llevar la autorización y la tarea de Matemática.",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S16_step02": {
+      "state": "HOMI Context#15:2",
+      "slideIndex": "15",
+      "stepIndex": "2",
+      "animationsRunning": 4,
+      "animations": [
+        {
+          "name": "s16-scene-in",
+          "cls": "s16-scene",
+          "tag": "DIV",
+          "text": "La misma pregunta. Distinto contexto. 9:41 Homi Asistente del hogar ¿Q",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s16-phone-in",
+          "cls": "s16-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar ¿Qué tengo que hacer hoy? T Tomi Club Ho",
+          "state": "finished",
+          "t": 420
+        },
+        {
+          "name": "homi-swap-in",
+          "cls": "homi-persona-swap",
+          "tag": "DIV",
+          "text": "T Tomi Club",
+          "state": "finished",
+          "t": 420
+        },
+        {
+          "name": "homi-swap-in",
+          "cls": "homi-answer-swap",
+          "tag": "DIV",
+          "text": "Hoy tenés entrenamiento a las 17 h. Mamá te pasa a buscar a la salida.",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "¿Qué tengo que hacer hoy?",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "persona": [
+          {
+            "text": "T Tomi Club",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "personaSwap": [
+          {
+            "text": "T Tomi Club",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "0px"
+          }
+        ],
+        "proposal": [
+          {
+            "text": "Hoy tenés entrenamiento a las 17 h. Mamá te pasa a buscar a la salida.",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              371,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [
+          {
+            "text": "Hoy tenés entrenamiento a las 17 h. Mamá te pasa a buscar a la salida.",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "0px"
+          }
+        ],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "chips": [
+          {
+            "text": "",
+            "vis": false
+          },
+          {
+            "text": "",
+            "vis": false
+          },
+          {
+            "text": "",
+            "vis": false
+          }
+        ],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [
+          {
+            "text": "La misma pregunta.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          },
+          {
+            "text": "Distinto contexto.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          }
+        ],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "La misma pregunta.",
+          "Distinto contexto.",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "¿Qué tengo que hacer hoy?",
+          "T",
+          "Tomi",
+          "Club",
+          "Hoy tenés entrenamiento a las 17 h. Mamá te pasa a buscar a la salida.",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S16_step03": {
+      "state": "HOMI Context#15:3",
+      "slideIndex": "15",
+      "stepIndex": "3",
+      "animationsRunning": 4,
+      "animations": [
+        {
+          "name": "s16-scene-in",
+          "cls": "s16-scene",
+          "tag": "DIV",
+          "text": "La misma pregunta. Distinto contexto. 9:41 Homi Asistente del hogar ¿Q",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s16-phone-in",
+          "cls": "s16-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar ¿Qué tengo que hacer hoy? P Papá Hogar H",
+          "state": "finished",
+          "t": 420
+        },
+        {
+          "name": "homi-swap-in",
+          "cls": "homi-persona-swap",
+          "tag": "DIV",
+          "text": "P Papá Hogar",
+          "state": "finished",
+          "t": 420
+        },
+        {
+          "name": "homi-swap-in",
+          "cls": "homi-answer-swap",
+          "tag": "DIV",
+          "text": "Hoy: Internet ya está pago, revisá la lista de compras y confirmá al t",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "¿Qué tengo que hacer hoy?",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "persona": [
+          {
+            "text": "P Papá Hogar",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "personaSwap": [
+          {
+            "text": "P Papá Hogar",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "0px"
+          }
+        ],
+        "proposal": [
+          {
+            "text": "Hoy: Internet ya está pago, revisá la lista de compras y confirmá al t",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              371,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [
+          {
+            "text": "Hoy: Internet ya está pago, revisá la lista de compras y confirmá al t",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "0px"
+          }
+        ],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "chips": [
+          {
+            "text": "",
+            "vis": false
+          },
+          {
+            "text": "",
+            "vis": false
+          },
+          {
+            "text": "",
+            "vis": false
+          }
+        ],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [
+          {
+            "text": "La misma pregunta.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          },
+          {
+            "text": "Distinto contexto.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          }
+        ],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "La misma pregunta.",
+          "Distinto contexto.",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "¿Qué tengo que hacer hoy?",
+          "P",
+          "Papá",
+          "Hogar",
+          "Hoy: Internet ya está pago, revisá la lista de compras y confirmá al técnico.",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S16_step04": {
+      "state": "HOMI Context#15:4",
+      "slideIndex": "15",
+      "stepIndex": "4",
+      "animationsRunning": 4,
+      "animations": [
+        {
+          "name": "s16-scene-in",
+          "cls": "s16-scene",
+          "tag": "DIV",
+          "text": "La misma pregunta. Distinto contexto. 9:41 Homi Asistente del hogar ¿Q",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s16-phone-in",
+          "cls": "s16-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar ¿Qué tengo que hacer hoy? P Papá Hogar H",
+          "state": "finished",
+          "t": 420
+        },
+        {
+          "name": "homi-swap-in",
+          "cls": "homi-persona-swap",
+          "tag": "DIV",
+          "text": "P Papá Hogar",
+          "state": "finished",
+          "t": 420
+        },
+        {
+          "name": "homi-swap-in",
+          "cls": "homi-answer-swap",
+          "tag": "DIV",
+          "text": "Hoy: Internet ya está pago, revisá la lista de compras y confirmá al t",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "tf": "matrix(1, 0, 0, 1, 0, 10)",
+            "translate": "none"
+          }
+        ],
+        "userBubble": [
+          {
+            "text": "¿Qué tengo que hacer hoy?",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "persona": [
+          {
+            "text": "P Papá Hogar",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "none"
+          }
+        ],
+        "personaSwap": [
+          {
+            "text": "P Papá Hogar",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "0px"
+          }
+        ],
+        "proposal": [
+          {
+            "text": "Hoy: Internet ya está pago, revisá la lista de compras y confirmá al t",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              371,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [
+          {
+            "text": "Hoy: Internet ya está pago, revisá la lista de compras y confirmá al t",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "translate": "0px"
+          }
+        ],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [
+          {
+            "text": "Basado en tu contexto Calendario Tareas Pagos",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "chips": [
+          {
+            "text": "Calendario",
+            "vis": true
+          },
+          {
+            "text": "Tareas",
+            "vis": true
+          },
+          {
+            "text": "Pagos",
+            "vis": true
+          }
+        ],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [
+          {
+            "text": "La misma pregunta.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          },
+          {
+            "text": "Distinto contexto.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "56px"
+          }
+        ],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "La misma pregunta.",
+          "Distinto contexto.",
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "¿Qué tengo que hacer hoy?",
+          "P",
+          "Papá",
+          "Hogar",
+          "Hoy: Internet ya está pago, revisá la lista de compras y confirmá al técnico.",
+          "Basado en tu contexto",
+          "Calendario",
+          "Tareas",
+          "Pagos",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S17_step00": {
+      "state": "Human Control#16:0",
+      "slideIndex": "16",
+      "stepIndex": "0",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s17-scene-in",
+          "cls": "s17-scene",
+          "tag": "DIV",
+          "text": "Homi interpreta y propone. 9:41 Homi Asistente del hogar Puedo mover e",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s17-phone-in",
+          "cls": "s17-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar Puedo mover el entrenamiento de Tomi una",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [],
+        "userBubble": [],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "Puedo mover el entrenamiento de Tomi una hora más tarde y avisar a la ",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              274,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "dismiss": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "1"
+          }
+        ],
+        "decisionRow": [
+          {
+            "vis": false,
+            "op": "0",
+            "scrollH": 64,
+            "clientH": 54
+          }
+        ],
+        "done": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "context": [],
+        "chips": [],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [
+          {
+            "text": "Homi interpreta y propone.",
+            "vis": true,
+            "op": "1",
+            "color": "rgb(245, 241, 235)"
+          }
+        ],
+        "s17res": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "fontSize": "84px"
+          }
+        ],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "Puedo mover el entrenamiento de Tomi una hora más tarde y avisar a la familia.",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S17_step01": {
+      "state": "Human Control#16:1",
+      "slideIndex": "16",
+      "stepIndex": "1",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s17-scene-in",
+          "cls": "s17-scene",
+          "tag": "DIV",
+          "text": "Homi interpreta y propone. 9:41 Homi Asistente del hogar Puedo mover e",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s17-phone-in",
+          "cls": "s17-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar Puedo mover el entrenamiento de Tomi una",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [],
+        "userBubble": [],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "Puedo mover el entrenamiento de Tomi una hora más tarde y avisar a la ",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              274,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [
+          {
+            "text": "Confirmar",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "dismiss": [
+          {
+            "text": "Ahora no",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "decisionRow": [
+          {
+            "vis": true,
+            "op": "1",
+            "scrollH": 54,
+            "clientH": 54
+          }
+        ],
+        "done": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "context": [],
+        "chips": [],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [
+          {
+            "text": "Homi interpreta y propone.",
+            "vis": true,
+            "op": "1",
+            "color": "rgb(245, 241, 235)"
+          }
+        ],
+        "s17res": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "fontSize": "84px"
+          }
+        ],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "Puedo mover el entrenamiento de Tomi una hora más tarde y avisar a la familia.",
+          "Confirmar",
+          "Ahora no",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S17_step02": {
+      "state": "Human Control#16:2",
+      "slideIndex": "16",
+      "stepIndex": "2",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s17-scene-in",
+          "cls": "s17-scene",
+          "tag": "DIV",
+          "text": "Homi interpreta y propone. La decisión es nuestra. 9:41 Homi Asistente",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s17-phone-in",
+          "cls": "s17-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar Puedo mover el entrenamiento de Tomi una",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [],
+        "userBubble": [],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "Puedo mover el entrenamiento de Tomi una hora más tarde y avisar a la ",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              274,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [
+          {
+            "text": "Confirmar",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "dismiss": [
+          {
+            "text": "Ahora no",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "decisionRow": [
+          {
+            "vis": true,
+            "op": "1",
+            "scrollH": 54,
+            "clientH": 54
+          }
+        ],
+        "done": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "context": [],
+        "chips": [],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [
+          {
+            "text": "Homi interpreta y propone.",
+            "vis": true,
+            "op": "0.4",
+            "color": "rgb(245, 241, 235)"
+          }
+        ],
+        "s17res": [
+          {
+            "text": "La decisión es nuestra.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "84px"
+          }
+        ],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "Puedo mover el entrenamiento de Tomi una hora más tarde y avisar a la familia.",
+          "Confirmar",
+          "Ahora no",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S17_step03": {
+      "state": "Human Control#16:3",
+      "slideIndex": "16",
+      "stepIndex": "3",
+      "animationsRunning": 2,
+      "animations": [
+        {
+          "name": "s17-scene-in",
+          "cls": "s17-scene",
+          "tag": "DIV",
+          "text": "Homi interpreta y propone. La decisión es nuestra. 9:41 Homi Asistente",
+          "state": "finished",
+          "t": 320
+        },
+        {
+          "name": "s17-phone-in",
+          "cls": "s17-phone-motion",
+          "tag": "DIV",
+          "text": "9:41 Homi Asistente del hogar Puedo mover el entrenamiento de Tomi una",
+          "state": "finished",
+          "t": 420
+        }
+      ],
+      "homi": {
+        "greeting": [],
+        "userBubble": [],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [
+          {
+            "text": "Puedo mover el entrenamiento de Tomi una hora más tarde y avisar a la ",
+            "vis": true,
+            "op": "1",
+            "tf": "none",
+            "rect": [
+              745,
+              274,
+              270,
+              147
+            ]
+          }
+        ],
+        "answerSwap": [],
+        "confirm": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "dismiss": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "1"
+          }
+        ],
+        "decisionRow": [
+          {
+            "vis": false,
+            "op": "0",
+            "scrollH": 64,
+            "clientH": 54
+          }
+        ],
+        "done": [
+          {
+            "text": "Confirmado Entrenamiento actualizado · Avisé a la familia",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "context": [],
+        "chips": [],
+        "composer": [
+          {
+            "text": "Pedile algo a Homi…",
+            "vis": true
+          }
+        ],
+        "assistantSub": [
+          {
+            "text": "Asistente del hogar",
+            "vis": true
+          }
+        ]
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [
+          {
+            "text": "Homi interpreta y propone.",
+            "vis": true,
+            "op": "0.4",
+            "color": "rgb(245, 241, 235)"
+          }
+        ],
+        "s17res": [
+          {
+            "text": "La decisión es nuestra.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "84px"
+          }
+        ],
+        "s15title": [],
+        "s18brand": [],
+        "s18team": [],
+        "s18member": [],
+        "s18thanks": [],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "9:41",
+          "Homi",
+          "Asistente del hogar",
+          "Puedo mover el entrenamiento de Tomi una hora más tarde y avisar a la familia.",
+          "Confirmado",
+          "Entrenamiento actualizado · Avisé a la familia",
+          "Pedile algo a Homi…"
+        ]
+      },
+      "phone": {
+        "box": [
+          718,
+          25,
+          324,
+          670
+        ],
+        "transform": "matrix(1.08, 0, 0, 1.08, 0, 0)"
+      },
+      "phoneCount": 1
+    },
+    "S18_step00": {
+      "state": "Closing#17:0",
+      "slideIndex": "17",
+      "stepIndex": "0",
+      "animationsRunning": 1,
+      "animations": [
+        {
+          "name": "s18-veil-in",
+          "cls": "s18-closing",
+          "tag": "DIV",
+          "text": "",
+          "state": "finished",
+          "t": 220
+        }
+      ],
+      "homi": {
+        "greeting": [],
+        "userBubble": [],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [],
+        "answerSwap": [],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [],
+        "chips": [],
+        "composer": [],
+        "assistantSub": []
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [
+          {
+            "vis": false,
+            "op": "0",
+            "scale": "0.96"
+          }
+        ],
+        "s18team": [
+          {
+            "vis": false,
+            "op": "0",
+            "text": ""
+          }
+        ],
+        "s18member": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          },
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          },
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          },
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "s18thanks": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "fontSize": "76px"
+          }
+        ],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": []
+      },
+      "phone": null,
+      "phoneCount": 0
+    },
+    "S18_step01": {
+      "state": "Closing#17:1",
+      "slideIndex": "17",
+      "stepIndex": "1",
+      "animationsRunning": 1,
+      "animations": [
+        {
+          "name": "s18-veil-in",
+          "cls": "s18-closing",
+          "tag": "DIV",
+          "text": "HomePlus",
+          "state": "finished",
+          "t": 220
+        }
+      ],
+      "homi": {
+        "greeting": [],
+        "userBubble": [],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [],
+        "answerSwap": [],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [],
+        "chips": [],
+        "composer": [],
+        "assistantSub": []
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [
+          {
+            "vis": true,
+            "op": "1",
+            "scale": "1"
+          }
+        ],
+        "s18team": [
+          {
+            "vis": false,
+            "op": "0",
+            "text": ""
+          }
+        ],
+        "s18member": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          },
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          },
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          },
+          {
+            "text": "",
+            "vis": false,
+            "op": "0"
+          }
+        ],
+        "s18thanks": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "fontSize": "76px"
+          }
+        ],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "HomePlus"
+        ]
+      },
+      "phone": null,
+      "phoneCount": 0
+    },
+    "S18_step02": {
+      "state": "Closing#17:2",
+      "slideIndex": "17",
+      "stepIndex": "2",
+      "animationsRunning": 1,
+      "animations": [
+        {
+          "name": "s18-veil-in",
+          "cls": "s18-closing",
+          "tag": "DIV",
+          "text": "HomePlus BG Bernardo Gimenez BD Benjamin Duarte GB Gabriel Bazan ME Ma",
+          "state": "finished",
+          "t": 220
+        }
+      ],
+      "homi": {
+        "greeting": [],
+        "userBubble": [],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [],
+        "answerSwap": [],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [],
+        "chips": [],
+        "composer": [],
+        "assistantSub": []
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [
+          {
+            "vis": true,
+            "op": "1",
+            "scale": "1"
+          }
+        ],
+        "s18team": [
+          {
+            "vis": true,
+            "op": "1",
+            "text": "BG Bernardo Gimenez BD Benjamin Duarte GB Gabriel Bazan ME Maximo Eche"
+          }
+        ],
+        "s18member": [
+          {
+            "text": "BG Bernardo Gimenez",
+            "vis": true,
+            "op": "1"
+          },
+          {
+            "text": "BD Benjamin Duarte",
+            "vis": true,
+            "op": "1"
+          },
+          {
+            "text": "GB Gabriel Bazan",
+            "vis": true,
+            "op": "1"
+          },
+          {
+            "text": "ME Maximo Echezarreta",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "s18thanks": [
+          {
+            "text": "",
+            "vis": false,
+            "op": "0",
+            "fontSize": "76px"
+          }
+        ],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "HomePlus",
+          "BG",
+          "Bernardo Gimenez",
+          "BD",
+          "Benjamin Duarte",
+          "GB",
+          "Gabriel Bazan",
+          "ME",
+          "Maximo Echezarreta"
+        ]
+      },
+      "phone": null,
+      "phoneCount": 0
+    },
+    "S18_step03": {
+      "state": "Closing#17:3",
+      "slideIndex": "17",
+      "stepIndex": "3",
+      "animationsRunning": 1,
+      "animations": [
+        {
+          "name": "s18-veil-in",
+          "cls": "s18-closing",
+          "tag": "DIV",
+          "text": "HomePlus BG Bernardo Gimenez BD Benjamin Duarte GB Gabriel Bazan ME Ma",
+          "state": "finished",
+          "t": 220
+        }
+      ],
+      "homi": {
+        "greeting": [],
+        "userBubble": [],
+        "persona": [],
+        "personaSwap": [],
+        "proposal": [],
+        "answerSwap": [],
+        "confirm": [],
+        "dismiss": [],
+        "decisionRow": [],
+        "done": [],
+        "context": [],
+        "chips": [],
+        "composer": [],
+        "assistantSub": []
+      },
+      "stage": {
+        "idea": [],
+        "s17line": [],
+        "s17res": [],
+        "s15title": [],
+        "s18brand": [
+          {
+            "vis": true,
+            "op": "1",
+            "scale": "1"
+          }
+        ],
+        "s18team": [
+          {
+            "vis": true,
+            "op": "1",
+            "text": "BG Bernardo Gimenez BD Benjamin Duarte GB Gabriel Bazan ME Maximo Eche"
+          }
+        ],
+        "s18member": [
+          {
+            "text": "BG Bernardo Gimenez",
+            "vis": true,
+            "op": "1"
+          },
+          {
+            "text": "BD Benjamin Duarte",
+            "vis": true,
+            "op": "1"
+          },
+          {
+            "text": "GB Gabriel Bazan",
+            "vis": true,
+            "op": "1"
+          },
+          {
+            "text": "ME Maximo Echezarreta",
+            "vis": true,
+            "op": "1"
+          }
+        ],
+        "s18thanks": [
+          {
+            "text": "Muchas gracias.",
+            "vis": true,
+            "op": "1",
+            "fontSize": "76px"
+          }
+        ],
+        "sceneBg": {
+          "sel": "presentation-scene",
+          "bg": "rgba(0, 0, 0, 0)",
+          "htmlBg": "rgb(11, 9, 8)",
+          "bodyBg": "rgb(11, 9, 8)"
+        },
+        "visibleText": [
+          "HomePlus",
+          "BG",
+          "Bernardo Gimenez",
+          "BD",
+          "Benjamin Duarte",
+          "GB",
+          "Gabriel Bazan",
+          "ME",
+          "Maximo Echezarreta",
+          "Muchas gracias."
+        ]
+      },
+      "phone": null,
+      "phoneCount": 0
+    }
+  }
+}

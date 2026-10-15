@@ -1,0 +1,140 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "asset-detail",
+  "headings": [],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "x": 12,
+      "y": 87
+    },
+    {
+      "role": null,
+      "al": "Agregar a Casa Córdoba",
+      "t": "Agregar a Casa Córdoba",
+      "tid": null,
+      "x": 322,
+      "y": 157
+    },
+    {
+      "role": null,
+      "al": "Administrar Casa Córdoba",
+      "t": "Administrar Casa Córdoba",
+      "tid": null,
+      "x": 370,
+      "y": 157
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Editar",
+      "tid": null,
+      "x": 363,
+      "y": 219
+    },
+    {
+      "role": null,
+      "al": "Ver Seguro del hogar",
+      "t": "Seguro del hogar Seguro · hasta 1 ene 2027",
+      "tid": null,
+      "x": 21,
+      "y": 462
+    },
+    {
+      "role": null,
+      "al": "Ver Seguro de la oficina",
+      "t": "Seguro de la oficina Seguro · hasta 1 mar 2027",
+      "tid": null,
+      "x": 21,
+      "y": 523
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Ver toda la información (5)",
+      "tid": null,
+      "x": 12,
+      "y": 641
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nCasa Córdoba\nCasa\nPERSONAS Y UBICACIÓN\nEditar\nEstá en Córdoba 1234, 2° piso\nA cargo de Mariana\nPRÓXIMO\nNada pendiente\nDATOS Y DOCUMENTOS\nSeguro del hogar\nSeguro · hasta 1 ene 2027\nSeguro de la oficina\nSeguro · hasta 1 mar 2027\nDirección\nCórdoba 1234, 2° piso\nVer toda la información (5)"
+}

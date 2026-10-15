@@ -1,0 +1,280 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "homecloud",
+  "headings": [],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "x": 12,
+      "y": 81
+    },
+    {
+      "role": "radio",
+      "al": "Archivos",
+      "t": "Archivos",
+      "tid": null,
+      "x": 24,
+      "y": 148
+    },
+    {
+      "role": "radio",
+      "al": "Recuerdos",
+      "t": "Recuerdos",
+      "tid": null,
+      "x": 215,
+      "y": 148
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "",
+      "tid": null,
+      "x": 20,
+      "y": 196
+    },
+    {
+      "role": null,
+      "al": "Ordenar",
+      "t": "Ordenar",
+      "tid": null,
+      "x": 270,
+      "y": 200
+    },
+    {
+      "role": null,
+      "al": "Agregar a Archivos",
+      "t": "Agregar a Archivos",
+      "tid": null,
+      "x": 318,
+      "y": 200
+    },
+    {
+      "role": null,
+      "al": "Más opciones",
+      "t": "Más opciones",
+      "tid": null,
+      "x": 366,
+      "y": 200
+    },
+    {
+      "role": null,
+      "al": "Ver subidas (1 en curso)",
+      "t": "1 subida",
+      "tid": null,
+      "x": 20,
+      "y": 256
+    },
+    {
+      "role": "button",
+      "al": "Carpeta Casa",
+      "t": "Casa ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 324
+    },
+    {
+      "role": null,
+      "al": "Opciones de la carpeta Casa",
+      "t": "⋯",
+      "tid": null,
+      "x": 170,
+      "y": 469
+    },
+    {
+      "role": "button",
+      "al": "Carpeta Auto",
+      "t": "Auto ⋯",
+      "tid": null,
+      "x": 221,
+      "y": 324
+    },
+    {
+      "role": null,
+      "al": "Opciones de la carpeta Auto",
+      "t": "⋯",
+      "tid": null,
+      "x": 371,
+      "y": 469
+    },
+    {
+      "role": "button",
+      "al": "Factura del mes",
+      "t": "Subiendo… Factura del mes ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 522
+    },
+    {
+      "role": null,
+      "al": "Opciones de Factura del mes",
+      "t": "⋯",
+      "tid": null,
+      "x": 170,
+      "y": 668
+    },
+    {
+      "role": "button",
+      "al": "Claves wifi",
+      "t": "Claves wifi ⋯",
+      "tid": null,
+      "x": 221,
+      "y": 522
+    },
+    {
+      "role": null,
+      "al": "Opciones de Claves wifi",
+      "t": "⋯",
+      "tid": null,
+      "x": 371,
+      "y": 668
+    },
+    {
+      "role": "button",
+      "al": "Presupuesto detallado de la reforma del baño con materiales y mano de obra incluida",
+      "t": "Presupuesto detallado de la reforma del baño con materiales y mano de ",
+      "tid": null,
+      "x": 20,
+      "y": 721
+    },
+    {
+      "role": null,
+      "al": "Opciones de Presupuesto detallado de la reforma del baño con materiales y mano de obra incluida",
+      "t": "⋯",
+      "tid": null,
+      "x": 170,
+      "y": 866
+    },
+    {
+      "role": "button",
+      "al": "Video del portero eléctrico",
+      "t": "00:42 Video del portero eléctrico ⋯",
+      "tid": null,
+      "x": 221,
+      "y": 721
+    },
+    {
+      "role": null,
+      "al": "Opciones de Video del portero eléctrico",
+      "t": "⋯",
+      "tid": null,
+      "x": 371,
+      "y": 866
+    },
+    {
+      "role": "button",
+      "al": "Frente de la casa",
+      "t": "Frente de la casa ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 927
+    },
+    {
+      "role": null,
+      "al": "Opciones de Frente de la casa",
+      "t": "⋯",
+      "tid": null,
+      "x": 170,
+      "y": 1072
+    },
+    {
+      "role": "button",
+      "al": "Garantía lavarropas",
+      "t": "Garantía lavarropas ⋯",
+      "tid": null,
+      "x": 221,
+      "y": 927
+    },
+    {
+      "role": null,
+      "al": "Opciones de Garantía lavarropas",
+      "t": "⋯",
+      "tid": null,
+      "x": 371,
+      "y": 1072
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "homecloud-screen",
+    "homecloud-header",
+    "homecloud-tabs",
+    "homecloud-tabs-thumb",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nHomeCloud\nArchivos\nRecuerdos\n1 subida\nCARPETAS\nCasa\n⋯\nAuto\n⋯\nSubiendo…\nFactura del mes\n⋯\nClaves wifi\n⋯\nPresupuesto detallado de la reforma del baño con materiales y mano de obra incluida\n⋯\n00:42\nVideo del portero eléctrico\n⋯\nFrente de la casa\n⋯\nGarantía lavarropas\n⋯"
+}

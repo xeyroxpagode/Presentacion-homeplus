@@ -1,0 +1,41 @@
+SESSION 1 — MEASUREMENT METHOD DEFECTS FOUND AND FIXED
+Recorded so that no number in audit/01_RUNTIME_BASELINE.md derives from a defective probe.
+
+D1 — DOM path identity truncated at depth 12.
+  File: _tooling/probe.mjs, function pathOf()
+  Symptom: every node deeper than 12 levels shared one path string, so element-by-element
+           diffing reported false positives (25-42 "moved" SVG nodes per state) and false
+           absences (onlyFwd/onlyBack always 0).
+  Impact: invalidated the first forward walk, backward walk and restoration analysis.
+  Fix: depth limit 12 -> 40.
+  Re-run: walk.mjs (85 states), walk-back.mjs (85 states), analyze3.mjs.
+  Discarded figure: "31 / 85 states with differences" (first pass, text-key based).
+  Accepted figure: "34 / 85 states with differences, 1 visible-level" (see
+           data/restoration.json, data/restoration-table.md).
+
+D2 — Text/class key collision across SVG primitives.
+  File: _tooling/motion.mjs, function keyOf()
+  Symptom: keys were `tag.class|text`; every <path>, <rect>, <circle>, <g>, <svg> resolved to
+           `path.|`, `rect.|` etc., so Map lookups collapsed dozens of distinct nodes into one.
+  Impact: invalidated the first motion capture's layoutChanged detection, e.g. a bogus
+           "attention-element-content 1104x580 -> 290x352" on all 22 opening transitions.
+  Fix: key = `tag.class[childIndex.ChildIndex...]|textPrefix`, no depth truncation.
+  Re-run: motion.mjs (84 transitions x 5 frames), analyze2.mjs.
+  Discarded figure: "63 / 84 transitions with geometry delta".
+  Accepted figure: "9 / 84 transitions where an animating element changed
+           clientWidth/clientHeight/scrollWidth/scrollHeight" (see data/motion-summary.json).
+
+D3 — Font sizes sorted with Number() on CSS length strings.
+  File: _tooling/analyze4.mjs
+  Symptom: Object.keys(sizes).map(Number) produced NaN for values like "12px".
+  Impact: §5.5 typography table unusable on first pass.
+  Fix: map(parseFloat).
+
+RETAINED LIMIT (not a defect, a scope boundary):
+  The motion sampler tracks only elements with a non-"none" transform, opacity < 1, or a class
+  matching /phone|demo-screen|presentation-canvas|presentation-scene|attention-element/.
+  Elements outside that filter do not appear in motion layoutChanged.
+  Concrete consequence: S05_step01 -> S05_step02 reports layoutChanged = 0 in section 4.3,
+  while the stable-state scan (probe.mjs, full inventory) measures .planner-tab "Calendario"
+  clientWidth 82 -> 137 for the same transition (section 5.4).
+  Section 4.3 must always be read together with section 5.4.

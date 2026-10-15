@@ -1,0 +1,1107 @@
+{
+  "scene": {
+    "slideId": "S01",
+    "slideIndex": "0",
+    "stepIndex": "0"
+  },
+  "errors": [],
+  "warnings": [],
+  "treeCount": 73,
+  "tree": [
+    {
+      "depth": 0,
+      "tag": "main",
+      "cls": "presentation-viewport",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "hidden",
+      "text": ""
+    },
+    {
+      "depth": 1,
+      "tag": "div",
+      "cls": "presentation-canvas",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "opacity": "1",
+      "transform": "matrix(1, 0, 0, 1, -640, -360)",
+      "overflow": "hidden",
+      "text": ""
+    },
+    {
+      "depth": 2,
+      "tag": "section",
+      "cls": "presentation-scene",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 3,
+      "tag": "div",
+      "cls": "opening-to-home",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 4,
+      "tag": "div",
+      "cls": "opening-sequence",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "ambient-glow opening-stage-light",
+      "box": [
+        210,
+        81,
+        920,
+        598
+      ],
+      "opacity": "0.075",
+      "transform": "matrix(1, 0, 0, 1, -460, -299)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "ambient-glow opening-chaos-light",
+      "box": [
+        530,
+        219,
+        620,
+        403
+      ],
+      "opacity": "0",
+      "transform": "matrix(1, 0, 0, 1, -310, -201.5)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "ambient-glow opening-brand-depth",
+      "box": [
+        60,
+        243,
+        700,
+        455
+      ],
+      "opacity": "0",
+      "transform": "matrix(1, 0, 0, 1, -350, -227.5)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "chaos-scene opening-layer",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "opacity": "1",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        488,
+        158,
+        304,
+        370
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        475,
+        95,
+        331,
+        388
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.964686, -0.101393, 0.101393, 0.964686, 0, -54)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        495,
+        168,
+        290,
+        352
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        485,
+        108,
+        310,
+        365
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.966309, 0.0845411, -0.0845411, 0.966309, 0, -54)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        154,
+        152,
+        466,
+        89
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        161,
+        160,
+        451,
+        109
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.958684, -0.0502425, 0.0502425, 0.958684, 0, 18)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        754,
+        222,
+        376,
+        89
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        760,
+        232,
+        365,
+        104
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.958684, 0.0502425, -0.0502425, 0.958684, 0, 18)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        716,
+        72,
+        358,
+        74
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        722,
+        86,
+        346,
+        83
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.959415, -0.0335035, 0.0335035, 0.959415, 0, 18)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        105,
+        378,
+        366,
+        89
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        111,
+        392,
+        354,
+        98
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.959415, 0.0335035, -0.0335035, 0.959415, 0, 18)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        580,
+        518,
+        444,
+        89
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        588,
+        530,
+        429,
+        100
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.959415, -0.0335035, 0.0335035, 0.959415, 0, 18)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        514,
+        352,
+        596,
+        138
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        525,
+        368,
+        574,
+        143
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.959854, -0.0167543, 0.0167543, 0.959854, 0, 18)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        150,
+        556,
+        324,
+        74
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        155,
+        567,
+        314,
+        87
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.958684, 0.0502425, -0.0502425, 0.958684, 0, 18)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "attention-element",
+      "box": [
+        88,
+        62,
+        1104,
+        580
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "attention-element-content",
+      "box": [
+        110,
+        92,
+        1060,
+        557
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.96, 0, 0, 0.96, 0, 18)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "fragmented-scene opening-layer",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "opacity": "0",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "ambient-glow metrics-zero-light",
+      "box": [
+        674,
+        199,
+        540,
+        351
+      ],
+      "opacity": "0",
+      "transform": "matrix(1, 0, 0, 1, -270, -175.5)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "h1",
+      "cls": "information-statement",
+      "box": [
+        260,
+        284,
+        760,
+        170
+      ],
+      "opacity": "0",
+      "transform": "matrix(1, 0, 0, 1, -380, -76.3172)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "br",
+      "cls": "",
+      "box": [
+        887,
+        273,
+        0,
+        106
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "service-icon",
+      "box": [
+        253,
+        150,
+        82,
+        82
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.873441, -0.107245, 0.107245, 0.873441, -42, -28)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "img",
+      "cls": "",
+      "box": [
+        253,
+        150,
+        82,
+        82
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "clip",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "service-icon",
+      "box": [
+        954,
+        141,
+        83,
+        83
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.871436, 0.122472, -0.122472, 0.871436, -42, -28)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "img",
+      "cls": "",
+      "box": [
+        954,
+        141,
+        83,
+        83
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "clip",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "service-icon",
+      "box": [
+        150,
+        364,
+        80,
+        80
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.876651, -0.0766971, 0.0766971, 0.876651, -42, -28)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "img",
+      "cls": "",
+      "box": [
+        150,
+        364,
+        80,
+        80
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "clip",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "service-icon",
+      "box": [
+        1039,
+        380,
+        81,
+        81
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.875179, 0.091985, -0.091985, 0.875179, -42, -28)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "img",
+      "cls": "",
+      "box": [
+        1039,
+        380,
+        81,
+        81
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "clip",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "service-icon",
+      "box": [
+        307,
+        555,
+        79,
+        79
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.877856, 0.0613857, -0.0613857, 0.877856, -42, -28)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "img",
+      "cls": "",
+      "box": [
+        307,
+        555,
+        79,
+        79
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "clip",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "service-icon",
+      "box": [
+        897,
+        562,
+        79,
+        79
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.877856, -0.0613857, 0.0613857, 0.877856, -42, -28)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "img",
+      "cls": "",
+      "box": [
+        897,
+        562,
+        79,
+        79
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "clip",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "family-center",
+      "box": [
+        512,
+        345,
+        256,
+        90
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.9, 0, 0, 0.9, -142, -50)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "img",
+      "cls": "",
+      "box": [
+        512,
+        345,
+        256,
+        90
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "clip",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "fragmented-metrics",
+      "box": [
+        235,
+        287,
+        810,
+        217
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.96, 0, 0, 0.96, 0, 18)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "fragmented-metric",
+      "box": [
+        235,
+        287,
+        227,
+        217
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "fragmented-metric",
+      "box": [
+        527,
+        287,
+        227,
+        217
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "fragmented-metric",
+      "box": [
+        819,
+        287,
+        227,
+        217
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "opening-blackout",
+      "box": [
+        0,
+        0,
+        1280,
+        720
+      ],
+      "opacity": "0",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "homeplus-reveal opening-layer",
+      "box": [
+        26,
+        26,
+        1229,
+        691
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.96, 0, 0, 0.96, 0, 12)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "homeplus-signature",
+      "box": [
+        478,
+        235,
+        324,
+        275
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "img",
+      "cls": "homeplus-logo ",
+      "box": [
+        542,
+        235,
+        196,
+        196
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "clip",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "h1",
+      "cls": "",
+      "box": [
+        478,
+        434,
+        324,
+        75
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": "HomePlus"
+    },
+    {
+      "depth": 3,
+      "tag": "div",
+      "cls": "home-scene home-planner-sequence",
+      "box": [
+        26,
+        22,
+        1229,
+        691
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.96, 0, 0, 0.96, 0, 8)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 4,
+      "tag": "div",
+      "cls": "ambient-glow ",
+      "box": [
+        304,
+        119,
+        826,
+        537
+      ],
+      "opacity": "0.18",
+      "transform": "matrix(1, 0, 0, 1, -430, -279.5)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 4,
+      "tag": "div",
+      "cls": "home-phone-position",
+      "box": [
+        573,
+        70,
+        288,
+        595
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "phone-frame-slot ",
+      "box": [
+        573,
+        70,
+        288,
+        595
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "phone-frame",
+      "box": [
+        573,
+        70,
+        288,
+        595
+      ],
+      "opacity": "1",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "phone-frame-screen",
+      "box": [
+        581,
+        79,
+        271,
+        578
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "hidden",
+      "text": ""
+    },
+    {
+      "depth": 4,
+      "tag": "div",
+      "cls": "family-map-stage",
+      "box": [
+        26,
+        22,
+        0,
+        0
+      ],
+      "opacity": "0",
+      "transform": "none",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "family-map-glow ambient-glow",
+      "box": [
+        26,
+        22,
+        0,
+        0
+      ],
+      "opacity": "0",
+      "transform": "matrix(1, 0, 0, 1, 0, 0)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 5,
+      "tag": "div",
+      "cls": "family-map-surface",
+      "box": [
+        26,
+        22,
+        0,
+        0
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "hidden",
+      "text": ""
+    },
+    {
+      "depth": 6,
+      "tag": "div",
+      "cls": "map-demo-screen",
+      "box": [
+        26,
+        22,
+        0,
+        0
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "hidden",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "svg",
+      "cls": "map-local-geometry",
+      "box": [
+        26,
+        22,
+        0,
+        0
+      ],
+      "opacity": "1",
+      "transform": "none",
+      "overflow": "hidden",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "map-place map-school",
+      "box": [
+        -17,
+        15,
+        85,
+        29
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.96, 0, 0, 0.96, -45.8984, -8)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "map-place map-club",
+      "box": [
+        -5,
+        5,
+        61,
+        50
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "map-delay",
+      "box": [
+        -16,
+        5,
+        83,
+        50
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.96, 0, 0, 0.96, -45.125, -19.1484)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "map-person map-mom",
+      "box": [
+        0,
+        7,
+        51,
+        45
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.96, 0, 0, 0.96, -27.8438, -16.5938)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "div",
+      "cls": "map-person map-dad",
+      "box": [
+        3,
+        7,
+        45,
+        45
+      ],
+      "opacity": "0",
+      "transform": "matrix(0.96, 0, 0, 0.96, -24.3984, -16.5938)",
+      "overflow": "visible",
+      "text": ""
+    },
+    {
+      "depth": 7,
+      "tag": "span",
+      "cls": "map-sharing",
+      "box": [
+        26,
+        9,
+        103,
+        13
+      ],
+      "opacity": "0",
+      "transform": "none",
+      "overflow": "visible",
+      "text": "Ubicaciones compartidas"
+    }
+  ]
+}

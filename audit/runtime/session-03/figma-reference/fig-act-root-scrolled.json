@@ -1,0 +1,244 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "activos",
+  "headings": [],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "x": 12,
+      "y": 87
+    },
+    {
+      "role": null,
+      "al": "Agregar activo",
+      "t": "Agregar activo",
+      "tid": null,
+      "x": 374,
+      "y": 87
+    },
+    {
+      "role": null,
+      "al": "Buscar por nombre, persona o lugar…",
+      "t": "Buscar por nombre, persona o lugar…",
+      "tid": null,
+      "x": 20,
+      "y": -174
+    },
+    {
+      "role": null,
+      "al": "Todos, seleccionado",
+      "t": "Todos",
+      "tid": null,
+      "x": 20,
+      "y": -110
+    },
+    {
+      "role": null,
+      "al": "Objetos",
+      "t": "Objetos",
+      "tid": null,
+      "x": 117,
+      "y": -110
+    },
+    {
+      "role": null,
+      "al": "Vehículos",
+      "t": "Vehículos",
+      "tid": null,
+      "x": 203,
+      "y": -110
+    },
+    {
+      "role": null,
+      "al": "Mascotas",
+      "t": "Mascotas",
+      "tid": null,
+      "x": 300,
+      "y": -110
+    },
+    {
+      "role": null,
+      "al": "Propiedades",
+      "t": "Propiedades",
+      "tid": null,
+      "x": 398,
+      "y": -110
+    },
+    {
+      "role": null,
+      "al": "Ver Casa Córdoba",
+      "t": "Casa Córdoba Está en Córdoba 1234, 2° piso",
+      "tid": null,
+      "x": 21,
+      "y": -57
+    },
+    {
+      "role": null,
+      "al": "Ver Generador eléctrico industrial trifásico 380V 60kVA con挽回 de combustible y sistema de arranque automático",
+      "t": "Generador eléctrico industrial trifásico 380V 60kVA con挽回 de combustib",
+      "tid": null,
+      "x": 21,
+      "y": 8
+    },
+    {
+      "role": null,
+      "al": "Ver Impresora HP",
+      "t": "Impresora HP Inactivo Está en Estudio",
+      "tid": null,
+      "x": 21,
+      "y": 73
+    },
+    {
+      "role": null,
+      "al": "Ver Lámpara del living",
+      "t": "Lámpara del living",
+      "tid": null,
+      "x": 21,
+      "y": 138
+    },
+    {
+      "role": null,
+      "al": "Ver Moto G nuevo",
+      "t": "Moto G nuevo Está en Casa",
+      "tid": null,
+      "x": 21,
+      "y": 203
+    },
+    {
+      "role": null,
+      "al": "Ver Notebook de trabajo",
+      "t": "Notebook de trabajo Trabajo",
+      "tid": null,
+      "x": 21,
+      "y": 268
+    },
+    {
+      "role": null,
+      "al": "Ver PlayStation 5",
+      "t": "PlayStation 5 Ahora con Tomi",
+      "tid": null,
+      "x": 21,
+      "y": 333
+    },
+    {
+      "role": null,
+      "al": "Ver Taladro Bosch",
+      "t": "Taladro Bosch Ahora con Martín — vecino",
+      "tid": null,
+      "x": 21,
+      "y": 398
+    },
+    {
+      "role": null,
+      "al": "Ver Toby",
+      "t": "Toby Ahora con Juan",
+      "tid": null,
+      "x": 21,
+      "y": 463
+    },
+    {
+      "role": null,
+      "al": "Ver Toyota Corolla",
+      "t": "Toyota Corolla AA123BB · 2022",
+      "tid": null,
+      "x": 21,
+      "y": 528
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Archivados 1 · conservan su historia",
+      "tid": null,
+      "x": 20,
+      "y": 618
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Papelera 1 · solo duplicados o errores",
+      "tid": null,
+      "x": 20,
+      "y": 671
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nActivos\nObjetos, vehículos, mascotas y propiedades importantes\nTodos\nObjetos\nVehículos\nMascotas\nPropiedades\nCasa Córdoba\nEstá en Córdoba 1234, 2° piso\nGenerador eléctrico industrial trifásico 380V 60kVA con挽回 de combustible y sistema de arranque automático\nEstá en Galpón del fondo\nImpresora HP\nInactivo\nEstá en Estudio\nLámpara del living\nMoto G nuevo\nEstá en Casa\nNotebook de trabajo\nTrabajo\nPlayStation 5\nAhora con Tomi\nTaladro Bosch\nAhora con Martín — vecino\nToby\nAhora con Juan\nToyota Corolla\nAA123BB · 2022\nArchivados\n1 · conservan su historia\nPapelera\n1 · solo duplicados o errores"
+}

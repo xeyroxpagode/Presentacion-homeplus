@@ -1,0 +1,274 @@
+{
+  "navScreenId": "calendario",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Planner",
+      "fs": "24px"
+    }
+  ],
+  "tabs": [
+    {
+      "text": "Tareas",
+      "al": "Tareas",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Calendario",
+      "al": "Calendario",
+      "selected": "true",
+      "fs": "16px"
+    },
+    {
+      "text": "Planes",
+      "al": "Planes",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Inicio",
+      "al": "Ir a Inicio",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Familia",
+      "al": "Ir a Familia",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Calendario",
+      "al": "Ir a Calendario",
+      "selected": "true",
+      "fs": "16px"
+    },
+    {
+      "text": "Abrir Más opciones",
+      "al": "Abrir Más opciones",
+      "selected": "false",
+      "fs": "16px"
+    }
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nPlanner\nTareas\nCalendario\nPlanes\n28 SEP – 4 OCT\nL\n28\nM\n29\nX\n30\nJ\n1\nV\n2\nS\n3\nD\n4\nHorarios\nTODO EL DÍA · 1\nCumpleaños de la abuela\nG\nGabriel\n·\nJuan\n·\nTomi\n·\nMartina\n08:00\nColegio de Tomi\nT\nTomi\nhasta 13:00\n09:00\nOcupado\nG\nGabriel\nhasta 18:00\n10:00\nFeria del barrio\nM\nMariana\n·\nMartina\nPlaza San Martín · hasta 13:00\n12:30\nClase de piano de Martina\nMa\nMartina\nhasta 13:30\n13:30\nDentista de Martina\nM\nMariana\n·\nMartina\nConsultorio Dr. López · hasta 14:30\n20:30\nCena con los abuelos\nG\nGabriel\n·\nMariana\nhasta 22:00",
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "role": null,
+      "y": 11
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Opciones del Planner",
+      "t": "Opciones del Planner",
+      "role": null,
+      "y": 73
+    },
+    {
+      "al": "Tareas",
+      "t": "Tareas",
+      "role": "tab",
+      "y": 121
+    },
+    {
+      "al": "Calendario",
+      "t": "Calendario",
+      "role": "tab",
+      "y": 121
+    },
+    {
+      "al": "Planes",
+      "t": "Planes",
+      "role": "tab",
+      "y": 121
+    },
+    {
+      "al": "Familia",
+      "t": "Familia",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": "Semana anterior",
+      "t": "Semana anterior",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": "Elegir el día",
+      "t": "28 SEP – 4 OCT",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": "Semana siguiente",
+      "t": "Semana siguiente",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": "Nuevo evento",
+      "t": "Nuevo evento",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": "L 28 · 7 cosas",
+      "t": "L 28",
+      "role": null,
+      "y": 213
+    },
+    {
+      "al": "M 29 · 8 cosas",
+      "t": "M 29",
+      "role": null,
+      "y": 213
+    },
+    {
+      "al": "X 30 · 4 cosas",
+      "t": "X 30",
+      "role": null,
+      "y": 213
+    },
+    {
+      "al": "J 1 · 7 cosas",
+      "t": "J 1",
+      "role": null,
+      "y": 213
+    },
+    {
+      "al": "V 2 · 15 cosas",
+      "t": "V 2",
+      "role": null,
+      "y": 213
+    },
+    {
+      "al": "S 3 · 6 cosas",
+      "t": "S 3",
+      "role": null,
+      "y": 213
+    },
+    {
+      "al": "D 4",
+      "t": "D 4",
+      "role": null,
+      "y": 213
+    },
+    {
+      "al": null,
+      "t": "Horarios",
+      "role": null,
+      "y": 299
+    },
+    {
+      "al": null,
+      "t": "Cumpleaños de la abuela G Gabriel · Juan · Tomi ",
+      "role": null,
+      "y": 386
+    },
+    {
+      "al": null,
+      "t": "08:00 Colegio de Tomi T Tomi hasta 13:00",
+      "role": null,
+      "y": 450
+    },
+    {
+      "al": null,
+      "t": "09:00 Ocupado G Gabriel hasta 18:00",
+      "role": null,
+      "y": 532
+    },
+    {
+      "al": null,
+      "t": "10:00 Feria del barrio M Mariana · Martina Plaza",
+      "role": null,
+      "y": 614
+    },
+    {
+      "al": null,
+      "t": "12:30 Clase de piano de Martina Ma Martina hasta",
+      "role": null,
+      "y": 696
+    },
+    {
+      "al": null,
+      "t": "13:30 Dentista de Martina M Mariana · Martina Co",
+      "role": null,
+      "y": 778
+    },
+    {
+      "al": null,
+      "t": "20:30 Cena con los abuelos G Gabriel · Mariana h",
+      "role": null,
+      "y": 860
+    },
+    {
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "role": "button",
+      "y": 845
+    },
+    {
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "role": "tab",
+      "y": 845
+    }
+  ],
+  "fontHist": {
+    "9": 7,
+    "10": 8,
+    "11": 1,
+    "12": 7,
+    "13": 25,
+    "14": 1,
+    "15": 12,
+    "16": 7,
+    "24": 1,
+    "15.96": 1
+  },
+  "smallestFonts": [
+    9,
+    10,
+    11,
+    12,
+    13
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": null,
+  "rootChildren": [
+    "DIV#root.",
+    "SCRIPT#."
+  ],
+  "headings": [],
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "al": null,
+      "text": "Ingresar",
+      "testid": null,
+      "x": 24,
+      "y": 230,
+      "w": 191,
+      "h": 36,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "al": null,
+      "text": "Crear cuenta",
+      "testid": null,
+      "x": 215,
+      "y": 230,
+      "w": 191,
+      "h": 36,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "al": null,
+      "text": "Continuar con Apple",
+      "testid": null,
+      "x": 20,
+      "y": 294,
+      "w": 390,
+      "h": 52,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "al": null,
+      "text": "Continuar con Google",
+      "testid": null,
+      "x": 20,
+      "y": 358,
+      "w": 390,
+      "h": 52,
+      "selected": null
+    },
+    {
+      "tag": "INPUT",
+      "role": null,
+      "al": null,
+      "text": "",
+      "testid": null,
+      "x": 20,
+      "y": 495,
+      "w": 390,
+      "h": 50,
+      "selected": null
+    },
+    {
+      "tag": "INPUT",
+      "role": null,
+      "al": null,
+      "text": "",
+      "testid": null,
+      "x": 20,
+      "y": 587,
+      "w": 390,
+      "h": 50,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "al": null,
+      "text": "Olvidé mi contraseña",
+      "testid": null,
+      "x": 260,
+      "y": 643,
+      "w": 150,
+      "h": 31,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "al": null,
+      "text": "Ingresar",
+      "testid": null,
+      "x": 20,
+      "y": 697,
+      "w": 390,
+      "h": 52,
+      "selected": null
+    }
+  ],
+  "bodyText": "H+\nHOMePLUS\nTu hogar, entendible.\nIngresar\nCrear cuenta\nContinuar con Apple\nContinuar con Google\no\nEmail\nContraseña\nOlvidé mi contraseña\nIngresar\nAl continuar aceptás los Términos de uso y la Política de privacidad."
+}

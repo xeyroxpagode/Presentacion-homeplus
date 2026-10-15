@@ -1,0 +1,85 @@
+/* S16 context switch: same Homi, same question, different person. The persona
+   bar and the answer remount per person so the swap reads as one movement. */
+
+.homi-persona {
+  padding: 10px 14px;
+  border: 1px solid var(--home-border);
+  border-radius: 14px;
+  background: var(--home-surface);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity var(--motion-replace-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.homi-persona[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.homi-persona-swap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  animation: homi-swap-in var(--motion-reframe-duration) var(--motion-easing) both;
+}
+
+.homi-persona-avatar {
+  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.homi-persona-copy { min-width: 0; }
+.homi-persona-name { margin: 0; color: var(--home-ink); font-size: 24px; line-height: 1.2; font-weight: 600; }
+.homi-persona-tag { margin: 2px 0 0; color: var(--home-muted); font-size: 14px; }
+
+.homi-answer-swap {
+  animation: homi-swap-in var(--motion-reframe-duration) var(--motion-easing) both;
+}
+
+.homi-context {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity var(--motion-replace-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.homi-context[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.homi-context-caption { margin: 0 0 8px; color: var(--home-muted); font-size: 13px; }
+.homi-context-chips { display: flex; gap: 8px; }
+.homi-context-chip {
+  padding: 7px 14px;
+  border-radius: 9999px;
+  background: var(--home-brand-soft);
+  color: var(--home-brand);
+  font-size: 15px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+@keyframes homi-swap-in {
+  from { opacity: 0; translate: 14px 0; }
+  to { opacity: 1; translate: 0 0; }
+}

@@ -1,0 +1,45 @@
+import type { CSSProperties } from 'react'
+
+export const openingTokens = {
+  colors: {
+    bubble: '#201B17', bubbleFocus: '#29211B', border: '#44382E', paper: '#302922',
+    distantSurface: '#1B1C1B', middleSurface: '#20211F', nearSurface: '#252421',
+    focusSurface: '#292822', depthBorder: '#3F3D36', focusBorder: '#65503C',
+  },
+  type: { message: 30, voice: 25, statement: 80, number: 176, label: 23, coordinationLabel: 22, wordmark: 78 },
+  glow: { quiet: 0.075, distributed: 0.1, chaosFocus: 0.18, coordination: 0.14, reveal: 0.28, brandDepth: 0.075 },
+  depth: { secondary: 0.69, fragment: 0.46, serviceBackground: 0.54, farScale: 0.95, nearScale: 1.018, secondaryBlur: 0.35 },
+  metrics: { appsCenter: 336, coordinationCenter: 944, iconTop: 158, iconGap: 64, iconScale: 0.64, familyTop: 190 },
+  logoSize: 204,
+  serviceSize: 84,
+} as const
+
+export const openingVariables = {
+  '--opening-bubble': openingTokens.colors.bubble,
+  '--opening-bubble-focus': openingTokens.colors.bubbleFocus,
+  '--opening-border': openingTokens.colors.border,
+  '--opening-paper': openingTokens.colors.paper,
+  '--opening-distant-surface': openingTokens.colors.distantSurface,
+  '--opening-middle-surface': openingTokens.colors.middleSurface,
+  '--opening-near-surface': openingTokens.colors.nearSurface,
+  '--opening-focus-surface': openingTokens.colors.focusSurface,
+  '--opening-depth-border': openingTokens.colors.depthBorder,
+  '--opening-focus-border': openingTokens.colors.focusBorder,
+  '--opening-message-size': `${openingTokens.type.message}px`,
+  '--opening-voice-size': `${openingTokens.type.voice}px`,
+  '--opening-statement-size': `${openingTokens.type.statement}px`,
+  '--opening-number-size': `${openingTokens.type.number}px`,
+  '--opening-label-size': `${openingTokens.type.label}px`,
+  '--opening-coordination-label-size': `${openingTokens.type.coordinationLabel}px`,
+  '--opening-wordmark-size': `${openingTokens.type.wordmark}px`,
+  '--opening-secondary-opacity': openingTokens.depth.secondary,
+  '--opening-fragment-opacity': openingTokens.depth.fragment,
+  '--opening-service-background-opacity': openingTokens.depth.serviceBackground,
+  '--opening-service-size': `${openingTokens.serviceSize}px`,
+  '--opening-far-scale': openingTokens.depth.farScale,
+  '--opening-near-scale': openingTokens.depth.nearScale,
+  '--opening-secondary-blur': `${openingTokens.depth.secondaryBlur}px`,
+  '--opening-group-icon-scale': openingTokens.metrics.iconScale,
+  '--opening-family-top': `${openingTokens.metrics.familyTop}px`,
+  '--opening-reveal-delay': 'calc(var(--motion-reframe-duration) + var(--motion-blackout-duration))',
+} as CSSProperties

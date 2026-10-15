@@ -1,0 +1,133 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "finance-papelera",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Papelera",
+      "fs": "28px",
+      "fw": "800"
+    }
+  ],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "sel": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "sel": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "sel": null,
+      "x": 8,
+      "y": 92
+    },
+    {
+      "role": null,
+      "al": "Cine en Papelera, Gasto de categoría Ocio, -14.500 ARS. Ocurrió el 22 de septiembre. Enviado a Papelera ayer.",
+      "t": "Cine Gasto · Ocio · Ocurrió el 22 de septiembre -14.500 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 179
+    },
+    {
+      "role": null,
+      "al": "Transferencia en Papelera, Billetera → Galicia, 10.000 ARS. Ocurrió el 21 de septiembre. Enviado a Papelera ayer.",
+      "t": "Transferencia Billetera → Galicia · Ocurrió el 21 de septiembre 10.000",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 236
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "sel": "false",
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "sel": "false",
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "sel": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "sel": "false",
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "sel": "true",
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "papelera-screen",
+    "papelera-groups",
+    "papelera-date-2026-09-24",
+    "papelera-item-trash-cine",
+    "papelera-item-trash-tr",
+    "papelera-scope-note",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nPapelera\nMovimientos y transferencias enviados a Papelera\nAYER\nCine\nGasto · Ocio · Ocurrió el 22 de septiembre\n-14.500 ARS\nTransferencia\nBilletera → Galicia · Ocurrió el 21 de septiembre\n10.000 ARS\nLas cuentas y los pozos archivados, y las obligaciones omitidas, se recuperan desde su propia sección."
+}

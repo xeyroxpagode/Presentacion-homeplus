@@ -1,0 +1,206 @@
+{
+  "navScreenId": "calendario",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Planner",
+      "fs": "24px"
+    }
+  ],
+  "tabs": [
+    {
+      "text": "Tareas",
+      "al": "Tareas",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Calendario",
+      "al": "Calendario",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Planes",
+      "al": "Planes",
+      "selected": "true",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Inicio",
+      "al": "Ir a Inicio",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Familia",
+      "al": "Ir a Familia",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Calendario",
+      "al": "Ir a Calendario",
+      "selected": "true",
+      "fs": "16px"
+    },
+    {
+      "text": "Abrir Más opciones",
+      "al": "Abrir Más opciones",
+      "selected": "false",
+      "fs": "16px"
+    }
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nPlanner\nTareas\nCalendario\nPlanes\nEn curso\nMudanza de mamá\n33%\n15 nov · Faltan 3 cosas\n15 de Martina\n50%\n30 sep · Listo para completar\nRenovar la cocina\n0%\nPausado · 12 dic\nComprar auto\nAhorro · $650.000 / $5.000.000\njun 2027 · Falta 1 cosa\nCumpleaños de Martina\n50%\nSáb 03 · Falta 1 cosa\nPuesta a punto de la casa\n19%\nSin fecha · Faltan 21 cosas",
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "role": null,
+      "y": 11
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Opciones del Planner",
+      "t": "Opciones del Planner",
+      "role": null,
+      "y": 73
+    },
+    {
+      "al": "Tareas",
+      "t": "Tareas",
+      "role": "tab",
+      "y": 121
+    },
+    {
+      "al": "Calendario",
+      "t": "Calendario",
+      "role": "tab",
+      "y": 121
+    },
+    {
+      "al": "Planes",
+      "t": "Planes",
+      "role": "tab",
+      "y": 121
+    },
+    {
+      "al": "En curso",
+      "t": "En curso",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": "Más opciones de Planes",
+      "t": "Más opciones de Planes",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": "Nuevo plan",
+      "t": "Nuevo plan",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": null,
+      "t": "Mudanza de mamá 33% 15 nov · Faltan 3 cosas",
+      "role": null,
+      "y": 217
+    },
+    {
+      "al": null,
+      "t": "15 de Martina 50% 30 sep · Listo para completar",
+      "role": null,
+      "y": 300
+    },
+    {
+      "al": null,
+      "t": "Renovar la cocina 0% Pausado · 12 dic",
+      "role": null,
+      "y": 383
+    },
+    {
+      "al": null,
+      "t": "Comprar auto Ahorro · $650.000 / $5.000.000 jun ",
+      "role": null,
+      "y": 466
+    },
+    {
+      "al": null,
+      "t": "Cumpleaños de Martina 50% Sáb 03 · Falta 1 cosa",
+      "role": null,
+      "y": 568
+    },
+    {
+      "al": null,
+      "t": "Puesta a punto de la casa 19% Sin fecha · Faltan",
+      "role": null,
+      "y": 651
+    },
+    {
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "role": "button",
+      "y": 845
+    },
+    {
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "role": "tab",
+      "y": 845
+    }
+  ],
+  "fontHist": {
+    "10": 1,
+    "11": 1,
+    "13": 11,
+    "14": 1,
+    "15": 10,
+    "16": 1,
+    "24": 1,
+    "15.96": 1
+  },
+  "smallestFonts": [
+    10,
+    11,
+    13,
+    14,
+    15
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "homecloud",
+  "headings": [],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "x": 12,
+      "y": 81
+    },
+    {
+      "role": "radio",
+      "al": "Archivos",
+      "t": "Archivos",
+      "tid": null,
+      "x": 24,
+      "y": 148
+    },
+    {
+      "role": "radio",
+      "al": "Recuerdos",
+      "t": "Recuerdos",
+      "tid": null,
+      "x": 215,
+      "y": 148
+    },
+    {
+      "role": null,
+      "al": "Nuevo álbum",
+      "t": "Nuevo álbum",
+      "tid": null,
+      "x": 366,
+      "y": 196
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Favoritos 2 recuerdos",
+      "tid": null,
+      "x": 20,
+      "y": 252
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Vacaciones 3 recuerdos",
+      "tid": null,
+      "x": 20,
+      "y": 328
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Voces de la familia 2 recuerdos",
+      "tid": null,
+      "x": 20,
+      "y": 404
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Cumpleaños 1 recuerdo",
+      "tid": null,
+      "x": 20,
+      "y": 480
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Navidades 15 recuerdos",
+      "tid": null,
+      "x": 20,
+      "y": 556
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Vacío Casa nueva 0 recuerdos",
+      "tid": null,
+      "x": 20,
+      "y": 632
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "sheetsNoRole": [],
+  "testids": [
+    "homecloud-screen",
+    "homecloud-header",
+    "homecloud-tabs",
+    "homecloud-tabs-thumb",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nÁlbumes\nArchivos\nRecuerdos\nFavoritos\n2 recuerdos\nVacaciones\n3 recuerdos\nVoces de la familia\n2 recuerdos\nCumpleaños\n1 recuerdo\nNavidades\n15 recuerdos\nVacío\nCasa nueva\n0 recuerdos"
+}

@@ -1,0 +1,340 @@
+{
+  "navScreenId": "home",
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nViernes, 25 de septiembre\nHola, Gabriel\nNECESITA ATENCIÓN\nVer 4 más\nInternet vencido\n38.450 ARS · Venció hace 5 días\nPagar la luz venció\nVenció ayer\nCompletar\nHOY\nVer 3 más\n4\nLista del súper\nTodavía no tiene responsable\nMe encargo\nComprar regalo de cumple\nCompletar\n20:30\nCena con los abuelos\nMariana · Casa · 20:30\nConseguir las cajas\nCompletar\nPRÓXIMO\nVer 16 más\nSáb 02\nBuscar un electricista\nSin responsable\nSáb 02\nCargadores · mudanza 14\nSin responsable\nSáb 02\nColchón · mudanza 26\nTE PUEDE SERVIR\nSalud superó el límite\n115% utilizado\nOrdenar el altillo\nSin responsable\nQUÉ CAMBIÓ\nhace 1 h\nPagar expensas se completó\nayer\nPedir el ascensor se completó\nayer\nRegar las plantas del balcón se verificó",
+  "controls": [
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "G",
+      "x": 16,
+      "y": 14,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Familia García Coordinador",
+      "x": 60,
+      "y": 11,
+      "w": 258,
+      "h": 50,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Buscar",
+      "x": 318,
+      "y": 14,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "2",
+      "x": 370,
+      "y": 14,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Ver 4 más",
+      "x": 357,
+      "y": 139,
+      "w": 58,
+      "h": 32,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Internet vencido 38.450 ARS · Venció hace 5 días",
+      "x": 57,
+      "y": 190,
+      "w": 308,
+      "h": 40,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Pagar la luz venció Venció ayer",
+      "x": 57,
+      "y": 255,
+      "w": 192,
+      "h": 40,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Completar",
+      "x": 261,
+      "y": 255,
+      "w": 132,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Ver 3 más",
+      "x": 357,
+      "y": 336,
+      "w": 57,
+      "h": 32,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Lista del súper Todavía no tiene responsable",
+      "x": 105,
+      "y": 383,
+      "w": 168,
+      "h": 57,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Me encargo",
+      "x": 285,
+      "y": 383,
+      "w": 108,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Completar Comprar regalo de cumple",
+      "x": 60,
+      "y": 445,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Comprar regalo de cumple",
+      "x": 105,
+      "y": 457,
+      "w": 168,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Completar",
+      "x": 285,
+      "y": 457,
+      "w": 108,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Cena con los abuelos Mariana · Casa · 20:30",
+      "x": 105,
+      "y": 518,
+      "w": 260,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Completar Conseguir las cajas",
+      "x": 60,
+      "y": 567,
+      "w": 44,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Conseguir las cajas",
+      "x": 105,
+      "y": 579,
+      "w": 168,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Completar",
+      "x": 285,
+      "y": 579,
+      "w": 108,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Ver 16 más",
+      "x": 352,
+      "y": 656,
+      "w": 62,
+      "h": 32,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Buscar un electricista Sin responsable",
+      "x": 105,
+      "y": 703,
+      "w": 260,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Cargadores · mudanza 14 Sin responsable",
+      "x": 105,
+      "y": 764,
+      "w": 260,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Colchón · mudanza 26",
+      "x": 105,
+      "y": 825,
+      "w": 260,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Salud superó el límite 115% utilizado",
+      "x": 54,
+      "y": 931,
+      "w": 312,
+      "h": 40,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "Ordenar el altillo Sin responsable",
+      "x": 54,
+      "y": 995,
+      "w": 312,
+      "h": 39,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "hace 1 h Pagar expensas se completó",
+      "x": 20,
+      "y": 1086,
+      "w": 390,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "ayer Pedir el ascensor se completó",
+      "x": 20,
+      "y": 1131,
+      "w": 390,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": null,
+      "text": "ayer Regar las plantas del balcón se verificó",
+      "x": 20,
+      "y": 1176,
+      "w": 390,
+      "h": 44,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": "tab",
+      "text": "Ir a Inicio",
+      "x": 5,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": "true"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "tab",
+      "text": "Ir a Familia",
+      "x": 89,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": "false"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "button",
+      "text": "Abrir acciones rápidas",
+      "x": 173,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": null
+    },
+    {
+      "tag": "BUTTON",
+      "role": "tab",
+      "text": "Ir a Calendario",
+      "x": 257,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": "false"
+    },
+    {
+      "tag": "BUTTON",
+      "role": "tab",
+      "text": "Abrir Más opciones",
+      "x": 341,
+      "y": 845,
+      "w": 84,
+      "h": 66,
+      "selected": "false"
+    }
+  ],
+  "fontSizes": [
+    "10px",
+    "11px",
+    "11.5px",
+    "12px",
+    "12.5px",
+    "13px",
+    "13.5px",
+    "14px",
+    "15px",
+    "15.96px",
+    "16px",
+    "19px"
+  ]
+}

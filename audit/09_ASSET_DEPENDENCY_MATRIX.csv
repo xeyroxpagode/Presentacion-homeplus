@@ -1,0 +1,46 @@
+asset_id,category,semantic_name,scene_first_use,reuse_count,shared_eligible,shared_status,exists_now,source_path,must_create,must_redraw,must_split_layers,format_preferred,vector_required,motion_ready,priority,owner_phase,risk_level,notes
+brand.homeplus.master,BRAND,HomePlus logo master,A13,3,NO,EDITORIAL_ONLY,YES,C:\Users\thega\Desktop\Figma-app\src\assets\brand\homeplus-logo-master.svg,NO,NO,NO,SVG inline,YES,PARTIAL,P0,A,HIGH,"Migrar desde PNG raster (assets\07a9c99e...png) a SVG; base monoline 1254x1254"
+brand.homeplus.animatable,BRAND,HomePlus logo animatable,A14,2,NO,EDITORIAL_ONLY,YES,C:\Users\thega\Desktop\Figma-app\src\assets\brand\homeplus-logo-animatable.svg,NO,NO,NO,SVG inline,YES,YES,P0,A,HIGH,"Capas nombradas para stroke draw; ocultar house_outline O house_outline_parts para evitar doble trazo"
+brand.wordmark,BRAND,HomePlus wordmark,A14,2,NO,EDITORIAL_ONLY,NO,,YES,NO,NO,SVG/text,YES,NO,P1,A,MED,"Sin archivo; fallback tipográfico aprobado hasta producir wordmark"
+brand.mono,BRAND,Variantes monocromas,J14,2,NO,STATIC_REPEATED_OBJECT,NO,,YES,NO,NO,SVG,YES,NO,P2,J,LOW,Derivadas del master (currentColor)
+brand.opening_state,BRAND,Estado apertura,S03/A13,1,NO,EDITORIAL_ONLY,YES,,NO,NO,NO,SVG,YES,YES,P1,A,MED,Logo solo pre-reveal sobre negro
+brand.closing_state,BRAND,Estado cierre,J14,1,NO,EDITORIAL_ONLY,PARTIAL,,YES,NO,NO,SVG,YES,NO,P2,J,LOW,Lockup horizontal end card; team row
+brand.homi.mark,BRAND,Marca Homi,I01,3,NO,EDITORIAL_ONLY,YES,src\presentation\assets\illustrations\homi-mark.svg,NO,NO,NO,SVG inline,YES,PARTIAL,P1,I,LOW,Cuadrado naranja + estrella; reveal hero I01
+brand.ai.mark,BRAND,Símbolo IA,G08,1,NO,EDITORIAL_ONLY,YES,src\presentation\assets\tech\ai.svg,NO,NO,NO,SVG,YES,PARTIAL,P2,G,LOW,Sin glifo/glow; texto plano + caption si falla
+family.juli,FAMILY,Avatar Juli,A15,8,YES,SE-13,NO,,YES,NO,YES,SVG,YES,YES,P0,B,HIGH,Split desde family-avatars.svg; capa independiente
+family.tomi,FAMILY,Avatar Tomi,A15,8,YES,SE-13,NO,,YES,NO,YES,SVG,YES,YES,P0,B,HIGH,Split requerido
+family.mama,FAMILY,Avatar Mamá,A15,8,YES,SE-13,NO,,YES,NO,YES,SVG,YES,YES,P0,B,HIGH,Split requerido
+family.papa,FAMILY,Avatar Papá,A15,8,YES,SE-13,NO,,YES,NO,YES,SVG,YES,YES,P0,B,HIGH,Split requerido
+family.person_speaking,FAMILY,Persona editorial,A12,1,NO,EDITORIAL_ONLY,YES,src\presentation\assets\illustrations\person-speaking.svg,NO,NO,NO,SVG,YES,PARTIAL,P2,A,LOW,Speaker states
+family.avatars_source,FAMILY,family-avatars.svg (fuente),A15,0,NO,NON_PERSISTENT_SOURCE,YES,src\presentation\assets\illustrations\family-avatars.svg,NO,NO,YES,SVG,YES,NO,P0,B,HIGH,Fuente a dividir en 4; no usar como lienzo único
+obj.grocery_bag,OPENING_CLOSING,Bolsa de compras,A03,5,YES,SE-03,YES,src\presentation\assets\illustrations\grocery-bag.svg,NO,NO,NO,SVG,YES,PARTIAL,P1,A,LOW,Existe; normalizar escala y poligonía
+obj.insurance,OPENING_CLOSING,Documento de seguro,A02,3,YES,SE-02,YES,src\presentation\assets\illustrations\insurance-document.svg,NO,NO,NO,SVG,YES,PARTIAL,P1,A,LOW,Base para doc.factura
+obj.heladera,OPENING_CLOSING,Heladera,A04,2,YES,SE-01,NO,,YES,NO,NO,SVG,YES,NO,P0,A,HIGH,"Falta; flat-vector; paleta canónica; silueta clara; no realista"
+obj.factura,OPENING_CLOSING,Factura,E03/J02,2,NO,EDITORIAL_ONLY,NO,,YES,YES,NO,SVG,YES,NO,P1,E,MED,Derivar de insurance-document style; nodo pdf en H03
+obj.warranty_pdf,OPENING_CLOSING,Garantia PlayStation 5.pdf,E02,4,YES,SE-11,NO,,YES,NO,NO,SVG/PDF-node,YES,NO,P1,E,MED,Nodo editorial de documento con nombre canónico
+obj.calendar_fragment,OPENING_CLOSING,Fragmento de calendario,S01/A05,2,NO,EDITORIAL_ONLY,YES,information-fragments.svg (subelemento),NO,NO,YES,SVG,YES,PARTIAL,P2,A,LOW,Split opcional del archivo compuesto
+obj.message_fragment,OPENING_CLOSING,Fragmento de mensaje,S01/A05,3,YES,SE-04/SE-05,YES,information-fragments.svg,NO,NO,YES,SVG,YES,PARTIAL,P2,A,LOW,Reutilizar para ghosts J05
+obj.message_old_household,OPENING_CLOSING,Mensaje viejo del hogar,A10/J05,2,YES,SE-04,NO,,YES,NO,NO,SVG/bubble,YES,NO,P1,J,MED,Ghost a 0.30; nunca reparentar
+obj.message_technician,OPENING_CLOSING,Mensaje del técnico,B18,3,YES,SE-05,NO,,YES,NO,NO,SVG/bubble,YES,NO,P1,B,MED,Construir desde estilo MessageBubble
+obj.mochila,OPENING_CLOSING,Mochila,J02,1,NO,NONE,NO,,NO,NO,NO,N/A,NO,NO,P3,J,LOW,"NO visual asset; no stage appearance; script wording conflict remains external (SI-23)"
+obj.birthday_event,OPENING_CLOSING,Cumpleaños,B11,5,YES,SE-06,PARTIAL,,NO,NO,NO,CSS/UI,NO,NO,P1,D,LOW,Representado por Plan card UI
+obj.ps5_movement,DOCUMENT,Fila movimiento PS5,D06,3,YES,SE-09,NO,,YES,NO,NO,UI row,NO,NO,P1,D,LOW,"Crear fila semántica; nunca purchase date"
+obj.ps5_documents,DOCUMENT,Paquete documentos PS5,E03,2,YES,SE-10,NO,,YES,NO,NO,UI/SVG,YES,NO,P1,E,LOW,Garantía + Manual + Historial
+obj.birthday_memory,DOCUMENT,Recuerdo de cumpleaños,E05,2,YES,SE-12,NO,,YES,NO,NO,UI,NO,NO,P1,E,LOW,Sin stand-in de gradiente; frame + caption
+structure.house_outline,STRUCTURAL,Casa outline persistente,J03,9,NO,PERSISTENT_SCENE_OBJECT,NO,,YES,NO,YES,SVG inline,YES,YES,P0,J,HIGH,"Asset crítico: J03-J11 one SVG/DOM instance; no shared-layer flight; no clone; A17 uses separate editorial motif"
+structure.continuity_links,STRUCTURAL,Ghost dashed links,J06,1,NO,EDITORIAL_ONLY,NO,,YES,NO,YES,SVG,YES,YES,P2,J,LOW,stroke-dasharray; reduce a 0
+structure.flow_arrows,STRUCTURAL,Conectores RECIBE a VALIDA,G03,1,NO,EDITORIAL_ONLY,NO,,YES,NO,NO,SVG/text,YES,NO,P2,G,LOW,Verbos como chips; no logos
+structure.question_state,STRUCTURAL,Estado pregunta sobre negro,H05,2,NO,STATIC_REPEATED_OBJECT,NO,,YES,NO,NO,typographic,YES,NO,P2,H,LOW,Solo texto + glow
+ui.map_pins,UI_ADJACENT,Pines Colegio/Club,B15,2,NO,STATIC_REPEATED_OBJECT,NO,,YES,NO,NO,SVG,YES,YES,P2,B,LOW,Markers editoriales; badge +1h
+utils.transaction_pill,UI_ADJACENT,Pill de transacción,G04,2,NO,EDITORIAL_ONLY,NO,,YES,NO,NO,CSS pill,NO,NO,P2,G,LOW,$48.720 viaja tras device; dato SE-08
+utils.proposal_shell,UI_ADJACENT,Shell de propuesta Homi,I04,3,NO,STATIC_REPEATED_OBJECT,NO,,YES,NO,NO,UI component,NO,NO,P2,I,LOW,Reusar MessageBubble/PhoneFrame; no editar
+utils.question_bubble,UI_ADJACENT,Bubble pregunta,I07,3,YES,SE-14,PARTIAL,,NO,NO,NO,UI,NO,NO,P1,I,MED,Persistente I07 a I09; byte-identity
+ui.focus_halo,UI_ADJACENT,Focus halo,A14,4,NO,EDITORIAL_ONLY,NO,AmbientGlow.tsx,NO,NO,NO,CSS,NO,NO,P2,A,LOW,Comp utility existente
+device.shell,UI_ADJACENT,Phone frame,B01,18,NO,DEVICE_TRANSITION,YES,PhoneFrame.tsx,NO,NO,NO,React/CSS,NO,NO,P0,B,HIGH,Componente existente; escala 1.00/1.08 guard
+tech.figma,TECH_LOGOS,Figma,G07,1,NO,STATIC_REPEATED_OBJECT,YES,tech\figma.svg,NO,NO,NO,SVG,YES,PARTIAL,P2,G,LOW,-color solo cuando se nombra
+tech.react_native,TECH_LOGOS,React Native,G05,1,NO,STATIC_REPEATED_OBJECT,YES,tech\react-native.svg,NO,NO,NO,SVG,YES,PARTIAL,P2,G,LOW,
+tech.expo,TECH_LOGOS,Expo,G05,1,NO,STATIC_REPEATED_OBJECT,YES,tech\expo.svg,NO,NO,NO,SVG,YES,PARTIAL,P2,G,LOW,
+tech.nodejs,TECH_LOGOS,Node.js,G06,1,NO,STATIC_REPEATED_OBJECT,YES,tech\nodejs.svg,NO,NO,NO,SVG,YES,PARTIAL,P2,G,LOW,
+tech.supabase,TECH_LOGOS,Supabase,G06,1,NO,STATIC_REPEATED_OBJECT,YES,tech\supabase.svg,NO,NO,NO,SVG,YES,PARTIAL,P2,G,LOW,
+tech.postgresql,TECH_LOGOS,PostgreSQL,G06,1,NO,STATIC_REPEATED_OBJECT,YES,tech\postgresql.svg,NO,NO,NO,SVG,YES,PARTIAL,P2,G,LOW,
+app-icons.calendar,UI_ADJACENT,Calendario icon (J08),J08,1,NO,STATIC_REPEATED_OBJECT,YES,app-icons\calendar...svg,NO,NO,NO,SVG,YES,PARTIAL,P3,J,LOW,organization.symbols reuse

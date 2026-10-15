@@ -1,0 +1,134 @@
+{
+  "navScreenId": "mas",
+  "headings": [],
+  "tabs": [
+    {
+      "text": "Ir a Inicio",
+      "al": "Ir a Inicio",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Familia",
+      "al": "Ir a Familia",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Calendario",
+      "al": "Ir a Calendario",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Abrir Más opciones",
+      "al": "Abrir Más opciones",
+      "selected": "true",
+      "fs": "16px"
+    }
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nMás\nTU HOGAR\n📦\nInventario\nProductos y lista de compras\nFinanzas\nResumen, movimientos y pagos\n🔧\nActivos\nObjetos y mantenimiento\n☁️\nHomeCloud\nArchivos y recuerdos\n💬\nMensajes\n5 nuevos\n5",
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "role": null,
+      "y": 11
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "📦 Inventario Productos y lista de compras",
+      "role": null,
+      "y": 184
+    },
+    {
+      "al": null,
+      "t": "Finanzas Resumen, movimientos y pagos",
+      "role": null,
+      "y": 257
+    },
+    {
+      "al": null,
+      "t": "🔧 Activos Objetos y mantenimiento",
+      "role": null,
+      "y": 331
+    },
+    {
+      "al": null,
+      "t": "☁️ HomeCloud Archivos y recuerdos",
+      "role": null,
+      "y": 405
+    },
+    {
+      "al": null,
+      "t": "💬 Mensajes 5 nuevos 5",
+      "role": null,
+      "y": 479
+    },
+    {
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "role": "button",
+      "y": 845
+    },
+    {
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "role": "tab",
+      "y": 845
+    }
+  ],
+  "fontHist": {
+    "10": 1,
+    "11": 3,
+    "13": 5,
+    "14": 1,
+    "16": 5,
+    "19": 4,
+    "22": 1,
+    "15.96": 1
+  },
+  "smallestFonts": [
+    10,
+    11,
+    13,
+    14,
+    15.96
+  ]
+}

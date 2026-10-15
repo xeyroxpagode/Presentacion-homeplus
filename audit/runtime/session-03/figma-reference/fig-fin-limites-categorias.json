@@ -1,0 +1,197 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "finance-categorias",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Categorías",
+      "fs": "28px",
+      "fw": "800"
+    },
+    {
+      "tag": "H2",
+      "text": "Personalizadas",
+      "fs": "18px",
+      "fw": "700"
+    },
+    {
+      "tag": "H2",
+      "text": "Categorías del sistema",
+      "fs": "18px",
+      "fw": "700"
+    }
+  ],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "sel": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "sel": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver a Límites",
+      "t": "Volver a Límites",
+      "tid": null,
+      "sel": null,
+      "x": 8,
+      "y": 89
+    },
+    {
+      "role": null,
+      "al": "Crear categoría de gastos",
+      "t": "Crear categoría de gastos",
+      "tid": "categorias-create",
+      "sel": null,
+      "x": 370,
+      "y": 89
+    },
+    {
+      "role": "radio",
+      "al": "Gastos",
+      "t": "Gastos",
+      "tid": null,
+      "sel": null,
+      "x": 20,
+      "y": 153
+    },
+    {
+      "role": "radio",
+      "al": "Ingresos",
+      "t": "Ingresos",
+      "tid": null,
+      "sel": null,
+      "x": 215,
+      "y": 153
+    },
+    {
+      "role": null,
+      "al": "Almacenamiento y herramientas del hogar. Gasto personalizada.",
+      "t": "Almacenamiento y herramientas del hogar",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 241
+    },
+    {
+      "role": null,
+      "al": "Gimnasio. Gasto personalizada.",
+      "t": "Gimnasio",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 310
+    },
+    {
+      "role": null,
+      "al": "Nueva categoría",
+      "t": "Nueva categoría",
+      "tid": null,
+      "sel": null,
+      "x": 283,
+      "y": 374
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "sel": "false",
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "sel": "false",
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "sel": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "sel": "false",
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "sel": "true",
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "categorias-screen",
+    "categorias-create",
+    "categorias-segment",
+    "categorias-segment-thumb",
+    "categorias-personalizadas",
+    "categoria-cat-almacenamiento",
+    "categoria-cat-gimnasio",
+    "categorias-sistema",
+    "categorias-sistema-section",
+    "categorias-sistema-nota",
+    "categoria-cat-alimentacion",
+    "categoria-cat-comisiones",
+    "categoria-cat-compras",
+    "categoria-cat-educacion",
+    "categoria-cat-impuestos",
+    "categoria-cat-mascotas",
+    "categoria-cat-ocio",
+    "categoria-cat-salud",
+    "categoria-cat-servicios",
+    "categoria-cat-suscripciones",
+    "categoria-cat-transporte",
+    "categoria-cat-vivienda",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nCategorías\nGastos\nIngresos\nPersonalizadas\nAlmacenamiento y herramientas del hogar\nGimnasio\nNueva categoría\nCategorías del sistema\nIncluidas por HomePlus. No se pueden editar ni eliminar.\nAlimentación\nComisiones e intereses\nCompras\nEducación\nImpuestos y tasas\nMascotas\nOcio\nSalud\nServicios y facturas\nSuscripciones\nTransporte\nVivienda"
+}

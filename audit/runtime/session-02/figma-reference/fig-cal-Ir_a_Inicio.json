@@ -1,0 +1,251 @@
+{
+  "navScreenId": "home",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Hola, Gabriel",
+      "fs": "19px"
+    }
+  ],
+  "tabs": [
+    {
+      "text": "Ir a Inicio",
+      "al": "Ir a Inicio",
+      "selected": "true",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Familia",
+      "al": "Ir a Familia",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Calendario",
+      "al": "Ir a Calendario",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Abrir Más opciones",
+      "al": "Abrir Más opciones",
+      "selected": "false",
+      "fs": "16px"
+    }
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nViernes, 25 de septiembre\nHola, Gabriel\nNECESITA ATENCIÓN\nVer 4 más\nInternet vencido\n38.450 ARS · Venció hace 5 días\nPagar la luz venció\nVenció ayer\nCompletar\nHOY\nVer 3 más\n4\nLista del súper\nTodavía no tiene responsable\nMe encargo\nComprar regalo de cumple\nCompletar\n20:30\nCena con los abuelos\nMariana · Casa · 20:30\nConseguir las cajas\nCompletar\nPRÓXIMO\nVer 16 más\nSáb 02\nBuscar un electricista\nSin responsable\nSáb 02\nCargadores · mudanza 14\nSin responsable\nSáb 02\nColchón · mudanza 26\nTE PUEDE SERVIR\nSalud superó el límite\n115% utilizado\nOrdenar el altillo\nSin responsable\nQUÉ CAMBIÓ\nhace 1 h\nPagar expensas se completó\nayer\nPedir el ascensor se completó\nayer\nRegar las plantas del balcón se verificó",
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "role": null,
+      "y": 11
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "Ver 4 más",
+      "role": null,
+      "y": 139
+    },
+    {
+      "al": "Abrir Internet vencido",
+      "t": "Internet vencido 38.450 ARS · Venció hace 5 días",
+      "role": null,
+      "y": 190
+    },
+    {
+      "al": "Abrir Pagar la luz venció",
+      "t": "Pagar la luz venció Venció ayer",
+      "role": null,
+      "y": 255
+    },
+    {
+      "al": null,
+      "t": "Completar",
+      "role": null,
+      "y": 255
+    },
+    {
+      "al": null,
+      "t": "Ver 3 más",
+      "role": null,
+      "y": 336
+    },
+    {
+      "al": null,
+      "t": "Lista del súper Todavía no tiene responsable",
+      "role": null,
+      "y": 383
+    },
+    {
+      "al": null,
+      "t": "Me encargo",
+      "role": null,
+      "y": 383
+    },
+    {
+      "al": "Completar Comprar regalo de cumple",
+      "t": "Completar Comprar regalo de cumple",
+      "role": null,
+      "y": 445
+    },
+    {
+      "al": null,
+      "t": "Comprar regalo de cumple",
+      "role": null,
+      "y": 457
+    },
+    {
+      "al": null,
+      "t": "Completar",
+      "role": null,
+      "y": 457
+    },
+    {
+      "al": null,
+      "t": "Cena con los abuelos Mariana · Casa · 20:30",
+      "role": null,
+      "y": 518
+    },
+    {
+      "al": "Completar Conseguir las cajas",
+      "t": "Completar Conseguir las cajas",
+      "role": null,
+      "y": 567
+    },
+    {
+      "al": null,
+      "t": "Conseguir las cajas",
+      "role": null,
+      "y": 579
+    },
+    {
+      "al": null,
+      "t": "Completar",
+      "role": null,
+      "y": 579
+    },
+    {
+      "al": null,
+      "t": "Ver 16 más",
+      "role": null,
+      "y": 656
+    },
+    {
+      "al": null,
+      "t": "Buscar un electricista Sin responsable",
+      "role": null,
+      "y": 703
+    },
+    {
+      "al": null,
+      "t": "Cargadores · mudanza 14 Sin responsable",
+      "role": null,
+      "y": 764
+    },
+    {
+      "al": null,
+      "t": "Colchón · mudanza 26",
+      "role": null,
+      "y": 825
+    },
+    {
+      "al": "Abrir Salud superó el límite",
+      "t": "Salud superó el límite 115% utilizado",
+      "role": null,
+      "y": 931
+    },
+    {
+      "al": "Abrir Ordenar el altillo",
+      "t": "Ordenar el altillo Sin responsable",
+      "role": null,
+      "y": 995
+    },
+    {
+      "al": null,
+      "t": "hace 1 h Pagar expensas se completó",
+      "role": null,
+      "y": 1086
+    },
+    {
+      "al": null,
+      "t": "ayer Pedir el ascensor se completó",
+      "role": null,
+      "y": 1131
+    },
+    {
+      "al": null,
+      "t": "ayer Regar las plantas del balcón se verificó",
+      "role": null,
+      "y": 1176
+    },
+    {
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "role": "button",
+      "y": 845
+    },
+    {
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "role": "tab",
+      "y": 845
+    }
+  ],
+  "fontHist": {
+    "10": 1,
+    "11": 7,
+    "12": 7,
+    "13": 4,
+    "14": 1,
+    "15": 11,
+    "19": 1,
+    "15.96": 1,
+    "12.5": 4,
+    "11.5": 8,
+    "13.5": 3
+  },
+  "smallestFonts": [
+    10,
+    11,
+    11.5,
+    12,
+    12.5
+  ]
+}

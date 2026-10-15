@@ -1,0 +1,15 @@
+const puppeteer = require('puppeteer-core')
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+async function main () {
+  const browser = await puppeteer.launch({ executablePath: 'C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' })
+  const page = await browser.newPage()
+  await page.setViewport({ width: 1280, height: 720 })
+  page.on('response', (r) => { if (r.status() >= 400) console.log('HTTP', r.status(), r.url().slice(0, 220)) })
+  page.on('requestfailed', (r) => console.log('REQFAIL', r.url().slice(0, 220), r.failure() ? r.failure().errorText : ''))
+  page.on('pageerror', (e) => console.log('PAGEERROR:', e.message.slice(0, 300)))
+  await page.goto('http://localhost:8443/?dev=1&slide=0&step=0&s01Renderer=three', { waitUntil: 'networkidle0' })
+  await sleep(4000)
+  console.log('hasDebug:', await page.evaluate(() => !!window.__s01ThreeDebug))
+  await browser.close()
+}
+main().catch((e) => { console.error('FATAL', e.message); process.exit(1) })

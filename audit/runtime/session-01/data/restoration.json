@@ -1,0 +1,6876 @@
+[
+ {
+  "name": "S01_step00",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 22,
+  "backTextCount": 22,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 356,
+  "backHiddenLayers": 361,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step01",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 23,
+  "backTextCount": 23,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 348,
+  "backHiddenLayers": 353,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step02",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 22,
+  "backTextCount": 22,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 353,
+  "backHiddenLayers": 358,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step03",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 23,
+  "backTextCount": 23,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 350,
+  "backHiddenLayers": 355,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step04",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 24,
+  "backTextCount": 24,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 344,
+  "backHiddenLayers": 349,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step05",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 25,
+  "backTextCount": 25,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 339,
+  "backHiddenLayers": 344,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step06",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 26,
+  "backTextCount": 26,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 333,
+  "backHiddenLayers": 338,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step07",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 27,
+  "backTextCount": 27,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 327,
+  "backHiddenLayers": 332,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step08",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 27,
+  "backTextCount": 27,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 320,
+  "backHiddenLayers": 325,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step09",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 28,
+  "backTextCount": 28,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 315,
+  "backHiddenLayers": 320,
+  "fwdScrollables": 34,
+  "backScrollables": 34,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S01_step10",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 28,
+  "backTextCount": 28,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 311,
+  "backHiddenLayers": 316,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S02_step00",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 28,
+  "backTextCount": 28,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 311,
+  "backHiddenLayers": 316,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S02_step01",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 28,
+  "backTextCount": 28,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 309,
+  "backHiddenLayers": 314,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S02_step02",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 28,
+  "backTextCount": 28,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 307,
+  "backHiddenLayers": 312,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S02_step03",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 28,
+  "backTextCount": 28,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 303,
+  "backHiddenLayers": 308,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S02_step04",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 28,
+  "backTextCount": 28,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 299,
+  "backHiddenLayers": 304,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S02_step05",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 28,
+  "backTextCount": 28,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 297,
+  "backHiddenLayers": 302,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S02_step06",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 34,
+  "backTextCount": 34,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 287,
+  "backHiddenLayers": 292,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S03_step00",
+  "phoneFwd": "572.8,70.4,288,595.2",
+  "phoneBack": "572.8,70.4,288,595.2",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 35,
+  "backTextCount": 35,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 1,
+  "backClippedVisible": 1,
+  "fwdHiddenLayers": 291,
+  "backHiddenLayers": 296,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      536.8,
+      223.22,
+      360,
+      316.8
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      0,
+      0
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      25.6,
+      22.4,
+      960,
+      576
+     ],
+     "back": [
+      596.8,
+      285.62,
+      240,
+      192
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S04_step00",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 35,
+  "backTextCount": 35,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 289,
+  "backHiddenLayers": 294,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S04_step01",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 35,
+  "backTextCount": 35,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 289,
+  "backHiddenLayers": 294,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S04_step02",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 35,
+  "backTextCount": 35,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 289,
+  "backHiddenLayers": 294,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 507,
+  "backInventory": 507,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S04_step03",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 35,
+  "backTextCount": 35,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 289,
+  "backHiddenLayers": 294,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 510,
+  "backInventory": 510,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S04_step04",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 35,
+  "backTextCount": 35,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 289,
+  "backHiddenLayers": 294,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S04_step05",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 35,
+  "backTextCount": 35,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 289,
+  "backHiddenLayers": 294,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S05_step00",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 33,
+  "backTextCount": 33,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 317,
+  "backHiddenLayers": 322,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S05_step01",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 33,
+  "backTextCount": 33,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 317,
+  "backHiddenLayers": 322,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S05_step02",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 45,
+  "backTextCount": 45,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 303,
+  "backHiddenLayers": 308,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S05_step03",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 34,
+  "backTextCount": 34,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 321,
+  "backHiddenLayers": 326,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      532.5,
+      209.19,
+      375,
+      330
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      0,
+      0
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      0,
+      0,
+      1000,
+      600
+     ],
+     "back": [
+      595,
+      274.19,
+      250,
+      200
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "matrix(1, 0, 0, 1, -187.5, -165)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -33, -19.125)",
+     "back": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S06_step00",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 34,
+  "backTextCount": 34,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 1,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 331,
+  "backHiddenLayers": 331,
+  "fwdScrollables": 32,
+  "backScrollables": 32,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "none",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S06_step01",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 29,
+  "backTextCount": 29,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 1,
+  "backClippedVisible": 1,
+  "fwdHiddenLayers": 316,
+  "backHiddenLayers": 316,
+  "fwdScrollables": 37,
+  "backScrollables": 37,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S06_step02",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 30,
+  "backTextCount": 30,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 1,
+  "backClippedVisible": 1,
+  "fwdHiddenLayers": 309,
+  "backHiddenLayers": 309,
+  "fwdScrollables": 37,
+  "backScrollables": 37,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S06_step03",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 37,
+  "backTextCount": 37,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 1,
+  "backClippedVisible": 1,
+  "fwdHiddenLayers": 299,
+  "backHiddenLayers": 299,
+  "fwdScrollables": 38,
+  "backScrollables": 38,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S06_step04",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 36,
+  "backTextCount": 36,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 1,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 303,
+  "backHiddenLayers": 303,
+  "fwdScrollables": 33,
+  "backScrollables": 33,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "none"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S06_step05",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 35,
+  "backTextCount": 35,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 1,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 320,
+  "backHiddenLayers": 320,
+  "fwdScrollables": 33,
+  "backScrollables": 33,
+  "fwdInventory": 513,
+  "backInventory": 513,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "none"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S07_step00",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 34,
+  "backTextCount": 34,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 305,
+  "backHiddenLayers": 300,
+  "fwdScrollables": 35,
+  "backScrollables": 35,
+  "fwdInventory": 517,
+  "backInventory": 517,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      532.5,
+      209.19,
+      375,
+      330
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      1000,
+      600
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "none"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, -187.5, -165)",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)",
+     "back": "matrix(0.96, 0, 0, 0.96, -33, -19.125)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S07_step01",
+  "phoneFwd": "570,50,300,620",
+  "phoneBack": "570,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 34,
+  "backTextCount": 34,
+  "movedCount": 42,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 3,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.018,
+  "backMaxScale": 1.018,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 304,
+  "backHiddenLayers": 299,
+  "fwdScrollables": 35,
+  "backScrollables": 35,
+  "fwdInventory": 517,
+  "backInventory": 517,
+  "examples": {
+   "moved": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "text": "",
+     "fwd": [
+      532.5,
+      209.19,
+      375,
+      330
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1",
+     "cls": "family-map-surface",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0",
+     "cls": "map-demo-screen",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0",
+     "cls": "map-local-geometry",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      0,
+      0
+     ]
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/svg:0/rect:0",
+     "cls": "",
+     "text": "",
+     "fwd": [
+      595,
+      274.19,
+      250,
+      200
+     ],
+     "back": [
+      0,
+      0,
+      1000,
+      600
+     ]
+    }
+   ],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2",
+     "cls": "family-map-stage",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, 0, 0)",
+     "back": "none"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:0",
+     "cls": "family-map-glow ambient-glow",
+     "note": "transform-differs",
+     "fwd": "matrix(1, 0, 0, 1, -187.5, -165)",
+     "back": "matrix(1, 0, 0, 1, 0, 0)"
+    },
+    {
+     "path": "html/body:0/div:0/main:0/div:0/section:0/div:1/div:2/div:1/div:0/div:1",
+     "cls": "map-place map-club",
+     "note": "transform-differs",
+     "fwd": "matrix(0.96, 0, 0, 0.96, -35.4219, -8)",
+     "back": "matrix(0.96, 0, 0, 0.96, -33, -19.125)"
+    }
+   ],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S08_step00",
+  "phoneFwd": "250,50,300,620",
+  "phoneBack": "250,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 12,
+  "backTextCount": 12,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 164,
+  "backHiddenLayers": 164,
+  "fwdScrollables": 7,
+  "backScrollables": 7,
+  "fwdInventory": 270,
+  "backInventory": 270,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S08_step01",
+  "phoneFwd": "250,50,300,620",
+  "phoneBack": "250,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 12,
+  "backTextCount": 12,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 164,
+  "backHiddenLayers": 164,
+  "fwdScrollables": 7,
+  "backScrollables": 7,
+  "fwdInventory": 270,
+  "backInventory": 270,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S08_step02",
+  "phoneFwd": "250,50,300,620",
+  "phoneBack": "250,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 12,
+  "backTextCount": 12,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 163,
+  "backHiddenLayers": 163,
+  "fwdScrollables": 4,
+  "backScrollables": 4,
+  "fwdInventory": 270,
+  "backInventory": 270,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S08_step03",
+  "phoneFwd": "730,50,300,620",
+  "phoneBack": "730,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 30,
+  "backTextCount": 30,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 141,
+  "backHiddenLayers": 141,
+  "fwdScrollables": 7,
+  "backScrollables": 7,
+  "fwdInventory": 270,
+  "backInventory": 270,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S08_step04",
+  "phoneFwd": "730,50,300,620",
+  "phoneBack": "730,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 30,
+  "backTextCount": 30,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 141,
+  "backHiddenLayers": 141,
+  "fwdScrollables": 7,
+  "backScrollables": 7,
+  "fwdInventory": 270,
+  "backInventory": 270,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S09_step00",
+  "phoneFwd": "250,50,300,620",
+  "phoneBack": "250,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 21,
+  "backTextCount": 21,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 4,
+  "backHiddenLayers": 4,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 115,
+  "backInventory": 115,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S09_step01",
+  "phoneFwd": "250,50,300,620",
+  "phoneBack": "250,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 22,
+  "backTextCount": 22,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 3,
+  "backHiddenLayers": 3,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 115,
+  "backInventory": 115,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S09_step02",
+  "phoneFwd": "250,50,300,620",
+  "phoneBack": "250,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 23,
+  "backTextCount": 23,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 2,
+  "backHiddenLayers": 2,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 115,
+  "backInventory": 115,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S09_step03",
+  "phoneFwd": "250,50,300,620",
+  "phoneBack": "250,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 24,
+  "backTextCount": 24,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 1,
+  "backHiddenLayers": 1,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 115,
+  "backInventory": 115,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S09_step04",
+  "phoneFwd": "250,50,300,620",
+  "phoneBack": "250,50,300,620",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 25,
+  "backTextCount": 25,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 0,
+  "backHiddenLayers": 0,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 115,
+  "backInventory": 115,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S10_step00",
+  "phoneFwd": "238,25,324,669.6",
+  "phoneBack": "238,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 14,
+  "backTextCount": 14,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 64,
+  "backHiddenLayers": 64,
+  "fwdScrollables": 0,
+  "backScrollables": 0,
+  "fwdInventory": 173,
+  "backInventory": 173,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S10_step01",
+  "phoneFwd": "238,25,324,669.6",
+  "phoneBack": "238,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 14,
+  "backTextCount": 14,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 64,
+  "backHiddenLayers": 64,
+  "fwdScrollables": 0,
+  "backScrollables": 0,
+  "fwdInventory": 173,
+  "backInventory": 173,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S10_step02",
+  "phoneFwd": "238,25,324,669.6",
+  "phoneBack": "238,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 9,
+  "backTextCount": 9,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 64,
+  "backHiddenLayers": 64,
+  "fwdScrollables": 0,
+  "backScrollables": 0,
+  "fwdInventory": 167,
+  "backInventory": 167,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S10_step03",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 12,
+  "backTextCount": 12,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 60,
+  "backHiddenLayers": 60,
+  "fwdScrollables": 0,
+  "backScrollables": 0,
+  "fwdInventory": 167,
+  "backInventory": 167,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S10_step04",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 13,
+  "backTextCount": 13,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 60,
+  "backHiddenLayers": 60,
+  "fwdScrollables": 0,
+  "backScrollables": 0,
+  "fwdInventory": 179,
+  "backInventory": 179,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S11_step00",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 2,
+  "backTextCount": 2,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 2,
+  "backHiddenLayers": 2,
+  "fwdScrollables": 4,
+  "backScrollables": 4,
+  "fwdInventory": 8,
+  "backInventory": 8,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S11_step01",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 2,
+  "backTextCount": 2,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 1,
+  "backHiddenLayers": 1,
+  "fwdScrollables": 4,
+  "backScrollables": 4,
+  "fwdInventory": 8,
+  "backInventory": 8,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S11_step02",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 3,
+  "backTextCount": 3,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 0,
+  "backHiddenLayers": 0,
+  "fwdScrollables": 4,
+  "backScrollables": 4,
+  "fwdInventory": 8,
+  "backInventory": 8,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S12_step00",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 4,
+  "backTextCount": 4,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 15,
+  "backHiddenLayers": 15,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 32,
+  "backInventory": 32,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S12_step01",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 9,
+  "backTextCount": 9,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 2,
+  "backHiddenLayers": 2,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 32,
+  "backInventory": 32,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S12_step02",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 9,
+  "backTextCount": 9,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 0,
+  "backHiddenLayers": 0,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 32,
+  "backInventory": 32,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S13_step00",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 9,
+  "backTextCount": 9,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 13,
+  "backHiddenLayers": 13,
+  "fwdScrollables": 3,
+  "backScrollables": 3,
+  "fwdInventory": 55,
+  "backInventory": 55,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S13_step01",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 11,
+  "backTextCount": 11,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 13,
+  "backHiddenLayers": 13,
+  "fwdScrollables": 3,
+  "backScrollables": 3,
+  "fwdInventory": 57,
+  "backInventory": 57,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S13_step02",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 14,
+  "backTextCount": 14,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 13,
+  "backHiddenLayers": 13,
+  "fwdScrollables": 3,
+  "backScrollables": 3,
+  "fwdInventory": 60,
+  "backInventory": 60,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S13_step03",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 17,
+  "backTextCount": 17,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 4,
+  "backHiddenLayers": 4,
+  "fwdScrollables": 3,
+  "backScrollables": 3,
+  "fwdInventory": 60,
+  "backInventory": 60,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S14_step00",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 17,
+  "backTextCount": 17,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 31,
+  "backHiddenLayers": 31,
+  "fwdScrollables": 8,
+  "backScrollables": 8,
+  "fwdInventory": 91,
+  "backInventory": 91,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S14_step01",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 22,
+  "backTextCount": 22,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 19,
+  "backHiddenLayers": 19,
+  "fwdScrollables": 8,
+  "backScrollables": 8,
+  "fwdInventory": 91,
+  "backInventory": 91,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S14_step02",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 25,
+  "backTextCount": 25,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 7,
+  "backHiddenLayers": 7,
+  "fwdScrollables": 8,
+  "backScrollables": 8,
+  "fwdInventory": 91,
+  "backInventory": 91,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S14_step03",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 25,
+  "backTextCount": 25,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 7,
+  "backHiddenLayers": 7,
+  "fwdScrollables": 8,
+  "backScrollables": 8,
+  "fwdInventory": 91,
+  "backInventory": 91,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S14_step04",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 5,
+  "backTextCount": 5,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 73,
+  "backHiddenLayers": 73,
+  "fwdScrollables": 5,
+  "backScrollables": 5,
+  "fwdInventory": 91,
+  "backInventory": 91,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S15_step00",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 5,
+  "backTextCount": 5,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 10,
+  "backHiddenLayers": 10,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S15_step01",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 5,
+  "backTextCount": 5,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 10,
+  "backHiddenLayers": 10,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S15_step02",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 6,
+  "backTextCount": 6,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 8,
+  "backHiddenLayers": 8,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S15_step03",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 7,
+  "backTextCount": 7,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 7,
+  "backHiddenLayers": 7,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S15_step04",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 8,
+  "backTextCount": 8,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 3,
+  "backHiddenLayers": 3,
+  "fwdScrollables": 1,
+  "backScrollables": 1,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S16_step00",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 7,
+  "backTextCount": 7,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 10,
+  "backHiddenLayers": 10,
+  "fwdScrollables": 5,
+  "backScrollables": 5,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S16_step01",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 11,
+  "backTextCount": 11,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 8,
+  "backHiddenLayers": 8,
+  "fwdScrollables": 5,
+  "backScrollables": 5,
+  "fwdInventory": 70,
+  "backInventory": 70,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S16_step02",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 11,
+  "backTextCount": 11,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 8,
+  "backHiddenLayers": 8,
+  "fwdScrollables": 5,
+  "backScrollables": 5,
+  "fwdInventory": 70,
+  "backInventory": 70,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S16_step03",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 11,
+  "backTextCount": 11,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 8,
+  "backHiddenLayers": 8,
+  "fwdScrollables": 5,
+  "backScrollables": 5,
+  "fwdInventory": 70,
+  "backInventory": 70,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S16_step04",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 15,
+  "backTextCount": 15,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 2,
+  "backHiddenLayers": 2,
+  "fwdScrollables": 5,
+  "backScrollables": 5,
+  "fwdInventory": 70,
+  "backInventory": 70,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S17_step00",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 5,
+  "backTextCount": 5,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 9,
+  "backHiddenLayers": 9,
+  "fwdScrollables": 3,
+  "backScrollables": 3,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S17_step01",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 7,
+  "backTextCount": 7,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 6,
+  "backHiddenLayers": 6,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S17_step02",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 7,
+  "backTextCount": 7,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 5,
+  "backHiddenLayers": 5,
+  "fwdScrollables": 2,
+  "backScrollables": 2,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S17_step03",
+  "phoneFwd": "718,25,324,669.6",
+  "phoneBack": "718,25,324,669.6",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 7,
+  "backTextCount": 7,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1.08,
+  "backMaxScale": 1.08,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 3,
+  "backHiddenLayers": 3,
+  "fwdScrollables": 3,
+  "backScrollables": 3,
+  "fwdInventory": 63,
+  "backInventory": 63,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S18_step00",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 0,
+  "backTextCount": 0,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 17,
+  "backHiddenLayers": 17,
+  "fwdScrollables": 4,
+  "backScrollables": 4,
+  "fwdInventory": 21,
+  "backInventory": 21,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S18_step01",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 1,
+  "backTextCount": 1,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 14,
+  "backHiddenLayers": 14,
+  "fwdScrollables": 4,
+  "backScrollables": 4,
+  "fwdInventory": 21,
+  "backInventory": 21,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S18_step02",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 9,
+  "backTextCount": 9,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 1,
+  "backHiddenLayers": 1,
+  "fwdScrollables": 3,
+  "backScrollables": 3,
+  "fwdInventory": 21,
+  "backInventory": 21,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ },
+ {
+  "name": "S18_step03",
+  "phoneFwd": "none",
+  "phoneBack": "none",
+  "phoneEqual": true,
+  "screenEqual": true,
+  "appEqual": true,
+  "textsEqual": true,
+  "fwdTextCount": 10,
+  "backTextCount": 10,
+  "movedCount": 0,
+  "resizedCount": 0,
+  "fontChangedCount": 0,
+  "visibilityDiffCount": 0,
+  "onlyFwdCount": 0,
+  "onlyBackCount": 0,
+  "fwdMaxScale": 1,
+  "backMaxScale": 1,
+  "fwdClippedVisible": 0,
+  "backClippedVisible": 0,
+  "fwdHiddenLayers": 0,
+  "backHiddenLayers": 0,
+  "fwdScrollables": 3,
+  "backScrollables": 3,
+  "fwdInventory": 21,
+  "backInventory": 21,
+  "examples": {
+   "moved": [],
+   "resized": [],
+   "fontChanged": [],
+   "visDiff": [],
+   "onlyF": [],
+   "onlyB": []
+  }
+ }
+]

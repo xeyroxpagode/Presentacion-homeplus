@@ -1,0 +1,105 @@
+{
+  "[data-testid=\"finance-tabs\"]": null,
+  "[data-testid=\"finance-tabs-thumb\"]": null,
+  "[data-testid=\"finance-scope-switch\"]": null,
+  "[data-testid=\"finance-scope-switch-thumb\"]": null,
+  "[data-testid=\"resumen-currency-switch\"]": null,
+  "[data-testid=\"resumen-currency-switch-thumb\"]": null,
+  "[data-testid=\"homecloud-tabs\"]": {
+    "tag": "DIV",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgb(244, 240, 235)",
+    "br": "22px",
+    "border": "none",
+    "pad": "4px 4px 4px 4px",
+    "shadow": "none",
+    "gap": "0px",
+    "height": "44px",
+    "box": "390x44@20,144",
+    "text": "Archivos Recuerdos"
+  },
+  "[data-testid=\"homecloud-tabs-thumb\"]": {
+    "tag": "SPAN",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgb(255, 255, 255)",
+    "br": "18px",
+    "border": "none",
+    "pad": "0px 0px 0px 0px",
+    "shadow": "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba(26, 24, 22, 0.04) 0px 1px 2px 0px",
+    "gap": "normal",
+    "height": "36px",
+    "box": "191x36@24,148",
+    "text": ""
+  },
+  "[data-testid=\"movimientos-filter\"]": null,
+  "[data-testid=\"analisis-tabs\"]": null,
+  "[data-testid=\"limites-segment\"]": null,
+  "header": null,
+  "[data-nav-screen-id]": {
+    "tag": "DIV",
+    "fs": "16px",
+    "fw": "400",
+    "lh": "24px",
+    "col": "rgb(26, 23, 20)",
+    "bg": "rgba(0, 0, 0, 0)",
+    "br": "0px",
+    "border": "none",
+    "pad": "0px 0px 0px 0px",
+    "shadow": "none",
+    "gap": "normal",
+    "height": "763px",
+    "box": "430x763@0,73",
+    "text": "HomeCloud Archivos Recuerdos 1 subida CARPETAS Casa ⋯ Auto ⋯ Subiendo… Factura d"
+  },
+  "segmentLabels": [],
+  "shell": [],
+  "navLabels": [
+    {
+      "al": "Ir a Inicio",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(107, 101, 96)",
+      "box": "84x66"
+    },
+    {
+      "al": "Ir a Familia",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(107, 101, 96)",
+      "box": "84x66"
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(255, 255, 255)",
+      "box": "84x66"
+    },
+    {
+      "al": "Ir a Calendario",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(107, 101, 96)",
+      "box": "84x66"
+    },
+    {
+      "al": "Abrir Más opciones",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(255, 255, 255)",
+      "box": "84x66"
+    }
+  ],
+  "bodyFont": "\"DM Sans\", system-ui, sans-serif"
+}

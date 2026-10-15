@@ -1,0 +1,58 @@
+/* Homi assistant overlay: no account row and no bottom nav, the assistant owns the screen. */
+.homi-demo-screen .home-top-bar { display: none; }
+
+.homi-assistant-bar { flex: none; display: flex; align-items: center; gap: 12px; padding: 10px var(--home-screen-padding) 12px; }
+.homi-assistant-bar img { flex: none; border-radius: 12px; }
+.homi-assistant-copy { min-width: 0; }
+.homi-assistant-name { margin: 0; color: var(--home-ink); font-size: 20px; line-height: 1.2; font-weight: 600; }
+.homi-assistant-sub { margin: 2px 0 0; color: var(--home-muted); font-size: 13px; }
+
+.homi-thread { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: flex-end; gap: 12px; overflow: hidden; padding: 4px var(--home-screen-padding) 12px; }
+.homi-greeting { text-align: center; }
+.homi-greeting p { margin: 0; color: var(--home-muted); font-size: 20px; }
+
+.homi-user-bubble { align-self: flex-end; max-width: 88%; padding: 12px 16px; border-radius: 18px 18px 6px 18px; background: var(--home-brand); }
+.homi-user-bubble p { margin: 0; color: #fff; font-size: 19px; line-height: 1.35; }
+
+.homi-proposal { padding: 14px 16px; border: 1px solid var(--home-border); border-radius: 16px; background: var(--home-surface); }
+.homi-proposal p { margin: 0; color: var(--home-ink); font-size: 19px; line-height: 1.4; }
+
+.homi-confirm-zone { display: grid; min-height: 76px; }
+.homi-confirm-zone > * { grid-area: 1 / 1; align-self: center; }
+.homi-confirm { height: 54px; border: 0; border-radius: 14px; background: var(--home-brand); color: #fff; font-family: inherit; font-size: 17px; font-weight: 600; cursor: default; }
+.homi-done { display: flex; align-items: center; gap: 12px; padding: 12px 14px; border-radius: 14px; background: var(--home-brand-soft); }
+.homi-check { position: relative; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--home-brand); }
+.homi-check::after { content: ''; position: absolute; left: 9px; top: 5px; width: 6px; height: 11px; border-right: 2.5px solid #fff; border-bottom: 2.5px solid #fff; transform: rotate(45deg); }
+.homi-done-copy { min-width: 0; }
+.homi-done-title { margin: 0; color: var(--home-ink); font-size: 17px; font-weight: 600; }
+.homi-done-sub { margin: 2px 0 0; color: var(--home-muted); font-size: 13px; line-height: 1.35; }
+
+.homi-greeting,
+.homi-user-bubble,
+.homi-proposal,
+.homi-confirm,
+.homi-done {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition:
+    opacity var(--motion-replace-duration) var(--motion-easing),
+    transform var(--motion-reframe-duration) var(--motion-easing),
+    visibility 0s var(--motion-reframe-duration);
+}
+
+.homi-greeting[data-present='true'],
+.homi-user-bubble[data-present='true'],
+.homi-proposal[data-present='true'],
+.homi-confirm[data-present='true'],
+.homi-done[data-present='true'] {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+.homi-composer { flex: none; display: flex; align-items: center; gap: 10px; margin: 0 var(--home-screen-padding) 14px; padding: 8px 8px 8px 18px; border: 1px solid var(--home-border); border-radius: 9999px; background: var(--home-surface); }
+.homi-composer-hint { flex: 1; min-width: 0; color: var(--home-faint); font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.homi-send { position: relative; flex: none; width: 38px; height: 38px; border-radius: 50%; background: var(--home-brand); }
+.homi-send::after { content: ''; position: absolute; left: 12px; top: 13px; width: 10px; height: 10px; border-top: 2.5px solid #fff; border-right: 2.5px solid #fff; transform: rotate(-45deg); }

@@ -1,0 +1,425 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "finanzas",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Finanzas",
+      "fs": "28px",
+      "fw": "600"
+    },
+    {
+      "tag": "H2",
+      "text": "Movimiento",
+      "fs": "22px",
+      "fw": "800"
+    }
+  ],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "sel": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "sel": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver a Más",
+      "t": "Volver a Más",
+      "tid": null,
+      "sel": null,
+      "x": 8,
+      "y": 77
+    },
+    {
+      "role": "radio",
+      "al": "Personal",
+      "t": "Personal",
+      "tid": null,
+      "sel": null,
+      "x": 264,
+      "y": 83
+    },
+    {
+      "role": "radio",
+      "al": "Hogar",
+      "t": "Hogar",
+      "tid": null,
+      "sel": null,
+      "x": 347,
+      "y": 83
+    },
+    {
+      "role": "radio",
+      "al": "Resumen",
+      "t": "Resumen",
+      "tid": null,
+      "sel": null,
+      "x": 20,
+      "y": 133
+    },
+    {
+      "role": "radio",
+      "al": "Movimientos",
+      "t": "Movimientos",
+      "tid": null,
+      "sel": null,
+      "x": 150,
+      "y": 133
+    },
+    {
+      "role": "radio",
+      "al": "Pagos",
+      "t": "Pagos",
+      "tid": null,
+      "sel": null,
+      "x": 280,
+      "y": 133
+    },
+    {
+      "role": null,
+      "al": "Abrir Papelera",
+      "t": "Abrir Papelera",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": -184
+    },
+    {
+      "role": null,
+      "al": "Mes anterior",
+      "t": "Mes anterior",
+      "tid": null,
+      "sel": null,
+      "x": 110,
+      "y": -184
+    },
+    {
+      "role": null,
+      "al": "Mes siguiente",
+      "t": "Mes siguiente",
+      "tid": null,
+      "sel": null,
+      "x": 276,
+      "y": -184
+    },
+    {
+      "role": null,
+      "al": "Nuevo movimiento",
+      "t": "Nuevo movimiento",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": -184
+    },
+    {
+      "role": null,
+      "al": "Gastos",
+      "t": "Gastos",
+      "tid": null,
+      "sel": null,
+      "x": 20,
+      "y": -124
+    },
+    {
+      "role": null,
+      "al": "Ingresos",
+      "t": "Ingresos",
+      "tid": null,
+      "sel": null,
+      "x": 150,
+      "y": -124
+    },
+    {
+      "role": null,
+      "al": "Transferencias",
+      "t": "Transferencias",
+      "tid": null,
+      "sel": null,
+      "x": 280,
+      "y": -124
+    },
+    {
+      "role": null,
+      "al": "Buscar movimientos",
+      "t": "Buscar movimientos",
+      "tid": "movimientos-search",
+      "sel": null,
+      "x": 54,
+      "y": -72
+    },
+    {
+      "role": null,
+      "al": "Filtros",
+      "t": "Filtros",
+      "tid": "movimientos-open-filters",
+      "sel": null,
+      "x": 332,
+      "y": -72
+    },
+    {
+      "role": null,
+      "al": "Supermercado, gasto 61.800 ARS, categoría Alimentación",
+      "t": "Supermercado Alimentación -61.800 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 8
+    },
+    {
+      "role": null,
+      "al": "Farmacia, gasto 20.700 ARS, categoría Salud",
+      "t": "Farmacia Salud -20.700 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 65
+    },
+    {
+      "role": null,
+      "al": "Sueldo, ingreso 2.450.000 ARS, categoría Trabajo",
+      "t": "Sueldo Trabajo +2.450.000 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 122
+    },
+    {
+      "role": null,
+      "al": "Transferencia, Billetera a Galicia, 50.000 ARS, con comisión de 850 ARS",
+      "t": "Transferencia Billetera → Galicia · Carga de saldo · Comisión 850 ARS ",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 179
+    },
+    {
+      "role": null,
+      "al": "Vacuna anual · Toby, gasto 25.000 ARS",
+      "t": "Vacuna anual · Toby -25.000 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 236
+    },
+    {
+      "role": null,
+      "al": "Nafta, gasto 18.600 ARS, categoría Transporte",
+      "t": "Nafta Transporte -18.600 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 332
+    },
+    {
+      "role": null,
+      "al": "Restaurante, gasto 48.300 ARS, categoría Ocio",
+      "t": "Restaurante Ocio -48.300 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 389
+    },
+    {
+      "role": null,
+      "al": "Transferencia, Galicia a Ahorro USD, 300.000 ARS → 240 USD",
+      "t": "Transferencia Galicia → Ahorro USD · Ahorro mensual 300.000 ARS → 240 ",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 446
+    },
+    {
+      "role": null,
+      "al": "Notebook en cuotas, gasto 28.500 ARS, categoría Compras",
+      "t": "Notebook en cuotas Compras · Cuota 3 de 12 -28.500 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 542
+    },
+    {
+      "role": null,
+      "al": "Zapatillas, gasto 77.000 ARS, categoría Compras, con 12.000 ARS devueltos",
+      "t": "Zapatillas Compras · Devuelto 12.000 ARS · Neto 77.000 ARS -77.000 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 599
+    },
+    {
+      "role": null,
+      "al": "Venta bici usada, ingreso 85.000 ARS, categoría Ventas",
+      "t": "Venta bici usada Ventas +85.000 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 656
+    },
+    {
+      "role": null,
+      "al": "Service · Toyota Corolla, gasto 120.000 ARS",
+      "t": "Service · Toyota Corolla -120.000 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 752
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "sel": "false",
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "sel": "false",
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "sel": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "sel": "false",
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "sel": "true",
+      "x": 341,
+      "y": 845
+    },
+    {
+      "role": null,
+      "al": "Cerrar",
+      "t": "Cerrar",
+      "tid": null,
+      "sel": null,
+      "x": 0,
+      "y": 0
+    },
+    {
+      "role": null,
+      "al": "Cerrar hoja",
+      "t": "Cerrar hoja",
+      "tid": null,
+      "sel": null,
+      "x": 378,
+      "y": 466
+    },
+    {
+      "role": null,
+      "al": "Corregir los datos anotados",
+      "t": "Corregir los datos anotados El movimiento ocurrió igual",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 812
+    },
+    {
+      "role": null,
+      "al": "Enviar a Papelera",
+      "t": "Enviar a Papelera",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 872
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "finance-root",
+    "finance-header",
+    "finance-scope-switch",
+    "finance-scope-switch-thumb",
+    "finance-tab-bar",
+    "finance-tabs",
+    "finance-tabs-thumb",
+    "finance-content",
+    "movimientos-surface",
+    "movimientos-utility-row",
+    "movimientos-period",
+    "movimientos-filter",
+    "movimientos-toolbar",
+    "movimientos-search",
+    "movimientos-open-filters",
+    "movimientos-groups",
+    "movimientos-date-2026-09-25",
+    "movimiento-expense-mov-super",
+    "movimiento-expense-mov-farmacia",
+    "movimiento-income-mov-sueldo",
+    "movimiento-transfer-mov-tr1",
+    "movimiento-expense-mov-vacuna-toby",
+    "movimientos-date-2026-09-24",
+    "movimiento-expense-mov-nafta",
+    "movimiento-expense-mov-resto",
+    "movimiento-transfer-mov-tr2",
+    "movimientos-date-2026-09-23",
+    "movimiento-expense-mov-notebook",
+    "movimiento-expense-mov-zapatillas",
+    "movimiento-income-mov-bici",
+    "movimientos-date-2026-09-18",
+    "movimiento-expense-mov-service-corolla",
+    "floating-nav-indicator",
+    "sheet-movement-detail",
+    "movement-detail-header",
+    "movement-category",
+    "movement-account",
+    "movement-date",
+    "movement-recovery-actions",
+    "movement-correction-action",
+    "movement-trash-action"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nFinanzas\nPersonal\nHogar\nResumen\nMovimientos\nPagos\nSEPTIEMBRE 2026\nGastos\nIngresos\nTransferencias\nFiltros\nHOY\nSupermercado\nAlimentación\n-61.800 ARS\nFarmacia\nSalud\n-20.700 ARS\nSueldo\nTrabajo\n+2.450.000 ARS\nTransferencia\nBilletera → Galicia · Carga de saldo · Comisión 850 ARS\n50.000 ARS\nVacuna anual · Toby\n-25.000 ARS\nAYER\nNafta\nTransporte\n-18.600 ARS\nRestaurante\nOcio\n-48.300 ARS\nTransferencia\nGalicia → Ahorro USD · Ahorro mensual\n300.000 ARS\n→ 240 USD\n23 SEPTIEMBRE\nNotebook en cuotas\nCompras · Cuota 3 de 12\n-28.500 ARS\nZapatillas\nCompras · Devuelto 12.000 ARS · Neto 77.000 ARS\n-77.000 ARS\nVenta bici usada\nVentas\n+85.000 ARS\n18 SEPTIEMBRE\nService · Toyota Corolla\n-120.000 ARS\nMovimiento\nFinanzas de Familia García\nINGRESO\nSueldo\nTrabajo\n+2.450.000 ARS\nCategoría\nTrabajo\nCuenta\nGalicia · ARS\nFecha\nHoy\nSi algo no está bien\nCorregir los datos anotados\nEl movimiento ocurrió igual\nEnviar a Papelera"
+}

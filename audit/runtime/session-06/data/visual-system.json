@@ -1,0 +1,664 @@
+{
+  "home": {
+    "shell": {
+      "width": "390px",
+      "height": "844px",
+      "border": "10px solid rgb(26, 23, 20)",
+      "borderRadius": "48px",
+      "boxShadow": "rgba(0, 0, 0, 0.5) 0px 40px 80px 0px, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
+      "background": "rgb(252, 251, 249)",
+      "overflow": "hidden"
+    },
+    "counts": {
+      "fontSize": 12,
+      "fontFamily": 1,
+      "fontWeight": 4,
+      "borderRadius": 5,
+      "boxShadow": 2,
+      "color": 7,
+      "backgroundColor": 14,
+      "gap": 4,
+      "padding": 14
+    },
+    "fontSizes": [
+      "10px",
+      "11.5px",
+      "11px",
+      "12.5px",
+      "12px",
+      "13.5px",
+      "13px",
+      "14px",
+      "15.96px",
+      "15px",
+      "16px",
+      "19px"
+    ],
+    "fontFamilies": [
+      "\"DM Sans\", system-ui, sans-serif"
+    ],
+    "radii": [
+      "16px",
+      "20px",
+      "28px",
+      "50%",
+      "9999px"
+    ],
+    "shadows": [
+      "rgba(26, 23, 20, 0.1) 0px 4px 12px 0px",
+      "rgba(26, 23, 20, 0.12) 0px 8px 24px 0px, rgba(26, 24, 22, 0.06) 0px 2px 8px 0px"
+    ],
+    "gaps": [
+      "12px",
+      "4px",
+      "6px",
+      "8px"
+    ],
+    "paddings": [
+      "0px 0px 24px",
+      "0px 12px",
+      "0px 20px 12px",
+      "0px 3px",
+      "0px 4px",
+      "0px 8px",
+      "12px 16px",
+      "12px 20px 6px",
+      "16px 32px 8px",
+      "3px 0px 0px",
+      "6px 16px",
+      "8px 0px 20px",
+      "8px 16px",
+      "8px 20px 6px"
+    ],
+    "fontWeights": [
+      "400",
+      "500",
+      "600",
+      "700"
+    ],
+    "consoleErrors": []
+  },
+  "planner-tareas": {
+    "shell": {
+      "width": "390px",
+      "height": "844px",
+      "border": "10px solid rgb(26, 23, 20)",
+      "borderRadius": "48px",
+      "boxShadow": "rgba(0, 0, 0, 0.5) 0px 40px 80px 0px, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
+      "background": "rgb(252, 251, 249)",
+      "overflow": "hidden"
+    },
+    "counts": {
+      "fontSize": 10,
+      "fontFamily": 1,
+      "fontWeight": 4,
+      "borderRadius": 6,
+      "boxShadow": 3,
+      "color": 8,
+      "backgroundColor": 16,
+      "gap": 4,
+      "padding": 16
+    },
+    "fontSizes": [
+      "10px",
+      "11px",
+      "12px",
+      "13px",
+      "14px",
+      "15.96px",
+      "15px",
+      "16px",
+      "24px",
+      "9px"
+    ],
+    "fontFamilies": [
+      "\"DM Sans\", system-ui, sans-serif"
+    ],
+    "radii": [
+      "16px",
+      "20px",
+      "22px",
+      "28px",
+      "50%",
+      "9999px"
+    ],
+    "shadows": [
+      "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba(26, 24, 22, 0.04) 0px 1px 2px 0px",
+      "rgba(26, 23, 20, 0.1) 0px 4px 12px 0px",
+      "rgba(26, 23, 20, 0.12) 0px 8px 24px 0px, rgba(26, 24, 22, 0.06) 0px 2px 8px 0px"
+    ],
+    "gaps": [
+      "12px",
+      "4px",
+      "6px",
+      "8px"
+    ],
+    "paddings": [
+      "0px 0px 40px",
+      "0px 20px",
+      "0px 3px",
+      "0px 4px",
+      "0px 4px 0px 0px",
+      "0px 4px 0px 12px",
+      "0px 8px",
+      "0px 8px 0px 20px",
+      "10px 0px 10px 20px",
+      "16px 32px 8px",
+      "24px 20px 8px",
+      "4px 20px",
+      "6px",
+      "8px 0px 20px",
+      "8px 16px",
+      "8px 20px"
+    ],
+    "fontWeights": [
+      "400",
+      "500",
+      "600",
+      "700"
+    ],
+    "consoleErrors": []
+  },
+  "familia": {
+    "shell": {
+      "width": "390px",
+      "height": "844px",
+      "border": "10px solid rgb(26, 23, 20)",
+      "borderRadius": "48px",
+      "boxShadow": "rgba(0, 0, 0, 0.5) 0px 40px 80px 0px, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
+      "background": "rgb(252, 251, 249)",
+      "overflow": "hidden"
+    },
+    "counts": {
+      "fontSize": 9,
+      "fontFamily": 1,
+      "fontWeight": 5,
+      "borderRadius": 7,
+      "boxShadow": 3,
+      "color": 9,
+      "backgroundColor": 17,
+      "gap": 4,
+      "padding": 12
+    },
+    "fontSizes": [
+      "10px",
+      "11px",
+      "13px",
+      "14px",
+      "15.2px",
+      "15.96px",
+      "15px",
+      "16px",
+      "22px"
+    ],
+    "fontFamilies": [
+      "\"DM Sans\", system-ui, sans-serif"
+    ],
+    "radii": [
+      "16px",
+      "18px",
+      "20px",
+      "22px",
+      "28px",
+      "50%",
+      "9999px"
+    ],
+    "shadows": [
+      "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba(26, 24, 22, 0.04) 0px 1px 2px 0px",
+      "rgba(26, 23, 20, 0.1) 0px 4px 12px 0px",
+      "rgba(26, 23, 20, 0.12) 0px 8px 24px 0px, rgba(26, 24, 22, 0.06) 0px 2px 8px 0px"
+    ],
+    "gaps": [
+      "12px",
+      "4px",
+      "6px",
+      "8px"
+    ],
+    "paddings": [
+      "0px 0px 24px",
+      "0px 3px",
+      "0px 4px",
+      "0px 8px",
+      "12px 16px",
+      "13px 20px",
+      "16px 20px 0px",
+      "16px 32px 8px",
+      "20px 20px 8px",
+      "4px",
+      "8px 0px 20px",
+      "8px 16px"
+    ],
+    "fontWeights": [
+      "400",
+      "450",
+      "500",
+      "600",
+      "700"
+    ],
+    "consoleErrors": []
+  },
+  "inventario": {
+    "shell": {
+      "width": "390px",
+      "height": "844px",
+      "border": "10px solid rgb(26, 23, 20)",
+      "borderRadius": "48px",
+      "boxShadow": "rgba(0, 0, 0, 0.5) 0px 40px 80px 0px, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
+      "background": "rgb(252, 251, 249)",
+      "overflow": "hidden"
+    },
+    "counts": {
+      "fontSize": 8,
+      "fontFamily": 1,
+      "fontWeight": 4,
+      "borderRadius": 7,
+      "boxShadow": 3,
+      "color": 13,
+      "backgroundColor": 15,
+      "gap": 5,
+      "padding": 17
+    },
+    "fontSizes": [
+      "10px",
+      "11px",
+      "13px",
+      "14px",
+      "15.96px",
+      "15px",
+      "16px",
+      "22px"
+    ],
+    "fontFamilies": [
+      "\"DM Sans\", system-ui, sans-serif"
+    ],
+    "radii": [
+      "16px",
+      "18px",
+      "20px",
+      "22px",
+      "28px",
+      "50%",
+      "9999px"
+    ],
+    "shadows": [
+      "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba(26, 24, 22, 0.04) 0px 1px 2px 0px",
+      "rgba(26, 23, 20, 0.1) 0px 4px 12px 0px",
+      "rgba(26, 23, 20, 0.12) 0px 8px 24px 0px, rgba(26, 24, 22, 0.06) 0px 2px 8px 0px"
+    ],
+    "gaps": [
+      "12px",
+      "16px",
+      "4px",
+      "6px",
+      "8px"
+    ],
+    "paddings": [
+      "0px 16px",
+      "0px 16px 0px 44px",
+      "0px 20px 8px",
+      "0px 3px",
+      "0px 4px",
+      "0px 8px",
+      "12px 20px 8px 4px",
+      "16px 20px 0px",
+      "16px 20px 8px",
+      "16px 32px 8px",
+      "20px 20px 0px",
+      "4px",
+      "4px 0px",
+      "4px 20px 8px",
+      "8px 0px 20px",
+      "8px 16px",
+      "8px 20px 20px"
+    ],
+    "fontWeights": [
+      "400",
+      "500",
+      "600",
+      "700"
+    ],
+    "consoleErrors": []
+  },
+  "finanzas": {
+    "shell": {
+      "width": "390px",
+      "height": "844px",
+      "border": "10px solid rgb(26, 23, 20)",
+      "borderRadius": "48px",
+      "boxShadow": "rgba(0, 0, 0, 0.5) 0px 40px 80px 0px, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
+      "background": "rgb(252, 251, 249)",
+      "overflow": "hidden"
+    },
+    "counts": {
+      "fontSize": 10,
+      "fontFamily": 1,
+      "fontWeight": 4,
+      "borderRadius": 7,
+      "boxShadow": 3,
+      "color": 9,
+      "backgroundColor": 14,
+      "gap": 6,
+      "padding": 14
+    },
+    "fontSizes": [
+      "10px",
+      "11px",
+      "12px",
+      "13px",
+      "14px",
+      "15.96px",
+      "16px",
+      "18px",
+      "24px",
+      "28px"
+    ],
+    "fontFamilies": [
+      "\"DM Sans\", system-ui, sans-serif"
+    ],
+    "radii": [
+      "14px",
+      "20px",
+      "24px",
+      "28px",
+      "3px",
+      "50%",
+      "9999px"
+    ],
+    "shadows": [
+      "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba(26, 24, 22, 0.04) 0px 1px 2px 0px",
+      "rgba(26, 23, 20, 0.1) 0px 4px 12px 0px",
+      "rgba(26, 23, 20, 0.12) 0px 8px 24px 0px, rgba(26, 24, 22, 0.06) 0px 2px 8px 0px"
+    ],
+    "gaps": [
+      "12px",
+      "28px",
+      "2px",
+      "4px",
+      "6px",
+      "8px"
+    ],
+    "paddings": [
+      "0px 0px 28px",
+      "0px 14px",
+      "0px 3px",
+      "0px 4px",
+      "0px 8px",
+      "16px",
+      "16px 32px 8px",
+      "1px 0px 0px",
+      "4px",
+      "4px 16px 0px",
+      "4px 16px 12px",
+      "8px 0px",
+      "8px 0px 20px",
+      "8px 16px"
+    ],
+    "fontWeights": [
+      "400",
+      "600",
+      "700",
+      "800"
+    ],
+    "consoleErrors": []
+  },
+  "activos": {
+    "shell": {
+      "width": "390px",
+      "height": "844px",
+      "border": "10px solid rgb(26, 23, 20)",
+      "borderRadius": "48px",
+      "boxShadow": "rgba(0, 0, 0, 0.5) 0px 40px 80px 0px, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
+      "background": "rgb(252, 251, 249)",
+      "overflow": "hidden"
+    },
+    "counts": {
+      "fontSize": 9,
+      "fontFamily": 1,
+      "fontWeight": 4,
+      "borderRadius": 6,
+      "boxShadow": 2,
+      "color": 7,
+      "backgroundColor": 13,
+      "gap": 5,
+      "padding": 15
+    },
+    "fontSizes": [
+      "10px",
+      "11px",
+      "12px",
+      "13px",
+      "14px",
+      "15.96px",
+      "15px",
+      "16px",
+      "17px"
+    ],
+    "fontFamilies": [
+      "\"DM Sans\", system-ui, sans-serif"
+    ],
+    "radii": [
+      "12px",
+      "16px",
+      "20px",
+      "28px",
+      "50%",
+      "9999px"
+    ],
+    "shadows": [
+      "rgba(26, 23, 20, 0.1) 0px 4px 12px 0px",
+      "rgba(26, 23, 20, 0.12) 0px 8px 24px 0px, rgba(26, 24, 22, 0.06) 0px 2px 8px 0px"
+    ],
+    "gaps": [
+      "12px",
+      "4px",
+      "5px",
+      "6px",
+      "8px"
+    ],
+    "paddings": [
+      "0px 14px",
+      "0px 20px",
+      "0px 20px 4px",
+      "0px 3px",
+      "0px 4px",
+      "0px 8px",
+      "12px 16px",
+      "12px 16px 12px 44px",
+      "12px 20px 4px",
+      "16px 32px 8px",
+      "3px 8px",
+      "8px 0px 20px",
+      "8px 0px 4px",
+      "8px 12px",
+      "8px 16px"
+    ],
+    "fontWeights": [
+      "400",
+      "500",
+      "600",
+      "700"
+    ],
+    "consoleErrors": []
+  },
+  "homecloud": {
+    "shell": {
+      "width": "390px",
+      "height": "844px",
+      "border": "10px solid rgb(26, 23, 20)",
+      "borderRadius": "48px",
+      "boxShadow": "rgba(0, 0, 0, 0.5) 0px 40px 80px 0px, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
+      "background": "rgb(252, 251, 249)",
+      "overflow": "hidden"
+    },
+    "counts": {
+      "fontSize": 9,
+      "fontFamily": 2,
+      "fontWeight": 4,
+      "borderRadius": 10,
+      "boxShadow": 4,
+      "color": 12,
+      "backgroundColor": 15,
+      "gap": 6,
+      "padding": 24
+    },
+    "fontSizes": [
+      "10px",
+      "11px",
+      "12px",
+      "13px",
+      "14px",
+      "15.96px",
+      "15px",
+      "16px",
+      "17px"
+    ],
+    "fontFamilies": [
+      "\"DM Sans\", system-ui, sans-serif",
+      "\"DM Serif Display\", Georgia, serif"
+    ],
+    "radii": [
+      "12px",
+      "14px",
+      "16px",
+      "18px",
+      "20px",
+      "22px",
+      "28px",
+      "50%",
+      "8px",
+      "9999px"
+    ],
+    "shadows": [
+      "rgb(201, 79, 46) 0px -1px 0px 0px inset",
+      "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba(26, 24, 22, 0.04) 0px 1px 2px 0px",
+      "rgba(26, 23, 20, 0.1) 0px 4px 12px 0px",
+      "rgba(26, 23, 20, 0.12) 0px 8px 24px 0px, rgba(26, 24, 22, 0.06) 0px 2px 8px 0px"
+    ],
+    "gaps": [
+      "10px",
+      "12px",
+      "16px",
+      "4px",
+      "6px",
+      "8px"
+    ],
+    "paddings": [
+      "0px 0px 10px",
+      "0px 0px 6px",
+      "0px 0px 8px",
+      "0px 16px 0px 44px",
+      "0px 20px 112px",
+      "0px 20px 4px",
+      "0px 20px 8px",
+      "0px 3px",
+      "0px 4px",
+      "0px 8px",
+      "10px",
+      "12px 16px",
+      "12px 20px 8px",
+      "16px 0px 0px",
+      "16px 32px 8px",
+      "2px 6px",
+      "4px",
+      "4px 0px",
+      "4px 0px 0px",
+      "8px 0px 20px",
+      "8px 10px",
+      "8px 12px",
+      "8px 16px",
+      "8px 20px 6px"
+    ],
+    "fontWeights": [
+      "400",
+      "500",
+      "600",
+      "700"
+    ],
+    "consoleErrors": []
+  },
+  "mensajes": {
+    "shell": {
+      "width": "390px",
+      "height": "844px",
+      "border": "10px solid rgb(26, 23, 20)",
+      "borderRadius": "48px",
+      "boxShadow": "rgba(0, 0, 0, 0.5) 0px 40px 80px 0px, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset",
+      "background": "rgb(252, 251, 249)",
+      "overflow": "hidden"
+    },
+    "counts": {
+      "fontSize": 12,
+      "fontFamily": 1,
+      "fontWeight": 4,
+      "borderRadius": 6,
+      "boxShadow": 3,
+      "color": 11,
+      "backgroundColor": 18,
+      "gap": 4,
+      "padding": 18
+    },
+    "fontSizes": [
+      "10px",
+      "11px",
+      "12px",
+      "13px",
+      "14px",
+      "15.96px",
+      "15px",
+      "16.72px",
+      "16px",
+      "17px",
+      "18.48px",
+      "22px"
+    ],
+    "fontFamilies": [
+      "\"DM Sans\", system-ui, sans-serif"
+    ],
+    "radii": [
+      "14px",
+      "16px",
+      "20px",
+      "28px",
+      "50%",
+      "9999px"
+    ],
+    "shadows": [
+      "rgba(26, 23, 20, 0.1) 0px 4px 12px 0px",
+      "rgba(26, 23, 20, 0.12) 0px 8px 24px 0px, rgba(26, 24, 22, 0.06) 0px 2px 8px 0px",
+      "rgba(28, 28, 26, 0.1) 0px 6px 20px 0px, rgba(28, 28, 26, 0.06) 0px 1px 3px 0px"
+    ],
+    "gaps": [
+      "12px",
+      "4px",
+      "6px",
+      "8px"
+    ],
+    "paddings": [
+      "0px 16px",
+      "0px 16px 0px 44px",
+      "0px 20px",
+      "0px 3px",
+      "0px 4px",
+      "0px 6px",
+      "0px 8px",
+      "10px 0px",
+      "12px 0px",
+      "12px 16px 10px",
+      "12px 20px 8px",
+      "16px 20px 8px",
+      "16px 32px 8px",
+      "20px 20px 8px",
+      "8px",
+      "8px 0px 20px",
+      "8px 16px",
+      "8px 20px 0px"
+    ],
+    "fontWeights": [
+      "400",
+      "500",
+      "600",
+      "700"
+    ],
+    "consoleErrors": []
+  }
+}

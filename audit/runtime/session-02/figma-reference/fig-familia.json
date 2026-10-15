@@ -1,0 +1,165 @@
+{
+  "navScreenId": "familia",
+  "headings": [],
+  "tabs": [
+    {
+      "text": "Ir a Inicio",
+      "al": "Ir a Inicio",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Familia",
+      "al": "Ir a Familia",
+      "selected": "true",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Calendario",
+      "al": "Ir a Calendario",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Abrir Más opciones",
+      "al": "Abrir Más opciones",
+      "selected": "false",
+      "fs": "16px"
+    }
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nFamilia\nMapa\nLugares\nFamilia García\n4 integrantes\nG\nGabriel\nTrabajo · hace 1 h\nM\nMariana\nCasa · ahora\nJ\nJuan\nCasa · hace 30 min\nMa\nMartina\nColegio · hace 2 min\nADMINISTRAR\nDatos de la familia\nNombre, foto, dirección\nInvitaciones\nCódigo y QR para nuevos miembros\nSeguridad y SOS\nConfigurar contactos de emergencia",
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "role": null,
+      "y": 11
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Familia",
+      "t": "Familia",
+      "role": "radio",
+      "y": 77
+    },
+    {
+      "al": "Mapa",
+      "t": "Mapa",
+      "role": "radio",
+      "y": 77
+    },
+    {
+      "al": "Lugares",
+      "t": "Lugares",
+      "role": "radio",
+      "y": 77
+    },
+    {
+      "al": null,
+      "t": "G Gabriel Trabajo · hace 1 h",
+      "role": null,
+      "y": 202
+    },
+    {
+      "al": null,
+      "t": "M Mariana Casa · ahora",
+      "role": null,
+      "y": 269
+    },
+    {
+      "al": null,
+      "t": "J Juan Casa · hace 30 min",
+      "role": null,
+      "y": 336
+    },
+    {
+      "al": null,
+      "t": "Ma Martina Colegio · hace 2 min",
+      "role": null,
+      "y": 403
+    },
+    {
+      "al": null,
+      "t": "Datos de la familia Nombre, foto, dirección",
+      "role": null,
+      "y": 532
+    },
+    {
+      "al": null,
+      "t": "Invitaciones Código y QR para nuevos miembros",
+      "role": null,
+      "y": 599
+    },
+    {
+      "al": null,
+      "t": "Seguridad y SOS Configurar contactos de emergenc",
+      "role": null,
+      "y": 667
+    },
+    {
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "role": "button",
+      "y": 845
+    },
+    {
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "role": "tab",
+      "y": 845
+    },
+    {
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "role": "tab",
+      "y": 845
+    }
+  ],
+  "fontHist": {
+    "10": 1,
+    "11": 2,
+    "13": 7,
+    "14": 5,
+    "15": 4,
+    "16": 3,
+    "22": 1,
+    "15.96": 1,
+    "15.2": 4
+  },
+  "smallestFonts": [
+    10,
+    11,
+    13,
+    14,
+    15
+  ]
+}

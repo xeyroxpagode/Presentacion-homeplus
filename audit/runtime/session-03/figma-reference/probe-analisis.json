@@ -1,0 +1,110 @@
+{
+  "[data-testid=\"movimientos-filter\"]": [],
+  "[data-testid=\"movimientos-filter\"] button": [],
+  "[data-testid=\"analisis-tabs\"]": [
+    {
+      "tag": "DIV",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgb(244, 240, 235)",
+      "br": "24px",
+      "border": "none",
+      "pad": "4px 4px 4px 4px",
+      "shadow": "none",
+      "box": "398x48",
+      "txt": "Gastos Ingresos Evolución"
+    }
+  ],
+  "[data-testid=\"analisis-tabs-thumb\"]": [
+    {
+      "tag": "SPAN",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgb(255, 255, 255)",
+      "br": "20px",
+      "border": "none",
+      "pad": "0px 0px 0px 0px",
+      "shadow": "rgba(26, 23, 20, 0.07) 0px 1px 3px 0px, rgba",
+      "box": "130x40",
+      "txt": ""
+    }
+  ],
+  "[data-testid=\"limites-segment\"]": [],
+  "[data-testid=\"limites-segment-thumb\"]": [],
+  "[data-testid=\"floating-nav-indicator\"]": [
+    {
+      "tag": "SPAN",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgba(231, 100, 63, 0.78)",
+      "br": "9999px",
+      "border": "1px solid rgba(255, 255, 255, 0.32)",
+      "pad": "0px 0px 0px 0px",
+      "shadow": "none",
+      "box": "52x52",
+      "txt": ""
+    }
+  ],
+  "[data-testid=\"sheet-new-movement\"]": [],
+  "[data-testid=\"finance-sheet-primary\"]": [],
+  "[data-testid=\"new-movement-mode\"]": [],
+  "[data-testid=\"new-movement-mode-thumb\"]": [],
+  "[data-testid=\"new-movement-category\"]": [],
+  "[data-testid=\"payment-register-action\"]": [],
+  "[role=dialog]": [],
+  "[role=dialog] [aria-label=\"Cerrar hoja\"]": [],
+  "topbar": {
+    "avatar": {
+      "tag": "BUTTON",
+      "fs": "16px",
+      "fw": "400",
+      "lh": "24px",
+      "col": "rgb(26, 23, 20)",
+      "bg": "rgba(0, 0, 0, 0)",
+      "br": "9999px",
+      "border": "1px solid rgb(238, 231, 224)",
+      "pad": "0px 0px 0px 0px",
+      "shadow": "none",
+      "box": "44x44",
+      "txt": "G"
+    },
+    "badge": {
+      "btn": {
+        "tag": "BUTTON",
+        "fs": "16px",
+        "fw": "400",
+        "lh": "24px",
+        "col": "rgb(26, 23, 20)",
+        "bg": "rgba(0, 0, 0, 0)",
+        "br": "0px",
+        "border": "none",
+        "pad": "0px 0px 0px 0px",
+        "shadow": "none",
+        "box": "44x44",
+        "txt": "2"
+      },
+      "inner": [
+        {
+          "tag": "SPAN",
+          "fs": "10px",
+          "fw": "700",
+          "lh": "12px",
+          "col": "rgb(255, 255, 255)",
+          "bg": "rgba(0, 0, 0, 0)",
+          "br": "0px",
+          "border": "none",
+          "pad": "0px 3px 0px 3px",
+          "shadow": "none",
+          "box": "11.9x12",
+          "txt": "2"
+        }
+      ]
+    }
+  }
+}

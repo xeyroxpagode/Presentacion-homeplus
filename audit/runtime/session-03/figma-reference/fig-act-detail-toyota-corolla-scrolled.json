@@ -1,0 +1,172 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "asset-detail",
+  "headings": [],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "x": 12,
+      "y": 87
+    },
+    {
+      "role": null,
+      "al": "Agregar a Toyota Corolla",
+      "t": "Agregar a Toyota Corolla",
+      "tid": null,
+      "x": 322,
+      "y": -116
+    },
+    {
+      "role": null,
+      "al": "Administrar Toyota Corolla",
+      "t": "Administrar Toyota Corolla",
+      "tid": null,
+      "x": 370,
+      "y": -116
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Editar",
+      "tid": null,
+      "x": 363,
+      "y": -54
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Ver Casa Córdoba",
+      "tid": null,
+      "x": 12,
+      "y": 75
+    },
+    {
+      "role": null,
+      "al": "Ver Cambio de aceite",
+      "t": "Cambio de aceite 14 octubre",
+      "tid": null,
+      "x": 21,
+      "y": 180
+    },
+    {
+      "role": null,
+      "al": "Ver VTV",
+      "t": "VTV Inspección / certificado · hasta diciembre de 2026 · 1 documento",
+      "tid": null,
+      "x": 21,
+      "y": 302
+    },
+    {
+      "role": null,
+      "al": "Ver Seguro",
+      "t": "Seguro Seguro · hasta septiembre de 2027 · 1 documento",
+      "tid": null,
+      "x": 21,
+      "y": 379
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Ver toda la información (5)",
+      "tid": null,
+      "x": 12,
+      "y": 497
+    },
+    {
+      "role": null,
+      "al": "Ver Revisión de la manguera",
+      "t": "Revisión de la manguera Marzo 2026",
+      "tid": null,
+      "x": 21,
+      "y": 602
+    },
+    {
+      "role": null,
+      "al": "Ver Service",
+      "t": "Service 18 septiembre · Taller Sur $120.000",
+      "tid": null,
+      "x": 21,
+      "y": 663
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nToyota Corolla\nFamiliar\nPERSONAS Y UBICACIÓN\nEditar\nAhora con Mariana\nEstá en Casa Córdoba · Garage\nA cargo de Gabriel\nVer Casa Córdoba\nPRÓXIMO\nCambio de aceite\n14 octubre\nDATOS Y DOCUMENTOS\nVTV\nInspección / certificado · hasta diciembre de 2026 · 1 documento\nSeguro\nSeguro · hasta septiembre de 2027 · 1 documento\nPatente\nAA123BB\nVer toda la información (5)\nHISTORIAL\nRevisión de la manguera\nMarzo 2026\nService\n18 septiembre · Taller Sur\n$120.000"
+}

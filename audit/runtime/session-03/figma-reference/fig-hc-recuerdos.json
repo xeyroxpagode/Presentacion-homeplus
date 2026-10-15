@@ -1,0 +1,1560 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "homecloud",
+  "headings": [],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "x": 12,
+      "y": 81
+    },
+    {
+      "role": "radio",
+      "al": "Archivos",
+      "t": "Archivos",
+      "tid": null,
+      "x": 24,
+      "y": 148
+    },
+    {
+      "role": "radio",
+      "al": "Recuerdos",
+      "t": "Recuerdos",
+      "tid": null,
+      "x": 215,
+      "y": 148
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "",
+      "tid": null,
+      "x": 20,
+      "y": 196
+    },
+    {
+      "role": null,
+      "al": "Guardar un recuerdo",
+      "t": "Guardar un recuerdo",
+      "tid": null,
+      "x": 318,
+      "y": 200
+    },
+    {
+      "role": null,
+      "al": "Más opciones",
+      "t": "Más opciones",
+      "tid": null,
+      "x": 366,
+      "y": 200
+    },
+    {
+      "role": null,
+      "al": "Ver subidas (1 en curso)",
+      "t": "1 subida",
+      "tid": null,
+      "x": 20,
+      "y": 256
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Hace 5 años 24 septiembre 2021",
+      "tid": null,
+      "x": 20,
+      "y": 324
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Septiembre de 2019 Septiembre de 2019",
+      "tid": null,
+      "x": 178,
+      "y": 324
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Reintentar",
+      "tid": null,
+      "x": 323,
+      "y": 484
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Ver todos",
+      "tid": null,
+      "x": 342,
+      "y": 541
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Favoritos 2",
+      "tid": null,
+      "x": 20,
+      "y": 579
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Vacaciones 3",
+      "tid": null,
+      "x": 136,
+      "y": 579
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Voces de la familia 2",
+      "tid": null,
+      "x": 252,
+      "y": 579
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Cumpleaños 1",
+      "tid": null,
+      "x": 368,
+      "y": 579
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Navidades 15",
+      "tid": null,
+      "x": 484,
+      "y": 579
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Vacío Casa nueva 0",
+      "tid": null,
+      "x": 600,
+      "y": 579
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Ir a un año",
+      "tid": null,
+      "x": 337,
+      "y": 745
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 838
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 926
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:58 No se pudo subir ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 997
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 1085
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "Subiendo… ⋯",
+      "tid": null,
+      "x": 153,
+      "y": 997
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 240,
+      "y": 1085
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 1156
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 1243
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 1314
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 1402
+    },
+    {
+      "role": "button",
+      "al": "Hoy encontramos la caja con las cartas del primer año en esta casa. Las leímos en voz alta en la cocina y decidimos guardarlas acá para no perderlas.",
+      "t": "Hoy encontramos la caja con las cartas del primer año en esta casa. La",
+      "tid": null,
+      "x": 20,
+      "y": 1473
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 1561
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 1678
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 1766
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 1837
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 1924
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 1995
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 2083
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 2201
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 2288
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 2359
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 2447
+    },
+    {
+      "role": "button",
+      "al": "Tarde en el parque",
+      "t": "01:12 ⋯",
+      "tid": null,
+      "x": 153,
+      "y": 2359
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 240,
+      "y": 2447
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 2518
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 2606
+    },
+    {
+      "role": "button",
+      "al": "Cuento antes de dormir",
+      "t": "04:37 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 2723
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 2811
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 2882
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 2969
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 3040
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 3128
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 3245
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 3333
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 3404
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 3492
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "02:05 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 3563
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 3650
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 3721
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 3809
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 3927
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 4014
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 4085
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 4173
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 4244
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 4332
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 4449
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 4537
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 4608
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 4695
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 4766
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 4854
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 4972
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 5059
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 5130
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 5218
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 5289
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 5377
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 5494
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 5582
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 5653
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 5740
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 5811
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 5899
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 6016
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 6104
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 153,
+      "y": 6016
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 240,
+      "y": 6104
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 6222
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 6309
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 6380
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 6468
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 6539
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 6627
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 6744
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 6832
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 6903
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 6990
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 7108
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 7196
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 7267
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 7354
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 7425
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 7513
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 7630
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 7718
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 7789
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 7877
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 7994
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 8082
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 8153
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 8241
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 8312
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 8399
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 8517
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 8604
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 8675
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 8763
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 8880
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 8968
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 9039
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 9127
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 9198
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 9285
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 9403
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 9491
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 9562
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 9649
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 9767
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 9854
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 9925
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 10013
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 10084
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 10172
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 10289
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 10377
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 10448
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 10536
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 10653
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 10741
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 10812
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 10899
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 10970
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 11058
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 11176
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 11263
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 153,
+      "y": 11176
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 240,
+      "y": 11263
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 11381
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 11468
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 11539
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 11627
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 11698
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 11786
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 11903
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 11991
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 12062
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 12149
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 12267
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 12355
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 12426
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 12513
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 12584
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 12672
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 12789
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 12877
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 12948
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 13036
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 13153
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 13241
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 13312
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 13400
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 13471
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 13558
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "00:45 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 13676
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 13763
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "01:30 ⋯",
+      "tid": null,
+      "x": 20,
+      "y": 13834
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 13922
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 14040
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 14127
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 14198
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 14286
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 14357
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 14445
+    },
+    {
+      "role": "button",
+      "al": "Recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 20,
+      "y": 14538
+    },
+    {
+      "role": null,
+      "al": "Opciones del recuerdo",
+      "t": "⋯",
+      "tid": null,
+      "x": 108,
+      "y": 14626
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "homecloud-screen",
+    "homecloud-header",
+    "homecloud-tabs",
+    "homecloud-tabs-thumb",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nHomeCloud\nArchivos\nRecuerdos\n1 subida\nPARA VOLVER A VER\nHace 5 años\n24 septiembre 2021\nSeptiembre de 2019\nSeptiembre de 2019\nNo se pudo subir\nReintentar\nÁLBUMES\nVer todos\nFavoritos\n2\nVacaciones\n3\nVoces de la familia\n2\nCumpleaños\n1\nNavidades\n15\nVacío\nCasa nueva\n0\nLÍNEA DE TIEMPO\nIr a un año\n2026\nNoviembre\n⋯\nSeptiembre\n00:58\nNo se pudo subir\n⋯\nSubiendo…\n⋯\nJulio\n⋯\nMarzo\n⋯\nEnero\nHoy encontramos la caja con las cartas del primer año en esta casa. Las leímos en voz alta en la cocina y decidimos guardarlas acá para no perderlas.\n⋯\n2025\nOctubre\n00:45\n⋯\nAgosto\n⋯\nFebrero\n01:30\n⋯\n2024\nSeptiembre\n⋯\nMayo\n⋯\n01:12\n⋯\nEnero\n⋯\n2023\nDiciembre\n04:37\n⋯\nAgosto\n00:45\n⋯\nFebrero\n01:30\n⋯\n2022\nNoviembre\n⋯\nJulio\n⋯\nJunio\n02:05\n⋯\nMarzo\n⋯\n2021\nSeptiembre\n⋯\nJunio\n00:45\n⋯\nFebrero\n01:30\n⋯\n2020\nSeptiembre\n⋯\nMayo\n⋯\nEnero\n⋯\n2019\nSeptiembre\n⋯\nAbril\n00:45\n⋯\nFebrero\n01:30\n⋯\n2018\nNoviembre\n⋯\nJulio\n⋯\nMarzo\n⋯\n2017\nFebrero\n00:45\n⋯\n01:30\n⋯\n2016\nSeptiembre\n⋯\nMayo\n⋯\nEnero\n⋯\n2015\nDiciembre\n00:45\n⋯\nFebrero\n01:30\n⋯\n2014\nNoviembre\n⋯\nJulio\n⋯\nMarzo\n⋯\n2013\nOctubre\n00:45\n⋯\nFebrero\n01:30\n⋯\n2012\nSeptiembre\n⋯\nMayo\n⋯\nEnero\n⋯\n2011\nAgosto\n00:45\n⋯\nFebrero\n01:30\n⋯\n2010\nNoviembre\n⋯\nJulio\n⋯\nMarzo\n⋯\n2009\nJunio\n00:45\n⋯\nFebrero\n01:30\n⋯\n2008\nSeptiembre\n⋯\nMayo\n⋯\nEnero\n⋯\n2007\nAbril\n00:45\n⋯\nFebrero\n01:30\n⋯\n2006\nNoviembre\n⋯\nJulio\n⋯\nMarzo\n⋯\n2005\nFebrero\n00:45\n⋯\n01:30\n⋯\n2004\nSeptiembre\n⋯\nMayo\n⋯\nEnero\n⋯\n2003\nDiciembre\n00:45\n⋯\nFebrero\n01:30\n⋯\n2002\nNoviembre\n⋯\nJulio\n⋯\nMarzo\n⋯\n2001\nOctubre\n00:45\n⋯\nFebrero\n01:30\n⋯\n2000\nSeptiembre\n⋯\nMayo\n⋯\nEnero\n⋯\n1999\nAgosto\n00:45\n⋯\nFebrero\n01:30\n⋯\n1998\nNoviembre\n⋯\nJulio\n⋯\nMarzo\n⋯\nSin fecha\n⋯"
+}

@@ -1,0 +1,295 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "finance-organizacion",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Organización del dinero",
+      "fs": "28px",
+      "fw": "800"
+    },
+    {
+      "tag": "H2",
+      "text": "Cuentas",
+      "fs": "18px",
+      "fw": "700"
+    },
+    {
+      "tag": "H2",
+      "text": "Tarjetas",
+      "fs": "18px",
+      "fw": "700"
+    },
+    {
+      "tag": "H2",
+      "text": "Pozos",
+      "fs": "18px",
+      "fw": "700"
+    }
+  ],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "sel": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "sel": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "sel": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver a Finanzas",
+      "t": "Volver a Finanzas",
+      "tid": null,
+      "sel": null,
+      "x": 8,
+      "y": 89
+    },
+    {
+      "role": null,
+      "al": "Abrir cuenta Galicia, Saldo actual 402.300 ARS",
+      "t": "Galicia Cuenta ARS 402.300",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 490
+    },
+    {
+      "role": null,
+      "al": "Abrir cuenta Billetera, Saldo actual 76.550 ARS",
+      "t": "Billetera Cuenta ARS 76.550",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 547
+    },
+    {
+      "role": null,
+      "al": "Abrir cuenta Caja chica, Saldo sin establecer",
+      "t": "Caja chica Saldo sin establecer",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 604
+    },
+    {
+      "role": null,
+      "al": "Abrir cuenta Cuenta corriente principal del hogar, Saldo actual 512.300 ARS",
+      "t": "Cuenta corriente principal del hogar Cuenta ARS 512.300",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 661
+    },
+    {
+      "role": null,
+      "al": "Ver cuentas archivadas",
+      "t": "Ver cuentas archivadas · 1",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 734
+    },
+    {
+      "role": null,
+      "al": "Agregar cuenta",
+      "t": "+ Agregar cuenta",
+      "tid": null,
+      "sel": null,
+      "x": 276,
+      "y": 786
+    },
+    {
+      "role": null,
+      "al": "Abrir tarjeta Visa, Deuda actual 83.850 ARS",
+      "t": "Visa Deuda actual · Vence día 12 ARS 83.850",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 908
+    },
+    {
+      "role": null,
+      "al": "Abrir tarjeta Mastercard, Saldo a favor 12.000 ARS",
+      "t": "Mastercard Saldo a favor · Vence día 27 ARS 12.000",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 965
+    },
+    {
+      "role": null,
+      "al": "Abrir tarjeta Amex, Deuda actual 45.000 ARS",
+      "t": "Amex Deuda actual · Vence día 18 ARS 45.000",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 1022
+    },
+    {
+      "role": null,
+      "al": "Abrir tarjeta Naranja, Saldo sin establecer",
+      "t": "Naranja Saldo sin establecer · Vence día 22",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 1079
+    },
+    {
+      "role": null,
+      "al": "Agregar tarjeta",
+      "t": "+ Agregar tarjeta",
+      "tid": null,
+      "sel": null,
+      "x": 279,
+      "y": 1148
+    },
+    {
+      "role": null,
+      "al": "Abrir pozo Meta viaje, saldo 141.900 ARS",
+      "t": "Meta viaje Organizado 141.900 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 1288
+    },
+    {
+      "role": null,
+      "al": "Abrir pozo Mantenimiento, saldo 100.000 ARS",
+      "t": "Mantenimiento Organizado 100.000 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 1345
+    },
+    {
+      "role": null,
+      "al": "Abrir pozo Remedios, saldo 3.800 ARS",
+      "t": "Remedios Te excediste de lo reservado -3.800 ARS",
+      "tid": null,
+      "sel": null,
+      "x": 33,
+      "y": 1402
+    },
+    {
+      "role": null,
+      "al": "Ver pozos archivados",
+      "t": "Ver pozos archivados · 2",
+      "tid": null,
+      "sel": null,
+      "x": 16,
+      "y": 1475
+    },
+    {
+      "role": null,
+      "al": "Crear pozo",
+      "t": "+ Crear pozo",
+      "tid": null,
+      "sel": null,
+      "x": 307,
+      "y": 1527
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Inicio",
+      "t": "Ir a Inicio",
+      "tid": null,
+      "sel": "false",
+      "x": 5,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Familia",
+      "t": "Ir a Familia",
+      "tid": null,
+      "sel": "false",
+      "x": 89,
+      "y": 845
+    },
+    {
+      "role": "button",
+      "al": "Abrir acciones rápidas",
+      "t": "Abrir acciones rápidas",
+      "tid": null,
+      "sel": null,
+      "x": 173,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Ir a Calendario",
+      "t": "Ir a Calendario",
+      "tid": null,
+      "sel": "false",
+      "x": 257,
+      "y": 845
+    },
+    {
+      "role": "tab",
+      "al": "Abrir Más opciones",
+      "t": "Abrir Más opciones",
+      "tid": null,
+      "sel": "true",
+      "x": 341,
+      "y": 845
+    }
+  ],
+  "dialogs": [],
+  "testids": [
+    "organizacion-screen",
+    "organizacion-currency",
+    "organizacion-resumen",
+    "organizacion-posicion-disponible",
+    "organizacion-posicion-organizado",
+    "organizacion-posicion-sin-organizar",
+    "organizacion-warning-unknown-accounts",
+    "organizacion-warning-unknown-cards",
+    "organizacion-cuentas",
+    "organizacion-cuenta-acc-galicia",
+    "organizacion-cuenta-acc-billetera",
+    "organizacion-cuenta-acc-caja",
+    "organizacion-cuenta-acc-principal",
+    "organizacion-archivadas-cuentas",
+    "organizacion-tarjetas",
+    "organizacion-cuenta-card-visa",
+    "organizacion-cuenta-card-master",
+    "organizacion-cuenta-card-amex",
+    "organizacion-cuenta-card-naranja",
+    "organizacion-pozos",
+    "organizacion-pozo-pool-viaje",
+    "organizacion-pozo-pool-mantenimiento",
+    "organizacion-pozo-pool-remedios",
+    "organizacion-archivadas-pozos",
+    "floating-nav-indicator"
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nOrganización del dinero\nARS\nDisponible\n+874.300 ARS\nOrganizado\n+238.100 ARS\nSin organizar\n+636.200 ARS\n1 cuenta tiene saldo sin establecer. Lo de abajo sólo cuenta las que ya sabés.\n1 tarjeta tiene saldo sin establecer.\nCuentas\nGalicia\nCuenta\nARS 402.300\nBilletera\nCuenta\nARS 76.550\nCaja chica\nSaldo sin establecer\nCuenta corriente principal del hogar\nCuenta\nARS 512.300\nVer cuentas archivadas · 1\n+ Agregar cuenta\nTarjetas\nVisa\nDeuda actual · Vence día 12\nARS 83.850\nMastercard\nSaldo a favor · Vence día 27\nARS 12.000\nAmex\nDeuda actual · Vence día 18\nARS 45.000\nNaranja\nSaldo sin establecer · Vence día 22\n+ Agregar tarjeta\nPozos\nPlata que decidís reservar. No sale de tus cuentas.\nMeta viaje\nOrganizado\n141.900 ARS\nMantenimiento\nOrganizado\n100.000 ARS\nRemedios\nTe excediste de lo reservado\n-3.800 ARS\nVer pozos archivados · 2\n+ Crear pozo"
+}

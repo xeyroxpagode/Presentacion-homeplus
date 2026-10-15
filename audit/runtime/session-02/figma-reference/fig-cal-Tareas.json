@@ -1,0 +1,645 @@
+{
+  "navScreenId": "calendario",
+  "headings": [
+    {
+      "tag": "H1",
+      "text": "Planner",
+      "fs": "24px"
+    },
+    {
+      "tag": "H2",
+      "text": "REVISIÓN · 2",
+      "fs": "12px"
+    },
+    {
+      "tag": "H2",
+      "text": "VENCIDAS · 2",
+      "fs": "12px"
+    },
+    {
+      "tag": "H2",
+      "text": "HOY · 8",
+      "fs": "12px"
+    },
+    {
+      "tag": "H2",
+      "text": "MAÑANA · 11",
+      "fs": "12px"
+    },
+    {
+      "tag": "H2",
+      "text": "PRÓXIMAS · 25",
+      "fs": "12px"
+    },
+    {
+      "tag": "H2",
+      "text": "SIN FECHA · 2",
+      "fs": "12px"
+    }
+  ],
+  "tabs": [
+    {
+      "text": "Tareas",
+      "al": "Tareas",
+      "selected": "true",
+      "fs": "16px"
+    },
+    {
+      "text": "Calendario",
+      "al": "Calendario",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Planes",
+      "al": "Planes",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Inicio",
+      "al": "Ir a Inicio",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Familia",
+      "al": "Ir a Familia",
+      "selected": "false",
+      "fs": "16px"
+    },
+    {
+      "text": "Ir a Calendario",
+      "al": "Ir a Calendario",
+      "selected": "true",
+      "fs": "16px"
+    },
+    {
+      "text": "Abrir Más opciones",
+      "al": "Abrir Más opciones",
+      "selected": "false",
+      "fs": "16px"
+    }
+  ],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nPlanner\nTareas\nCalendario\nPlanes\nPendientes\nResponsabilidades\nREVISIÓN · 2\nBarrer el patio y juntar las hojas del jazmín\nT\nTomi\n· Hoy\n· Por verificar\nVerificar\nOrdenar la pieza\nMa\nMartina\n· Hoy\n· Te pidieron corregir\nVENCIDAS · 2\n1 es tuya\nPagar la luz\nG\nGabriel\n· Venció ayer\nDevolver la amoladora a lo de Pablo\n?\nSin responsable\n· Venció hace 3 días\nMe encargo\nHOY · 8\nComprar alimento de Nala\nJ\nJuan\n· Hoy\nLavar los platos\nT\nTomi\n· Hoy\nLlamar al plomero por la pérdida del baño\nG\nGabriel\n· Hoy\nLimpiar el baño a fondo\nT\nTomi\n· Hoy\n· Pide revisión\nSacar la basura\n?\nSin responsable\n· Hoy\nMe encargo\nDar de comer a Nala\nM\nMariana\n· Hoy\nComprar regalo de cumple\nG\nGabriel\n· Hoy · 18:00\nConseguir las cajas\nG\nGabriel\n· Hoy\nMAÑANA · 11\nBuscar a Martina en el colegio\nM\nMariana\n· Mañana · 17:30\nPreparar la cena\nJ\nJuan\n· Mañana\nTurno con el dentista\nG\nGabriel\n· Mañana · 09:00\nContratar el flete\n?\nSin responsable\n· Mañana\nMe encargo\nPedir los azulejos\nJ\nJuan\n· Mañana\nCubos · mudanza 9\n?\nSin responsable\n· Mañana\nMe encargo\nPilas · mudanza 13\nJ\nJuan\n· Mañana\nLibros en cajas · mudanza 17\nM\nMariana\n· Mañana\nHerramientas · mudanza 21\nG\nGabriel\n· Mañana\nEspejos · mudanza 25\nMa\nMartina\n· Mañana\nTierras · mudanza 29\n?\nSin responsable\n· Mañana\nMe encargo\nPRÓXIMAS · 25\ny 5 más\nLimpiar el filtro del lavarropas\nM\nMariana\n· Jue 30\nRenovar el seguro del auto\nG\nGabriel\n· Sáb 02\nPreparar la mochila del campamento de Martina con lista completa de abrigo y linterna\nMa\nMartina\n· Mié 30\nComprar almohadas de viaje\nM\nMariana\n· Jue 1\nComprar las servilletas de colores\n?\nSin responsable\n· Sáb 02\nMe encargo\nBuscar un electricista\n?\nSin responsable\n· Sáb 02\nMe encargo\nReservar el hotel de la costa\nM\nMariana\n· 15 mar\nMarcadores · mudanza 7\nM\nMariana\n· Sáb 02\nObjetos de cristal · mudanza 8\nJ\nJuan\n· Sáb 02\nPala · mudanza 10\nMa\nMartina\n· Sáb 02\nGuantes · mudanza 11\nG\nGabriel\n· Sáb 02\nLinterna · mudanza 12\nM\nMariana\n· Sáb 02\nCargadores · mudanza 14\n?\nSin responsable\n· Sáb 02\nMe encargo\nRopa de cama · mudanza 15\nMa\nMartina\n· Sáb 02\nVajilla envuelta · mudanza 16\nG\nGabriel\n· Sáb 02\nPlantas · mudanza 18\nJ\nJuan\n· Sáb 02\nMotos · mudanza 19\n?\nSin responsable\n· Sáb 02\nMe encargo\nBici · mudanza 20\nMa\nMartina\n· Sáb 02\nBulones · mudanza 22\nM\nMariana\n· Sáb 02\nCords · mudanza 23\nJ\nJuan\n· Sáb 02\nSIN FECHA · 2\nOrdenar el altillo\n?\nSin responsable\nMe encargo\nArmar la lista de compras del mes con precios de referencia del barrio\nM\nMariana",
+  "controls": [
+    {
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": null,
+      "t": "Familia García Coordinador",
+      "role": null,
+      "y": 11
+    },
+    {
+      "al": "Buscar",
+      "t": "Buscar",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Atención",
+      "t": "2",
+      "role": null,
+      "y": 14
+    },
+    {
+      "al": "Opciones del Planner",
+      "t": "Opciones del Planner",
+      "role": null,
+      "y": 73
+    },
+    {
+      "al": "Tareas",
+      "t": "Tareas",
+      "role": "tab",
+      "y": 121
+    },
+    {
+      "al": "Calendario",
+      "t": "Calendario",
+      "role": "tab",
+      "y": 121
+    },
+    {
+      "al": "Planes",
+      "t": "Planes",
+      "role": "tab",
+      "y": 121
+    },
+    {
+      "al": "Pendientes",
+      "t": "Pendientes",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": "Filtros",
+      "t": "Filtros",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": "Crear",
+      "t": "Crear",
+      "role": null,
+      "y": 169
+    },
+    {
+      "al": null,
+      "t": "Responsabilidades",
+      "role": null,
+      "y": 213
+    },
+    {
+      "al": null,
+      "t": "Barrer el patio y juntar las hojas del jazmín T ",
+      "role": null,
+      "y": 292
+    },
+    {
+      "al": null,
+      "t": "Verificar",
+      "role": null,
+      "y": 312
+    },
+    {
+      "al": "Opciones de Barrer el patio y juntar las hojas del jazmín",
+      "t": "Opciones de Barrer el patio y juntar las hojas d",
+      "role": null,
+      "y": 312
+    },
+    {
+      "al": null,
+      "t": "Ordenar la pieza Ma Martina · Hoy · Te pidieron ",
+      "role": null,
+      "y": 377
+    },
+    {
+      "al": "Opciones de Ordenar la pieza",
+      "t": "Opciones de Ordenar la pieza",
+      "role": null,
+      "y": 386
+    },
+    {
+      "al": null,
+      "t": "1 es tuya",
+      "role": null,
+      "y": 464
+    },
+    {
+      "al": null,
+      "t": "Pagar la luz G Gabriel · Venció ayer",
+      "role": null,
+      "y": 516
+    },
+    {
+      "al": "Completar Pagar la luz",
+      "t": "Completar Pagar la luz",
+      "role": null,
+      "y": 525
+    },
+    {
+      "al": "Opciones de Pagar la luz",
+      "t": "Opciones de Pagar la luz",
+      "role": null,
+      "y": 525
+    },
+    {
+      "al": null,
+      "t": "Devolver la amoladora a lo de Pablo ? Sin respon",
+      "role": null,
+      "y": 580
+    },
+    {
+      "al": null,
+      "t": "Me encargo",
+      "role": null,
+      "y": 590
+    },
+    {
+      "al": "Opciones de Devolver la amoladora a lo de Pablo",
+      "t": "Opciones de Devolver la amoladora a lo de Pablo",
+      "role": null,
+      "y": 590
+    },
+    {
+      "al": null,
+      "t": "Comprar alimento de Nala J Juan · Hoy",
+      "role": null,
+      "y": 693
+    },
+    {
+      "al": "Completar Comprar alimento de Nala",
+      "t": "Completar Comprar alimento de Nala",
+      "role": null,
+      "y": 703
+    },
+    {
+      "al": "Opciones de Comprar alimento de Nala",
+      "t": "Opciones de Comprar alimento de Nala",
+      "role": null,
+      "y": 703
+    },
+    {
+      "al": null,
+      "t": "Lavar los platos T Tomi · Hoy",
+      "role": null,
+      "y": 757
+    },
+    {
+      "al": "Completar Lavar los platos",
+      "t": "Completar Lavar los platos",
+      "role": null,
+      "y": 767
+    },
+    {
+      "al": "Opciones de Lavar los platos",
+      "t": "Opciones de Lavar los platos",
+      "role": null,
+      "y": 767
+    },
+    {
+      "al": null,
+      "t": "Llamar al plomero por la pérdida del baño G Gabr",
+      "role": null,
+      "y": 821
+    },
+    {
+      "al": "Completar Llamar al plomero por la pérdida del baño",
+      "t": "Completar Llamar al plomero por la pérdida del b",
+      "role": null,
+      "y": 841
+    },
+    {
+      "al": "Opciones de Llamar al plomero por la pérdida del baño",
+      "t": "Opciones de Llamar al plomero por la pérdida del",
+      "role": null,
+      "y": 841
+    },
+    {
+      "al": null,
+      "t": "Limpiar el baño a fondo T Tomi · Hoy · Pide revi",
+      "role": null,
+      "y": 906
+    },
+    {
+      "al": "Completar Limpiar el baño a fondo",
+      "t": "Completar Limpiar el baño a fondo",
+      "role": null,
+      "y": 916
+    },
+    {
+      "al": "Opciones de Limpiar el baño a fondo",
+      "t": "Opciones de Limpiar el baño a fondo",
+      "role": null,
+      "y": 916
+    },
+    {
+      "al": null,
+      "t": "Sacar la basura ? Sin responsable · Hoy",
+      "role": null,
+      "y": 970
+    },
+    {
+      "al": null,
+      "t": "Me encargo",
+      "role": null,
+      "y": 980
+    },
+    {
+      "al": "Opciones de Sacar la basura",
+      "t": "Opciones de Sacar la basura",
+      "role": null,
+      "y": 980
+    },
+    {
+      "al": null,
+      "t": "Dar de comer a Nala M Mariana · Hoy",
+      "role": null,
+      "y": 1034
+    },
+    {
+      "al": "Completar Dar de comer a Nala",
+      "t": "Completar Dar de comer a Nala",
+      "role": null,
+      "y": 1044
+    },
+    {
+      "al": "Opciones de Dar de comer a Nala",
+      "t": "Opciones de Dar de comer a Nala",
+      "role": null,
+      "y": 1044
+    },
+    {
+      "al": null,
+      "t": "Comprar regalo de cumple G Gabriel · Hoy · 18:00",
+      "role": null,
+      "y": 1099
+    },
+    {
+      "al": "Completar Comprar regalo de cumple",
+      "t": "Completar Comprar regalo de cumple",
+      "role": null,
+      "y": 1108
+    },
+    {
+      "al": "Opciones de Comprar regalo de cumple",
+      "t": "Opciones de Comprar regalo de cumple",
+      "role": null,
+      "y": 1108
+    },
+    {
+      "al": null,
+      "t": "Conseguir las cajas G Gabriel · Hoy",
+      "role": null,
+      "y": 1163
+    },
+    {
+      "al": "Completar Conseguir las cajas",
+      "t": "Completar Conseguir las cajas",
+      "role": null,
+      "y": 1172
+    },
+    {
+      "al": "Opciones de Conseguir las cajas",
+      "t": "Opciones de Conseguir las cajas",
+      "role": null,
+      "y": 1172
+    },
+    {
+      "al": null,
+      "t": "Buscar a Martina en el colegio M Mariana · Mañan",
+      "role": null,
+      "y": 1276
+    },
+    {
+      "al": "Completar Buscar a Martina en el colegio",
+      "t": "Completar Buscar a Martina en el colegio",
+      "role": null,
+      "y": 1285
+    },
+    {
+      "al": "Opciones de Buscar a Martina en el colegio",
+      "t": "Opciones de Buscar a Martina en el colegio",
+      "role": null,
+      "y": 1285
+    },
+    {
+      "al": null,
+      "t": "Preparar la cena J Juan · Mañana",
+      "role": null,
+      "y": 1340
+    },
+    {
+      "al": "Completar Preparar la cena",
+      "t": "Completar Preparar la cena",
+      "role": null,
+      "y": 1349
+    },
+    {
+      "al": "Opciones de Preparar la cena",
+      "t": "Opciones de Preparar la cena",
+      "role": null,
+      "y": 1349
+    },
+    {
+      "al": null,
+      "t": "Turno con el dentista G Gabriel · Mañana · 09:00",
+      "role": null,
+      "y": 1404
+    },
+    {
+      "al": "Completar Turno con el dentista",
+      "t": "Completar Turno con el dentista",
+      "role": null,
+      "y": 1414
+    },
+    {
+      "al": "Opciones de Turno con el dentista",
+      "t": "Opciones de Turno con el dentista",
+      "role": null,
+      "y": 1414
+    },
+    {
+      "al": null,
+      "t": "Contratar el flete ? Sin responsable · Mañana",
+      "role": null,
+      "y": 1468
+    },
+    {
+      "al": null,
+      "t": "Me encargo",
+      "role": null,
+      "y": 1478
+    },
+    {
+      "al": "Opciones de Contratar el flete",
+      "t": "Opciones de Contratar el flete",
+      "role": null,
+      "y": 1478
+    },
+    {
+      "al": null,
+      "t": "Pedir los azulejos J Juan · Mañana",
+      "role": null,
+      "y": 1532
+    },
+    {
+      "al": "Completar Pedir los azulejos",
+      "t": "Completar Pedir los azulejos",
+      "role": null,
+      "y": 1542
+    },
+    {
+      "al": "Opciones de Pedir los azulejos",
+      "t": "Opciones de Pedir los azulejos",
+      "role": null,
+      "y": 1542
+    },
+    {
+      "al": null,
+      "t": "Cubos · mudanza 9 ? Sin responsable · Mañana",
+      "role": null,
+      "y": 1596
+    },
+    {
+      "al": null,
+      "t": "Me encargo",
+      "role": null,
+      "y": 1606
+    },
+    {
+      "al": "Opciones de Cubos · mudanza 9",
+      "t": "Opciones de Cubos · mudanza 9",
+      "role": null,
+      "y": 1606
+    },
+    {
+      "al": null,
+      "t": "Pilas · mudanza 13 J Juan · Mañana",
+      "role": null,
+      "y": 1661
+    },
+    {
+      "al": "Completar Pilas · mudanza 13",
+      "t": "Completar Pilas · mudanza 13",
+      "role": null,
+      "y": 1670
+    },
+    {
+      "al": "Opciones de Pilas · mudanza 13",
+      "t": "Opciones de Pilas · mudanza 13",
+      "role": null,
+      "y": 1670
+    },
+    {
+      "al": null,
+      "t": "Libros en cajas · mudanza 17 M Mariana · Mañana",
+      "role": null,
+      "y": 1725
+    },
+    {
+      "al": "Completar Libros en cajas · mudanza 17",
+      "t": "Completar Libros en cajas · mudanza 17",
+      "role": null,
+      "y": 1734
+    },
+    {
+      "al": "Opciones de Libros en cajas · mudanza 17",
+      "t": "Opciones de Libros en cajas · mudanza 17",
+      "role": null,
+      "y": 1734
+    },
+    {
+      "al": null,
+      "t": "Herramientas · mudanza 21 G Gabriel · Mañana",
+      "role": null,
+      "y": 1789
+    },
+    {
+      "al": "Completar Herramientas · mudanza 21",
+      "t": "Completar Herramientas · mudanza 21",
+      "role": null,
+      "y": 1798
+    },
+    {
+      "al": "Opciones de Herramientas · mudanza 21",
+      "t": "Opciones de Herramientas · mudanza 21",
+      "role": null,
+      "y": 1798
+    },
+    {
+      "al": null,
+      "t": "Espejos · mudanza 25 Ma Martina · Mañana",
+      "role": null,
+      "y": 1853
+    },
+    {
+      "al": "Completar Espejos · mudanza 25",
+      "t": "Completar Espejos · mudanza 25",
+      "role": null,
+      "y": 1862
+    },
+    {
+      "al": "Opciones de Espejos · mudanza 25",
+      "t": "Opciones de Espejos · mudanza 25",
+      "role": null,
+      "y": 1862
+    },
+    {
+      "al": null,
+      "t": "Tierras · mudanza 29 ? Sin responsable · Mañana",
+      "role": null,
+      "y": 1917
+    },
+    {
+      "al": null,
+      "t": "Me encargo",
+      "role": null,
+      "y": 1927
+    },
+    {
+      "al": "Opciones de Tierras · mudanza 29",
+      "t": "Opciones de Tierras · mudanza 29",
+      "role": null,
+      "y": 1927
+    },
+    {
+      "al": null,
+      "t": "y 5 más",
+      "role": null,
+      "y": 2004
+    },
+    {
+      "al": null,
+      "t": "Limpiar el filtro del lavarropas M Mariana · Jue",
+      "role": null,
+      "y": 2056
+    },
+    {
+      "al": "Completar Limpiar el filtro del lavarropas",
+      "t": "Completar Limpiar el filtro del lavarropas",
+      "role": null,
+      "y": 2066
+    },
+    {
+      "al": "Opciones de Limpiar el filtro del lavarropas",
+      "t": "Opciones de Limpiar el filtro del lavarropas",
+      "role": null,
+      "y": 2066
+    },
+    {
+      "al": null,
+      "t": "Renovar el seguro del auto G Gabriel · Sáb 02",
+      "role": null,
+      "y": 2120
+    },
+    {
+      "al": "Completar Renovar el seguro del auto",
+      "t": "Completar Renovar el seguro del auto",
+      "role": null,
+      "y": 2130
+    },
+    {
+      "al": "Opciones de Renovar el seguro del auto",
+      "t": "Opciones de Renovar el seguro del auto",
+      "role": null,
+      "y": 2130
+    },
+    {
+      "al": null,
+      "t": "Preparar la mochila del campamento de Martina co",
+      "role": null,
+      "y": 2184
+    },
+    {
+      "al": "Completar Preparar la mochila del campamento de Martina con lista completa de abrigo y linterna",
+      "t": "Completar Preparar la mochila del campamento de ",
+      "role": null,
+      "y": 2204
+    }
+  ],
+  "fontHist": {
+    "9": 45,
+    "10": 1,
+    "11": 1,
+    "12": 52,
+    "13": 58,
+    "14": 1,
+    "15": 50,
+    "24": 1,
+    "15.96": 1
+  },
+  "smallestFonts": [
+    9,
+    10,
+    11,
+    12,
+    13
+  ]
+}

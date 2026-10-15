@@ -1,0 +1,33 @@
+{
+  "name": "C_INVENTORY_OUT_OF_STOCK",
+  "module": "C",
+  "surface": "Inventory / out of stock filter (Agotados)",
+  "nav": "Inventario → Agotados",
+  "shell": "PhoneFrame 390x844, bezel 10px #1A1714, radius 48px",
+  "notes": [],
+  "clicks": [
+    "G",
+    "Familia García Coordinador",
+    "Buscar",
+    "2",
+    "Volver",
+    "Productos",
+    "Lista de compras",
+    "Lugar ▾",
+    "Agotado ▾",
+    "Limpiar",
+    "Café Alacena · Agotado",
+    "−",
+    "+",
+    "Archivados (1)",
+    "Papelera (1)",
+    "Agregar producto",
+    "Ir a Inicio",
+    "Ir a Familia",
+    "Abrir acciones rápidas",
+    "Ir a Calendario",
+    "Abrir Más opciones"
+  ],
+  "text": "9:41\nG\nFamilia García\nCoordinador\n2\nInventario\nProductos\nLista de compras\nTodos los productos\nLugar\n▾\nAgotado\n▾\nLimpiar\n1 producto\nCafé\nAlacena · Agotado\n−\n0\n+\nArchivados (1)\n·\nPapelera (1)\nAgregar producto",
+  "consoleErrors": []
+}

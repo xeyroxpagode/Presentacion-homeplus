@@ -1,0 +1,4888 @@
+[
+ {
+  "id": 0,
+  "from": "S01_step00",
+  "to": "S01_step01",
+  "sceneBoundary": false,
+  "moved": 2,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 2,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 1,
+  "from": "S01_step01",
+  "to": "S01_step02",
+  "sceneBoundary": false,
+  "moved": 3,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 3,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 5,
+  "runningAny": 5,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "0;220;420;320",
+  "eases": "ease;cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "visibility;opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.attention-element",
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.attention-element",
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 2,
+  "from": "S01_step02",
+  "to": "S01_step03",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 1,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 5,
+  "runningAny": 5,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "0;220;420;320",
+  "eases": "ease;cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "visibility;opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.attention-element",
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.attention-element",
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 3,
+  "from": "S01_step03",
+  "to": "S01_step04",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 4,
+  "from": "S01_step04",
+  "to": "S01_step05",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 5,
+  "from": "S01_step05",
+  "to": "S01_step06",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 6,
+  "from": "S01_step06",
+  "to": "S01_step07",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 7,
+  "from": "S01_step07",
+  "to": "S01_step08",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 1,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 8,
+  "from": "S01_step08",
+  "to": "S01_step09",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 1,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 9,
+  "from": "S01_step09",
+  "to": "S01_step10",
+  "sceneBoundary": false,
+  "moved": 4,
+  "opCh": 2,
+  "trCh": 1,
+  "layCh": 1,
+  "visCh": 3,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 19,
+  "runningAny": 19,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, left, top, width, height;opacity, transform, filter",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.ambient-glow.opening-chaos-light",
+   "div.attention-element-content"
+  ],
+  "animTargetsAll": [
+   "div.ambient-glow.opening-chaos-light",
+   "div.attention-element-content"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 10,
+  "from": "S01_step10",
+  "to": "S02_step00",
+  "sceneBoundary": true,
+  "moved": 11,
+  "opCh": 5,
+  "trCh": 2,
+  "layCh": 0,
+  "visCh": 5,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 8,
+  "runningAny": 8,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "420;0;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease;cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, left, top, width, height;opacity, transform, visibility;opacity, visibility;transform, opacity",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.ambient-glow.opening-stage-light",
+   "div.ambient-glow.opening-chaos-light",
+   "div.chaos-scene.opening-layer",
+   "div.fragmented-scene.opening-layer",
+   "h1.information-statement"
+  ],
+  "animTargetsAll": [
+   "div.ambient-glow.opening-stage-light",
+   "div.ambient-glow.opening-chaos-light",
+   "div.chaos-scene.opening-layer",
+   "div.fragmented-scene.opening-layer",
+   "h1.information-statement"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 11,
+  "from": "S02_step00",
+  "to": "S02_step01",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "left, top, transform, opacity, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.service-icon"
+  ],
+  "animTargetsAll": [
+   "div.service-icon"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 12,
+  "from": "S02_step01",
+  "to": "S02_step02",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "left, top, transform, opacity, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.service-icon"
+  ],
+  "animTargetsAll": [
+   "div.service-icon"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 13,
+  "from": "S02_step02",
+  "to": "S02_step03",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "left, top, transform, opacity, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.service-icon"
+  ],
+  "animTargetsAll": [
+   "div.service-icon"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 14,
+  "from": "S02_step03",
+  "to": "S02_step04",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 1,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "left, top, transform, opacity, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.service-icon"
+  ],
+  "animTargetsAll": [
+   "div.service-icon"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 15,
+  "from": "S02_step04",
+  "to": "S02_step05",
+  "sceneBoundary": false,
+  "moved": 4,
+  "opCh": 1,
+  "trCh": 2,
+  "layCh": 0,
+  "visCh": 2,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "transform, opacity;top, transform, opacity, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "h1.information-statement",
+   "div.family-center"
+  ],
+  "animTargetsAll": [
+   "h1.information-statement",
+   "div.family-center"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 16,
+  "from": "S02_step05",
+  "to": "S02_step06",
+  "sceneBoundary": false,
+  "moved": 8,
+  "opCh": 4,
+  "trCh": 3,
+  "layCh": 0,
+  "visCh": 5,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 30,
+  "runningAny": 30,
+  "finishedOnly": true,
+  "totalAnimsSettled": 0,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, left, top, width, height;transform, opacity;left, top, transform, opacity, visibility;top, transform, opacity, visibility;opacity, transform, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.ambient-glow.metrics-zero-light",
+   "h1.information-statement",
+   "div.service-icon",
+   "div.family-center",
+   "div.fragmented-metrics"
+  ],
+  "animTargetsAll": [
+   "div.ambient-glow.metrics-zero-light",
+   "h1.information-statement",
+   "div.service-icon",
+   "div.family-center",
+   "div.fragmented-metrics"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 17,
+  "from": "S02_step06",
+  "to": "S03_step00",
+  "sceneBoundary": true,
+  "moved": 12,
+  "opCh": 7,
+  "trCh": 5,
+  "layCh": 1,
+  "visCh": 3,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 40,
+  "runningAny": 40,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320;0;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity, left, top, width, height;left, top, transform, opacity, visibility;top, transform, opacity, visibility;opacity, transform, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.ambient-glow.opening-stage-light",
+   "div.ambient-glow.opening-brand-depth",
+   "div.ambient-glow.metrics-zero-light",
+   "div.service-icon",
+   "div.family-center",
+   "div.fragmented-metrics",
+   "div.homeplus-reveal.opening-layer",
+   "div.opening-blackout"
+  ],
+  "animTargetsAll": [
+   "div.ambient-glow.opening-stage-light",
+   "div.ambient-glow.opening-brand-depth",
+   "div.ambient-glow.metrics-zero-light",
+   "div.service-icon",
+   "div.family-center",
+   "div.fragmented-metrics",
+   "div.homeplus-reveal.opening-layer",
+   "div.opening-blackout"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.ambient-glow.opening-stage-light",
+    "from": [
+     920,
+     598,
+     920,
+     598
+    ],
+    "to": [
+     1120,
+     728,
+     1120,
+     728
+    ]
+   }
+  ],
+  "fontCh": []
+ },
+ {
+  "id": 18,
+  "from": "S03_step00",
+  "to": "S04_step00",
+  "sceneBoundary": true,
+  "moved": 145,
+  "opCh": 2,
+  "trCh": 2,
+  "layCh": 0,
+  "visCh": 12,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 5,
+  "runningAny": 5,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;0;320;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.opening-to-home",
+   "div.home-scene.home-planner-sequence"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.opening-to-home",
+   "div.home-scene.home-planner-sequence"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 19,
+  "from": "S04_step00",
+  "to": "S04_step01",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "box-shadow;opacity, color",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "span.home-user-avatar",
+   "span.home-user-name"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "span.home-user-avatar",
+   "span.home-user-name"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 20,
+  "from": "S04_step01",
+  "to": "S04_step02",
+  "sceneBoundary": false,
+  "moved": 2,
+  "opCh": 2,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "background-color;opacity;opacity, transform",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.home-demo-row",
+   "div.home-row-lead",
+   "div.home-row-copy"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.home-demo-row",
+   "div.home-row-lead",
+   "div.home-row-copy"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 21,
+  "from": "S04_step02",
+  "to": "S04_step03",
+  "sceneBoundary": false,
+  "moved": 2,
+  "opCh": 0,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 11,
+  "runningAny": 11,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;320;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "background-color;opacity;background-color, border-color;opacity, transform",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.home-demo-row",
+   "div.home-row-lead",
+   "span.task-status-mark",
+   "div.home-row-copy",
+   "span.home-completion-feedback"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.home-demo-row",
+   "div.home-row-lead",
+   "span.task-status-mark",
+   "div.home-row-copy",
+   "span.home-completion-feedback"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 22,
+  "from": "S04_step03",
+  "to": "S04_step04",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 13,
+  "runningAny": 13,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;320;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "background-color;opacity, transform;opacity;background-color, border-color",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.home-demo-row",
+   "div.home-row-copy",
+   "div.home-row-lead",
+   "span.task-status-mark",
+   "span.home-completion-feedback"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "span.home-completion-feedback",
+   "div.home-demo-row",
+   "div.home-row-copy",
+   "div.home-row-lead",
+   "span.task-status-mark"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 23,
+  "from": "S04_step04",
+  "to": "S04_step05",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 4,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 13,
+  "runningAny": 13,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity;background-color;opacity, transform",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "header.home-top-bar",
+   "p.home-current-date",
+   "h2.home-section-heading",
+   "div.home-demo-row",
+   "div.home-row-copy",
+   "nav.home-navigation"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "span.home-completion-feedback",
+   "header.home-top-bar",
+   "p.home-current-date",
+   "h2.home-section-heading",
+   "div.home-demo-row",
+   "div.home-row-copy",
+   "nav.home-navigation"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 24,
+  "from": "S04_step05",
+  "to": "S05_step00",
+  "sceneBoundary": true,
+  "moved": 0,
+  "opCh": 2,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 23,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 5,
+  "runningAny": 5,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "320;0;420;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity, visibility;opacity",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.product-home-layer",
+   "div.product-planner-layer",
+   "header.home-top-bar",
+   "nav.home-navigation"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.product-home-layer",
+   "div.product-planner-layer",
+   "header.home-top-bar",
+   "nav.home-navigation"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 25,
+  "from": "S05_step00",
+  "to": "S05_step01",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "background-color",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.planner-task-row"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.planner-task-row"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 26,
+  "from": "S05_step01",
+  "to": "S05_step02",
+  "sceneBoundary": false,
+  "moved": 21,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 1,
+  "visCh": 19,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 10,
+  "runningAny": 10,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320;0;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "left;color;opacity, transform, visibility;background-color",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "span.planner-tab-selection",
+   "span.planner-tab",
+   "section.planner-panel",
+   "div.planner-task-row"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "span.planner-tab-selection",
+   "span.planner-tab",
+   "section.planner-panel",
+   "div.planner-task-row"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 27,
+  "from": "S05_step02",
+  "to": "S05_step03",
+  "sceneBoundary": false,
+  "moved": 22,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 1,
+  "visCh": 20,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 8,
+  "runningAny": 8,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320;0;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "left;color;opacity, transform, visibility",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "span.planner-tab-selection",
+   "span.planner-tab",
+   "section.planner-panel"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "span.planner-tab-selection",
+   "span.planner-tab",
+   "section.planner-panel"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 28,
+  "from": "S05_step03",
+  "to": "S06_step00",
+  "sceneBoundary": true,
+  "moved": 18,
+  "opCh": 4,
+  "trCh": 2,
+  "layCh": 5,
+  "visCh": 28,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 7,
+  "runningAny": 7,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "320;0;420;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity, visibility;opacity",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.product-planner-layer",
+   "header.home-top-bar",
+   "nav.home-navigation",
+   "div.product-family-layer"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.product-planner-layer",
+   "header.home-top-bar",
+   "nav.home-navigation",
+   "div.product-family-layer"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.family-map-stage",
+    "from": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "to": [
+     250,
+     200,
+     313,
+     265
+    ]
+   },
+   {
+    "k": "div.family-map-glow.ambient-glow",
+    "from": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "to": [
+     375,
+     330,
+     375,
+     330
+    ]
+   },
+   {
+    "k": "div.family-map-surface",
+    "from": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "to": [
+     250,
+     200,
+     250,
+     200
+    ]
+   },
+   {
+    "k": "div.map-demo-screen",
+    "from": [
+     0,
+     0,
+     44,
+     34
+    ],
+    "to": [
+     250,
+     200,
+     250,
+     200
+    ]
+   },
+   {
+    "k": "div.map-place.map-club",
+    "from": [
+     66,
+     54,
+     66,
+     54
+    ],
+    "to": [
+     71,
+     32,
+     71,
+     32
+    ]
+   }
+  ],
+  "fontCh": []
+ },
+ {
+  "id": 29,
+  "from": "S06_step00",
+  "to": "S06_step01",
+  "sceneBoundary": false,
+  "moved": 24,
+  "opCh": 6,
+  "trCh": 8,
+  "layCh": 17,
+  "visCh": 17,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 9,
+  "runningAny": 9,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320;0;500;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity;opacity, transform, visibility;transform, opacity, visibility",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "1280x720->1450x789",
+  "containerLay": [
+   {
+    "k": "div.presentation-canvas",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1450,
+     789
+    ]
+   },
+   {
+    "k": "section.presentation-scene",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1450,
+     789
+    ]
+   },
+   {
+    "k": "div.home-scene.home-planner-sequence",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1450,
+     789
+    ]
+   }
+  ],
+  "animTargets": [
+   "div.home-phone-position",
+   "div.family-members.family-content-layer",
+   "div.family-map-product.family-content-layer",
+   "div.family-map-stage",
+   "div.family-map-glow.ambient-glow",
+   "div.map-place.map-school"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.home-phone-position",
+   "div.family-members.family-content-layer",
+   "div.family-map-product.family-content-layer",
+   "div.family-map-stage",
+   "div.family-map-glow.ambient-glow",
+   "div.map-place.map-school"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "span",
+    "from": [
+     22,
+     22,
+     22,
+     22
+    ],
+    "to": [
+     62,
+     62,
+     62,
+     62
+    ]
+   },
+   {
+    "k": "svg",
+    "from": [
+     18,
+     18,
+     18,
+     18
+    ],
+    "to": [
+     35,
+     35,
+     35,
+     35
+    ]
+   },
+   {
+    "k": "strong",
+    "from": [
+     49,
+     19,
+     49,
+     19
+    ],
+    "to": [
+     97,
+     43,
+     97,
+     44
+    ]
+   },
+   {
+    "k": "div.family-map-stage",
+    "from": [
+     250,
+     200,
+     313,
+     265
+    ],
+    "to": [
+     1080,
+     520,
+     1350,
+     689
+    ]
+   },
+   {
+    "k": "div.family-map-glow.ambient-glow",
+    "from": [
+     375,
+     330,
+     375,
+     330
+    ],
+    "to": [
+     1620,
+     858,
+     1620,
+     858
+    ]
+   },
+   {
+    "k": "div.family-map-surface",
+    "from": [
+     250,
+     200,
+     250,
+     200
+    ],
+    "to": [
+     1080,
+     520,
+     1080,
+     520
+    ]
+   },
+   {
+    "k": "div.map-demo-screen",
+    "from": [
+     250,
+     200,
+     250,
+     200
+    ],
+    "to": [
+     1080,
+     520,
+     1080,
+     520
+    ]
+   },
+   {
+    "k": "div.map-place.map-school",
+    "from": [
+     92,
+     32,
+     92,
+     32
+    ],
+    "to": [
+     219,
+     82,
+     219,
+     82
+    ]
+   }
+  ],
+  "fontCh": [
+   {
+    "k": "span",
+    "from": "13px",
+    "to": "32.4px"
+   },
+   {
+    "k": "strong",
+    "from": "12px",
+    "to": "34px"
+   },
+   {
+    "k": "span.map-tomi",
+    "from": "14px",
+    "to": "28.08px"
+   },
+   {
+    "k": "span.map-sharing",
+    "from": "9px",
+    "to": "14px"
+   }
+  ]
+ },
+ {
+  "id": 30,
+  "from": "S06_step01",
+  "to": "S06_step02",
+  "sceneBoundary": false,
+  "moved": 6,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 7,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "320;420;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.map-place.map-club"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.map-place.map-club"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 31,
+  "from": "S06_step02",
+  "to": "S06_step03",
+  "sceneBoundary": false,
+  "moved": 13,
+  "opCh": 4,
+  "trCh": 5,
+  "layCh": 2,
+  "visCh": 7,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 6,
+  "runningAny": 6,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "320;420;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.map-delay",
+   "div.map-person.map-mom",
+   "div.map-person.map-dad"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.map-delay",
+   "div.map-person.map-mom",
+   "div.map-person.map-dad"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.map-place.map-club",
+    "from": [
+     166,
+     82,
+     166,
+     82
+    ],
+    "to": [
+     240,
+     121,
+     240,
+     121
+    ]
+   },
+   {
+    "k": "span.map-tomi",
+    "from": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "to": [
+     206,
+     28,
+     206,
+     32
+    ]
+   }
+  ],
+  "fontCh": []
+ },
+ {
+  "id": 32,
+  "from": "S06_step03",
+  "to": "S06_step04",
+  "sceneBoundary": false,
+  "moved": 19,
+  "opCh": 3,
+  "trCh": 7,
+  "layCh": 18,
+  "visCh": 1,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;500;320;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity;transform, opacity, visibility;opacity, transform, visibility",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "1450x789->1280x720",
+  "containerLay": [
+   {
+    "k": "div.presentation-canvas",
+    "from": [
+     1280,
+     720,
+     1450,
+     789
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   },
+   {
+    "k": "section.presentation-scene",
+    "from": [
+     1280,
+     720,
+     1450,
+     789
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   },
+   {
+    "k": "div.home-scene.home-planner-sequence",
+    "from": [
+     1280,
+     720,
+     1450,
+     789
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   }
+  ],
+  "animTargets": [
+   "div.home-phone-position",
+   "div.family-map-stage",
+   "div.family-map-glow.ambient-glow",
+   "div.map-delay"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.home-phone-position",
+   "div.family-map-stage",
+   "div.family-map-glow.ambient-glow",
+   "div.map-delay"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "span",
+    "from": [
+     62,
+     62,
+     62,
+     62
+    ],
+    "to": [
+     22,
+     22,
+     22,
+     22
+    ]
+   },
+   {
+    "k": "svg",
+    "from": [
+     35,
+     35,
+     35,
+     35
+    ],
+    "to": [
+     18,
+     18,
+     18,
+     18
+    ]
+   },
+   {
+    "k": "strong",
+    "from": [
+     97,
+     43,
+     97,
+     44
+    ],
+    "to": [
+     49,
+     19,
+     49,
+     19
+    ]
+   },
+   {
+    "k": "div.family-map-stage",
+    "from": [
+     1080,
+     520,
+     1350,
+     689
+    ],
+    "to": [
+     250,
+     200,
+     313,
+     265
+    ]
+   },
+   {
+    "k": "div.family-map-glow.ambient-glow",
+    "from": [
+     1620,
+     858,
+     1620,
+     858
+    ],
+    "to": [
+     375,
+     330,
+     375,
+     330
+    ]
+   },
+   {
+    "k": "div.family-map-surface",
+    "from": [
+     1080,
+     520,
+     1080,
+     520
+    ],
+    "to": [
+     250,
+     200,
+     250,
+     200
+    ]
+   },
+   {
+    "k": "div.map-demo-screen",
+    "from": [
+     1080,
+     520,
+     1080,
+     520
+    ],
+    "to": [
+     250,
+     200,
+     250,
+     200
+    ]
+   },
+   {
+    "k": "div.map-place.map-school",
+    "from": [
+     219,
+     82,
+     219,
+     82
+    ],
+    "to": [
+     92,
+     32,
+     92,
+     32
+    ]
+   }
+  ],
+  "fontCh": [
+   {
+    "k": "span",
+    "from": "32.4px",
+    "to": "13px"
+   },
+   {
+    "k": "strong",
+    "from": "34px",
+    "to": "12px"
+   },
+   {
+    "k": "span.map-tomi",
+    "from": "28.08px",
+    "to": "14px"
+   },
+   {
+    "k": "span.map-sharing",
+    "from": "14px",
+    "to": "9px"
+   }
+  ]
+ },
+ {
+  "id": 33,
+  "from": "S06_step04",
+  "to": "S06_step05",
+  "sceneBoundary": false,
+  "moved": 10,
+  "opCh": 4,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 21,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 6,
+  "runningAny": 6,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "320;0;420;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity, transform, visibility;transform, opacity, visibility",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "1@570,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.family-map-product.family-content-layer",
+   "div.family-feed-product.family-content-layer",
+   "div.family-map-stage"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.family-map-product.family-content-layer",
+   "div.family-feed-product.family-content-layer",
+   "div.family-map-stage"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 34,
+  "from": "S06_step05",
+  "to": "S07_step00",
+  "sceneBoundary": true,
+  "moved": 30,
+  "opCh": 11,
+  "trCh": 7,
+  "layCh": 2,
+  "visCh": 68,
+  "newEls": 4,
+  "goneEls": 0,
+  "runningPeak": 29,
+  "runningAny": 29,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "220;0;320;420;640",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, visibility;left;color;opacity, transform, visibility;opacity",
+  "deviceBefore": "1@570,50 300x620",
+  "deviceAfter": "none",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.home-scene.home-planner-sequence",
+   "div.product-home-layer",
+   "span.planner-tab-selection",
+   "span.planner-tab",
+   "section.planner-panel",
+   "div.product-family-layer",
+   "header.home-top-bar",
+   "nav.home-navigation",
+   "div.map-place.map-school",
+   "div.map-place.map-club",
+   "div.map-delay",
+   "div.map-person.map-mom"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.home-scene.home-planner-sequence",
+   "div.product-home-layer",
+   "span.planner-tab-selection",
+   "span.planner-tab",
+   "section.planner-panel",
+   "div.product-family-layer",
+   "header.home-top-bar",
+   "nav.home-navigation",
+   "div.map-place.map-school",
+   "div.map-place.map-club",
+   "div.map-delay",
+   "div.map-person.map-mom",
+   "div.map-person.map-dad",
+   "div.s07-silence"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.map-place.map-club",
+    "from": [
+     78,
+     51,
+     78,
+     51
+    ],
+    "to": [
+     71,
+     32,
+     71,
+     32
+    ]
+   },
+   {
+    "k": "span.map-tomi",
+    "from": [
+     64,
+     14,
+     64,
+     16
+    ],
+    "to": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  "fontCh": []
+ },
+ {
+  "id": 35,
+  "from": "S07_step00",
+  "to": "S07_step01",
+  "sceneBoundary": false,
+  "moved": 3,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;640;220",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "p.s07-statement"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.s07-silence",
+   "p.s07-statement"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 36,
+  "from": "S07_step01",
+  "to": "S08_step00",
+  "sceneBoundary": true,
+  "moved": 64,
+  "opCh": 4,
+  "trCh": 2,
+  "layCh": 9,
+  "visCh": 29,
+  "newEls": 22,
+  "goneEls": 86,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420;640;220",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "none",
+  "deviceAfter": "1@250,50 300x620",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 1,
+  "canvasDelta": "1280x720->1280x732",
+  "containerLay": [
+   {
+    "k": "div.presentation-canvas",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     732
+    ]
+   },
+   {
+    "k": "section.presentation-scene",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     732
+    ]
+   }
+  ],
+  "animTargets": [
+   "div.s08-scene",
+   "div.s08-phone-motion"
+  ],
+  "animTargetsAll": [
+   "div.opening-blackout",
+   "div.s07-silence",
+   "div.s08-scene",
+   "div.s08-phone-motion"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "span",
+    "from": [
+     22,
+     22,
+     22,
+     22
+    ],
+    "to": [
+     115,
+     23,
+     115,
+     23
+    ]
+   },
+   {
+    "k": "p",
+    "from": [
+     110,
+     15,
+     110,
+     15
+    ],
+    "to": [
+     161,
+     16,
+     161,
+     16
+    ]
+   },
+   {
+    "k": "svg",
+    "from": [
+     18,
+     18,
+     18,
+     18
+    ],
+    "to": [
+     24,
+     24,
+     24,
+     24
+    ]
+   },
+   {
+    "k": "div.ambient-glow",
+    "from": [
+     860,
+     559,
+     860,
+     559
+    ],
+    "to": [
+     900,
+     585,
+     900,
+     585
+    ]
+   },
+   {
+    "k": "strong",
+    "from": [
+     49,
+     19,
+     49,
+     19
+    ],
+    "to": [
+     18,
+     20,
+     18,
+     20
+    ]
+   },
+   {
+    "k": "div",
+    "from": [
+     110,
+     37,
+     110,
+     37
+    ],
+    "to": [
+     161,
+     52,
+     161,
+     52
+    ]
+   },
+   {
+    "k": "h2",
+    "from": [
+     128,
+     41,
+     128,
+     41
+    ],
+    "to": [
+     161,
+     31,
+     161,
+     31
+    ]
+   }
+  ],
+  "fontCh": [
+   {
+    "k": "span",
+    "from": "13px",
+    "to": "17px"
+   },
+   {
+    "k": "svg",
+    "from": "16px",
+    "to": "15px"
+   },
+   {
+    "k": "rect",
+    "from": "16px",
+    "to": "15px"
+   },
+   {
+    "k": "path",
+    "from": "16px",
+    "to": "15px"
+   },
+   {
+    "k": "circle",
+    "from": "16px",
+    "to": "15px"
+   },
+   {
+    "k": "p",
+    "from": "11px",
+    "to": "12px"
+   },
+   {
+    "k": "strong",
+    "from": "12px",
+    "to": "15px"
+   },
+   {
+    "k": "h2",
+    "from": "30px",
+    "to": "24px"
+   }
+  ]
+ },
+ {
+  "id": 37,
+  "from": "S08_step00",
+  "to": "S08_step01",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 1,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 1,
+  "goneEls": 1,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "border-color",
+  "deviceBefore": "1@250,50 300x620",
+  "deviceAfter": "1@250,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "span.planner-unchecked"
+  ],
+  "animTargetsAll": [
+   "div.s08-scene",
+   "div.s08-phone-motion",
+   "span.planner-unchecked"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 38,
+  "from": "S08_step01",
+  "to": "S08_step02",
+  "sceneBoundary": false,
+  "moved": 2,
+  "opCh": 3,
+  "trCh": 1,
+  "layCh": 3,
+  "visCh": 0,
+  "newEls": 1,
+  "goneEls": 1,
+  "runningPeak": 7,
+  "runningAny": 7,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "transform, opacity;border-color;opacity, transform",
+  "deviceBefore": "1@250,50 300x620",
+  "deviceAfter": "1@250,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "1280x732->1280x720",
+  "containerLay": [
+   {
+    "k": "div.presentation-canvas",
+    "from": [
+     1280,
+     720,
+     1280,
+     732
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   },
+   {
+    "k": "section.presentation-scene",
+    "from": [
+     1280,
+     720,
+     1280,
+     732
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   },
+   {
+    "k": "div.s08-scene",
+    "from": [
+     1280,
+     720,
+     1280,
+     732
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   }
+  ],
+  "animTargets": [
+   "div.s08-phone-slot",
+   "span.planner-unchecked",
+   "p.s08-question"
+  ],
+  "animTargetsAll": [
+   "div.s08-scene",
+   "div.s08-phone-motion",
+   "div.s08-phone-slot",
+   "span.planner-unchecked",
+   "p.s08-question"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 39,
+  "from": "S08_step02",
+  "to": "S08_step03",
+  "sceneBoundary": false,
+  "moved": 83,
+  "opCh": 3,
+  "trCh": 2,
+  "layCh": 3,
+  "visCh": 45,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 7,
+  "runningAny": 7,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;500;320;0",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "transform, opacity;opacity, visibility;opacity, transform",
+  "deviceBefore": "1@250,50 300x620",
+  "deviceAfter": "1@730,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "1280x720->1280x732",
+  "containerLay": [
+   {
+    "k": "div.presentation-canvas",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     732
+    ]
+   },
+   {
+    "k": "section.presentation-scene",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     732
+    ]
+   },
+   {
+    "k": "div.s08-scene",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     732
+    ]
+   }
+  ],
+  "animTargets": [
+   "div.s08-phone-slot",
+   "div.s08-layer",
+   "p.s08-question"
+  ],
+  "animTargetsAll": [
+   "div.s08-scene",
+   "div.s08-phone-motion",
+   "div.s08-phone-slot",
+   "div.s08-layer",
+   "p.s08-question"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 40,
+  "from": "S08_step03",
+  "to": "S08_step04",
+  "sceneBoundary": false,
+  "moved": 10,
+  "opCh": 1,
+  "trCh": 0,
+  "layCh": 8,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 6,
+  "runningAny": 6,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "background-color, opacity;border-color, background-color",
+  "deviceBefore": "1@730,50 300x620",
+  "deviceAfter": "1@730,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.inventory-row",
+   "div.inventory-shopping"
+  ],
+  "animTargetsAll": [
+   "div.s08-scene",
+   "div.s08-phone-motion",
+   "div.inventory-row",
+   "div.inventory-shopping"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.inventory-card",
+    "from": [
+     248,
+     229,
+     248,
+     270
+    ],
+    "to": [
+     248,
+     224,
+     248,
+     284
+    ]
+   }
+  ],
+  "fontCh": [
+   {
+    "k": "p.inventory-row-title",
+    "from": "19px",
+    "to": "21px"
+   },
+   {
+    "k": "p.inventory-row-meta",
+    "from": "12px",
+    "to": "13.5px"
+   },
+   {
+    "k": "span.inventory-status.inventory-status-low",
+    "from": "11px",
+    "to": "12px"
+   },
+   {
+    "k": "span.inventory-status.inventory-status-out",
+    "from": "11px",
+    "to": "12px"
+   }
+  ]
+ },
+ {
+  "id": 41,
+  "from": "S08_step04",
+  "to": "S09_step00",
+  "sceneBoundary": true,
+  "moved": 25,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 9,
+  "visCh": 2,
+  "newEls": 28,
+  "goneEls": 60,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1@730,50 300x620",
+  "deviceAfter": "1@250,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "1280x732->1280x720",
+  "containerLay": [
+   {
+    "k": "div.presentation-canvas",
+    "from": [
+     1280,
+     720,
+     1280,
+     732
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   },
+   {
+    "k": "section.presentation-scene",
+    "from": [
+     1280,
+     720,
+     1280,
+     732
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   }
+  ],
+  "animTargets": [
+   "div.s09-scene",
+   "div.s09-phone-motion"
+  ],
+  "animTargetsAll": [
+   "div.s08-scene",
+   "div.s08-phone-motion",
+   "div.s09-scene",
+   "div.s09-phone-motion"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "span",
+    "from": [
+     115,
+     23,
+     115,
+     23
+    ],
+    "to": [
+     74,
+     6,
+     74,
+     6
+    ]
+   },
+   {
+    "k": "header.home-top-bar",
+    "from": [
+     282,
+     69,
+     282,
+     69
+    ],
+    "to": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "k": "div.home-account",
+    "from": [
+     34,
+     53,
+     34,
+     53
+    ],
+    "to": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "k": "span.home-user-avatar",
+    "from": [
+     34,
+     34,
+     34,
+     34
+    ],
+    "to": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "k": "span.home-user-name",
+    "from": [
+     19,
+     16,
+     19,
+     16
+    ],
+    "to": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "k": "div.home-household",
+    "from": [
+     148,
+     23,
+     148,
+     23
+    ],
+    "to": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "k": "span.home-shell-action",
+    "from": [
+     22,
+     22,
+     22,
+     22
+    ],
+    "to": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  "fontCh": [
+   {
+    "k": "span",
+    "from": "17px",
+    "to": "15px"
+   },
+   {
+    "k": "br",
+    "from": "68px",
+    "to": "60px"
+   }
+  ]
+ },
+ {
+  "id": 42,
+  "from": "S09_step00",
+  "to": "S09_step01",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform",
+  "deviceBefore": "1@250,50 300x620",
+  "deviceAfter": "1@250,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "p.s09-question"
+  ],
+  "animTargetsAll": [
+   "div.s09-scene",
+   "div.s09-phone-motion",
+   "p.s09-question"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 43,
+  "from": "S09_step01",
+  "to": "S09_step02",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform",
+  "deviceBefore": "1@250,50 300x620",
+  "deviceAfter": "1@250,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "p.s09-question"
+  ],
+  "animTargetsAll": [
+   "div.s09-scene",
+   "div.s09-phone-motion",
+   "p.s09-question"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 44,
+  "from": "S09_step02",
+  "to": "S09_step03",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform",
+  "deviceBefore": "1@250,50 300x620",
+  "deviceAfter": "1@250,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "p.s09-question"
+  ],
+  "animTargetsAll": [
+   "div.s09-scene",
+   "div.s09-phone-motion",
+   "p.s09-question"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 45,
+  "from": "S09_step03",
+  "to": "S09_step04",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform",
+  "deviceBefore": "1@250,50 300x620",
+  "deviceAfter": "1@250,50 300x620",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "p.s09-question"
+  ],
+  "animTargetsAll": [
+   "div.s09-scene",
+   "div.s09-phone-motion",
+   "p.s09-question"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 46,
+  "from": "S09_step04",
+  "to": "S10_step00",
+  "sceneBoundary": true,
+  "moved": 18,
+  "opCh": 0,
+  "trCh": 1,
+  "layCh": 2,
+  "visCh": 21,
+  "newEls": 25,
+  "goneEls": 29,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1@250,50 300x620",
+  "deviceAfter": "1.08@238,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [
+   {
+    "k": "div.phone-frame-slot",
+    "from": [
+     300,
+     620,
+     300,
+     620
+    ],
+    "to": [
+     324,
+     670,
+     324,
+     670
+    ]
+   }
+  ],
+  "animTargets": [
+   "div.s10-scene",
+   "div.s10-phone-motion"
+  ],
+  "animTargetsAll": [
+   "div.s09-scene",
+   "div.s09-phone-motion",
+   "div.s10-scene",
+   "div.s10-phone-motion"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.phone-frame-slot",
+    "from": [
+     300,
+     620,
+     300,
+     620
+    ],
+    "to": [
+     324,
+     670,
+     324,
+     670
+    ]
+   },
+   {
+    "k": "span",
+    "from": [
+     74,
+     6,
+     74,
+     6
+    ],
+    "to": [
+     0,
+     0,
+     0,
+     0
+    ]
+   }
+  ],
+  "fontCh": [
+   {
+    "k": "span",
+    "from": "15px",
+    "to": "17px"
+   }
+  ]
+ },
+ {
+  "id": 47,
+  "from": "S10_step00",
+  "to": "S10_step01",
+  "sceneBoundary": false,
+  "moved": 0,
+  "opCh": 2,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 1,
+  "goneEls": 1,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "background-color, opacity",
+  "deviceBefore": "1.08@238,25 324x669.6",
+  "deviceAfter": "1.08@238,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.assets-row"
+  ],
+  "animTargetsAll": [
+   "div.s10-scene",
+   "div.s10-phone-motion",
+   "div.assets-row"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 48,
+  "from": "S10_step01",
+  "to": "S10_step02",
+  "sceneBoundary": false,
+  "moved": 2,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 2,
+  "visCh": 0,
+  "newEls": 6,
+  "goneEls": 4,
+  "runningPeak": 0,
+  "runningAny": 0,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1.08@238,25 324x669.6",
+  "deviceAfter": "1.08@238,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [],
+  "animTargetsAll": [
+   "div.s10-scene",
+   "div.s10-phone-motion"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.assets-card",
+    "from": [
+     248,
+     283,
+     248,
+     283
+    ],
+    "to": [
+     248,
+     139,
+     248,
+     139
+    ]
+   },
+   {
+    "k": "p.assets-row-title",
+    "from": [
+     166,
+     50,
+     166,
+     50
+    ],
+    "to": [
+     168,
+     21,
+     168,
+     21
+    ]
+   }
+  ],
+  "fontCh": [
+   {
+    "k": "p.assets-row-title",
+    "from": "20px",
+    "to": "17px"
+   }
+  ]
+ },
+ {
+  "id": 49,
+  "from": "S10_step02",
+  "to": "S10_step03",
+  "sceneBoundary": false,
+  "moved": 42,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 44,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "500;320;0;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "transform, opacity;opacity, visibility",
+  "deviceBefore": "1.08@238,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s10-phone-slot",
+   "div.s10-layer"
+  ],
+  "animTargetsAll": [
+   "div.s10-scene",
+   "div.s10-phone-motion",
+   "div.s10-phone-slot",
+   "div.s10-layer"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 50,
+  "from": "S10_step03",
+  "to": "S10_step04",
+  "sceneBoundary": false,
+  "moved": 7,
+  "opCh": 1,
+  "trCh": 0,
+  "layCh": 5,
+  "visCh": 2,
+  "newEls": 10,
+  "goneEls": 2,
+  "runningPeak": 0,
+  "runningAny": 0,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [],
+  "animTargetsAll": [
+   "div.s10-scene",
+   "div.s10-phone-motion"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "span",
+    "from": [
+     0,
+     0,
+     0,
+     0
+    ],
+    "to": [
+     3,
+     15,
+     3,
+     15
+    ]
+   },
+   {
+    "k": "div.assets-row-copy",
+    "from": [
+     168,
+     42,
+     168,
+     42
+    ],
+    "to": [
+     220,
+     45,
+     220,
+     45
+    ]
+   },
+   {
+    "k": "p.assets-row-meta",
+    "from": [
+     168,
+     18,
+     168,
+     18
+    ],
+    "to": [
+     220,
+     18,
+     220,
+     18
+    ]
+   },
+   {
+    "k": "p.assets-row-title",
+    "from": [
+     168,
+     21,
+     168,
+     21
+    ],
+    "to": [
+     220,
+     25,
+     220,
+     25
+    ]
+   },
+   {
+    "k": "div.homecloud-card",
+    "from": [
+     248,
+     197,
+     248,
+     197
+    ],
+    "to": [
+     248,
+     61,
+     248,
+     61
+    ]
+   }
+  ],
+  "fontCh": [
+   {
+    "k": "span",
+    "from": "17px",
+    "to": "15px"
+   },
+   {
+    "k": "p.assets-row-title",
+    "from": "17px",
+    "to": "20px"
+   }
+  ]
+ },
+ {
+  "id": 51,
+  "from": "S10_step04",
+  "to": "S11_step00",
+  "sceneBoundary": true,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 4,
+  "goneEls": 60,
+  "runningPeak": 1,
+  "runningAny": 1,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "220;320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "none",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s11-bridge"
+  ],
+  "animTargetsAll": [
+   "div.s10-scene",
+   "div.s10-phone-motion",
+   "div.s11-bridge"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 52,
+  "from": "S11_step00",
+  "to": "S11_step01",
+  "sceneBoundary": false,
+  "moved": 2,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;220",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "p.s11-statement"
+  ],
+  "animTargetsAll": [
+   "div.s11-bridge",
+   "p.s11-statement"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 53,
+  "from": "S11_step01",
+  "to": "S11_step02",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;220",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, transform",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "p.s11-resolution"
+  ],
+  "animTargetsAll": [
+   "div.s11-bridge",
+   "p.s11-resolution"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 54,
+  "from": "S11_step02",
+  "to": "S12_step00",
+  "sceneBoundary": true,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 13,
+  "goneEls": 4,
+  "runningPeak": 1,
+  "runningAny": 1,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "320;220",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s12-stage"
+  ],
+  "animTargetsAll": [
+   "div.s11-bridge",
+   "div.s12-stage"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 55,
+  "from": "S12_step00",
+  "to": "S12_step01",
+  "sceneBoundary": false,
+  "moved": 7,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 7,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "section.s12-panel"
+  ],
+  "animTargetsAll": [
+   "div.s12-stage",
+   "section.s12-panel"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 56,
+  "from": "S12_step01",
+  "to": "S12_step02",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 2,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "320;500",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity;transform",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s12-bridge",
+   "span.s12-bridge-line",
+   "span.s12-bridge-node"
+  ],
+  "animTargetsAll": [
+   "div.s12-stage",
+   "div.s12-bridge",
+   "span.s12-bridge-line",
+   "span.s12-bridge-node"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 57,
+  "from": "S12_step02",
+  "to": "S13_step00",
+  "sceneBoundary": true,
+  "moved": 2,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 2,
+  "visCh": 1,
+  "newEls": 18,
+  "goneEls": 9,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "320;500",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s13-stage",
+   "section.s13-panel"
+  ],
+  "animTargetsAll": [
+   "div.s12-stage",
+   "div.s13-stage",
+   "section.s13-panel"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.ambient-glow",
+    "from": [
+     900,
+     585,
+     900,
+     585
+    ],
+    "to": [
+     360,
+     234,
+     360,
+     234
+    ]
+   }
+  ],
+  "fontCh": []
+ },
+ {
+  "id": 58,
+  "from": "S13_step00",
+  "to": "S13_step01",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 1,
+  "goneEls": 0,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "img.s13-mark-mono",
+   "img.s13-mark-tint",
+   "em.s13-role"
+  ],
+  "animTargetsAll": [
+   "div.s13-stage",
+   "img.s13-mark-mono",
+   "img.s13-mark-tint",
+   "em.s13-role"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 59,
+  "from": "S13_step01",
+  "to": "S13_step02",
+  "sceneBoundary": false,
+  "moved": 11,
+  "opCh": 2,
+  "trCh": 0,
+  "layCh": 5,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 9,
+  "runningAny": 9,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "img.s13-mark-mono",
+   "img.s13-mark-tint",
+   "em.s13-role"
+  ],
+  "animTargetsAll": [
+   "div.s13-stage",
+   "img.s13-mark-mono",
+   "img.s13-mark-tint",
+   "em.s13-role"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "section.s13-panel",
+    "from": [
+     458,
+     429,
+     458,
+     429
+    ],
+    "to": [
+     458,
+     458,
+     458,
+     458
+    ]
+   },
+   {
+    "k": "ul.s13-tech",
+    "from": [
+     370,
+     196,
+     370,
+     196
+    ],
+    "to": [
+     370,
+     225,
+     370,
+     225
+    ]
+   },
+   {
+    "k": "li",
+    "from": [
+     370,
+     52,
+     370,
+     52
+    ],
+    "to": [
+     370,
+     62,
+     370,
+     62
+    ]
+   },
+   {
+    "k": "div.s13-tech-copy",
+    "from": [
+     146,
+     34,
+     146,
+     35
+    ],
+    "to": [
+     146,
+     62,
+     146,
+     62
+    ]
+   },
+   {
+    "k": "em.s13-role",
+    "from": [
+     133,
+     26,
+     133,
+     26
+    ],
+    "to": [
+     146,
+     26,
+     146,
+     26
+    ]
+   }
+  ],
+  "fontCh": []
+ },
+ {
+  "id": 60,
+  "from": "S13_step02",
+  "to": "S13_step03",
+  "sceneBoundary": false,
+  "moved": 4,
+  "opCh": 4,
+  "trCh": 0,
+  "layCh": 1,
+  "visCh": 4,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 8,
+  "runningAny": 8,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "500;420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity;opacity, visibility;opacity, translate;scale",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s13-core-glow",
+   "div.s13-center",
+   "div.s13-center-item",
+   "div.s13-bridge",
+   "span.s13-bridge-node"
+  ],
+  "animTargetsAll": [
+   "div.s13-stage",
+   "div.s13-core-glow",
+   "div.s13-center",
+   "div.s13-center-item",
+   "div.s13-bridge",
+   "span.s13-bridge-node"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 61,
+  "from": "S13_step03",
+  "to": "S14_step00",
+  "sceneBoundary": true,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 2,
+  "visCh": 0,
+  "newEls": 12,
+  "goneEls": 0,
+  "runningPeak": 9,
+  "runningAny": 9,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;500;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "1280x720->1280x732",
+  "containerLay": [
+   {
+    "k": "div.presentation-canvas",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     732
+    ]
+   },
+   {
+    "k": "section.presentation-scene",
+    "from": [
+     1280,
+     720,
+     1280,
+     720
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     732
+    ]
+   }
+  ],
+  "animTargets": [
+   "div.s14-stage",
+   "div.s13-stage",
+   "section.s13-panel",
+   "em.s13-role"
+  ],
+  "animTargetsAll": [
+   "div.s13-stage",
+   "div.s14-stage",
+   "section.s13-panel",
+   "em.s13-role"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 62,
+  "from": "S14_step00",
+  "to": "S14_step01",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 1,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 1,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, visibility;opacity, transform, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s14-echo",
+   "div.s14-route"
+  ],
+  "animTargetsAll": [
+   "div.s14-stage",
+   "div.s13-stage",
+   "div.s14-echo",
+   "div.s14-route"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 63,
+  "from": "S14_step01",
+  "to": "S14_step02",
+  "sceneBoundary": false,
+  "moved": 4,
+  "opCh": 2,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 4,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, visibility;opacity, transform, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s14-echo",
+   "div.s14-route"
+  ],
+  "animTargetsAll": [
+   "div.s14-stage",
+   "div.s13-stage",
+   "div.s14-echo",
+   "div.s14-route"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 64,
+  "from": "S14_step02",
+  "to": "S14_step03",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 3,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;320;500",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, visibility;opacity;opacity, transform",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s14-echo",
+   "div.s14-routes",
+   "div.s14-barrier"
+  ],
+  "animTargetsAll": [
+   "div.s14-stage",
+   "div.s13-stage",
+   "div.s14-echo",
+   "div.s14-routes",
+   "div.s14-barrier"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 65,
+  "from": "S14_step03",
+  "to": "S14_step04",
+  "sceneBoundary": false,
+  "moved": 9,
+  "opCh": 4,
+  "trCh": 3,
+  "layCh": 3,
+  "visCh": 28,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 12,
+  "runningAny": 12,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;0;320;500",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, visibility;opacity, transform, visibility;opacity, transform",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "1280x732->1280x720",
+  "containerLay": [
+   {
+    "k": "div.presentation-canvas",
+    "from": [
+     1280,
+     720,
+     1280,
+     732
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   },
+   {
+    "k": "section.presentation-scene",
+    "from": [
+     1280,
+     720,
+     1280,
+     732
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   },
+   {
+    "k": "div.s14-stage",
+    "from": [
+     1280,
+     720,
+     1280,
+     732
+    ],
+    "to": [
+     1280,
+     720,
+     1280,
+     720
+    ]
+   }
+  ],
+  "animTargets": [
+   "div.s14-echo",
+   "div.s14-route",
+   "div.s14-barrier",
+   "p.s14-question"
+  ],
+  "animTargetsAll": [
+   "div.s14-stage",
+   "div.s13-stage",
+   "div.s14-echo",
+   "div.s14-route",
+   "div.s14-barrier",
+   "p.s14-question"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 66,
+  "from": "S14_step04",
+  "to": "S15_step00",
+  "sceneBoundary": true,
+  "moved": 3,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 3,
+  "visCh": 2,
+  "newEls": 41,
+  "goneEls": 32,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "none",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s15-scene",
+   "div.s15-phone-motion"
+  ],
+  "animTargetsAll": [
+   "div.s14-stage",
+   "div.s13-stage",
+   "div.s15-scene",
+   "div.s15-phone-motion"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.ambient-glow",
+    "from": [
+     360,
+     234,
+     360,
+     234
+    ],
+    "to": [
+     900,
+     585,
+     900,
+     585
+    ]
+   },
+   {
+    "k": "span",
+    "from": [
+     146,
+     34,
+     146,
+     35
+    ],
+    "to": [
+     0,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "k": "img",
+    "from": [
+     48,
+     48,
+     48,
+     48
+    ],
+    "to": [
+     40,
+     40,
+     40,
+     40
+    ]
+   }
+  ],
+  "fontCh": [
+   {
+    "k": "span",
+    "from": "28px",
+    "to": "17px"
+   },
+   {
+    "k": "img",
+    "from": "16px",
+    "to": "15px"
+   }
+  ]
+ },
+ {
+  "id": 67,
+  "from": "S15_step00",
+  "to": "S15_step01",
+  "sceneBoundary": false,
+  "moved": 2,
+  "opCh": 2,
+  "trCh": 2,
+  "layCh": 0,
+  "visCh": 2,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 5,
+  "runningAny": 5,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420;0",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.homi-greeting",
+   "div.homi-user-bubble"
+  ],
+  "animTargetsAll": [
+   "div.s15-scene",
+   "div.s15-phone-motion",
+   "div.homi-greeting",
+   "div.homi-user-bubble"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 68,
+  "from": "S15_step01",
+  "to": "S15_step02",
+  "sceneBoundary": false,
+  "moved": 2,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 2,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.homi-proposal"
+  ],
+  "animTargetsAll": [
+   "div.s15-scene",
+   "div.s15-phone-motion",
+   "div.homi-proposal"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 69,
+  "from": "S15_step02",
+  "to": "S15_step03",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 1,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "button.homi-confirm"
+  ],
+  "animTargetsAll": [
+   "div.s15-scene",
+   "div.s15-phone-motion",
+   "button.homi-confirm"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 70,
+  "from": "S15_step03",
+  "to": "S15_step04",
+  "sceneBoundary": false,
+  "moved": 6,
+  "opCh": 2,
+  "trCh": 2,
+  "layCh": 1,
+  "visCh": 6,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 5,
+  "runningAny": 5,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420;0",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "button.homi-confirm",
+   "div.homi-done"
+  ],
+  "animTargetsAll": [
+   "div.s15-scene",
+   "div.s15-phone-motion",
+   "button.homi-confirm",
+   "div.homi-done"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 71,
+  "from": "S15_step04",
+  "to": "S16_step00",
+  "sceneBoundary": true,
+  "moved": 4,
+  "opCh": 3,
+  "trCh": 3,
+  "layCh": 4,
+  "visCh": 4,
+  "newEls": 12,
+  "goneEls": 13,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s16-scene",
+   "div.s16-phone-motion"
+  ],
+  "animTargetsAll": [
+   "div.s15-scene",
+   "div.s15-phone-motion",
+   "div.s16-scene",
+   "div.s16-phone-motion"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "p",
+    "from": [
+     216,
+     106,
+     216,
+     106
+    ],
+    "to": [
+     188,
+     51,
+     188,
+     51
+    ]
+   },
+   {
+    "k": "div.homi-user-bubble",
+    "from": [
+     220,
+     127,
+     220,
+     127
+    ],
+    "to": [
+     220,
+     75,
+     220,
+     75
+    ]
+   },
+   {
+    "k": "div.homi-proposal",
+    "from": [
+     248,
+     134,
+     248,
+     134
+    ],
+    "to": [
+     248,
+     28,
+     248,
+     28
+    ]
+   }
+  ],
+  "fontCh": []
+ },
+ {
+  "id": 72,
+  "from": "S16_step00",
+  "to": "S16_step01",
+  "sceneBoundary": false,
+  "moved": 5,
+  "opCh": 4,
+  "trCh": 4,
+  "layCh": 3,
+  "visCh": 5,
+  "newEls": 6,
+  "goneEls": 0,
+  "runningPeak": 11,
+  "runningAny": 11,
+  "finishedOnly": true,
+  "totalAnimsSettled": 4,
+  "runningSettled": 0,
+  "durs": "320;420;0",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.homi-greeting",
+   "div.homi-user-bubble",
+   "div.homi-persona",
+   "div.homi-proposal",
+   "div.homi-persona-swap",
+   "div.homi-answer-swap"
+  ],
+  "animTargetsAll": [
+   "div.s16-scene",
+   "div.s16-phone-motion",
+   "div.homi-greeting",
+   "div.homi-user-bubble",
+   "div.homi-persona",
+   "div.homi-proposal",
+   "div.homi-persona-swap",
+   "div.homi-answer-swap"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "p",
+    "from": [
+     188,
+     51,
+     188,
+     51
+    ],
+    "to": [
+     216,
+     106,
+     216,
+     106
+    ]
+   },
+   {
+    "k": "div.homi-persona",
+    "from": [
+     248,
+     20,
+     248,
+     20
+    ],
+    "to": [
+     248,
+     70,
+     248,
+     70
+    ]
+   },
+   {
+    "k": "div.homi-proposal",
+    "from": [
+     248,
+     28,
+     248,
+     28
+    ],
+    "to": [
+     248,
+     134,
+     248,
+     134
+    ]
+   }
+  ],
+  "fontCh": []
+ },
+ {
+  "id": 73,
+  "from": "S16_step01",
+  "to": "S16_step02",
+  "sceneBoundary": false,
+  "moved": 3,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 3,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 4,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.homi-persona-swap",
+   "div.homi-answer-swap"
+  ],
+  "animTargetsAll": [
+   "div.s16-scene",
+   "div.s16-phone-motion",
+   "div.homi-persona-swap",
+   "div.homi-answer-swap"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [
+   {
+    "k": "div.homi-persona-copy",
+    "from": [
+     49,
+     50,
+     49,
+     50
+    ],
+    "to": [
+     55,
+     50,
+     55,
+     50
+    ]
+   },
+   {
+    "k": "p.homi-persona-name",
+    "from": [
+     49,
+     29,
+     49,
+     29
+    ],
+    "to": [
+     55,
+     29,
+     55,
+     29
+    ]
+   },
+   {
+    "k": "p.homi-persona-tag",
+    "from": [
+     49,
+     19,
+     49,
+     19
+    ],
+    "to": [
+     55,
+     19,
+     55,
+     19
+    ]
+   }
+  ],
+  "fontCh": []
+ },
+ {
+  "id": 74,
+  "from": "S16_step02",
+  "to": "S16_step03",
+  "sceneBoundary": false,
+  "moved": 3,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 3,
+  "visCh": 0,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 4,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.homi-persona-swap",
+   "div.homi-answer-swap"
+  ],
+  "animTargetsAll": [
+   "div.s16-scene",
+   "div.s16-phone-motion",
+   "div.homi-persona-swap",
+   "div.homi-answer-swap"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 75,
+  "from": "S16_step03",
+  "to": "S16_step04",
+  "sceneBoundary": false,
+  "moved": 4,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 4,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 4,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.homi-context"
+  ],
+  "animTargetsAll": [
+   "div.s16-scene",
+   "div.s16-phone-motion",
+   "div.homi-persona-swap",
+   "div.homi-answer-swap",
+   "div.homi-context"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 76,
+  "from": "S16_step04",
+  "to": "S17_step00",
+  "sceneBoundary": true,
+  "moved": 2,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 1,
+  "visCh": 0,
+  "newEls": 16,
+  "goneEls": 20,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s17-scene",
+   "div.s17-phone-motion"
+  ],
+  "animTargetsAll": [
+   "div.s16-scene",
+   "div.s16-phone-motion",
+   "div.homi-persona-swap",
+   "div.homi-answer-swap",
+   "div.s17-scene",
+   "div.s17-phone-motion"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 77,
+  "from": "S17_step00",
+  "to": "S17_step01",
+  "sceneBoundary": false,
+  "moved": 3,
+  "opCh": 2,
+  "trCh": 2,
+  "layCh": 1,
+  "visCh": 3,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 4,
+  "runningAny": 4,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.homi-decision-row",
+   "button.homi-confirm.homi-decision-confirm"
+  ],
+  "animTargetsAll": [
+   "div.s17-scene",
+   "div.s17-phone-motion",
+   "div.homi-decision-row",
+   "button.homi-confirm.homi-decision-confirm"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 78,
+  "from": "S17_step01",
+  "to": "S17_step02",
+  "sceneBoundary": false,
+  "moved": 2,
+  "opCh": 2,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 2,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 3,
+  "runningAny": 3,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "420;320",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity;opacity, transform, visibility",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "p.s17-line",
+   "p.s17-resolution"
+  ],
+  "animTargetsAll": [
+   "div.s17-scene",
+   "div.s17-phone-motion",
+   "p.s17-line",
+   "p.s17-resolution"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 79,
+  "from": "S17_step02",
+  "to": "S17_step03",
+  "sceneBoundary": false,
+  "moved": 8,
+  "opCh": 3,
+  "trCh": 3,
+  "layCh": 1,
+  "visCh": 8,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 8,
+  "runningAny": 8,
+  "finishedOnly": true,
+  "totalAnimsSettled": 2,
+  "runningSettled": 0,
+  "durs": "320;420;0",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease;ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "1.08@718,25 324x669.6",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 1,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.homi-decision-row",
+   "button.homi-confirm.homi-decision-confirm",
+   "div.homi-done"
+  ],
+  "animTargetsAll": [
+   "div.s17-scene",
+   "div.s17-phone-motion",
+   "div.homi-decision-row",
+   "button.homi-confirm.homi-decision-confirm",
+   "div.homi-done"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 80,
+  "from": "S17_step03",
+  "to": "S18_step00",
+  "sceneBoundary": true,
+  "moved": 0,
+  "opCh": 0,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 0,
+  "newEls": 9,
+  "goneEls": 45,
+  "runningPeak": 1,
+  "runningAny": 1,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "220;320;420",
+  "eases": "",
+  "props": "",
+  "deviceBefore": "1.08@718,25 324x669.6",
+  "deviceAfter": "none",
+  "deviceCountBefore": 1,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s18-closing"
+  ],
+  "animTargetsAll": [
+   "div.s17-scene",
+   "div.s17-phone-motion",
+   "div.s18-closing"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 81,
+  "from": "S18_step00",
+  "to": "S18_step01",
+  "sceneBoundary": false,
+  "moved": 3,
+  "opCh": 1,
+  "trCh": 0,
+  "layCh": 0,
+  "visCh": 3,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;220",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, scale, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s18-brand"
+  ],
+  "animTargetsAll": [
+   "div.s18-closing",
+   "div.s18-brand"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 82,
+  "from": "S18_step01",
+  "to": "S18_step02",
+  "sceneBoundary": false,
+  "moved": 3,
+  "opCh": 2,
+  "trCh": 1,
+  "layCh": 1,
+  "visCh": 4,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 9,
+  "runningAny": 9,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;220",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), ease;cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1)",
+  "props": "opacity, visibility;opacity, transform",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "div.s18-team",
+   "div.s18-member"
+  ],
+  "animTargetsAll": [
+   "div.s18-closing",
+   "div.s18-team",
+   "div.s18-member"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ },
+ {
+  "id": 83,
+  "from": "S18_step02",
+  "to": "S18_step03",
+  "sceneBoundary": false,
+  "moved": 1,
+  "opCh": 1,
+  "trCh": 1,
+  "layCh": 0,
+  "visCh": 1,
+  "newEls": 0,
+  "goneEls": 0,
+  "runningPeak": 2,
+  "runningAny": 2,
+  "finishedOnly": true,
+  "totalAnimsSettled": 1,
+  "runningSettled": 0,
+  "durs": "420;220",
+  "eases": "cubic-bezier(0.2, 0.8, 0.2, 1);cubic-bezier(0.2, 0.8, 0.2, 1), cubic-bezier(0.2, 0.8, 0.2, 1), ease",
+  "props": "opacity, transform, visibility",
+  "deviceBefore": "none",
+  "deviceAfter": "none",
+  "deviceCountBefore": 0,
+  "deviceCountAfter": 0,
+  "canvasDelta": "none",
+  "containerLay": [],
+  "animTargets": [
+   "p.s18-thanks"
+  ],
+  "animTargetsAll": [
+   "div.s18-closing",
+   "p.s18-thanks"
+  ],
+  "motionPrimitive": "",
+  "bigLayout": [],
+  "fontCh": []
+ }
+]

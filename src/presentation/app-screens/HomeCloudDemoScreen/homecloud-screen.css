@@ -1,0 +1,33 @@
+/* Household-level screen: no account row, status bar stays. */
+.homecloud-demo-screen .home-top-bar { display: none; }
+
+.homecloud-workspace { flex: 1; min-height: 0; display: flex; flex-direction: column; overflow: hidden; }
+.homecloud-heading { flex: none; margin: 0 var(--home-screen-padding); padding: 8px 0 8px; }
+.homecloud-heading h1 { margin: 0; color: var(--home-ink); font-size: 26px; line-height: 1.2; font-weight: 700; }
+
+.homecloud-tabs { flex: none; display: flex; gap: 8px; margin: 0 var(--home-screen-padding) 10px; padding: 3px; border-radius: 9999px; background: rgb(26 24 22 / 0.06); }
+.homecloud-tab { flex: 1; display: flex; align-items: center; justify-content: center; height: 34px; border-radius: 9999px; color: var(--home-muted); font-size: 13px; font-weight: 500; white-space: nowrap; }
+.homecloud-tab[aria-selected='true'] { background: var(--home-surface); color: var(--home-brand); font-weight: 600; box-shadow: 0 1px 3px rgb(26 24 22 / 0.1); }
+
+.homecloud-section-label { margin: 0; padding: 8px var(--home-screen-padding) 6px; color: var(--home-muted); font-size: 11px; line-height: 1.3; font-weight: 600; letter-spacing: 0.66px; text-transform: uppercase; }
+.homecloud-card { margin: 0 var(--home-screen-padding); overflow: hidden; border: 1px solid var(--home-border); border-radius: var(--home-card-radius); background: var(--home-surface); }
+.homecloud-doc-row { position: relative; display: flex; align-items: center; gap: 12px; min-height: 56px; padding: 8px 14px; }
+.homecloud-doc-row + .homecloud-doc-row::before { content: ''; position: absolute; top: 0; left: 20px; right: 0; height: 1px; background: var(--home-divider); }
+.homecloud-doc-title { font-size: 18px; font-weight: 600; }
+
+.homecloud-photos { display: flex; gap: 10px; margin: 0 var(--home-screen-padding); }
+.homecloud-photo { flex: 1; min-width: 0; padding: 10px; border: 1px solid var(--home-border); border-radius: 14px; background: var(--home-surface); }
+.homecloud-photo-thumb { display: block; height: 62px; border-radius: 9px; margin-bottom: 9px; }
+.homecloud-photo-thumb[data-memory='cumple'] { background: linear-gradient(140deg, #f0b27a 0%, #d97b3f 55%, #a34d24 100%); }
+.homecloud-photo-thumb[data-memory='vacaciones'] { background: linear-gradient(140deg, #bcd6e8 0%, #7fa8c9 55%, #4a7699 100%); }
+.homecloud-photo-title { margin: 0; color: var(--home-ink); font-size: 16px; font-weight: 600; line-height: 1.2; }
+.homecloud-photo-date { margin: 2px 0 0; color: var(--home-muted); font-size: 12px; }
+
+.homecloud-voice { display: flex; align-items: center; gap: 10px; margin: 10px var(--home-screen-padding) 0; padding: 10px 12px; border: 1px solid var(--home-border); border-radius: 14px; background: var(--home-surface); }
+.homecloud-play { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--home-brand); position: relative; }
+.homecloud-play::after { content: ''; position: absolute; left: 13px; top: 10px; border-left: 9px solid #fff; border-top: 7px solid transparent; border-bottom: 7px solid transparent; }
+.homecloud-wave { flex: none; display: flex; align-items: center; gap: 3px; }
+.homecloud-wave > span { width: 3px; border-radius: 3px; background: var(--home-brand); opacity: 0.75; }
+.homecloud-voice-title { font-size: 16px; }
+
+.homecloud-album-row { display: flex; align-items: center; min-height: 52px; padding: 8px 14px; }

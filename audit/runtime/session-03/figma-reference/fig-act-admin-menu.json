@@ -1,0 +1,185 @@
+{
+  "url": "http://127.0.0.1:8445/",
+  "navScreenId": "asset-detail",
+  "headings": [],
+  "controls": [
+    {
+      "role": null,
+      "al": "Abrir perfil de Gabriel",
+      "t": "G",
+      "tid": null,
+      "x": 16,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Familia García Coordinador",
+      "tid": null,
+      "x": 60,
+      "y": 11
+    },
+    {
+      "role": null,
+      "al": "Buscar",
+      "t": "Buscar",
+      "tid": null,
+      "x": 318,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Atención",
+      "t": "2",
+      "tid": null,
+      "x": 370,
+      "y": 14
+    },
+    {
+      "role": null,
+      "al": "Volver",
+      "t": "Volver",
+      "tid": null,
+      "x": 12,
+      "y": 87
+    },
+    {
+      "role": null,
+      "al": "Agregar a Toyota Corolla",
+      "t": "Agregar a Toyota Corolla",
+      "tid": null,
+      "x": 322,
+      "y": 157
+    },
+    {
+      "role": null,
+      "al": "Administrar Toyota Corolla",
+      "t": "Administrar Toyota Corolla",
+      "tid": null,
+      "x": 370,
+      "y": 157
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Editar",
+      "tid": null,
+      "x": 363,
+      "y": 219
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Ver Casa Córdoba",
+      "tid": null,
+      "x": 12,
+      "y": 348
+    },
+    {
+      "role": null,
+      "al": "Ver Cambio de aceite",
+      "t": "Cambio de aceite 14 octubre",
+      "tid": null,
+      "x": 21,
+      "y": 453
+    },
+    {
+      "role": null,
+      "al": "Ver VTV",
+      "t": "VTV Inspección / certificado · hasta diciembre de 2026 · 1 documento",
+      "tid": null,
+      "x": 21,
+      "y": 575
+    },
+    {
+      "role": null,
+      "al": "Ver Seguro",
+      "t": "Seguro Seguro · hasta septiembre de 2027 · 1 documento",
+      "tid": null,
+      "x": 21,
+      "y": 652
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Ver toda la información (5)",
+      "tid": null,
+      "x": 12,
+      "y": 770
+    },
+    {
+      "role": null,
+      "al": "Ver Revisión de la manguera",
+      "t": "Revisión de la manguera Marzo 2026",
+      "tid": null,
+      "x": 21,
+      "y": 875
+    },
+    {
+      "role": null,
+      "al": "Ver Service",
+      "t": "Service 18 septiembre · Taller Sur $120.000",
+      "tid": null,
+      "x": 21,
+      "y": 936
+    },
+    {
+      "role": null,
+      "al": "Cerrar",
+      "t": "Cerrar",
+      "tid": null,
+      "x": 0,
+      "y": 145
+    },
+    {
+      "role": null,
+      "al": "Cerrar Administración",
+      "t": "Cerrar Administración",
+      "tid": null,
+      "x": 370,
+      "y": 533
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Editar nombre y tipo",
+      "tid": null,
+      "x": 20,
+      "y": 606
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Marcar como inactivo Sigue siendo parte del hogar, pero no está en uso",
+      "tid": null,
+      "x": 20,
+      "y": 674
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Archivar… Ya no forma parte del hogar, pero conserva su historia.",
+      "tid": null,
+      "x": 20,
+      "y": 752
+    },
+    {
+      "role": null,
+      "al": null,
+      "t": "Mover a papelera… Para registros creados por error o que querés quitar",
+      "tid": null,
+      "x": 20,
+      "y": 830
+    }
+  ],
+  "dialogs": [
+    {
+      "al": "Administración",
+      "modal": "true",
+      "depth": "0",
+      "h": 787
+    }
+  ],
+  "testids": [],
+  "bodyText": "G\nFamilia García\nCoordinador\n2\nToyota Corolla\nFamiliar\nPERSONAS Y UBICACIÓN\nEditar\nAhora con Mariana\nEstá en Casa Córdoba · Garage\nA cargo de Gabriel\nVer Casa Córdoba\nPRÓXIMO\nCambio de aceite\n14 octubre\nDATOS Y DOCUMENTOS\nVTV\nInspección / certificado · hasta diciembre de 2026 · 1 documento\nSeguro\nSeguro · hasta septiembre de 2027 · 1 documento\nPatente\nAA123BB\nVer toda la información (5)\nHISTORIAL\nRevisión de la manguera\nMarzo 2026\nService\n18 septiembre · Taller Sur\n$120.000\nAdministración\nEditar nombre y tipo\nMarcar como inactivo\nSigue siendo parte del hogar, pero no está en uso.\nArchivar…\nYa no forma parte del hogar, pero conserva su historia.\nMover a papelera…\nPara registros creados por error o que querés quitar."
+}
