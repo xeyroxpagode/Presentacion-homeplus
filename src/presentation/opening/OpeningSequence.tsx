@@ -2,6 +2,7 @@ import AmbientGlow from '../components/AmbientGlow'
 import S01Chaos from '../slides/S01Chaos'
 import S02FragmentedInfo from '../slides/S02FragmentedInfo'
 import S03HomePlus from '../slides/S03HomePlus'
+import LetterPortalBridge from './LetterPortalBridge'
 import { openingTokens, openingVariables } from './openingTokens'
 import './opening.css'
 
@@ -28,6 +29,9 @@ export default function OpeningSequence({ slideIndex, stepIndex }: OpeningSequen
       />
       <div aria-hidden="true" className="opening-blackout" data-active={slideIndex === 2} />
       <S03HomePlus active={slideIndex === 2} />
+      {/* S02 V1.5: puente tipográfico S02.8→S03 (letra «o» de «hogar»).
+          S03 intacta: el overlay cubre su entrada 1400 ms y se retira. */}
+      {slideIndex === 2 && <LetterPortalBridge />}
     </div>
   )
 }
