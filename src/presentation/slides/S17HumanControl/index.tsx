@@ -1,30 +1,14 @@
-import AmbientGlow from '../../components/AmbientGlow'
-import PhoneFrame from '../../components/PhoneFrame'
-import HomiDecisionDemoScreen from '../../app-screens/HomiDecisionDemoScreen'
+import HomiStage from '../homi-cinema/HomiStage'
+import { S17_BEATS } from '../homi-cinema/homiCinemaData'
 import type { SlideProps } from '../../presentationTypes'
-import './s17-homi.css'
 
+// V3.1 — Control humano: s0 I10 segunda intención · s1 I11 comparación
+// actual/propuesto · s2 I12 decisión pendiente · s3 I13 negro para Gaby.
 export default function S17HumanControl({ stepIndex }: SlideProps) {
+  const beat = S17_BEATS[Math.min(stepIndex, S17_BEATS.length - 1)]
   return (
-    <div className="s17-scene" data-step={stepIndex} aria-label="Homi propone, vos decidís">
-      <AmbientGlow x={640} y={380} size={900} intensity={0.6} opacity={0.14} />
-      <div className="s17-copy-zone">
-        <p className="s17-line" data-present={true} data-dim={stepIndex >= 2} aria-hidden="false">
-          Homi interpreta<br />y propone.
-        </p>
-        <p className="s17-resolution" data-present={stepIndex >= 2} aria-hidden={stepIndex < 2}>
-          La decisión<br />es nuestra.
-        </p>
-      </div>
-      <div className="s17-phone-motion">
-        <div className="s17-phone-slot">
-          <PhoneFrame scale={1.08}>
-            <div className="s17-screen-fill">
-              <HomiDecisionDemoScreen stepIndex={stepIndex} />
-            </div>
-          </PhoneFrame>
-        </div>
-      </div>
+    <div className="s17-scene" data-step={stepIndex} aria-label="Homi propone, la decisión es nuestra">
+      <HomiStage beat={beat} />
     </div>
   )
 }

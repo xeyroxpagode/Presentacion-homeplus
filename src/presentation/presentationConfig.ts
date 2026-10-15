@@ -37,7 +37,7 @@ export const presentationConfig = {
     { id: 'S13', name: 'Stack', stepCount: 4, component: S13Stack },
     { id: 'S14', name: 'Barrier', stepCount: 5, component: S14Barrier },
     { id: 'S15', name: 'HOMI Action', stepCount: 5, component: S15HomiAction },
-    { id: 'S16', name: 'HOMI Context', stepCount: 5, component: S16HomiContext },
+    { id: 'S16', name: 'HOMI Context', stepCount: 2, component: S16HomiContext },
     { id: 'S17', name: 'Human Control', stepCount: 4, component: S17HumanControl },
     { id: 'S18', name: 'Closing', stepCount: 4, component: S18Closing },
   ] satisfies readonly SlideDefinition[],

@@ -1,26 +1,14 @@
-import AmbientGlow from '../../components/AmbientGlow'
-import PhoneFrame from '../../components/PhoneFrame'
-import HomiContextDemoScreen from '../../app-screens/HomiContextDemoScreen'
+import HomiStage from '../homi-cinema/HomiStage'
+import { S16_BEATS } from '../homi-cinema/homiCinemaData'
 import type { SlideProps } from '../../presentationTypes'
-import './s16-homi.css'
 
+// V3.1 — Valor de la interfaz: s0 I08 Planner ampliado (mirar/comparar/
+// control) · s1 I09 dos formas de interactuar con el mismo dato.
 export default function S16HomiContext({ stepIndex }: SlideProps) {
+  const beat = S16_BEATS[Math.min(stepIndex, S16_BEATS.length - 1)]
   return (
-    <div className="s16-scene" data-step={stepIndex} aria-label="Homi entiende tu contexto">
-      <AmbientGlow x={640} y={380} size={900} intensity={0.6} opacity={0.14} />
-      <div className="s16-idea-zone">
-        <p className="s16-idea">La misma pregunta.</p>
-        <p className="s16-idea s16-idea-quiet">Distinto contexto.</p>
-      </div>
-      <div className="s16-phone-motion">
-        <div className="s16-phone-slot">
-          <PhoneFrame scale={1.08}>
-            <div className="s16-screen-fill">
-              <HomiContextDemoScreen stepIndex={stepIndex} />
-            </div>
-          </PhoneFrame>
-        </div>
-      </div>
+    <div className="s16-scene" data-step={stepIndex} aria-label="La interfaz sigue siendo valiosa">
+      <HomiStage beat={beat} />
     </div>
   )
 }
