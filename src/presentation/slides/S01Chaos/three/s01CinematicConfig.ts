@@ -14,11 +14,15 @@ export const DEG = Math.PI / 180
 
 export const s01Anchors = {
   // Preposición silenciosa durante el negro (microdolly de entrada).
-  A_INSURANCE_PRE: { pos: [-0.08, 1.38, 0.78] as Vec3, target: [-0.38, 0.92, -0.18] as Vec3 },
-  // S01.1 — close-up póliza + llaves desde la izquierda: llaves en
-  // primer plano, hoja completa al centro. Bowl queda tras cámara;
-  // teléfono sale por borde derecho. Oblicuo leve, sin cenital.
-  A_INSURANCE: { pos: [-0.62, 1.46, 0.34] as Vec3, target: [-0.18, 0.915, -0.3] as Vec3 },
+  // V5.2: en el eje de visión del nuevo encuadre, 0.22 atrás del F100.
+  A_INSURANCE_PRE: { pos: [-0.47, 1.98, 0.2] as Vec3, target: [-0.05, 0.925, -0.38] as Vec3 },
+  // S01.1 V5.2 (§04) — pose resuelta por proyección real (probe-v52-shotA):
+  // target = centro de la superficie superior de la póliza; elev ≈56°,
+  // azimut ≈36° (oblicuo moderado, sin cenital). Composición 1280×720:
+  // hoja 415–876 × 186–580 (bbox objetivo 410–870 × 175–600, ancho 36%),
+  // centro (645,383), sello 531–704 × 276–410, llaves ~284–430 × ~477–505,
+  // teléfono 935–1128 (borde inf-der, fuera del área protagonista).
+  A_INSURANCE: { pos: [-0.4, 1.8, 0.1] as Vec3, target: [-0.05, 0.925, -0.38] as Vec3 },
   // S01.2 — cavidad protagonista; encuadre desplazado a derecha para dejar
   // fuera el vano oscuro (-2.46). Mira volumen vacío, no puertas.
   A_PANTRY: { pos: [-0.22, 1.68, 0.05] as Vec3, target: [-0.7, 1.62, -2.7] as Vec3 },
@@ -149,18 +153,17 @@ export const s01Geo = {
     screenSize: [0.066, 0.142] as [number, number],
     screenY: 0.9207,
   },
-  /** Poliza + sello VENCIDO (la hoja vive en la mesada, no es UI).
-   *  Sello ~22% del ancho de hoja, centrado bajo el título. */
+  /** Poliza V5.2 (§04) — la hoja vive en la mesada, no es UI.
+   *  Tamaño 0.27 × 0.36 (+12.5% sobre 0.24 × 0.32, dentro del 10–15%
+   *  autorizado) para alcanzar el target visual de anchura 36–42%.
+   *  El sello VENCIDO va IMPRESO en la textura de la hoja (recuadro
+   *  completo, §04), ya no como decal flotante. */
   policy: {
     group: [-0.05, 0, -0.38] as Vec3,
     yaw: 0.1,
-    stampY: 0.9295,
-    stampX: 0.0,
-    stampZ: 0.045,
-    stampSize: [0.15, 0.05] as [number, number],
-    stampRot: -7 * DEG,
+    size: [0.27, 0.36] as [number, number],
   },
-  keys: [-0.33, 0.915, 0.02] as Vec3,
+  keys: [-0.33, 0.915, -0.43] as Vec3,
   bag: [-2.0, 0.9, -2.68] as Vec3,
   listHome: [-1.62, 0.9025, -2.42] as Vec3,
   /** COMPRAS en la pila: capa upper-middle, asoma título. Isla, sobre stack. */
@@ -351,7 +354,9 @@ export const s01SmokeMaxOpacity = 0.28
 /* ------------------------------------------------------------------ */
 
 export const s01Timings = {
-  enter1: { blackout: [0, 280] as [number, number], cam: [60, 500] as [number, number] },
+  // Beat 1 V5.2 (§04): duración total 900 ms —
+  // 0–180 retiro del negro · 0–700 dolly y reencuadre · 700–900 asentado.
+  enter1: { blackout: [0, 180] as [number, number], cam: [0, 700] as [number, number] },
   // Beat 2 V5.1 — compras con continuidad física (§6):
   // 0–650 apertura escalonada · 650–1050 lectura vacío ·
   // 1050–1850 travelling continuo a heladera (sin corte) ·
@@ -422,7 +427,7 @@ export const s01Timings = {
 } as const
 
 /** Duración total aproximada de cada beat (para el render loop en demand). */
-export const s01BeatDuration = [300, 650, 2250, 3200, 780, 2950]
+export const s01BeatDuration = [300, 900, 2250, 3200, 780, 2950]
 
 /* ------------------------------------------------------------------ */
 /* PHONE PORTAL V4.0 — la cámara se acerca físicamente (§74–§84).       */
@@ -456,10 +461,12 @@ export const s01Portal = {
 /* ------------------------------------------------------------------ */
 
 export const s01Shots = {
+  // V5.2 §04: anchura de póliza 36–42% del viewport; sello dentro de la
+  // hoja, legible desde lejos; llaves zona izquierda/inferior.
   SHOT_INSURANCE: {
-    policyWidth: [0.32, 0.37],
-    keysWidth: [0.1, 0.14],
-    stampCenter: { x: [0.46, 0.54], y: [0.46, 0.54] },
+    policyWidth: [0.36, 0.42],
+    keysWidth: [0.08, 0.14],
+    stampCenter: { x: [0.41, 0.55], y: [0.38, 0.57] },
   },
   SHOT_PANTRY: {
     pantryWidth: [0.7, 0.8],

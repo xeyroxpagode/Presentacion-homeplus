@@ -42,62 +42,100 @@ function Box({
 }
 
 /* ------------------------------------------------------------------ */
-/* Texturas de papel: microtexto + sello VENCIDO (nunca UI)             */
+/* Texturas de papel V5.2 — póliza 1024×1360 con sello VENCIDO impreso */
+/* (recuadro completo, §04). La hoja se ve impresa, no calcomanía.      */
 /* ------------------------------------------------------------------ */
 
 function policyTexture() {
   const cv = document.createElement('canvas')
-  cv.width = 256
-  cv.height = 340
+  cv.width = 1024
+  cv.height = 1360
   const ctx = cv.getContext('2d')!
+  // papel marfil cálido con microvariación determinista
   ctx.fillStyle = '#ddd6c6'
-  ctx.fillRect(0, 0, 256, 340)
-  // Encabezado narrativo: SEGURO DEL AUTO ~13% altura hoja.
-  ctx.fillStyle = '#2e2c26'
-  ctx.font = 'bold 30px Arial, sans-serif'
-  ctx.textAlign = 'center'
-  ctx.fillText('SEGURO', 128, 42)
-  ctx.fillText('DEL AUTO', 128, 72)
-  ctx.fillStyle = '#6d675a'
-  ctx.font = '11px Arial, sans-serif'
-  ctx.fillText('PÓLIZA Nº 0048217  ·  PAT ABC-123', 128, 92)
-  ctx.fillText('VIGENCIA 01/24 — 01/25', 128, 106)
-  ctx.fillStyle = '#a49b87'
-  for (let i = 0; i < 11; i++) {
-    const y = 126 + i * 17
-    ctx.fillRect(28, y, i % 3 === 2 ? 96 : 200, 5)
+  ctx.fillRect(0, 0, 1024, 1360)
+  for (let i = 0; i < 14; i++) {
+    ctx.fillStyle = `rgba(120, 108, 84, ${0.018 + ((i * 7) % 4) * 0.006})`
+    ctx.fillRect(((i * 173) % 940) + 20, ((i * 271) % 1280) + 20, 90 + ((i * 37) % 60), 60 + ((i * 53) % 50))
   }
+  ctx.textAlign = 'center'
+  // encabezado narrativo (~10% de la hoja)
+  ctx.fillStyle = '#2e2c26'
+  ctx.font = 'bold 92px Arial, sans-serif'
+  if ('letterSpacing' in ctx) (ctx as unknown as { letterSpacing: string }).letterSpacing = '10px'
+  ctx.fillText('SEGURO', 512, 118)
+  ctx.fillText('DEL AUTO', 512, 224)
+  if ('letterSpacing' in ctx) (ctx as unknown as { letterSpacing: string }).letterSpacing = '0px'
+  // identificación secundaria discreta
+  ctx.fillStyle = '#6d675a'
+  ctx.font = '30px Arial, sans-serif'
+  ctx.fillText('PÓLIZA Nº 0048217  ·  PAT ABC-123', 512, 292)
+  ctx.fillText('VIGENCIA 01/24 — 01/25', 512, 344)
+  // líneas de información del documento
   ctx.fillStyle = '#8d8472'
-  ctx.fillRect(28, 306, 120, 4)
-  const tex = new THREE.CanvasTexture(cv)
-  tex.colorSpace = THREE.SRGBColorSpace
-  return tex
-}
-
-function vencidoTexture() {
-  const cv = document.createElement('canvas')
-  cv.width = 512
-  cv.height = 168
-  const ctx = cv.getContext('2d')!
-  ctx.clearRect(0, 0, 512, 168)
-  ctx.fillStyle = '#7c2222'
-  ctx.font = 'bold 80px "Arial Black", Arial, sans-serif'
+  const labels = ['TITULAR', 'MARCA / MODELO', 'DOMICILIO', 'SUMA ASEGURADA', 'COBERTURA', 'FRANQUICIA']
+  ctx.font = 'bold 26px Arial, sans-serif'
+  ctx.textAlign = 'left'
+  labels.forEach((label, i) => {
+    const y = 430 + i * 74
+    ctx.fillStyle = '#8d8472'
+    ctx.fillText(label, 90, y)
+    ctx.fillStyle = '#a49b87'
+    ctx.fillRect(90, y + 14, i % 3 === 2 ? 560 : 840, 8)
+  })
+  ctx.fillStyle = '#8d8472'
+  ctx.fillRect(90, 1276, 480, 10)
+  // SELLO VENCIDO — recuadro completo (§04): texto exacto, negrita fuerte,
+  // marco rectangular de esquinas redondeadas + doble trazo interior,
+  // rotación −8°, ~65% del ancho de la póliza, ~15% del alto de la hoja,
+  // tercio central sin tapar el título. Rojo tinta #C92F3D, desgaste mínimo.
+  ctx.save()
+  ctx.translate(512, 830)
+  ctx.rotate((-8 * Math.PI) / 180)
+  const w = 666
+  const h = 204
+  const r = 26
+  ctx.strokeStyle = '#C92F3D'
+  ctx.fillStyle = '#C92F3D'
+  ctx.lineWidth = 14
+  roundRect(ctx, -w / 2, -h / 2, w, h, r)
+  ctx.stroke()
+  ctx.lineWidth = 4
+  roundRect(ctx, -w / 2 + 22, -h / 2 + 22, w - 44, h - 44, 14)
+  ctx.stroke()
+  ctx.font = 'bold 104px "Arial Black", Arial, sans-serif'
   ctx.textAlign = 'center'
   ctx.textBaseline = 'middle'
-  if ('letterSpacing' in ctx) (ctx as unknown as { letterSpacing: string }).letterSpacing = '4px'
-  ctx.fillText('VENCIDO', 256, 88)
-  // Desgaste de impresión: manchas transparentes que rompen el sello.
+  if ('letterSpacing' in ctx) (ctx as unknown as { letterSpacing: string }).letterSpacing = '8px'
+  ctx.fillText('VENCIDO', 0, 4)
+  if ('letterSpacing' in ctx) (ctx as unknown as { letterSpacing: string }).letterSpacing = '0px'
+  ctx.restore()
+  // desgaste de tinta mínimo y determinista (sin borrar letras)
   ctx.globalCompositeOperation = 'destination-out'
-  for (let i = 0; i < 190; i++) {
-    const x = (i * 97) % 512
-    const y = (i * 53) % 168
-    ctx.fillStyle = `rgba(0,0,0,${0.25 + ((i * 7) % 5) * 0.13})`
-    ctx.fillRect(x, y, 3 + ((i * 11) % 6), 2 + ((i * 5) % 4))
+  for (let i = 0; i < 9; i++) {
+    const a = i * 137.5
+    ctx.fillStyle = 'rgba(0,0,0,0.10)'
+    ctx.fillRect(150 + ((a * 3) % 720), 730 + ((i * 61) % 200), 26 + ((i * 13) % 18), 12 + ((i * 7) % 9))
   }
   ctx.globalCompositeOperation = 'source-over'
   const tex = new THREE.CanvasTexture(cv)
   tex.colorSpace = THREE.SRGBColorSpace
+  tex.anisotropy = 4
   return tex
+}
+
+function roundRect(ctx: CanvasRenderingContext2D, x: number, y: number, w: number, h: number, r: number) {
+  ctx.beginPath()
+  ctx.moveTo(x + r, y)
+  ctx.lineTo(x + w - r, y)
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r)
+  ctx.lineTo(x + w, y + h - r)
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h)
+  ctx.lineTo(x + r, y + h)
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r)
+  ctx.lineTo(x, y + r)
+  ctx.quadraticCurveTo(x, y, x + r, y)
+  ctx.closePath()
 }
 
 /* ------------------------------------------------------------------ */
@@ -480,8 +518,8 @@ function ManualCover({ closed, coverRef }: { closed?: boolean; coverRef?: React.
 
 function PolicyDocs() {
   const policyMap = useMemo(policyTexture, [])
-  const stampMap = useMemo(vencidoTexture, [])
   const p = s01Geo.policy
+  const [pw, pz] = p.size
   const g = useRef<THREE.Group>(null)
 
   useFrame(() => {
@@ -496,74 +534,114 @@ function PolicyDocs() {
     <group>
       <group ref={g}>
         <group position={p.group} rotation={[0, p.yaw, 0]}>
+          {/* pila de 3 hojas con offsets reales (papel con cuerpo) */}
           <mesh position={[0.004, 0.9175, -0.004]} rotation={[0, -0.06, 0.004]} castShadow receiveShadow>
-            <boxGeometry args={[0.24, 0.004, 0.32]} />
+            <boxGeometry args={[pw, 0.004, pz]} />
             <meshStandardMaterial color={c.paper} roughness={0.9} />
           </mesh>
           <mesh position={[-0.003, 0.9215, 0.005]} rotation={[0, 0.1, -0.003]} castShadow receiveShadow>
-            <boxGeometry args={[0.24, 0.004, 0.32]} />
+            <boxGeometry args={[pw, 0.004, pz]} />
             <meshStandardMaterial color="#e5dfd0" roughness={0.9} />
           </mesh>
-          <mesh position={[0, 0.925, 0]} rotation={[0.002, 0, 0]} castShadow receiveShadow>
-            <boxGeometry args={[0.24, 0.004, 0.32]} />
+          {/* hoja superior con el sello VENCIDO impreso (§04) */}
+          <mesh name="POLICY_TOP" position={[0, 0.925, 0]} rotation={[0.002, 0, 0]} castShadow receiveShadow>
+            <boxGeometry args={[pw, 0.004, pz]} />
             <meshStandardMaterial color={c.paper} roughness={0.9} map={policyMap} />
           </mesh>
-          {/* sello VENCIDO impreso bajo el título: sólo legible por encuadre */}
-          <group position={[p.stampX, p.stampY, p.stampZ]} rotation={[-Math.PI / 2, 0, 0]}>
-            <mesh rotation={[0, 0, p.stampRot]} renderOrder={2}>
-              <planeGeometry args={[p.stampSize[0], p.stampSize[1]]} />
-              <meshStandardMaterial
-                map={stampMap}
-                transparent
-                depthWrite={false}
-                roughness={0.95}
-                polygonOffset
-                polygonOffsetFactor={-2}
-              />
-            </mesh>
-          </group>
         </group>
       </group>
     </group>
   )
 }
 
+/* Llaves de auto V5.2 (§04) — conjunto integrado: control remoto
+ * automotor (carcasa ovalada/rect biselada, grafito, 2 botones hundidos,
+ * ranura perimetral) + hoja metálica con punta y muescas + argolla.
+ * Sin cilindros-genéricos: siluetas diferenciables, sombras reales. */
 function CarKeys() {
   return (
-    <group name="AUTO_KEYS" position={s01Geo.keys}>
-      {/* AUTO_FOB — cuerpo 3D grafito, esquinas facetadas, 2 botones */}
-      <group name="AUTO_FOB" rotation={[0, 0.45, 0]}>
-        <mesh position={[0, 0.009, 0]} castShadow>
-          <boxGeometry args={[0.062, 0.017, 0.03]} />
-          <meshStandardMaterial color={c.plastic} roughness={0.45} flatShading />
+    <group name="AUTO_KEYS" position={s01Geo.keys} rotation={[0, 0.55, 0]}>
+      {/* AUTO_FOB — carcasa con extremos redondeados (cilindros) */}
+      <group name="AUTO_FOB">
+        <mesh castShadow position={[0, 0.009, 0]} receiveShadow>
+          <boxGeometry args={[0.05, 0.016, 0.035]} />
+          <meshStandardMaterial color="#292A2F" roughness={0.4} metalness={0.15} flatShading />
         </mesh>
-        <mesh position={[-0.012, 0.019, 0]}>
-          <cylinderGeometry args={[0.0045, 0.0045, 0.005, 8]} />
-          <meshStandardMaterial color="#4a4a52" roughness={0.4} />
+        <mesh castShadow position={[-0.025, 0.009, 0]}>
+          <cylinderGeometry args={[0.0175, 0.0175, 0.016, 10]} />
+          <meshStandardMaterial color="#292A2F" roughness={0.4} metalness={0.15} flatShading />
         </mesh>
-        <mesh position={[0.006, 0.019, 0.006]}>
-          <cylinderGeometry args={[0.004, 0.004, 0.005, 8]} />
-          <meshStandardMaterial color={c.accent} roughness={0.4} />
+        <mesh castShadow position={[0.025, 0.009, 0]}>
+          <cylinderGeometry args={[0.0175, 0.0175, 0.016, 10]} />
+          <meshStandardMaterial color="#292A2F" roughness={0.4} metalness={0.15} flatShading />
+        </mesh>
+        {/* frente levemente convexo (placa superior) */}
+        <mesh castShadow position={[0, 0.0182, 0]}>
+          <boxGeometry args={[0.062, 0.003, 0.031]} />
+          <meshStandardMaterial color="#2e2f35" roughness={0.38} metalness={0.15} flatShading />
+        </mesh>
+        {/* ranura perimetral */}
+        <Box size={[0.064, 0.002, 0.002]} position={[0, 0.009, 0.0172]} color="#15161a" roughness={0.6} />
+        <Box size={[0.064, 0.002, 0.002]} position={[0, 0.009, -0.0172]} color="#15161a" roughness={0.6} />
+        {/* botones hundidos: aro oscuro + botón carbón bajo el nivel */}
+        <group position={[-0.013, 0.0195, 0]}>
+          <mesh>
+            <cylinderGeometry args={[0.0078, 0.0078, 0.0012, 12]} />
+            <meshStandardMaterial color="#15161a" roughness={0.55} />
+          </mesh>
+          <mesh position={[0, -0.0004, 0]}>
+            <cylinderGeometry args={[0.0058, 0.0058, 0.0018, 12]} />
+            <meshStandardMaterial color="#35363c" roughness={0.45} />
+          </mesh>
+        </group>
+        <group position={[0.013, 0.0195, 0]}>
+          <mesh>
+            <cylinderGeometry args={[0.0078, 0.0078, 0.0012, 12]} />
+            <meshStandardMaterial color="#15161a" roughness={0.55} />
+          </mesh>
+          <mesh position={[0, -0.0004, 0]}>
+            <cylinderGeometry args={[0.0058, 0.0058, 0.0018, 12]} />
+            <meshStandardMaterial color="#3b3c42" roughness={0.45} />
+          </mesh>
+        </group>
+        {/* poste de anclaje del argolla (extremo derecho) */}
+        <mesh castShadow position={[0.036, 0.009, 0]}>
+          <boxGeometry args={[0.006, 0.006, 0.006]} />
+          <meshStandardMaterial color={c.metal} roughness={0.3} metalness={0.75} />
         </mesh>
       </group>
-      {/* AUTO_RING */}
-      <mesh name="AUTO_RING" position={[0.028, 0.006, 0.014]} rotation={[Math.PI / 2, 0, 0.3]}>
-        <torusGeometry args={[0.016, 0.0024, 6, 14]} />
-        <meshStandardMaterial color={c.metal} roughness={0.3} metalness={0.85} />
+      {/* AUTO_RING — aro metálico cerrado, sección tubular fina */}
+      <mesh name="AUTO_RING" position={[0.051, 0.0038, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+        <torusGeometry args={[0.012, 0.0022, 8, 18]} />
+        <meshStandardMaterial color={c.metal} roughness={0.3} metalness={0.75} />
       </mesh>
-      {/* AUTO_BLADE — hoja CORTA de auto, no llave medieval */}
-      <group name="AUTO_BLADE" position={[0.062, 0, 0.036]} rotation={[0, 0.95, 0]}>
-        <mesh position={[0, 0.007, 0]} castShadow>
-          <boxGeometry args={[0.02, 0.012, 0.014]} />
-          <meshStandardMaterial color={c.metal} roughness={0.35} metalness={0.8} />
+      {/* AUTO_BLADE — hoja metálica con punta y muescas (no cilindro) */}
+      <group name="AUTO_BLADE">
+        <mesh castShadow position={[-0.034, 0.009, 0]}>
+          <boxGeometry args={[0.012, 0.008, 0.011]} />
+          <meshStandardMaterial color={c.metal} roughness={0.32} metalness={0.75} />
         </mesh>
-        <mesh position={[0.024, 0.004, 0]}>
-          <boxGeometry args={[0.028, 0.0035, 0.006]} />
-          <meshStandardMaterial color={c.metal} roughness={0.35} metalness={0.8} />
+        <mesh castShadow position={[-0.058, 0.0055, 0]} receiveShadow>
+          <boxGeometry args={[0.04, 0.003, 0.011]} />
+          <meshStandardMaterial color={c.metal} roughness={0.3} metalness={0.75} />
         </mesh>
-        <mesh position={[0.034, -0.001, 0]}>
-          <boxGeometry args={[0.006, 0.007, 0.006]} />
-          <meshStandardMaterial color={c.metal} roughness={0.35} metalness={0.8} />
+        {/* punta */}
+        <mesh castShadow position={[-0.081, 0.0055, 0]}>
+          <boxGeometry args={[0.008, 0.0026, 0.008]} />
+          <meshStandardMaterial color={c.metal} roughness={0.3} metalness={0.75} />
+        </mesh>
+        {/* muescas de la hoja (2–3 visibles) */}
+        <mesh position={[-0.05, 0.0055, -0.0058]}>
+          <boxGeometry args={[0.005, 0.003, 0.004]} />
+          <meshStandardMaterial color={c.metal} roughness={0.32} metalness={0.75} />
+        </mesh>
+        <mesh position={[-0.062, 0.0055, -0.0058]}>
+          <boxGeometry args={[0.004, 0.003, 0.005]} />
+          <meshStandardMaterial color={c.metal} roughness={0.32} metalness={0.75} />
+        </mesh>
+        <mesh position={[-0.071, 0.0055, -0.0052]}>
+          <boxGeometry args={[0.0035, 0.0026, 0.0035]} />
+          <meshStandardMaterial color={c.metal} roughness={0.32} metalness={0.75} />
         </mesh>
       </group>
     </group>
