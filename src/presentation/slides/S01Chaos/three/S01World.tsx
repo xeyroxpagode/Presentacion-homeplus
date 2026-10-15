@@ -121,9 +121,48 @@ function Room() {
 function BackKitchen() {
   return (
     <group>
-      {/* Muebles bajos con mesada */}
+      {/* Muebles bajos. La mesada se construye por tramos alrededor de la
+          abertura de la bacha: no hay una losa sólida bajo el hueco. */}
       <Box size={[2.3, 0.86, 0.6]} position={[-0.85, 0.43, -2.72]} color={c.cabinet} cast receive />
-      <Box size={[2.42, 0.04, 0.66]} position={[-0.85, 0.88, -2.7]} color={c.counterBack} cast receive />
+      <group name="SINK_COUNTER_CUTOUT">
+        <Box size={[0.76, 0.04, 0.66]} position={[-1.68, 0.882, -2.7]} color={c.counterBack} cast receive />
+        <Box size={[1.1, 0.04, 0.66]} position={[-0.19, 0.882, -2.7]} color={c.counterBack} cast receive />
+        <Box size={[0.56, 0.04, 0.15]} position={[-1.02, 0.882, -2.955]} color={c.counterBack} cast receive />
+        <Box size={[0.56, 0.04, 0.11]} position={[-1.02, 0.882, -2.425]} color={c.counterBack} cast receive />
+      </group>
+      {/* Cubeta real 0.56×0.40×0.19: fondo + cuatro paredes interiores,
+          acero mate, borde visible y desagüe. */}
+      <group name="SINK_BASIN">
+        <Box size={[0.5, 0.025, 0.34]} position={[-1.02, 0.705, -2.68]} color="#71787d" roughness={0.42} metalness={0.72} receive />
+        <Box size={[0.025, 0.19, 0.4]} position={[-1.2875, 0.797, -2.68]} color="#899095" roughness={0.38} metalness={0.72} receive />
+        <Box size={[0.025, 0.19, 0.4]} position={[-0.7525, 0.797, -2.68]} color="#899095" roughness={0.38} metalness={0.72} receive />
+        <Box size={[0.51, 0.19, 0.025]} position={[-1.02, 0.797, -2.8675]} color="#858c91" roughness={0.4} metalness={0.7} receive />
+        <Box size={[0.51, 0.19, 0.025]} position={[-1.02, 0.797, -2.4925]} color="#858c91" roughness={0.4} metalness={0.7} receive />
+        <mesh position={[-1.02, 0.72, -2.68]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+          <cylinderGeometry args={[0.045, 0.045, 0.006, 16]} />
+          <meshStandardMaterial color="#3f464b" roughness={0.32} metalness={0.82} />
+        </mesh>
+        <mesh position={[-1.02, 0.724, -2.68]} rotation={[-Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[0.029, 0.004, 6, 16]} />
+          <meshStandardMaterial color="#9da3a6" roughness={0.25} metalness={0.9} />
+        </mesh>
+        {/* Borde perimetral independiente, apoyado sobre la mesada. */}
+        <Box size={[0.6, 0.018, 0.025]} position={[-1.02, 0.907, -2.892]} color="#a3a8aa" roughness={0.3} metalness={0.82} />
+        <Box size={[0.6, 0.018, 0.025]} position={[-1.02, 0.907, -2.468]} color="#a3a8aa" roughness={0.3} metalness={0.82} />
+        <Box size={[0.025, 0.018, 0.4]} position={[-1.307, 0.907, -2.68]} color="#a3a8aa" roughness={0.3} metalness={0.82} />
+        <Box size={[0.025, 0.018, 0.4]} position={[-0.733, 0.907, -2.68]} color="#a3a8aa" roughness={0.3} metalness={0.82} />
+      </group>
+      {/* Grifería: base, columna y pico, todos con sección real. */}
+      <group name="SINK_FAUCET">
+        <Cyl args={[0.045, 0.05, 0.025, 12]} position={[-1.02, 0.92, -2.94]} color="#91979b" roughness={0.28} metalness={0.88} />
+        <Cyl args={[0.018, 0.021, 0.25, 10]} position={[-1.02, 1.045, -2.94]} color="#a4aaad" roughness={0.24} metalness={0.9} />
+        <mesh position={[-1.02, 1.155, -2.865]} rotation={[0, 0, Math.PI / 2]}>
+          <cylinderGeometry args={[0.017, 0.017, 0.15, 10]} />
+          <meshStandardMaterial color="#a4aaad" roughness={0.24} metalness={0.9} />
+        </mesh>
+        <Cyl args={[0.018, 0.017, 0.095, 10]} position={[-1.02, 1.11, -2.79]} color="#a4aaad" roughness={0.24} metalness={0.9} />
+        <Cyl args={[0.022, 0.022, 0.035, 10]} position={[-1.02, 0.94, -2.87]} color="#8d9397" roughness={0.28} metalness={0.86} />
+      </group>
       <Box size={[0.02, 0.62, 0.02]} position={[-1.55, 0.57, -2.41]} color={c.fridgeHandle} roughness={0.35} metalness={0.8} />
       <Box size={[0.02, 0.62, 0.02]} position={[-0.15, 0.57, -2.41]} color={c.fridgeHandle} roughness={0.35} metalness={0.8} />
       {/* Tabla de cortar + olla sobre la mesada del fondo */}
