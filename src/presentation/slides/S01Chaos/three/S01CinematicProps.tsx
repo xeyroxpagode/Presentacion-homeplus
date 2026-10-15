@@ -125,10 +125,16 @@ function PantryModule({
   const y = s01Geo.pantry.y
   return (
     <group name={jar ? 'PANTRY_A' : 'PANTRY_B'} position={[x, y, -2.87]}>
-      {/* A_CAVITY / B_CAVITY — carcasa con interior físico */}
+      {/* A_CAVITY / B_CAVITY — carcasa con interior físico.
+          V5.1 §12: marcos y paneles ligeramente distintos, sombras de
+          cavidad, dorsos secundarios. */}
       <group name={jar ? 'A_CAVITY' : 'B_CAVITY'}>
-        {/* A_BACK_PANEL / B_BACK_PANEL */}
+        {/* A_BACK_PANEL / B_BACK_PANEL + dorso secundario */}
         <Box size={[width, 0.7, 0.02]} position={[0, 0, -0.16]} color={PANTRY_INNER_COLOR} receive />
+        <Box size={[width - 0.1, 0.6, 0.008]} position={[0, 0, -0.148]} color={jar ? '#31343e' : '#2e313a'} receive />
+        {/* sombras de cavidad: esquinas interiores oscurecidas */}
+        <Box size={[0.03, 0.66, 0.3]} position={[-width / 2 + 0.035, 0, 0]} color="#1d1f26" receive />
+        <Box size={[0.03, 0.66, 0.3]} position={[width / 2 - 0.035, 0, 0]} color="#1d1f26" receive />
         {/* laterales + techo/base */}
         <Box size={[0.02, 0.7, 0.34]} position={[-width / 2 + 0.01, 0, 0]} color={PANTRY_LEAF_COLOR} receive />
         <Box size={[0.02, 0.7, 0.34]} position={[width / 2 - 0.01, 0, 0]} color={PANTRY_LEAF_COLOR} receive />
@@ -233,6 +239,28 @@ function PantryRoot() {
 const FRIDGE_GASKET = '#1a1c20'
 const FRIDGE_INNER = '#b9c4cc'
 
+/* Luz fría interior V5.1 §9: localizada, suave; encendida al abrir (S01.2),
+ * dos flickers finitos en el fallo, apagada después. Sin tocar lámparas. */
+function FridgeInnerLight() {
+  const light = useRef<THREE.PointLight>(null)
+  const strip = useRef<THREE.Mesh>(null)
+  useFrame(() => {
+    const k = s01Director.frame.fridgeLight
+    if (light.current) light.current.intensity = k * 2.4
+    const m = strip.current?.material as THREE.MeshStandardMaterial | undefined
+    if (m) m.emissiveIntensity = 0.05 + k * 2.2
+  })
+  return (
+    <group position={[0, 0.82, 0.24]}>
+      <mesh ref={strip}>
+        <boxGeometry args={[0.4, 0.015, 0.02]} />
+        <meshStandardMaterial color="#dfe9f2" emissive="#cfe2ff" emissiveIntensity={0.05} roughness={0.4} />
+      </mesh>
+      <pointLight ref={light} position={[0, -0.12, 0.06]} distance={1.3} decay={1.8} intensity={0} color="#cfe2ff" />
+    </group>
+  )
+}
+
 function Fridge() {
   const rig = useRef<THREE.Group>(null)
   const topDoor = useRef<THREE.Group>(null)
@@ -254,21 +282,47 @@ function Fridge() {
     <group name="FRIDGE_WORLD" position={f.group}>
       <group name="FRIDGE_SHAKE_RIG" ref={rig}>
         <group name="FRIDGE_BODY">
-          {/* cuerpo con receso frontal real (la cavidad vive en z 0.13–0.37) */}
+          {/* cuerpo con receso frontal real (la cavidad vive en z 0.13–0.37)
+              V5.1 §12: exterior blanco cálido satinado (0.42, microbrillo). */}
           <mesh castShadow receiveShadow position={[0, 0, -0.12]}>
             <boxGeometry args={[0.85, 1.85, 0.5]} />
-            <meshStandardMaterial color={c.fridge} roughness={0.5} metalness={0.12} />
+            <meshStandardMaterial color={c.fridge} roughness={0.42} metalness={0.15} />
           </mesh>
           {/* paredes del receso */}
-          <Box size={[0.85, 0.06, 0.24]} position={[0, 0.895, 0.25]} color={c.fridge} roughness={0.5} metalness={0.12} />
-          <Box size={[0.85, 0.06, 0.24]} position={[0, -0.895, 0.25]} color={c.fridge} roughness={0.5} metalness={0.12} />
-          <Box size={[0.06, 1.73, 0.24]} position={[-0.395, 0, 0.25]} color={c.fridge} roughness={0.5} metalness={0.12} />
-          <Box size={[0.06, 1.73, 0.24]} position={[0.395, 0, 0.25]} color={c.fridge} roughness={0.5} metalness={0.12} />
-          {/* cavidad interior fría + 2 estantes */}
+          <Box size={[0.85, 0.06, 0.24]} position={[0, 0.895, 0.25]} color={c.fridge} roughness={0.42} metalness={0.15} />
+          <Box size={[0.85, 0.06, 0.24]} position={[0, -0.895, 0.25]} color={c.fridge} roughness={0.42} metalness={0.15} />
+          <Box size={[0.06, 1.73, 0.24]} position={[-0.395, 0, 0.25]} color={c.fridge} roughness={0.42} metalness={0.15} />
+          <Box size={[0.06, 1.73, 0.24]} position={[0.395, 0, 0.25]} color={c.fridge} roughness={0.42} metalness={0.15} />
+          {/* cavidad interior fría + 2 estantes volumétricos */}
           <group name="FRIDGE_CAVITY">
             <Box size={[0.73, 1.73, 0.02]} position={[0, 0, 0.14]} color={FRIDGE_INNER} roughness={0.6} receive />
-            <Box size={[0.71, 0.02, 0.2]} position={[0, 0.45, 0.24]} color="#cdd6dd" roughness={0.55} receive />
-            <Box size={[0.71, 0.02, 0.2]} position={[0, -0.35, 0.24]} color="#cdd6dd" roughness={0.55} receive />
+            {/* FRIDGE_SHELF_TOP/BOTTOM — estantes reales con grosor y frente */}
+            <group name="FRIDGE_SHELF_TOP">
+              <Box size={[0.71, 0.025, 0.2]} position={[0, 0.45, 0.24]} color="#cdd6dd" roughness={0.55} receive />
+              <Box size={[0.71, 0.03, 0.015]} position={[0, 0.445, 0.335]} color="#aeb9c2" roughness={0.5} />
+            </group>
+            <group name="FRIDGE_SHELF_BOTTOM">
+              <Box size={[0.71, 0.025, 0.2]} position={[0, -0.35, 0.24]} color="#cdd6dd" roughness={0.55} receive />
+              <Box size={[0.71, 0.03, 0.015]} position={[0, -0.355, 0.335]} color="#aeb9c2" roughness={0.5} />
+            </group>
+            {/* FRIDGE_CRISPER — base/cajón inferior vacío (frente translúcido) */}
+            <group name="FRIDGE_CRISPER">
+              <Box size={[0.68, 0.16, 0.18]} position={[0, -0.68, 0.24]} color="#c3ccd4" roughness={0.4} receive />
+              <Box size={[0.68, 0.1, 0.012]} position={[0, -0.68, 0.335]} color="#d7dee5" roughness={0.25} />
+            </group>
+            {/* sombras de contacto bajo estantes (planos oscuros tenues) */}
+            <mesh position={[0, 0.436, 0.24]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[0.68, 0.18]} />
+              <meshBasicMaterial color="#000000" transparent opacity={0.18} depthWrite={false} />
+            </mesh>
+            <mesh position={[0, -0.364, 0.24]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[0.68, 0.18]} />
+              <meshBasicMaterial color="#000000" transparent opacity={0.18} depthWrite={false} />
+            </mesh>
+            {/* FRIDGE_LIGHT_STRIP — tira fría superior + luz localizada */}
+            <group name="FRIDGE_LIGHT_STRIP">
+              <FridgeInnerLight />
+            </group>
           </group>
           {/* seam freezer/body + zócalo */}
           <Box size={[0.86, 0.014, 0.012]} position={[0, 0.4, 0.375]} color="#8e897f" roughness={0.6} />
@@ -277,7 +331,7 @@ function Fridge() {
 
         <group name="TOP_HINGE" ref={topDoor} position={[f.hingeX, f.topCenterY, f.hingeZ]}>
           <group name="TOP_DOOR">
-            <Box size={[0.85, f.topHeight, doorT]} position={[-0.425, 0, 0]} color={c.fridge} roughness={0.48} metalness={0.12} cast receive />
+            <Box size={[0.85, f.topHeight, doorT]} position={[-0.425, 0, 0]} color={c.fridge} roughness={0.42} metalness={0.15} cast receive />
             {/* TOP_GASKET — marco oscuro perimetral interior */}
             <group name="TOP_GASKET">
               <Box size={[0.79, 0.025, 0.012]} position={[-0.425, f.topHeight / 2 - 0.03, -doorT / 2]} color={FRIDGE_GASKET} roughness={0.9} />
@@ -292,7 +346,7 @@ function Fridge() {
         </group>
         <group name="BOTTOM_HINGE" ref={botDoor} position={[f.hingeX, f.botCenterY, f.hingeZ]}>
           <group name="BOTTOM_DOOR">
-            <Box size={[0.85, f.botHeight, doorT]} position={[-0.425, 0, 0]} color={c.fridge} roughness={0.48} metalness={0.12} cast receive />
+            <Box size={[0.85, f.botHeight, doorT]} position={[-0.425, 0, 0]} color={c.fridge} roughness={0.42} metalness={0.15} cast receive />
             <group name="BOTTOM_GASKET">
               <Box size={[0.79, 0.025, 0.012]} position={[-0.425, f.botHeight / 2 - 0.03, -doorT / 2]} color={FRIDGE_GASKET} roughness={0.9} />
               <Box size={[0.79, 0.025, 0.012]} position={[-0.425, -f.botHeight / 2 + 0.03, -doorT / 2]} color={FRIDGE_GASKET} roughness={0.9} />
@@ -301,6 +355,23 @@ function Fridge() {
             </group>
             <group name="BOTTOM_HANDLE">
               <Box size={[0.026, 0.46, 0.028]} position={[-0.79, 0, 0.026]} color={c.fridgeHandle} roughness={0.3} metalness={0.85} />
+            </group>
+            {/* BOTTOM_BINS — compartimentos simples en puerta inferior
+                (rebajados 0.02 m: ajuste mínimo V5.1 para el nuevo ángulo
+                42–62° sin penetraciones con cuerpo/estantes). */}
+            <group name="BOTTOM_BINS" position={[-0.425, -0.3, -0.055]}>
+              <Box size={[0.5, 0.02, 0.09]} position={[0, 0, 0]} color="#cdd6dd" roughness={0.55} receive />
+              <Box size={[0.5, 0.07, 0.015]} position={[0, 0.035, -0.037]} color="#cdd6dd" roughness={0.55} />
+              <Box size={[0.015, 0.07, 0.09]} position={[-0.242, 0.035, 0]} color="#cdd6dd" roughness={0.55} />
+              <Box size={[0.015, 0.07, 0.09]} position={[0.242, 0.035, 0]} color="#cdd6dd" roughness={0.55} />
+            </group>
+            {/* EGG_TRAY — bandeja física en puerta inferior: A seguro
+                (cerca de bisagra), B próximo al borde libre. */}
+            <group name="EGG_TRAY" position={[-0.4, 0.1, -0.055]}>
+              <Box size={[0.44, 0.018, 0.1]} position={[0, 0, 0]} color="#d8d2c2" roughness={0.8} receive />
+              <Box size={[0.02, 0.05, 0.1]} position={[-0.08, 0.025, 0]} color="#cfc8b6" roughness={0.8} />
+              <Box size={[0.44, 0.05, 0.015]} position={[0, 0.025, -0.042]} color="#cfc8b6" roughness={0.8} />
+              <Box size={[0.44, 0.05, 0.015]} position={[0, 0.025, 0.042]} color="#cfc8b6" roughness={0.8} />
             </group>
           </group>
         </group>
@@ -624,13 +695,15 @@ function DocSheet({ variant, index }: { variant: 0 | 1 | 2; index: number }) {
   const tone = index % 2 === 0 ? '#e6e0d0' : '#d6cfbf'
   const narrow = variant === 1
   const w = narrow ? 0.12 : 0.22
+  // V5.1 §12: variación de espesor por hoja (papel crema, nada perfecto).
+  const thick = 0.003 + (index % 3) * 0.0008
   // DOC_00..05 = garantías protagonistas con textura GARANTÍA+PRODUCTO.
   const product = index < 6 ? WARRANTY_PRODUCTS[index] : null
   const topMap = product ? warrantyTexture(product) : null
   return (
     <group>
       <mesh castShadow receiveShadow>
-        <boxGeometry args={[w, 0.0035, 0.3]} />
+        <boxGeometry args={[w, thick, 0.3]} />
         <meshStandardMaterial color={tone} roughness={0.9} />
       </mesh>
       {topMap && (
@@ -742,7 +815,7 @@ function SmokePuffs() {
       if (!m) return
       const s = smoke[i]
       const mat = m.material as THREE.MeshStandardMaterial
-      mat.opacity = Math.min(s.o, 0.3)
+      mat.opacity = Math.min(s.o, 0.28)
       m.visible = s.o > 0.004
       if (!m.visible) return
       m.position.set(s.p[0], s.p[1], s.p[2])
@@ -771,6 +844,91 @@ function SmokePuffs() {
           />
         </mesh>
       ))}
+    </group>
+  )
+}
+
+/* ------------------------------------------------------------------ */
+/* ALIMENTOS V5.1 §3/§8 — cuatro props con estado independiente.         */
+/* Render en espacio mundo desde el director (sin reparent: la fase       */
+/* adosada usa la misma matemática de bisagra; la fase libre es           */
+/* determinista; reverse e interruption convergen sin saltos).             */
+/* ------------------------------------------------------------------ */
+
+function FridgeFoods() {
+  const apple = useRef<THREE.Group>(null)
+  const water = useRef<THREE.Group>(null)
+  const eggA = useRef<THREE.Group>(null)
+  const eggB = useRef<THREE.Group>(null)
+  useFrame(() => {
+    const f = s01Director.frame
+    if (apple.current) {
+      apple.current.position.set(f.apple.p[0], f.apple.p[1], f.apple.p[2])
+      apple.current.rotation.set(f.apple.r[0], f.apple.r[1], f.apple.r[2])
+    }
+    if (water.current) {
+      water.current.position.set(f.water.p[0], f.water.p[1], f.water.p[2])
+      water.current.rotation.set(f.water.r[0], f.water.r[1], f.water.r[2])
+    }
+    if (eggA.current) {
+      eggA.current.position.set(f.eggA.p[0], f.eggA.p[1], f.eggA.p[2])
+      eggA.current.rotation.set(f.eggA.r[0], f.eggA.r[1], f.eggA.r[2])
+    }
+    if (eggB.current) {
+      eggB.current.position.set(f.eggB.p[0], f.eggB.p[1], f.eggB.p[2])
+      eggB.current.rotation.set(f.eggB.r[0], f.eggB.r[1], f.eggB.r[2])
+    }
+  })
+  return (
+    <group>
+      {/* FRIDGE_APPLE — manzana roja facetada + tallito + hoja discreta */}
+      <group name="FRIDGE_APPLE" ref={apple}>
+        <mesh castShadow>
+          <icosahedronGeometry args={[0.045, 1]} />
+          <meshStandardMaterial color="#b03a2e" roughness={0.55} flatShading />
+        </mesh>
+        <mesh position={[0, 0.05, 0]} castShadow>
+          <cylinderGeometry args={[0.004, 0.005, 0.03, 5]} />
+          <meshStandardMaterial color="#5d4a2f" roughness={0.9} flatShading />
+        </mesh>
+        <mesh position={[0.014, 0.055, 0]} rotation={[0, 0, -0.5]}>
+          <boxGeometry args={[0.03, 0.004, 0.014]} />
+          <meshStandardMaterial color="#4e6b3f" roughness={0.85} flatShading />
+        </mesh>
+      </group>
+      {/* FRIDGE_WATER — botella low-poly, plástico translúcido controlado,
+          tapa azul grisácea, agua visual a media altura */}
+      <group name="FRIDGE_WATER" ref={water}>
+        <mesh position={[0, 0, 0]} castShadow>
+          <cylinderGeometry args={[0.035, 0.035, 0.14, 7]} />
+          <meshStandardMaterial color="#cfd9e2" transparent opacity={0.45} roughness={0.15} metalness={0} flatShading depthWrite={false} />
+        </mesh>
+        <mesh position={[0, -0.035, 0]}>
+          <cylinderGeometry args={[0.031, 0.031, 0.06, 7]} />
+          <meshStandardMaterial color="#7fa3c0" transparent opacity={0.75} roughness={0.1} flatShading depthWrite={false} />
+        </mesh>
+        <mesh position={[0, 0.085, 0]} castShadow>
+          <cylinderGeometry args={[0.014, 0.014, 0.035, 6]} />
+          <meshStandardMaterial color="#cfd9e2" transparent opacity={0.45} roughness={0.15} flatShading depthWrite={false} />
+        </mesh>
+        <mesh position={[0, 0.108, 0]} castShadow>
+          <cylinderGeometry args={[0.016, 0.016, 0.022, 6]} />
+          <meshStandardMaterial color="#5a6b7d" roughness={0.5} flatShading />
+        </mesh>
+      </group>
+      {/* FRIDGE_EGG_A/B — huevos marfil facetados, mate */}
+      <group name="FRIDGE_EGG_A" ref={eggA}>
+        <mesh scale={[1, 1.3, 1]} castShadow>
+          <icosahedronGeometry args={[0.028, 1]} />
+          <meshStandardMaterial color="#e8e0cd" roughness={0.85} flatShading />
+        </mesh>
+      </group>
+      <group name="FRIDGE_EGG_B" ref={eggB}>
+        <mesh scale={[1, 1.3, 1]} castShadow>
+          <icosahedronGeometry args={[0.028, 1]} />
+          <meshStandardMaterial color="#e3dbc6" roughness={0.85} flatShading />
+        </mesh>
+      </group>
     </group>
   )
 }
@@ -892,6 +1050,7 @@ export default function S01CinematicProps() {
     <group>
       <PantryRoot />
       <Fridge />
+      <FridgeFoods />
       <DocSector />
       <PolicyDocs />
       <CarKeys />

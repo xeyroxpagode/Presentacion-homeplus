@@ -164,8 +164,18 @@ function Island() {
       {/* Puerta en el extremo derecho */}
       <Box size={[0.025, 0.6, 0.6]} position={[1.165, 0.53, 0]} color={c.cabinetFront} receive />
       <Box size={[0.02, 0.34, 0.024]} position={[1.18, 0.53, 0.24]} color={c.fridgeHandle} roughness={0.35} metalness={0.8} />
-      {/* Mesada de madera con vuelo */}
-      <Box size={[2.44, 0.055, 1.05]} position={[0, 0.8875, 0]} color={c.counter} roughness={0.72} cast receive />
+      {/* Mesada de madera con vuelo — V5.1 §12: madera cálida mate,
+          variación tenue por tablones, canto diferenciado, microbevel. */}
+      <Box size={[2.44, 0.055, 1.05]} position={[0, 0.8875, 0]} color={c.counter} roughness={0.78} cast receive />
+      {/* canto diferenciado (borde frontal más oscuro) */}
+      <Box size={[2.44, 0.03, 0.015]} position={[0, 0.878, 0.525]} color="#5d452e" roughness={0.8} />
+      {/* vetas tenues: 3 tablones con tono apenas distinto */}
+      <Box size={[0.78, 0.004, 1.0]} position={[-0.8, 0.916, 0]} color="#75573c" roughness={0.8} />
+      <Box size={[0.78, 0.004, 1.0]} position={[0.02, 0.916, 0]} color="#7d5f41" roughness={0.8} />
+      <Box size={[0.78, 0.004, 1.0]} position={[0.84, 0.916, 0]} color="#75573c" roughness={0.8} />
+      {/* microbevel: filetes claros en bordes laterales */}
+      <Box size={[0.012, 0.056, 1.05]} position={[-1.214, 0.8875, 0]} color="#8a6a48" roughness={0.75} />
+      <Box size={[0.012, 0.056, 1.05]} position={[1.214, 0.8875, 0]} color="#8a6a48" roughness={0.75} />
     </group>
   )
 }

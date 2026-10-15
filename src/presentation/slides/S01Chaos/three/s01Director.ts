@@ -34,6 +34,13 @@ export type S01Frame = {
   fShift: number
   drawer: number
   manualCover: number
+  /** V5.1 — luz fría interior (1 encendida en S01.2, 0 tras el fallo). */
+  fridgeLight: number
+  /** V5.1 — cuatro alimentos con estados independientes. */
+  apple: { p: Vec3; r: Vec3 }
+  water: { p: Vec3; r: Vec3 }
+  eggA: { p: Vec3; r: Vec3 }
+  eggB: { p: Vec3; r: Vec3 }
   policy: { p: Vec3; r: Vec3 }
   docs: Pose[]
   loose: { p: Vec3; r: Vec3 }[]
@@ -68,6 +75,11 @@ function makeFrame(): S01Frame {
     fShift: 0,
     drawer: 0,
     manualCover: 0,
+    fridgeLight: 0,
+    apple: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
+    water: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
+    eggA: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
+    eggB: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
     policy: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
     docs: s01Docs.map(() => ({ p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3, v: 0 })),
     loose: s01Loose.map(() => ({ p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 })),
@@ -249,13 +261,30 @@ export class S01Director {
     out['pantry.1'] = open * s01Geo.pantry.leafA_R.open
     out['pantry.2'] = open * s01Geo.pantry.leafB_R.open
 
-    out['fTop'] = step >= 3 ? s01Geo.fridge.topRest : 0
-    out['fBot'] = step >= 3 ? s01Geo.fridge.botRest : 0
+    out['fTop'] = step >= 3 ? s01Geo.fridge.topRest : step >= 2 ? s01Geo.fridge.topPre : 0
+    out['fBot'] = step >= 3 ? s01Geo.fridge.botRest : step >= 2 ? s01Geo.fridge.botPre : 0
     out['fLift'] = 0
     out['fRoll'] = 0
     out['fShift'] = 0
     out['drawer'] = step >= 3 ? s01Geo.docTower.drawerTravel : 0
     out['manualCover'] = step >= 3 ? 57 * DEG : 0
+    // Luz interior V5.1 (§5): encendida sólo en step 2 (heladera abierta,
+    // casi vacía). Apagada tras el fallo y en el resto.
+    out['fridgeLight'] = step === 2 ? 1 : 0
+
+    // Alimentos V5.1 (§5): step 0–1 reposo oculto (origen, v=0 visualmente
+    // dentro de heladera cerrada); step 2 cuatro en posición original;
+    // step 3+ posiciones post-avería (persisten en 4 y 5).
+    const foodPose = step >= 3 ? 'post' : 'home'
+    const fBotA = step >= 3 ? s01Geo.fridge.botRest : step >= 2 ? s01Geo.fridge.botPre : 0
+    const appleP = foodPose === 'post' ? s01Geo.fridgeFood.appleLand : doorWorld(s01Geo.fridgeFood.appleDoor, fBotA)
+    setPose(out, 'apple', appleP, foodPose === 'post' ? [0.4, 0.6, 1.2] : [0, 0.3, 0], 1)
+    const waterP = foodPose === 'post' ? s01Geo.fridgeFood.waterLand : s01Geo.fridgeFood.waterHome
+    setPose(out, 'water', waterP, foodPose === 'post' ? [0, 0, Math.PI / 2] : [0, 0, 0], 1)
+    const eggAP = doorWorld(s01Geo.fridgeFood.eggADoor, fBotA)
+    setPose(out, 'eggA', eggAP, [0, 0, 0], 1)
+    const eggBP = foodPose === 'post' ? s01Geo.fridgeFood.eggBLand : doorWorld(s01Geo.fridgeFood.eggBDoor, fBotA)
+    setPose(out, 'eggB', eggBP, foodPose === 'post' ? [0, 0.4, Math.PI / 2] : [0, 0, 0], 1)
 
     out['policy.p.0'] = step >= 5 ? POLICY_ACCUM.p[0] : 0
     out['policy.p.1'] = step >= 5 ? POLICY_ACCUM.p[1] : 0
@@ -338,9 +367,45 @@ export class S01Director {
 
   private buildEnter2() {
     const t = s01Timings.enter2
-    this.addCamTween(t.cam[0], t.cam[1], easeInOut)
+    // Travelling continuo pantry → fridge (sin corte, §6): primera fase a
+    // A_PANTRY (lectura del vacío), segunda fase a A_FRIDGE_SIDE (revelación
+    // lateral del interior abierto, cuatro alimentos reconocibles).
+    // Implementado como vía intermedia determinista sobre los mismos canales.
+    const mid = s01Anchors.A_PANTRY
+    const end = s01Anchors.A_FRIDGE_SIDE
+    // VIA V5.1: el travelling pantry→side no corta muebles; pasa por el aire
+    // libre del centro (isla abajo, pantry izq, heladera der: coherencia).
+    const viaPos: Vec3 = [0.75, 1.55, 0.75]
+    const viaTgt: Vec3 = [0.0, 1.0, -2.6]
+    const tA = t.camTravel[0]
+    const tM = (t.camTravel[0] + t.camTravel[1]) / 2
+    const tB = t.camTravel[1]
+    for (let i = 0; i < 3; i++) {
+      const fromP = this.params[`camPos.${i}`] ?? 0
+      const fromT = this.params[`camTarget.${i}`] ?? 0
+      this.channels.push({ key: `camPos.${i}`, from: fromP, to: mid.pos[i], t0: t.camPantry[0], t1: t.camPantry[1], ease: easeInOut })
+      this.channels.push({ key: `camTarget.${i}`, from: fromT, to: mid.target[i], t0: t.camPantry[0], t1: t.camPantry[1], ease: easeInOut })
+      // Segunda fase en dos tramos (misma key: el último canal activo domina;
+      // antes de t0 se salta): mid→VIA→end por aire libre, sin cortes.
+      this.channels.push({ key: `camPos.${i}`, from: mid.pos[i], to: viaPos[i], t0: tA, t1: tM, ease: easeInOut })
+      this.channels.push({ key: `camTarget.${i}`, from: mid.target[i], to: viaTgt[i], t0: tA, t1: tM, ease: easeInOut })
+      this.channels.push({ key: `camPos.${i}`, from: viaPos[i], to: end.pos[i], t0: tM, t1: tB, ease: easeInOut })
+      this.channels.push({ key: `camTarget.${i}`, from: viaTgt[i], to: end.target[i], t0: tM, t1: tB, ease: easeInOut })
+      this.channels.push({ key: `camUp.${i}`, from: this.params[`camUp.${i}`] ?? (i === 1 ? 1 : 0), to: i === 1 ? 1 : 0, t0: t.camPantry[0], t1: t.camPantry[1], ease: easeInOut })
+    }
     // Stagger orgánico con overshoot (A-L 170, A-R 235, B-R 305).
     for (let i = 0; i < 3; i++) this.addTween(`pantry.${i}`, t.doors[i][0], t.doors[i][1], easeOutBack)
+    // Heladera: bottom 0°→42° + luz fría durante la apertura (1280–1820).
+    this.addTween('fBot', t.fridgeOpen[0], t.fridgeOpen[1], easeInOut)
+    this.addTween('fTop', t.fridgeOpen[0], t.fridgeOpen[1], easeInOut)
+    this.addTween('fridgeLight', t.fridgeOpen[0], t.fridgeOpen[1], easeOut)
+    // Alimentos: siguen a sus posiciones originales con la apertura
+    // (lineal en params; el anclaje exacto a puerta lo resuelve F100 + script3).
+    for (const key of Object.keys(this.target)) {
+      if (key.startsWith('apple.') || key.startsWith('water.') || key.startsWith('eggA.') || key.startsWith('eggB.')) {
+        this.addTween(key, t.fridgeOpen[0], t.fridgeOpen[1], easeInOut)
+      }
+    }
   }
 
   private buildEnter4() {
@@ -389,8 +454,10 @@ export class S01Director {
 
   private applyScript3(t: number) {
     const T = s01Timings.fridgeFail
-    // Cámara asentada a los 180 ms; quieta durante todo el evento.
-    const uCam = clamp01(t / (T.cam[1] - T.cam[0]))
+    // Cámara V5.1: arranca del F100 real del paso 2 (A_FRIDGE_SIDE, interior
+    // abierto) y asienta a A_FRIDGE en 0–250ms; quieta durante el evento.
+    // Flickers (250+) y golpe (620) ocurren con cámara ya asentada.
+    const uCam = clamp01(t / Math.max(1, T.cam[1] - T.cam[0]))
     const eCam = easeInOut(uCam)
     const to = s01Anchors.A_FRIDGE
     for (let i = 0; i < 3; i++) {
@@ -400,19 +467,33 @@ export class S01Director {
     }
     this.params['blackout'] = 0
 
-    // Puertas: un solo rebound hacia 11°/8° (§40).
+    // Puertas V5.1: parten de la pose pre-open (42°/0°, nunca 0°) → peak
+    // 58°/22° → rebound 46°/8° → rest 50°/12° (680–980ms).
     const F = s01Geo.fridge
-    this.params['fTop'] = door3Phase(t, T.topDoorPeak, T.topDoorMid, T.topDoorRest, F.topMax, F.topRebound, F.topRest)
-    this.params['fBot'] = door3Phase(t, T.botDoorPeak, T.botDoorMid, T.botDoorRest, F.botMax, F.botRebound, F.botRest)
-    // Drawer prismático: 0→.12 (375–455), →.86 (455–690), →1 (690–760).
+    this.params['fTop'] = doorFailPhase(t, T.topDoorPeak, T.topDoorMid, T.topDoorRest, F.topPre, F.topPeak, F.topRebound, F.topRest)
+    this.params['fBot'] = doorFailPhase(t, T.botDoorPeak, T.botDoorMid, T.botDoorRest, F.botPre, F.botPeak, F.botRebound, F.botRest)
+    // Luz interior: encendida → dos flickers → apagada (§9).
+    this.params['fridgeLight'] = fridgeLightAt(t)
+    // Drawer prismático: abre DESPUÉS de la pausa (1750+), no con el golpe.
     const travel = s01Geo.docTower.drawerTravel
     this.params['drawer'] = drawer3Phase(t, T.drawerA, T.drawerB, T.drawerC, travel)
 
-    // Cuerpo: keyframes diseñados §39 (vuelve EXACTAMENTE a base).
+    // Cuerpo: microtirón 480–580 → golpe 620–750 → rebound → recupero a base.
     const { lift, roll, shift } = fridgeBody(t)
     this.params['fLift'] = lift
     this.params['fRoll'] = roll
     this.params['fShift'] = shift
+
+    // Alimentos V5.1 §8: trayectorias deterministas 760–1500ms.
+    const fBot = this.params['fBot']
+    const ap = appleAt(t, fBot)
+    setPose(this.params, 'apple', ap.p, ap.r, 1)
+    const wa = waterAt(t)
+    setPose(this.params, 'water', wa.p, wa.r, 1)
+    const ea = eggAt(t, fBot, 'A')
+    setPose(this.params, 'eggA', ea.p, ea.r, 1)
+    const eb = eggAt(t, fBot, 'B')
+    setPose(this.params, 'eggB', eb.p, eb.r, 1)
 
     // Documentación: Bézier cúbica determinista por hoja (§42–§49).
     s01Docs.forEach((d, i) => {
@@ -439,8 +520,9 @@ export class S01Director {
       setPose(this.params, `docs.${i}`, p, r, 1)
     })
 
-    // Manual: tapa 3°→62°→49°→57° tras el contacto (§49).
-    const land = 835 + 560
+    // Manual: tapa 3°→62°→49°→57° tras el contacto (land = release+dur).
+    const manualSpec = s01Docs.find((d) => d.manual)!
+    const land = manualSpec.release + manualSpec.dur
     this.params['manualCover'] = manualCoverAt(t, land)
 
     // Humo: evento puro, opacidad ≤ 0.30, muere a 0 (§51–§52).
@@ -455,7 +537,7 @@ export class S01Director {
         this.params[`smoke.${i}.p.0`] = s.origin[0] + s.drift * Math.sin(u * 2.2)
         this.params[`smoke.${i}.p.1`] = s.origin[1] + s.rise * u
         this.params[`smoke.${i}.p.2`] = s.origin[2] + s.drift * 0.3 * u
-        this.params[`smoke.${i}.s`] = 0.14 + 0.26 * Math.pow(u, 0.7)
+        this.params[`smoke.${i}.s`] = 0.1 + 0.16 * Math.pow(u, 0.7)
         this.params[`smoke.${i}.o`] = Math.min(s01SmokeMaxOpacity, s01SmokeMaxOpacity * Math.sin(Math.PI * Math.pow(u, 0.85)))
       } else {
         this.params[`smoke.${i}.o`] = 0
@@ -473,10 +555,24 @@ export class S01Director {
     out['blackout'] = 0
 
     // Acumulación 0–720: sólo documentación liviana (§54). Nada vuela.
+    // V5.1 §11: corrección crítica — sin lerp piso→isla por el aire.
+    // A. Isla→stack: slide corto con micro-arco controlado.
+    // B. Back-counter→stack: trayectoria estilizada con elevación controlada
+    //    (+0.10·sin(π·u): se ve el traslado guiado, no un deslizamiento sobre
+    //    una superficie inexistente).
+    // C/D/E. Piso y colgante: permanecen (accum = land, sólo micro-settle).
     const uD = (i: number) => easeInOut(clamp01((t - i * T.docsStagger) / (T.docs[1] - T.docs[0])))
     s01Docs.forEach((d, i) => {
       const u = uD(i)
+      const pinned = d.accum[0] === d.land[0] && d.accum[1] === d.land[1] && d.accum[2] === d.land[2]
+      if (pinned) {
+        setPose(out, `docs.${i}`, [...d.land] as Vec3, [...d.landRot] as Vec3, 1)
+        return
+      }
       const p = lerp3(d.land, d.accum, u)
+      // Elevación controlada: visible sólo a mitad del traslado.
+      const backCounter = d.land[1] > 0.5 && d.land[2] < -2.0
+      p[1] += (backCounter ? 0.1 : 0.03) * Math.sin(Math.PI * u)
       const r = lerp3(d.landRot, d.accumRot, u)
       setPose(out, `docs.${i}`, p, r, 1)
     })
@@ -568,6 +664,15 @@ export class S01Director {
     f.fShift = p['fShift']
     f.drawer = p['drawer']
     f.manualCover = p['manualCover'] ?? 0
+    f.fridgeLight = p['fridgeLight'] ?? 0
+    for (const k of ['apple', 'water', 'eggA', 'eggB'] as const) {
+      f[k].p[0] = p[`${k}.p.0`]
+      f[k].p[1] = p[`${k}.p.1`]
+      f[k].p[2] = p[`${k}.p.2`]
+      f[k].r[0] = p[`${k}.r.0`]
+      f[k].r[1] = p[`${k}.r.1`]
+      f[k].r[2] = p[`${k}.r.2`]
+    }
     f.policy.p[0] = p['policy.p.0'] ?? 0
     f.policy.p[1] = p['policy.p.1'] ?? 0
     f.policy.p[2] = p['policy.p.2'] ?? 0
@@ -632,6 +737,130 @@ function cubic(p0: Vec3, p1: Vec3, p2: Vec3, p3: Vec3, u: number): Vec3 {
   ]
 }
 
+/** Puerta con un solo rebound V5.1: parte de baseOpen (S01.2, 42°/0°),
+ *  sube a peak (58°/22°), rebota a mid (46°/8°) y asienta en rest (50°/12°).
+ *  Nunca vuelve a 0° al iniciar S01.3. */
+function doorFailPhase(
+  t: number,
+  peak: [number, number],
+  mid: [number, number],
+  rest: [number, number],
+  base: number,
+  max: number,
+  rebound: number,
+  settled: number,
+) {
+  if (t < peak[0]) return base
+  if (t < peak[1]) return lerp(base, max, easeOut(clamp01((t - peak[0]) / (peak[1] - peak[0]))))
+  if (t < mid[1]) return lerp(max, rebound, easeInOut(clamp01((t - peak[1]) / Math.max(1, mid[1] - peak[1]))))
+  if (t < rest[1]) return lerp(rebound, settled, easeInOut(clamp01((t - mid[1]) / Math.max(1, rest[1] - mid[1]))))
+  return settled
+}
+
+/** Punto door-local (desde la bisagra inferior) → mundo, con ángulo θ.
+ *  Misma matemática que el rig (hingeX/hingeZ + R_y). Sin saltos. */
+function doorWorld(local: Vec3, theta: number): Vec3 {
+  const F = s01Geo.fridge
+  const c = Math.cos(theta)
+  const s = Math.sin(theta)
+  const x = local[0] * c + local[2] * s
+  const z = -local[0] * s + local[2] * c
+  return [F.group[0] + F.hingeX + x, F.group[1] + F.botCenterY + local[1], F.group[2] + F.hingeZ + z]
+}
+
+/** Luz interior V5.1: encendida hasta el fallo; dos flickers breves y
+ *  finitos (250–330, 380–460); apagada después. Sin flashes globales. */
+function fridgeLightAt(t: number): number {
+  const T = s01Timings.fridgeFail
+  if (t < T.flickerA[0]) return 1
+  if (t < T.flickerA[1]) return t < (T.flickerA[0] + T.flickerA[1]) / 2 ? 0.15 : 0.9
+  if (t < T.flickerB[0]) return 1
+  if (t < T.flickerB[1]) return t < (T.flickerB[0] + T.flickerB[1]) / 2 ? 0.1 : 0.7
+  return 0
+}
+
+/** Manzana V5.1 §8: adosada a puerta hasta 760ms; arco corto, caída, un
+ *  rebote bajo, rodadura con desaceleración hasta appleLand; HOLD. */
+function appleAt(t: number, fBot: number): { p: Vec3; r: Vec3 } {
+  const T = s01Timings.fridgeFail
+  const t0 = T.foodReact[0]
+  const t1 = T.foodReact[1]
+  if (t < t0) return { p: doorWorld(s01Geo.fridgeFood.appleDoor, fBot), r: [0, 0.3, 0] }
+  const u = clamp01((t - t0) / (t1 - t0))
+  const start = doorWorld(s01Geo.fridgeFood.appleDoor, s01Geo.fridge.botPre)
+  const end = s01Geo.fridgeFood.appleLand
+  // Arco corto (0–0.35): desprende + vuela; caída (0.35–0.6); rebote bajo
+  // único (0.6–0.72); rodadura con desaceleración (0.72–1).
+  const arcH = 0.22
+  let p: Vec3
+  if (u < 0.35) {
+    const k = easeOut(u / 0.35)
+    p = lerp3(start, [(start[0] + end[0]) / 2, Math.max(start[1], end[1]) + arcH, (start[2] + end[2]) / 2], k)
+  } else if (u < 0.6) {
+    const k = easeInOut((u - 0.35) / 0.25)
+    const mid: Vec3 = [(start[0] + end[0]) / 2, Math.max(start[1], end[1]) + arcH, (start[2] + end[2]) / 2]
+    p = lerp3(mid, [end[0], end[1] + 0.09, end[2]], k)
+    p[1] -= 0.09 * k * k
+  } else if (u < 0.72) {
+    const k = Math.sin(((u - 0.6) / 0.12) * Math.PI)
+    p = [end[0], end[1] + 0.055 * k, end[2]]
+  } else {
+    const k = easeOut((u - 0.72) / 0.28)
+    p = [lerp(end[0] + 0.14, end[0], k), end[1], lerp(end[2] - 0.1, end[2], k)]
+  }
+  const r: Vec3 = [lerp(0, 0.4, u), lerp(0.3, 0.6 + u * 3.2, u), lerp(0, 1.2, u)]
+  return { p, r }
+}
+
+/** Botella V5.1 §8: permanece sobre el estante; oscila, pierde equilibrio,
+ *  se vuelca, toca estante y lateral, queda acostada. Nunca vuela. */
+function waterAt(t: number): { p: Vec3; r: Vec3 } {
+  const T = s01Timings.fridgeFail
+  const t0 = T.foodReact[0]
+  const t1 = T.foodReact[1]
+  const home = s01Geo.fridgeFood.waterHome
+  const land = s01Geo.fridgeFood.waterLand
+  if (t < t0) return { p: [...home] as Vec3, r: [0, 0, 0] }
+  const u = clamp01((t - t0) / (t1 - t0))
+  // 0–0.3 oscilación; 0.3–0.6 vuelco; 0.6+ acostada con micro-asentamiento.
+  let tilt: number
+  if (u < 0.3) tilt = Math.sin((u / 0.3) * Math.PI * 2) * 0.12 * (u / 0.3)
+  else if (u < 0.6) tilt = lerp(0.12, Math.PI / 2, easeInOut((u - 0.3) / 0.3))
+  else tilt = Math.PI / 2 - 0.06 * Math.sin(((u - 0.6) / 0.4) * Math.PI)
+  const p: Vec3 = [lerp(home[0], land[0], easeInOut(u)), lerp(home[1], land[1], easeInOut(Math.min(1, u * 1.2))), lerp(home[2], land[2], easeInOut(u))]
+  return { p, r: [0, 0, tilt] }
+}
+
+/** Huevo B V5.1 §8: supera el borde, cae, contacta el suelo, queda de costado.
+ *  Sin fisura exagerada, sin yema ni partículas. Huevo A: sólo balanceo. */
+function eggAt(t: number, fBot: number, which: 'A' | 'B'): { p: Vec3; r: Vec3 } {
+  const T = s01Timings.fridgeFail
+  const t0 = T.foodReact[0] + (which === 'B' ? 120 : 0)
+  const t1 = T.foodReact[1]
+  const local = which === 'A' ? s01Geo.fridgeFood.eggADoor : s01Geo.fridgeFood.eggBDoor
+  if (which === 'A') {
+    // Balanceo leve, permanece en bandeja (sigue a la puerta final).
+    const p = doorWorld(local, fBot)
+    const wob = t < t0 ? 0 : Math.sin(clamp01((t - t0) / (t1 - t0)) * Math.PI * 3) * 0.05 * (1 - clamp01((t - t0) / (t1 - t0)))
+    return { p: [p[0], p[1] + Math.abs(wob) * 0.3, p[2]], r: [wob, 0, wob * 0.6] }
+  }
+  if (t < t0) return { p: doorWorld(local, fBot), r: [0, 0, 0] }
+  const u = clamp01((t - t0) / ((t1 - t0) * 0.85))
+  const start = doorWorld(local, s01Geo.fridge.botPre)
+  const end = s01Geo.fridgeFood.eggBLand
+  let p: Vec3
+  if (u < 0.45) {
+    const k = easeInOut(u / 0.45)
+    p = lerp3(start, [(start[0] + end[0]) / 2, start[1] - 0.1, (start[2] + end[2]) / 2], k)
+  } else if (u < 0.75) {
+    const k = (u - 0.45) / 0.3
+    p = [lerp((start[0] + end[0]) / 2, end[0], k), lerp(start[1] - 0.1, end[1] + 0.05, k * k), lerp((start[2] + end[2]) / 2, end[2], k)]
+  } else {
+    p = [end[0], end[1], end[2]]
+  }
+  return { p, r: [0, lerp(0, 0.4, u), lerp(0, Math.PI / 2, easeOut(Math.min(1, u * 1.1)))] }
+}
+
 /** Puerta con un solo rebound: 0 → peak → mid → rest. */
 function door3Phase(
   t: number,
@@ -668,44 +897,48 @@ function manualCoverAt(t: number, land: number) {
   return 57 * DEG
 }
 
-/** Cuerpo de heladera: keyframes diseñados §39, base exacta al final. */
+/** Cuerpo de heladera V5.1: microtirón → golpe 620–750 →
+ *  rebound → recupero. Base exacta al final. */
 function fridgeBody(t: number) {
   const T = s01Timings.fridgeFail
-  // Microtirón 90 → centro 165 → base 190.
-  if (t >= 90 && t < 190) {
-    if (t < 125) {
-      const u = (t - 90) / 35
+  // Microtirón (tug): sacudida contenida, vuelve casi a base.
+  if (t >= T.tug[0] && t < T.tug[1]) {
+    const span = T.tug[1] - T.tug[0]
+    const u0 = T.tug[0] + span * 0.35
+    const u1 = T.tug[0] + span * 0.65
+    if (t < u0) {
+      const u = (t - T.tug[0]) / (u0 - T.tug[0])
       return {
         lift: lerp(0, 0.004, u),
         roll: lerp(0, -0.35 * DEG, u),
         shift: lerp(0, -0.018, u),
       }
     }
-    if (t < 165) {
-      const u = (t - 125) / 40
+    if (t < u1) {
+      const u = (t - u0) / (u1 - u0)
       return {
         lift: lerp(0.004, 0.002, u),
         roll: lerp(-0.35 * DEG, 0.22 * DEG, u),
         shift: lerp(-0.018, 0.012, u),
       }
     }
-    const u = (t - 165) / 25
+    const u = (t - u1) / (T.tug[1] - u1)
     return {
       lift: lerp(0.002, 0, u),
       roll: lerp(0.22 * DEG, -0.08 * DEG, u),
       shift: lerp(0.012, -0.004, u),
     }
   }
-  if (t >= 190 && t < 205) {
-    const u = (t - 190) / 15
+  if (t >= T.tug[1] && t < T.golpe[0]) {
+    const u = (t - T.tug[1]) / Math.max(1, T.golpe[0] - T.tug[1])
     return { lift: 0, roll: lerp(-0.08 * DEG, 0, u), shift: lerp(-0.004, 0, u) }
   }
-  // Golpe principal 205 → 255.
+  // Golpe principal (golpe[0] → golpe[1]).
   if (t >= T.golpe[0] && t < T.golpe[1]) {
     const u = easeOut((t - T.golpe[0]) / (T.golpe[1] - T.golpe[0]))
     return { lift: 0.018 * u, roll: 1.05 * DEG * u, shift: 0.028 * u }
   }
-  // Rebound 255 → 310.
+  // Rebound (rebound[0] → rebound[1]).
   if (t >= T.rebound[0] && t < T.rebound[1]) {
     const u = easeInOut((t - T.rebound[0]) / (T.rebound[1] - T.rebound[0]))
     return {
@@ -714,7 +947,7 @@ function fridgeBody(t: number) {
       shift: lerp(0.028, -0.009, u),
     }
   }
-  // Recupero 310 → 375: todo vuelve EXACTAMENTE a base.
+  // Recupero (recover[0] → recover[1]): todo vuelve EXACTAMENTE a base.
   if (t >= T.recover[0] && t < T.recover[1]) {
     const u = easeInOut((t - T.recover[0]) / (T.recover[1] - T.recover[0]))
     return {

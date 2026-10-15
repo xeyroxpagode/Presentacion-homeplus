@@ -25,6 +25,12 @@ export const s01Anchors = {
   // S01.3 — heladera COMPLETA: top+seam+base+4-6% piso. Leve 3/4 (5-8°).
   // Desde la derecha: las hojas negras de pantry salen por borde izquierdo.
   A_FRIDGE: { pos: [1.3, 1.38, 2.3] as Vec3, target: [1.82, 0.84, -2.5] as Vec3 },
+  // S01.2 F100 V5.1 — revelación lateral cercana del interior abierto:  // la puerta inferior (bisagra derecha, 42°) presenta su cara interna a
+  // cámara y la cavidad izquierda queda despejada: los cuatro alimentos se
+  // reconocen (puerta + estante). Desviación documentada: ningún encuadre
+  // frontal ve la cara interna a 42° (normal -x/-z) ni la cavidad izquierda
+  // tras la puerta. S01.3 reencuadra a A_FRIDGE en 0–250ms (asentado).
+  A_FRIDGE_SIDE: { pos: [0.35, 0.95, -1.15] as Vec3, target: [1.8, 0.55, -2.05] as Vec3 },
   // S01.4 — hero wide: atrás + derecha + arriba para que entre fridge completa.
   // FOV sigue 36°. Clusters A/B/C separados con aire negativo.
   A_WIDE: { pos: [2.5, 1.82, 3.35] as Vec3, target: [0.15, 0.72, -0.6] as Vec3 },
@@ -38,11 +44,15 @@ export const s01AccumulationStack = [-0.18, 0.918, -0.44] as Vec3
 
 export type AnchorName = keyof typeof s01Anchors
 
-/** Anchor por step: dónde queda la cámara en el F100 de cada beat. */
+/** Anchor por step: dónde queda la cámara en el F100 de cada beat.
+ *  V5.1: el F100 de S01.2 es revelación lateral del interior abierto
+ *  (A_FRIDGE_SIDE, cuatro alimentos reconocibles), no A_PANTRY.
+ *  A_PANTRY se preserva para inspección DEV de la alacena en su pose final.
+ *  S01.3 arranca de SIDE y asienta a A_FRIDGE en 0–250ms. */
 export const s01AnchorByStep: AnchorName[] = [
   'A_INSURANCE_PRE',
   'A_INSURANCE',
-  'A_PANTRY',
+  'A_FRIDGE_SIDE',
   'A_FRIDGE',
   'A_WIDE',
   'A_PHONE',
@@ -72,9 +82,13 @@ export const s01Geo = {
     leafB_R: { hingeX: 0.25, width: 1.22, dirX: -1, open: 72 * DEG, physical: 76 * DEG },
   },
   /** Heladera: grupo en (1.75, 0.925, -2.55). Puertas con bisagra real.
-   *  HERO RIG V4.2 — TOP físico 0–24° (peak 24°, settled 16°),
-   *  BOTTOM físico 0–18° (peak 18°, settled 12°): F100 dañado/entreabierto
-   *  legible (la coreografía microtirón→golpe→pop→settle se preserva). */
+   *  HERO RIG V5.1 — reconciliación física (contrato §4):
+   *  Bottom: cerrada 0° → pre-open S01.2 42° → peak 58° → rebound 46° →
+   *  rest 50°. Top: 0° → 0° → peak 22° → rebound 8° → rest 12°.
+   *  topMax 26° / botMax 62° incluyen margen de seguridad (+4°).
+   *  Giro desde bisagra real (hingeX/hingeZ), sin penetraciones: verificado
+   *  contra cuerpo/isla/paredes/bandeja/alimentos (ajuste mínimo documentado
+   *  en S01CinematicProps: compartimentos de puerta rebajados 0.02 m). */
   fridge: {
     group: [1.75, 0.925, -2.55] as Vec3,
     hingeX: 0.425,
@@ -83,12 +97,36 @@ export const s01Geo = {
     topHeight: 0.525,
     botCenterY: -0.2625,
     botHeight: 1.325,
-    topRest: 16 * DEG,
-    botRest: 12 * DEG,
-    topMax: 24 * DEG,
-    botMax: 18 * DEG,
-    topRebound: 11 * DEG,
-    botRebound: 8 * DEG,
+    topRest: 12 * DEG,
+    botRest: 50 * DEG,
+    topMax: 26 * DEG,
+    botMax: 62 * DEG,
+    topRebound: 8 * DEG,
+    botRebound: 46 * DEG,
+    /** Pose pre-open: final de S01.2 / inicio de S01.3 (puerta abierta). */
+    topPre: 0,
+    botPre: 42 * DEG,
+    /** Peak de avería S01.3. */
+    topPeak: 22 * DEG,
+    botPeak: 58 * DEG,
+  },
+  /** Alimentos S01 V5.1 — coordenadas de autor (mundo). El director calcula
+   *  la fase adosada a puerta (bisagra real) y la fase libre determinista.
+   *  Orígenes físicos conocidos; destinos fijos; HOLD sin movimiento. */
+  fridgeFood: {
+    /** Manzana: compartimento de puerta inferior (door-local desde bisagra;
+     *  coincide con BOTTOM_BINS: y≈-0.24 sobre el fondo, z interior). */
+    appleDoor: [-0.45, -0.24, -0.03] as Vec3,
+    appleLand: [1.32, 0.045, -1.92] as Vec3,
+    /** Botella: estante inferior del cuerpo, lado izquierdo (despejado para
+     *  A_FRIDGE/A_FRIDGE_SIDE: la puerta abierta tapa el lado derecho). */
+    waterHome: [1.52, 0.69, -2.31] as Vec3,
+    waterLand: [1.5, 0.625, -2.3] as Vec3,
+    /** Huevos: bandeja EGG_TRAY en puerta inferior (door-local).
+     *  A seguro (cerca de bisagra), B próximo al borde libre. */
+    eggADoor: [-0.28, 0.15, -0.03] as Vec3,
+    eggBDoor: [-0.62, 0.15, -0.03] as Vec3,
+    eggBLand: [1.42, 0.032, -1.98] as Vec3,
   },
   /** Sector documental contiguo: cajón prismático próximo a heladera.
    *  HERO RIG V4.0 — DRAWER_SLIDE se mueve sólo en eje frontal local.
@@ -170,6 +208,7 @@ const J = 0.075
 // 0.02-0.06m y rot ±3-9°. DOC_05 queda colgando (no apila).
 export const s01Docs: DocSpec[] = [
   // DOC_01 GARANTÍA TELEVISOR — slide corto a back-counter próxima.
+  // V5.1: release tras la pausa post-avería (búsqueda, no explosión).
   {
     origin: [0.85 - J, 0.76, -2.36],
     controlA: [0.7, 0.82, -2.44],
@@ -179,7 +218,7 @@ export const s01Docs: DocSpec[] = [
     originRot: [-0.5, 0.2, 0.1],
     landRot: [0, 0.3, 0],
     accumRot: [0, -0.12, 0],
-    release: 780,
+    release: 1850,
     dur: 420,
     arc: 0.07,
   },
@@ -193,21 +232,22 @@ export const s01Docs: DocSpec[] = [
     originRot: [-0.55, 0.35, -0.1],
     landRot: [0, 0.5, 0],
     accumRot: [0, 0.1, 0],
-    release: 860,
+    release: 1930,
     dur: 430,
     arc: 0.08,
   },
   // DOC_03 GARANTÍA MICROONDAS — cae a piso bajo cercano (no cruza cocina).
+  // V5.1 §11-C: permanece en piso (accum = land, no se eleva a la pila).
   {
     origin: [0.85 - J * 0.1, 0.75, -2.36],
     controlA: [0.95, 0.6, -2.3],
     controlB: [1.05, 0.3, -2.15],
     land: [1.15, 0.0035, -2.0],
-    accum: [-0.25, 0.938, -0.46],
+    accum: [1.15, 0.0035, -2.0],
     originRot: [-0.6, 0.1, 0.15],
     landRot: [0, 0.4, 0],
-    accumRot: [0, -0.06, 0],
-    release: 940,
+    accumRot: [0, 0.4, 0],
+    release: 2010,
     dur: 450,
     arc: 0.09,
   },
@@ -221,11 +261,12 @@ export const s01Docs: DocSpec[] = [
     originRot: [-0.5, -0.25, -0.12],
     landRot: [0, -0.3, 0],
     accumRot: [0, 0.14, 0],
-    release: 1020,
+    release: 2090,
     dur: 430,
     arc: 0.07,
   },
   // DOC_05 GARANTÍA CAFETERA — queda colgando del módulo (35–45% fuera).
+  // V5.1 §11-D: permanece en su ubicación (accum = land).
   {
     origin: [0.85 + J * 0.35, 0.74, -2.36],
     controlA: [0.87, 0.66, -2.35],
@@ -235,7 +276,7 @@ export const s01Docs: DocSpec[] = [
     originRot: [-0.6, 0.05, 0.1],
     landRot: [0.5, 0.12, 0.18],
     accumRot: [0.5, 0.12, 0.18],
-    release: 1150,
+    release: 2250,
     dur: 320,
     arc: 0.06,
     hang: true,
@@ -250,21 +291,22 @@ export const s01Docs: DocSpec[] = [
     originRot: [-0.55, -0.15, -0.1],
     landRot: [0, -0.2, 0],
     accumRot: [0, -0.1, 0],
-    release: 1080,
+    release: 2170,
     dur: 480,
     arc: 0.1,
   },
-  // MANUAL — más pesado: arco bajo, piso cercano, apila en base del stack.
+  // MANUAL — más pesado: arco bajo, piso cercano.
+  // V5.1 §11-E: NO se eleva a la pila (accum = land, permanece en piso).
   {
     origin: [0.85 + J * 0.8, 0.73, -2.36],
     controlA: [1.0, 0.6, -2.2],
     controlB: [1.2, 0.25, -2.0],
     land: [1.35, 0.0085, -1.7],
-    accum: [-0.21, 0.92, -0.45],
+    accum: [1.35, 0.0085, -1.7],
     originRot: [-0.5, 0.2, 0.05],
     landRot: [0, -0.5, 0],
-    accumRot: [0, 0.08, 0],
-    release: 1000,
+    accumRot: [0, -0.5, 0],
+    release: 2050,
     dur: 460,
     arc: 0.08,
     manual: true,
@@ -288,19 +330,21 @@ export const s01Loose = [
 ]
 
 /* ------------------------------------------------------------------ */
-/* HUMO — 5 puffs evento V4.0. Opacidad máxima ≤ 0.30.                  */
-/* REGLA ABSOLUTA: en cualquier HOLD, SMOKE OPACITY = 0 (residual 0).   */
+/* HUMO — 6 puffs evento V5.1. Origen técnico trasero/inferior con ruta   */
+/* visible hacia arriba. Opacidad máxima ≤ 0.28.                           */
+/* REGLA ABSOLUTA: en cualquier HOLD, SMOKE OPACITY = 0 (residual 0).      */
 /* ------------------------------------------------------------------ */
 
 export const s01Smoke = [
-  { origin: [1.48, 1.86, -2.42] as Vec3, rise: 0.34, drift: -0.08, start: 340, life: 650, residual: 0 },
-  { origin: [1.86, 1.84, -2.46] as Vec3, rise: 0.3, drift: 0.07, start: 465, life: 720, residual: 0 },
-  { origin: [1.63, 1.92, -2.55] as Vec3, rise: 0.42, drift: -0.03, start: 590, life: 680, residual: 0 },
-  { origin: [2.02, 1.8, -2.6] as Vec3, rise: 0.26, drift: 0.09, start: 755, life: 620, residual: 0 },
-  { origin: [1.36, 1.78, -2.34] as Vec3, rise: 0.24, drift: -0.1, start: 1050, life: 510, residual: 0 },
+  { origin: [1.42, 0.55, -2.68] as Vec3, rise: 1.05, drift: -0.08, start: 730, life: 780, residual: 0 },
+  { origin: [1.68, 0.48, -2.73] as Vec3, rise: 1.15, drift: 0.07, start: 830, life: 800, residual: 0 },
+  { origin: [1.95, 0.55, -2.68] as Vec3, rise: 1.0, drift: -0.03, start: 940, life: 780, residual: 0 },
+  { origin: [1.58, 0.62, -2.62] as Vec3, rise: 0.9, drift: 0.09, start: 1050, life: 720, residual: 0 },
+  { origin: [1.82, 0.58, -2.7] as Vec3, rise: 0.95, drift: -0.1, start: 1160, life: 700, residual: 0 },
+  { origin: [1.5, 0.5, -2.66] as Vec3, rise: 0.85, drift: 0.05, start: 1280, life: 620, residual: 0 },
 ]
 
-export const s01SmokeMaxOpacity = 0.3
+export const s01SmokeMaxOpacity = 0.28
 
 /* ------------------------------------------------------------------ */
 /* TIMELINES — milisegundos locales del beat.                         */
@@ -308,36 +352,50 @@ export const s01SmokeMaxOpacity = 0.3
 
 export const s01Timings = {
   enter1: { blackout: [0, 280] as [number, number], cam: [60, 500] as [number, number] },
+  // Beat 2 V5.1 — compras con continuidad física (§6):
+  // 0–650 apertura escalonada · 650–1050 lectura vacío ·
+  // 1050–1850 travelling continuo a heladera (sin corte) ·
+  // 1280–1820 bottom 0°→42° + luz fría · 1850–2200 lectura interior · 2200+ HOLD.
   enter2: {
     cam: [0, 680] as [number, number],
+    camPantry: [0, 1050] as [number, number],
+    camTravel: [1050, 1850] as [number, number],
+    fridgeOpen: [1280, 1820] as [number, number],
+    readUntil: 2200,
     doors: [
       [170, 570] as [number, number],
       [235, 590] as [number, number],
       [305, 610] as [number, number],
     ],
   },
-  // Beat 3 — timeline físico (§38-41) + micro-pausa 100-180ms tras el fallo.
-  // Cámara asentada en 590ms (transición Pantry→Fridge 550-630ms, §31).
-  // Drawer abre tras settle; docs liberan 780+ (búsqueda, no explosión).
+  // Beat 3 V5.1 — fridge failure (§7): arranca del F100 real del paso 2
+  // (bottom 42° abierto, luz encendida). Cámara asentada 0–250 (ya está en
+  // A_FRIDGE: micro-settle, sin travelling). Flickers 250–460, microtirón
+  // 480–580, golpe 620–750, puertas 680–980, humo 730–1550, alimentos
+  // 760–1500, pausa 1550–1750, búsqueda 1750–3100 (cajón tras la pausa).
   fridgeFail: {
-    cam: [0, 590] as [number, number],
-    tug: [90, 190] as [number, number],
-    golpe: [205, 255] as [number, number],
-    rebound: [255, 310] as [number, number],
-    recover: [310, 375] as [number, number],
-    topDoorPeak: [290, 430] as [number, number],
-    topDoorMid: [430, 575] as [number, number],
-    topDoorRest: [575, 735] as [number, number],
-    botDoorPeak: [315, 445] as [number, number],
-    botDoorMid: [445, 590] as [number, number],
-    botDoorRest: [590, 735] as [number, number],
-    drawerA: [375, 455] as [number, number],
-    drawerB: [455, 690] as [number, number],
-    drawerC: [690, 760] as [number, number],
-    settled: 1250,
-    manualSettled: 1450,
-    smokeDead: 1560,
-    end: 1650,
+    cam: [0, 250] as [number, number],
+    flickerA: [250, 330] as [number, number],
+    flickerB: [380, 460] as [number, number],
+    tug: [480, 580] as [number, number],
+    golpe: [620, 750] as [number, number],
+    rebound: [750, 830] as [number, number],
+    recover: [830, 900] as [number, number],
+    topDoorPeak: [680, 800] as [number, number],
+    topDoorMid: [800, 900] as [number, number],
+    topDoorRest: [900, 980] as [number, number],
+    botDoorPeak: [680, 800] as [number, number],
+    botDoorMid: [800, 900] as [number, number],
+    botDoorRest: [900, 980] as [number, number],
+    foodReact: [760, 1500] as [number, number],
+    smokeDead: 1600,
+    pauseUntil: 1750,
+    drawerA: [1750, 1850] as [number, number],
+    drawerB: [1850, 2120] as [number, number],
+    drawerC: [2120, 2220] as [number, number],
+    settled: 2650,
+    manualSettled: 2750,
+    end: 3150,
   },
   enter4: { cam: [0, 730] as [number, number] },
   // Beat 5 — acumulación (0-700, §26) + HOLD pila 250-300ms (§29) + DIVE
@@ -364,7 +422,7 @@ export const s01Timings = {
 } as const
 
 /** Duración total aproximada de cada beat (para el render loop en demand). */
-export const s01BeatDuration = [300, 650, 730, 1700, 780, 2950]
+export const s01BeatDuration = [300, 650, 2250, 3200, 780, 2950]
 
 /* ------------------------------------------------------------------ */
 /* PHONE PORTAL V4.0 — la cámara se acerca físicamente (§74–§84).       */
