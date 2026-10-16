@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useRef } from 'react'
+import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
 import PresentationFrame from './components/PresentationFrame'
 import { initialState, navigate, navigationAction } from './navigation'
 import { presentationConfig } from './presentationConfig'
@@ -28,6 +28,7 @@ export default function Presentation() {
   const slide = presentationConfig.slides[state.slideIndex]
   const Slide = slide.component
   const devMode = new URLSearchParams(window.location.search).get('dev') === '1'
+  const [directSnapshot, setDirectSnapshot] = useState(devMode)
   const finalReady = useRef(false)
   const onFinalNavigateReady = useCallback((ready: boolean) => { finalReady.current = ready }, [])
   const finalActive = slide.id === 'FINAL_KITCHEN'
@@ -39,6 +40,7 @@ export default function Presentation() {
       if (!action || event.defaultPrevented) return
       event.preventDefault()
       if (event.repeat) return
+      setDirectSnapshot(false)
       if (finalActive && action === 'NEXT') {
         if (!finalReady.current) return
         finalReady.current = false
@@ -70,7 +72,7 @@ export default function Presentation() {
             <HomePlannerSequence slideIndex={state.slideIndex} stepIndex={state.stepIndex} />
             {state.slideIndex === 6 && <S07CoordinarNoEsVigilar stepIndex={state.stepIndex} />}
           </>
-        ) : finalActive ? null : <Slide stepIndex={state.stepIndex} />}
+        ) : finalActive ? null : <Slide stepIndex={state.stepIndex} directSnapshot={directSnapshot} />}
       </section>
       {(finalActive || prepareFinal) && (
         <FinalKitchenCanvas stepIndex={finalActive ? state.stepIndex : null} onNavigateReady={onFinalNavigateReady} />

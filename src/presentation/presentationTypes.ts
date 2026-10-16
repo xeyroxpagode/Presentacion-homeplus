@@ -1,6 +1,6 @@
 import type { ComponentType } from 'react'
 
-export type SlideProps = { stepIndex: number }
+export type SlideProps = { stepIndex: number; directSnapshot?: boolean }
 
 export type SlideDefinition = {
   id: string
