@@ -16,6 +16,12 @@ export default defineConfig(({ mode }) => {
     build: {
       sourcemap: emitSourcemaps ? 'inline' : false,
       minify: !emitSourcemaps,
+      rollupOptions: {
+        input: {
+          main: 'index.html',
+          cine: 'cine.html',
+        },
+      },
     },
     plugins: [
 react(),
@@ -37,6 +43,8 @@ react(),
       watch: {
         ignored: [
           '**/.figma/**',
+          '**/qa-captures/**',
+          '**/dist/**',
 ],
       },
     },
