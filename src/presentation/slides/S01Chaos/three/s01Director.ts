@@ -7,6 +7,7 @@
 
 import {
   DEG,
+  s01AccumDocs,
   s01AnchorByStep,
   s01Anchors,
   s01BeatDuration,
@@ -47,6 +48,7 @@ export type S01Frame = {
   eggB: { p: Vec3; r: Vec3 }
   policy: { p: Vec3; r: Vec3 }
   docs: Pose[]
+  accumDocs: Pose[]
   loose: { p: Vec3; r: Vec3 }[]
   list: { p: Vec3; r: Vec3 }
   smoke: { p: Vec3; s: number; o: number }[]
@@ -88,18 +90,13 @@ function makeFrame(): S01Frame {
     eggB: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
     policy: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
     docs: s01Docs.map(() => ({ p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3, v: 0 })),
+    accumDocs: s01AccumDocs.map(() => ({ p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3, v: 0 })),
     loose: s01Loose.map(() => ({ p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 })),
     list: { p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3 },
     smoke: s01Smoke.map(() => ({ p: [0, 0, 0] as Vec3, s: 0.001, o: 0 })),
     dishes: s01Dishes.map(() => ({ p: [0, 0, 0] as Vec3, r: [0, 0, 0] as Vec3, v: 0 })),
   }
 }
-
-/** Slide de acumulación de la póliza a la cima de la pila: llega ÚLTIMA
- *  como cierre visual. Final = [-0.18,~0.936,-0.44] sobre stack. */
-const POLICY_ACCUM = { p: [-0.13, 0.051, -0.06] as Vec3, r: [0, 0.12, 0] as Vec3 }
-/** Slide final post-aterrizaje por documento (m, en su heading). */
-const DOC_SLIDE = [0.04, 0.06, 0.02, 0.02, 0, 0.02]
 
 export class S01Director {
   /** Estado visible del beat actual (lectura directa desde useFrame). */
@@ -336,17 +333,18 @@ export class S01Director {
     const eggBP = foodPose === 'post' ? s01Geo.fridgeFood.eggBLand : doorWorld(s01Geo.fridgeFood.eggBDoor, fBotA)
     setPose(out, 'eggB', eggBP, foodPose === 'post' ? [0, 0.4, Math.PI / 2] : [0, 0, 0], 1)
 
-    out['policy.p.0'] = step >= 4 ? POLICY_ACCUM.p[0] : 0
-    out['policy.p.1'] = step >= 4 ? POLICY_ACCUM.p[1] : 0
-    out['policy.p.2'] = step >= 4 ? POLICY_ACCUM.p[2] : 0
-    out['policy.r.0'] = step >= 4 ? POLICY_ACCUM.r[0] : 0
-    out['policy.r.1'] = step >= 4 ? POLICY_ACCUM.r[1] : 0
-    out['policy.r.2'] = step >= 4 ? POLICY_ACCUM.r[2] : 0
+    // V5.2.1: la póliza nunca se suma a una pila; conserva su pose física.
+    out['policy.p.0'] = 0
+    out['policy.p.1'] = 0
+    out['policy.p.2'] = 0
+    out['policy.r.0'] = 0
+    out['policy.r.1'] = 0
+    out['policy.r.2'] = 0
 
     s01Docs.forEach((d, i) => {
-      const pose = step >= 4 ? 'accum' : step >= 3 ? 'land' : 'origin'
-      const p = pose === 'land' ? add3(d.land, d.slide) : d[pose]
-      const r = pose === 'land' ? ([d.landRot[0], d.landRot[1] + d.slideRot, d.landRot[2]] as Vec3) : d[`${pose}Rot` as 'accumRot' | 'originRot']
+      const pose = step >= 3 ? 'land' : 'origin'
+      const p = pose === 'land' ? add3(d.land, d.slide) : d.origin
+      const r = pose === 'land' ? ([d.landRot[0], d.landRot[1] + d.slideRot, d.landRot[2]] as Vec3) : d.originRot
       out[`docs.${i}.p.0`] = p[0]
       out[`docs.${i}.p.1`] = p[1]
       out[`docs.${i}.p.2`] = p[2]
@@ -356,9 +354,13 @@ export class S01Director {
       out[`docs.${i}.v`] = pose === 'origin' ? 0 : 1
     })
 
+    s01AccumDocs.forEach((d, i) => {
+      setPose(out, `accumDocs.${i}`, d.p, d.r, step >= 4 ? 1 : 0)
+    })
+
     s01Loose.forEach((l, i) => {
-      const p = step >= 4 ? l.accum : l.home
-      const r = step >= 4 ? l.accumRot : l.homeRot
+      const p = l.home
+      const r = l.homeRot
       out[`loose.${i}.p.0`] = p[0]
       out[`loose.${i}.p.1`] = p[1]
       out[`loose.${i}.p.2`] = p[2]
@@ -367,12 +369,12 @@ export class S01Director {
       out[`loose.${i}.r.2`] = r[2]
     })
 
-    const listP = step >= 4 ? s01Geo.listAccum : s01Geo.listHome
+    const listP = s01Geo.listHome
     out['list.p.0'] = listP[0]
     out['list.p.1'] = listP[1]
     out['list.p.2'] = listP[2]
     out['list.r.0'] = 0
-    out['list.r.1'] = step >= 4 ? 0.25 : -0.2
+    out['list.r.1'] = -0.2
     out['list.r.2'] = 0
 
     // Humo V5.2: persiste en los HOLD de steps 3 y 4. El sampler cíclico
@@ -610,34 +612,17 @@ export class S01Director {
       setPose(out, `dishes.${i}`, p, r, u > 0 ? 1 : 0)
     })
 
-    s01Docs.forEach((d, i) => {
-      const fromP = add3(d.land, d.slide)
-      const fromR: Vec3 = [d.landRot[0], d.landRot[1] + d.slideRot, d.landRot[2]]
-      const pinned = same3(d.accum, d.land)
-      const start = T.docs[0] + i * T.docsStagger
-      const u = pinned ? 0 : easeInOut(clamp01((t - start) / 360))
-      const p = lerp3(fromP, d.accum, u)
-      p[1] += pinned ? 0 : 0.025 * Math.sin(Math.PI * u)
-      setPose(out, `docs.${i}`, p, lerp3(fromR, d.accumRot, u), 1)
+    // Los nueve documentos, dos recibos, lista y póliza previos quedan
+    // exactamente en su F100 del beat 3. Sólo aparecen seis hojas nuevas,
+    // cada una desde un offset local corto sobre su propia superficie.
+    s01AccumDocs.forEach((d, i) => {
+      const u = easeOut(clamp01((t - d.reveal) / 240))
+      const from = add3(d.p, d.from)
+      const p = lerp3(from, d.p, u)
+      p[1] += 0.012 * Math.sin(Math.PI * u)
+      const r: Vec3 = [d.r[0], d.r[1] + 0.055 * (1 - u) * (i % 2 === 0 ? 1 : -1), d.r[2]]
+      setPose(out, `accumDocs.${i}`, p, r, u > 0 ? 1 : 0)
     })
-
-    const uL = easeInOut(clamp01((t - T.loose[0]) / (T.loose[1] - T.loose[0])))
-    s01Loose.forEach((l, i) => {
-      const p = lerp3(l.home, l.accum, uL)
-      p[1] += 0.02 * Math.sin(Math.PI * uL)
-      const r = lerp3(l.homeRot, l.accumRot, uL)
-      setPose(out, `loose.${i}`, p, r, 1)
-    })
-    const uLi = easeInOut(clamp01((t - T.list[0]) / (T.list[1] - T.list[0])))
-    out['list.p.0'] = lerp(s01Geo.listHome[0], s01Geo.listAccum[0], uLi)
-    out['list.p.1'] = lerp(s01Geo.listHome[1], s01Geo.listAccum[1], uLi) + 0.02 * Math.sin(Math.PI * uLi)
-    out['list.p.2'] = lerp(s01Geo.listHome[2], s01Geo.listAccum[2], uLi)
-    out['list.r.1'] = lerp(-0.2, 0.25, uLi)
-    const uP = easeInOut(clamp01((t - T.policy[0]) / (T.policy[1] - T.policy[0])))
-    out['policy.p.0'] = lerp(0, POLICY_ACCUM.p[0], uP)
-    out['policy.p.1'] = lerp(0, POLICY_ACCUM.p[1], uP) + 0.02 * Math.sin(Math.PI * uP)
-    out['policy.p.2'] = lerp(0, POLICY_ACCUM.p[2], uP)
-    out['policy.r.1'] = lerp(0, POLICY_ACCUM.r[1], uP)
     this.sampleSmoke(s01Timings.fridgeFail.end + t, out)
   }
 
@@ -729,6 +714,16 @@ export class S01Director {
       d.r[2] = p[`docs.${i}.r.2`]
       d.v = p[`docs.${i}.v`]
     }
+    for (let i = 0; i < f.accumDocs.length; i++) {
+      const d = f.accumDocs[i]
+      d.p[0] = p[`accumDocs.${i}.p.0`]
+      d.p[1] = p[`accumDocs.${i}.p.1`]
+      d.p[2] = p[`accumDocs.${i}.p.2`]
+      d.r[0] = p[`accumDocs.${i}.r.0`]
+      d.r[1] = p[`accumDocs.${i}.r.1`]
+      d.r[2] = p[`accumDocs.${i}.r.2`]
+      d.v = p[`accumDocs.${i}.v`]
+    }
     for (let i = 0; i < f.loose.length; i++) {
       const l = f.loose[i]
       l.p[0] = p[`loose.${i}.p.0`]
@@ -774,8 +769,6 @@ function setPose(params: Record<string, number>, key: string, p: Vec3, r: Vec3, 
 }
 
 const add3 = (a: Vec3, b: Vec3): Vec3 => [a[0] + b[0], a[1] + b[1], a[2] + b[2]]
-const same3 = (a: Vec3, b: Vec3) => a[0] === b[0] && a[1] === b[1] && a[2] === b[2]
-
 /** Bézier cúbica 3D determinista (sin linear lerp, sin physics). */
 function cubic(p0: Vec3, p1: Vec3, p2: Vec3, p3: Vec3, u: number): Vec3 {
   const v = 1 - u
@@ -851,7 +844,9 @@ function appleAt(t: number, fBot: number): { p: Vec3; r: Vec3 } {
   const t1 = T.foodApple[1]
   if (t < t0) return { p: doorWorld(s01Geo.fridgeFood.appleDoor, fBot), r: [0, 0.3, 0] }
   const u = clamp01((t - t0) / (t1 - t0))
-  const start = doorWorld(s01Geo.fridgeFood.appleDoor, s01Geo.fridge.botPre)
+  const F = s01Geo.fridge
+  const releaseAngle = doorFailPhase(t0, T.botDoorPeak, T.botDoorMid, T.botDoorRest, F.botPre, F.botPeak, F.botRebound, F.botRest)
+  const start = doorWorld(s01Geo.fridgeFood.appleDoor, releaseAngle)
   const end = s01Geo.fridgeFood.appleLand
   // Arco corto (0–0.35): desprende + vuela; caída (0.35–0.6); rebote bajo
   // único (0.6–0.72); rodadura con desaceleración (0.72–1).

@@ -3,7 +3,7 @@ import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { s01Palette as c } from './s01ThreeConfig'
 import { s01Director } from './s01Director'
-import { DEG, s01Dishes, s01Docs, s01Geo, s01Loose, s01PhoneClearZone, s01Smoke, type DishKind } from './s01CinematicConfig'
+import { DEG, s01AccumDocs, s01Dishes, s01Docs, s01Geo, s01Loose, s01PhoneClearZone, s01Smoke, type DishKind } from './s01CinematicConfig'
 
 /* S01 CINEMATIC FINAL PRIME — props HERO con estado físico.
  * Todo se escribe por frame desde s01Director.frame (sin rerenders de React).
@@ -434,14 +434,15 @@ function Fridge() {
             <group name="BOTTOM_HANDLE">
               <Box size={[0.026, 0.46, 0.028]} position={[-0.79, 0, 0.026]} color={c.fridgeHandle} roughness={0.3} metalness={0.85} />
             </group>
-            {/* BOTTOM_BINS — compartimentos físicos en puerta inferior
-                (§05B: manzana vive acá). z hinge-space -0.07: dentro de la
-                cavidad (0.265..0.355), sin tocar estantes (frente 0.262). */}
+            {/* BOTTOM_BINS V5.2.1 — profundidad útil 0.15. Base, respaldo,
+                frente bajo y laterales contienen la manzana con ~0.015 de
+                holgura longitudinal sin ocultar su mitad superior. */}
             <group name="BOTTOM_BINS" position={[-0.425, -0.3, -0.07]}>
-              <Box size={[0.5, 0.02, 0.09]} position={[0, 0, 0]} color="#cdd6dd" roughness={0.55} receive />
-              <Box size={[0.5, 0.07, 0.015]} position={[0, 0.035, -0.037]} color="#cdd6dd" roughness={0.55} />
-              <Box size={[0.015, 0.07, 0.09]} position={[-0.242, 0.035, 0]} color="#cdd6dd" roughness={0.55} />
-              <Box size={[0.015, 0.07, 0.09]} position={[0.242, 0.035, 0]} color="#cdd6dd" roughness={0.55} />
+              <Box size={[0.5, 0.02, 0.15]} position={[0, 0, 0]} color="#cdd6dd" roughness={0.55} receive />
+              <Box size={[0.5, 0.07, 0.015]} position={[0, 0.035, -0.0675]} color="#cdd6dd" roughness={0.55} />
+              <Box size={[0.5, 0.055, 0.015]} position={[0, 0.0275, 0.0675]} color="#cdd6dd" roughness={0.55} />
+              <Box size={[0.015, 0.07, 0.15]} position={[-0.242, 0.035, 0]} color="#cdd6dd" roughness={0.55} />
+              <Box size={[0.015, 0.07, 0.15]} position={[0.242, 0.035, 0]} color="#cdd6dd" roughness={0.55} />
             </group>
             {/* EGG_TRAY — bandeja física en puerta inferior: huevos
                 contenidos (§05B), A cerca de bisagra, B borde libre. */}
@@ -918,10 +919,11 @@ function DispersedDocs() {
     })
   })
   return (
-    <group>
+    <group name="DOCS_EXISTING">
       {s01Docs.map((spec, i) => (
         <group
           key={i}
+          name={i < 6 ? `DOC_ISLAND_${i}` : `DOC_BACK_${i}`}
           visible={false}
           ref={(el) => {
             refs.current[i] = el
@@ -934,12 +936,82 @@ function DispersedDocs() {
   )
 }
 
+/** Seis hojas nuevas del beat 4. Viven en clusters locales; los documentos
+ * preexistentes no se reparentan ni cambian de pose. */
+function AccumulationDocs() {
+  const refs = useRef<(THREE.Group | null)[]>([])
+  useFrame(() => {
+    const docs = s01Director.frame.accumDocs
+    refs.current.forEach((g, i) => {
+      if (!g) return
+      const d = docs[i]
+      g.visible = d.v > 0.5
+      if (!g.visible) return
+      g.position.set(d.p[0], d.p[1], d.p[2])
+      g.rotation.set(d.r[0], d.r[1], d.r[2])
+    })
+  })
+  return (
+    <group name="DOCS_ACCUM_NEW">
+      {s01AccumDocs.map((spec, i) => (
+        <group key={i} visible={false} ref={(el) => { refs.current[i] = el }}>
+          <DocSheet variant={spec.variant} index={i + 6} />
+        </group>
+      ))}
+    </group>
+  )
+}
+
 /* ------------------------------------------------------------------ */
 /* BACHA — vajilla cerrada de 19 piezas, con siluetas diferenciadas.   */
 /* ------------------------------------------------------------------ */
 
-function DishMesh({ kind, tint = '#cbd0d1' }: { kind: DishKind; tint?: string }) {
+const dishDirtCache = new Map<string, THREE.CanvasTexture>()
+function dishDirtTexture(index: number, kind: DishKind) {
+  const key = `${kind}:${index}`
+  const hit = dishDirtCache.get(key)
+  if (hit) return hit
+  const cv = document.createElement('canvas')
+  cv.width = 128
+  cv.height = 128
+  const ctx = cv.getContext('2d')!
+  ctx.clearRect(0, 0, 128, 128)
+  const variant = index % 4
+  ctx.lineCap = 'round'
+  if (kind === 'plate' || kind === 'bowl') {
+    ctx.strokeStyle = variant === 0 ? '#A95C43' : variant === 1 ? '#80634B' : '#B59A70'
+    ctx.globalAlpha = 0.82
+    ctx.lineWidth = 9 + variant * 2
+    ctx.beginPath()
+    ctx.arc(64, 64, 22 + variant * 5, 0.35 + variant * 0.4, 3.8 + variant * 0.35)
+    ctx.stroke()
+    ctx.fillStyle = variant < 2 ? '#80634B' : '#9c8c73'
+    for (let i = 0; i < 4 + variant; i++) {
+      const a = (i * 1.73 + index * 0.61) % (Math.PI * 2)
+      const d = 12 + ((i * 17 + index * 7) % 34)
+      const r = 2 + ((i + index) % 4)
+      ctx.beginPath()
+      ctx.arc(64 + Math.cos(a) * d, 64 + Math.sin(a) * d, r, 0, Math.PI * 2)
+      ctx.fill()
+    }
+  } else if (kind === 'cup') {
+    ctx.strokeStyle = '#80634B'
+    ctx.globalAlpha = 0.62
+    ctx.lineWidth = 8
+    ctx.beginPath()
+    ctx.arc(64, 64, 34, 0.25, 5.25)
+    ctx.stroke()
+  }
+  const tex = new THREE.CanvasTexture(cv)
+  tex.colorSpace = THREE.SRGBColorSpace
+  tex.needsUpdate = true
+  dishDirtCache.set(key, tex)
+  return tex
+}
+
+function DishMesh({ kind, tint = '#cbd0d1', index }: { kind: DishKind; tint?: string; index: number }) {
   const metal = '#9ba1a4'
+  const dirtMap = useMemo(() => dishDirtTexture(index, kind), [index, kind])
   if (kind === 'plate') {
     return (
       <group>
@@ -950,6 +1022,10 @@ function DishMesh({ kind, tint = '#cbd0d1' }: { kind: DishKind; tint?: string })
         <mesh position={[0, 0.006, 0]} rotation={[Math.PI / 2, 0, 0]} castShadow>
           <torusGeometry args={[0.072, 0.007, 6, 16]} />
           <meshStandardMaterial color={tint} roughness={0.68} />
+        </mesh>
+        <mesh position={[0, 0.0115, 0]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+          <circleGeometry args={[0.061, 20]} />
+          <meshStandardMaterial map={dirtMap} transparent alphaTest={0.04} roughness={0.96} polygonOffset polygonOffsetFactor={-2} />
         </mesh>
       </group>
     )
@@ -966,6 +1042,10 @@ function DishMesh({ kind, tint = '#cbd0d1' }: { kind: DishKind; tint?: string })
           <meshStandardMaterial color={tint} roughness={0.7} />
         </mesh>
         <mesh position={[0, 0.002, 0]}><cylinderGeometry args={[0.043, 0.043, 0.006, 12]} /><meshStandardMaterial color={tint} roughness={0.75} /></mesh>
+        <mesh position={[0, 0.006, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+          <circleGeometry args={[0.036, 16]} />
+          <meshStandardMaterial map={dirtMap} transparent alphaTest={0.04} roughness={0.96} polygonOffset polygonOffsetFactor={-2} />
+        </mesh>
       </group>
     )
   }
@@ -981,6 +1061,10 @@ function DishMesh({ kind, tint = '#cbd0d1' }: { kind: DishKind; tint?: string })
           <torusGeometry args={[0.026, 0.008, 6, 12, Math.PI * 1.65]} />
           <meshStandardMaterial color={tint} roughness={0.7} />
         </mesh>
+        <mesh position={[0, 0.081, 0]} rotation={[Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[0.036, 0.0035, 5, 16, Math.PI * 1.72]} />
+          <meshStandardMaterial color="#80634B" roughness={0.95} />
+        </mesh>
       </group>
     )
   }
@@ -990,6 +1074,7 @@ function DishMesh({ kind, tint = '#cbd0d1' }: { kind: DishKind; tint?: string })
         <Box size={[0.015, 0.007, 0.15]} position={[0, 0, 0.025]} color={metal} roughness={0.3} metalness={0.82} />
         {[-0.018, -0.006, 0.006, 0.018].map((x) => <Box key={x} size={[0.006, 0.006, 0.055]} position={[x, 0, -0.078]} color={metal} roughness={0.28} metalness={0.84} />)}
         <Box size={[0.05, 0.006, 0.024]} position={[0, 0, -0.047]} color={metal} roughness={0.28} metalness={0.84} />
+        <Box size={[0.012, 0.0015, 0.026]} position={[0.002, 0.0042, -0.02]} color="#80634B" roughness={0.92} />
       </group>
     )
   }
@@ -1001,6 +1086,7 @@ function DishMesh({ kind, tint = '#cbd0d1' }: { kind: DishKind; tint?: string })
           <sphereGeometry args={[0.045, 10, 7]} />
           <meshStandardMaterial color={metal} roughness={0.28} metalness={0.86} />
         </mesh>
+        <Box size={[0.01, 0.0015, 0.025]} position={[0, 0.0042, -0.022]} color="#B59A70" roughness={0.94} />
       </group>
     )
   }
@@ -1012,6 +1098,7 @@ function DishMesh({ kind, tint = '#cbd0d1' }: { kind: DishKind; tint?: string })
           <boxGeometry args={[0.032, 0.006, 0.13]} />
           <meshStandardMaterial color={metal} roughness={0.25} metalness={0.88} />
         </mesh>
+        <Box size={[0.012, 0.0015, 0.03]} position={[0.007, 0.0042, -0.04]} color="#80634B" roughness={0.92} />
       </group>
     )
   }
@@ -1021,6 +1108,7 @@ function DishMesh({ kind, tint = '#cbd0d1' }: { kind: DishKind; tint?: string })
         <Box size={[0.02, 0.012, 0.16]} position={[0, 0, 0.055]} color="#4b4d52" roughness={0.6} />
         <Box size={[0.085, 0.009, 0.105]} position={[0, 0, -0.075]} color={metal} roughness={0.34} metalness={0.78} />
         {[-0.025, 0, 0.025].map((x) => <Box key={x} size={[0.009, 0.012, 0.065]} position={[x, 0, -0.075]} color="#555b5f" roughness={0.45} metalness={0.6} />)}
+        <Box size={[0.03, 0.0015, 0.022]} position={[0.018, 0.007, -0.074]} color="#80634B" roughness={0.94} />
       </group>
     )
   }
@@ -1031,6 +1119,7 @@ function DishMesh({ kind, tint = '#cbd0d1' }: { kind: DishKind; tint?: string })
         <sphereGeometry args={[0.055, 10, 7]} />
         <meshStandardMaterial color={metal} roughness={0.28} metalness={0.86} />
       </mesh>
+      <Box size={[0.012, 0.0015, 0.026]} position={[0, 0.006, -0.028]} color="#B59A70" roughness={0.94} />
     </group>
   )
 }
@@ -1052,7 +1141,7 @@ function SinkDishes() {
     <group name="SINK_DISHES">
       {s01Dishes.map((d, i) => (
         <group key={`${d.kind}-${i}`} visible={false} ref={(el) => { refs.current[i] = el }}>
-          <DishMesh kind={d.kind} tint={d.tint} />
+          <DishMesh kind={d.kind} tint={d.tint} index={i} />
         </group>
       ))}
     </group>
@@ -1315,6 +1404,7 @@ export default function S01CinematicProps() {
       <ShoppingList />
       <LooseDocs />
       <DispersedDocs />
+      <AccumulationDocs />
       <SinkDishes />
       <SmokePuffs />
       <Phone />

@@ -14,25 +14,22 @@ export const DEG = Math.PI / 180
 
 export const s01Anchors = {
   // Preposición silenciosa durante el negro (microdolly de entrada).
-  // V5.2: en el eje de visión del nuevo encuadre, 0.22 atrás del F100.
-  A_INSURANCE_PRE: { pos: [-0.47, 1.98, 0.2] as Vec3, target: [-0.05, 0.925, -0.38] as Vec3 },
-  // S01.1 V5.2 (§04) — pose resuelta por proyección real (probe-v52-shotA):
-  // target = centro de la superficie superior de la póliza; elev ≈56°,
-  // azimut ≈36° (oblicuo moderado, sin cenital). Composición 1280×720:
-  // hoja 415–876 × 186–580 (bbox objetivo 410–870 × 175–600, ancho 36%),
-  // centro (645,383), sello 531–704 × 276–410, llaves ~284–430 × ~477–505,
-  // teléfono 935–1128 (borde inf-der, fuera del área protagonista).
-  A_INSURANCE: { pos: [-0.4, 1.8, 0.1] as Vec3, target: [-0.05, 0.925, -0.38] as Vec3 },
+  // V5.2.1: mismo eje oblicuo del plano aprobado, con 7.4% más de aire y el
+  // conjunto elevado en pantalla. PRE conserva exactamente esa dirección.
+  A_INSURANCE_PRE: { pos: [-0.516, 2.026, 0.264] as Vec3, target: [-0.075, 0.925, -0.34] as Vec3 },
+  // S01.1 V5.2.1 — pose resuelta por proyección real a 1280×720: conjunto
+  // póliza+llaves 321.4–856.7 × 161.7–521.7; centro horizontal estable
+  // (+1.2 px) y centro visual 41.6 px más alto que V5.2.
+  A_INSURANCE: { pos: [-0.4425, 1.84375, 0.164] as Vec3, target: [-0.075, 0.925, -0.34] as Vec3 },
   // S01.2 — V5.2 (feedback de dirección): apunta SOLO a las cavidades
   // superiores (la mesada trasera queda como franja mínima en el borde
   // inferior). Cámara elevada y cercana: cavidades ~74% del ancho,
   // 4 productos en cuadro, sin lámparas colgantes en el plano.
   A_PANTRY: { pos: [-0.35, 2.1, 0.0] as Vec3, target: [-0.8, 1.75, -2.7] as Vec3 },
   // S01.3 reencuadre (§06A) — heladera COMPLETA antes del golpe, resuelta
-  // por proyección (probe-v52-diag): cuerpo 502–764 × 60–610 (altura 76%),
-  // top y base con aire, franja de piso 110px, puerta 42° contenida
-  // (edge x 591), manzana/humo/eggLand en frame.
-  A_FRIDGE: { pos: [1.25, 1.6, 1.65] as Vec3, target: [1.78, 0.85, -2.1] as Vec3 },
+  // por proyección real a 1280×720: conjunto completo 577.2–829.4 ×
+  // 62.8–634.4 (79.4% de alto), con top, base y piso visibles.
+  A_FRIDGE: { pos: [1.08, 1.58, 1.92] as Vec3, target: [1.51, 0.8, -2.04] as Vec3 },
   // S01.2 F100 V5.2 (§05B) — revelación lateral IZQUIERDA del interior
   // abierto (feedback de dirección: se ve la CAVIDAD, no la cara de la
   // puerta; pose cercana a la de V5.1, elevada para leer la manzana en su
@@ -42,10 +39,9 @@ export const s01Anchors = {
   // Botella al lado DERECHO de la cavidad: desde cámara izquierda es lo
   // visible a través de la boca.
   A_FRIDGE_SIDE: { pos: [0.5, 1.1, -1.0] as Vec3, target: [1.8, 0.6, -2.1] as Vec3 },
-  // S01.3 F100 V5.2 (§06F) — búsqueda protagonista con contexto: títulos
-  // legibles en el tercio inferior, bacha aún vacía y columna de humo de la
-  // heladera visible en el tercio superior derecho.
-  A_DOCS: { pos: [0, 2.05, 1.9] as Vec3, target: [0.3, 1.18, -0.8] as Vec3 },
+  // S01.3 F100 V5.2.1 — close-up documental físico: cámara alta, mirada
+  // descendente y mesa protagonista; no compite el ambiente de cocina.
+  A_DOCS: { pos: [0.02, 2.45, 0.5] as Vec3, target: [0.06, 0.93, -0.36] as Vec3 },
   // S01.4 — hero wide: atrás + derecha + arriba para que entre fridge completa.
   // FOV sigue 36°. Clusters A/B/C separados con aire negativo.
   A_WIDE: { pos: [2.15, 1.75, 2.7] as Vec3, target: [0.15, 0.82, -0.9] as Vec3 },
@@ -225,6 +221,16 @@ export type DocSpec = {
   secondary?: boolean
 }
 
+export type AccumDocSpec = {
+  /** pose final local al cluster; ningún documento previo se desplaza */
+  p: Vec3
+  r: Vec3
+  /** pequeño offset inicial sobre la misma superficie, 0.02–0.06 m */
+  from: Vec3
+  reveal: number
+  variant: 0 | 1 | 2
+}
+
 // Zona A — isla: 5 GARANTÍAS + CERTIFICADO (encabezados legibles, ≥4 con
 // GARANTÍA explícito). Ninguna identifica la heladera.
 // Zona B — cajón: 2 hojas sobre el módulo documental + manual colgando.
@@ -275,7 +281,9 @@ export const s01Docs: DocSpec[] = [
   },
   {
     origin: [0.85 + 0.045, 0.75, -2.36],
-    land: [0.15, 0.9215, -0.06],
+    // Mantiene despejado el teléfono HERO: queda a su frente-derecha,
+    // sobre la misma mesada y conserva su deslizamiento de búsqueda.
+    land: [0.55, 0.9215, 0.01],
     originRot: [-0.55, -0.15, -0.1],
     landRot: [0, 0.9, 0],
     slide: [-0.07, 0, 0.03],
@@ -352,6 +360,20 @@ export const s01Loose = [
   },
 ]
 
+/** V5.2.1 — seis documentos NUEVOS que crecen alrededor de los existentes.
+ *  A/B viven en la isla; C son recibos junto al módulo documental trasero. */
+export const s01AccumDocs: AccumDocSpec[] = [
+  // CLUSTER A — isla izquierda
+  { p: [-0.78, 0.9235, -0.34], r: [0, -0.18, 0], from: [0.035, -0.018, 0.02], reveal: 900, variant: 0 },
+  { p: [-0.68, 0.928, -0.08], r: [0, 0.14, 0], from: [-0.028, -0.022, 0.025], reveal: 980, variant: 1 },
+  // CLUSTER B — isla centro/derecha
+  { p: [0.34, 0.924, -0.08], r: [0, -0.1, 0], from: [0.04, -0.018, -0.02], reveal: 1060, variant: 2 },
+  { p: [0.58, 0.9285, -0.42], r: [0, 0.2, 0], from: [-0.035, -0.022, 0.018], reveal: 1140, variant: 1 },
+  // CLUSTER C — dos recibos cerca del cajón / documentación trasera
+  { p: [0.62, 0.907, -2.78], r: [0, -0.12, 0], from: [0.025, -0.02, 0.03], reveal: 1220, variant: 1 },
+  { p: [1.03, 0.9095, -2.56], r: [0, 0.16, 0], from: [-0.03, -0.022, -0.025], reveal: 1300, variant: 1 },
+]
+
 /* ------------------------------------------------------------------ */
 /* VAJILLA V5.2 (§07) — inventario cerrado de 19 piezas.              */
 /* Todas las poses están en mundo y terminan físicamente contenidas    */
@@ -368,28 +390,32 @@ export type DishSpec = {
 }
 
 export const s01Dishes: DishSpec[] = [
-  // Oleada 1 — siete platos, apilados/recostados dentro de la cubeta.
-  { kind: 'plate', p: [-1.2, 0.855, -2.7], r: [1.38, 0.12, 0.12], reveal: 500, tint: '#d7d2c7' },
-  { kind: 'plate', p: [-1.15, 0.862, -2.69], r: [1.36, -0.14, 0.08], reveal: 545, tint: '#c9ced0' },
-  { kind: 'plate', p: [-1.1, 0.869, -2.71], r: [1.4, 0.18, 0.04], reveal: 590, tint: '#d8d1c2' },
-  { kind: 'plate', p: [-1.04, 0.876, -2.68], r: [1.35, -0.13, 0], reveal: 635, tint: '#bfc7ca' },
-  { kind: 'plate', p: [-0.98, 0.883, -2.71], r: [1.39, 0.14, -0.04], reveal: 680, tint: '#d7d2c7' },
-  { kind: 'plate', p: [-0.92, 0.89, -2.69], r: [1.34, -0.18, -0.08], reveal: 725, tint: '#c9ced0' },
-  { kind: 'plate', p: [-0.86, 0.897, -2.7], r: [1.37, 0.1, -0.12], reveal: 770, tint: '#d8d1c2' },
-  // Oleada 2 — bowls y tazas, con contacto en fondo/borde.
-  { kind: 'bowl', p: [-1.18, 0.79, -2.57], r: [0.12, 0.15, -0.08], reveal: 700, tint: '#9ba7ad' },
-  { kind: 'bowl', p: [-0.91, 0.805, -2.58], r: [-0.08, -0.2, 0.12], reveal: 760, tint: '#c5b99f' },
-  { kind: 'cup', p: [-1.23, 0.91, -2.76], r: [0.08, 0.35, 0.08], reveal: 830, tint: '#b7c0c4' },
-  { kind: 'cup', p: [-0.81, 0.91, -2.77], r: [-0.04, -0.45, -0.06], reveal: 890, tint: '#c7bca6' },
-  // Oleada 3 — cubiertos diferenciados, cruzados sobre platos y cubeta.
-  { kind: 'fork', p: [-1.16, 0.875, -2.61], r: [0.22, 0.2, 0.82], reveal: 950 },
-  { kind: 'fork', p: [-1.03, 0.89, -2.6], r: [0.16, -0.1, -0.62], reveal: 990 },
-  { kind: 'fork', p: [-0.91, 0.885, -2.62], r: [0.2, 0.1, 0.48], reveal: 1030 },
-  { kind: 'spoon', p: [-1.12, 0.9, -2.73], r: [0.14, 0.2, -0.92], reveal: 1070 },
-  { kind: 'spoon', p: [-0.96, 0.905, -2.73], r: [0.18, -0.15, 0.78], reveal: 1110 },
-  { kind: 'knife', p: [-0.86, 0.9, -2.6], r: [0.12, 0.1, -0.5], reveal: 1150 },
-  { kind: 'spatula', p: [-1.24, 0.895, -2.68], r: [0.2, -0.15, 0.34], reveal: 1190 },
-  { kind: 'ladle', p: [-0.83, 0.895, -2.7], r: [0.18, 0.1, -0.32], reveal: 1230 },
+  // P01–P04 — cubeta: orientación irregular, contacto con fondo/otras piezas.
+  { kind: 'plate', p: [-1.17, 0.735, -2.72], r: [0.32, 0.18, 0.1], reveal: 500, tint: '#d7d2c7' },
+  { kind: 'plate', p: [-1.06, 0.755, -2.68], r: [0.58, -0.35, 0.22], reveal: 575, tint: '#c9ced0' },
+  { kind: 'plate', p: [-0.93, 0.79, -2.7], r: [0.92, 0.28, -0.2], reveal: 650, tint: '#d8d1c2' },
+  { kind: 'plate', p: [-1.08, 0.825, -2.59], r: [1.08, -0.12, 0.34], reveal: 725, tint: '#bfc7ca' },
+  // P05–P06 — mesada izquierda; P07 — mesada derecha.
+  { kind: 'plate', p: [-1.82, 0.914, -2.72], r: [0.05, 0.28, 0.08], reveal: 780, tint: '#d7d2c7' },
+  { kind: 'plate', p: [-1.66, 0.925, -2.48], r: [0.1, -0.32, -0.06], reveal: 850, tint: '#c9ced0' },
+  { kind: 'plate', p: [-0.3, 0.914, -2.47], r: [0.06, 0.22, -0.08], reveal: 920, tint: '#d8d1c2' },
+  // B01 cubeta / B02 derecha.
+  { kind: 'bowl', p: [-0.86, 0.73, -2.77], r: [0.1, 0.2, -0.06], reveal: 690, tint: '#9ba7ad' },
+  { kind: 'bowl', p: [-0.34, 0.914, -2.79], r: [-0.05, -0.22, 0.08], reveal: 980, tint: '#c5b99f' },
+  // T01 cubeta / T02 derecha.
+  { kind: 'cup', p: [-1.22, 0.73, -2.55], r: [0.08, 0.42, 0.06], reveal: 760, tint: '#b7c0c4' },
+  { kind: 'cup', p: [-0.62, 0.914, -2.46], r: [-0.04, -0.5, -0.05], reveal: 1040, tint: '#c7bca6' },
+  // F01–F02 cubeta / F03 derecha.
+  { kind: 'fork', p: [-1.15, 0.79, -2.62], r: [0.18, 0.15, 0.82], reveal: 805 },
+  { kind: 'fork', p: [-0.98, 0.81, -2.61], r: [0.14, -0.12, -0.68], reveal: 860 },
+  { kind: 'fork', p: [-0.4, 0.924, -2.49], r: [0.05, 0.12, 0.5], reveal: 1120 },
+  // S01 cubeta / S02 izquierda.
+  { kind: 'spoon', p: [-1.08, 0.82, -2.77], r: [0.16, 0.18, -0.92], reveal: 815 },
+  { kind: 'spoon', p: [-1.78, 0.924, -2.53], r: [0.04, -0.18, 0.74], reveal: 1180 },
+  // Cuchillo derecha / espátula izquierda / cucharón derecha.
+  { kind: 'knife', p: [-0.24, 0.924, -2.63], r: [0.04, 0.1, -0.52], reveal: 1240 },
+  { kind: 'spatula', p: [-1.59, 0.928, -2.87], r: [0.05, -0.16, 0.36], reveal: 1320 },
+  { kind: 'ladle', p: [-0.52, 0.928, -2.88], r: [0.05, 0.12, -0.34], reveal: 1380 },
 ]
 
 /* ------------------------------------------------------------------ */
@@ -500,7 +526,7 @@ export const s01Timings = {
     cam: [0, 650] as [number, number],
     dishes: [500, 1270] as [number, number],
     dishSettle: [1270, 1550] as [number, number],
-    docs: [850, 1370] as [number, number],
+    docs: [900, 1370] as [number, number],
     docsStagger: 42,
     loose: [900, 1320] as [number, number],
     list: [960, 1320] as [number, number],
