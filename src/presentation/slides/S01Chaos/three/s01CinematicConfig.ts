@@ -185,6 +185,34 @@ export const s01Geo = {
   listAccum: [-0.09, 0.968, -0.4] as Vec3,
 } as const
 
+/* ------------------------------------------------------------------ */
+/* TÉCNICO V6.2 Lote 1 — panel de servicio + anclaje del técnico.      */
+/* Cubierta sobre la cara lateral oeste del cuerpo (cara ext. x=1.325, */
+/* muro -2.355..-2.045): sin intersección con la puerta inferior ni en */
+/* su máximo (62°: la hoja no alcanza x<1.63). Tornillo hero arriba.   */
+/* Técnico al oeste de la heladera, mirando +x al panel.               */
+/* ------------------------------------------------------------------ */
+
+/** Cubierta de servicio lateral + tornillo hero (coords mundo). */
+export const s01ServicePanel = {
+  /** Centro de la cubierta (cara ext. del muro lateral, sin penetrar). */
+  coverCenter: [1.318, 0.45, -2.18] as Vec3,
+  coverSize: [0.014, 0.3, 0.26] as Vec3,
+  /** Punta efectiva del tornillo hero (cara ext. de su cabeza). */
+  screwTip: [1.3, 0.55, -2.14] as Vec3,
+  /** Mismas piezas en coords locales de FRIDGE_BODY (origen = f.group). */
+  coverLocal: [-0.432, -0.475, 0.22] as Vec3,
+  screwLocal: [-0.45, -0.375, 0.26] as Vec3,
+} as const
+
+/** Anclaje del técnico procedural (pose horneada P0, Lote 1). */
+export const s01Technician = {
+  /** TECHNICIAN_ROOT (mundo). Frente anatómico = +x (al panel). */
+  root: [0.8, 0, -2.1] as Vec3,
+  /** Altura nominal de pie del rig (pierna 0.95 + torso 0.55 + cabeza 0.25). */
+  standingHeight: 1.75,
+} as const
+
 /** Anchor del plano de pantalla del teléfono (handoff futuro a S02). */
 export const s01PhoneScreen = {
   position: [s01Geo.phone.group[0], s01Geo.phone.screenY, s01Geo.phone.group[2]] as Vec3,

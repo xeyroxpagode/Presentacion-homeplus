@@ -1,0 +1,390 @@
+{
+  "suite": "final-kitchen-v6 math QA",
+  "date": "2026-10-16T13:23:25.668Z",
+  "pass": true,
+  "failedCount": 0,
+  "total": 40,
+  "results": [
+    {
+      "name": "S1.firstFrameCovered",
+      "pass": true,
+      "detail": [
+        {
+          "p": 1,
+          "covered": true
+        },
+        {
+          "p": 0.99,
+          "covered": true
+        },
+        {
+          "p": 0.975,
+          "covered": true
+        },
+        {
+          "p": 0.95,
+          "covered": true
+        },
+        {
+          "p": 0.9,
+          "covered": true
+        },
+        {
+          "p": 0.85,
+          "covered": true
+        },
+        {
+          "p": 0.8,
+          "covered": false
+        },
+        {
+          "p": 0.75,
+          "covered": false
+        }
+      ]
+    },
+    {
+      "name": "S1.lossMeasuredNotAssumed",
+      "pass": true,
+      "detail": {
+        "loss169": 0.8
+      }
+    },
+    {
+      "name": "S1.lossInPlausibleRange",
+      "pass": true,
+      "detail": {
+        "loss169": 0.8
+      }
+    },
+    {
+      "name": "S1.endOpen",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S1.portalDistance sane",
+      "pass": true,
+      "detail": {
+        "minClearance": 0.05494956953346175,
+        "atP": 1,
+        "travelClearance": 0.0550447905332746,
+        "travelAtP": 0.96875,
+        "inside": 16
+      }
+    },
+    {
+      "name": "S1.travelClearance positive",
+      "pass": true,
+      "detail": {
+        "minClearance": 0.05494956953346175,
+        "atP": 1,
+        "travelClearance": 0.0550447905332746,
+        "travelAtP": 0.96875,
+        "inside": 16
+      }
+    },
+    {
+      "name": "S1.nearPlaneSafe",
+      "pass": true,
+      "detail": {
+        "aspect": 1.7777777777777777,
+        "distance": 0.049249569533461775,
+        "near": 0.015
+      }
+    },
+    {
+      "name": "S1.diveDuration3100",
+      "pass": true,
+      "detail": {
+        "DIVE_MS": 3100
+      }
+    },
+    {
+      "name": "S3B.tipCoverage>=80%",
+      "pass": true,
+      "detail": {
+        "coverage": 0.8235294117647058,
+        "maxP1": 0.09066973034039529
+      }
+    },
+    {
+      "name": "S3B.bakedTipExact",
+      "pass": true,
+      "detail": {
+        "err": 2.7755575615628914e-17
+      }
+    },
+    {
+      "name": "S3B.kneeGrazesFloor",
+      "pass": true,
+      "detail": {
+        "kneeY": 0.07195205324822784
+      }
+    },
+    {
+      "name": "S3B.footPlanted",
+      "pass": true,
+      "detail": {
+        "footY": 0.08999999999999987
+      }
+    },
+    {
+      "name": "S3B.leftHandStable",
+      "pass": true,
+      "detail": {
+        "err": 0.009803060935065597
+      }
+    },
+    {
+      "name": "S3B.gestureWindow3000",
+      "pass": true,
+      "detail": {
+        "ms": 3000
+      }
+    },
+    {
+      "name": "S2.fridgeDoorsRest",
+      "pass": true,
+      "detail": {
+        "fBot": 0.8726646259971648,
+        "fTop": 0.20943951023931956
+      }
+    },
+    {
+      "name": "S2.doc3Override",
+      "pass": true,
+      "detail": {
+        "p": [
+          0.68,
+          0.0035,
+          -1.62
+        ],
+        "r": [
+          0,
+          0.4,
+          0
+        ],
+        "v": 1
+      }
+    },
+    {
+      "name": "S2.manualOverride",
+      "pass": true,
+      "detail": {
+        "p": [
+          0.95,
+          0.0085,
+          -1.5
+        ],
+        "r": [
+          0,
+          -0.5,
+          0
+        ],
+        "v": 1
+      }
+    },
+    {
+      "name": "S2.appleOverride",
+      "pass": true,
+      "detail": {
+        "p": [
+          0.62,
+          0.045,
+          -1.85
+        ],
+        "r": [
+          0.4,
+          0.6,
+          1.2
+        ]
+      }
+    },
+    {
+      "name": "S2.eggBOverride",
+      "pass": true,
+      "detail": {
+        "p": [
+          0.78,
+          0.032,
+          -1.95
+        ],
+        "r": [
+          0,
+          0.4,
+          1.5707963267948966
+        ]
+      }
+    },
+    {
+      "name": "S2.allDocsVisible",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S2.smokeZero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S2.drawerOpen",
+      "pass": true,
+      "detail": {
+        "drawer": 0.24
+      }
+    },
+    {
+      "name": "S2.policyOnStack",
+      "pass": true,
+      "detail": {
+        "p": [
+          -0.13,
+          0.051,
+          -0.06
+        ],
+        "r": [
+          0,
+          0.12,
+          0
+        ]
+      }
+    },
+    {
+      "name": "S4.w14AllZero",
+      "pass": true,
+      "detail": {
+        "spot": 0,
+        "lamp": 0,
+        "pantry": 0,
+        "window": 0,
+        "rim": 0,
+        "bounce": 0,
+        "ambient": 0,
+        "hemi": 0,
+        "bulbEmissive": 0,
+        "windowEmissive": 0,
+        "strip": 0,
+        "screen": 0
+      }
+    },
+    {
+      "name": "S4.w14Blackout1",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S4.w09ScreenOn",
+      "pass": true,
+      "detail": {
+        "screen": 1
+      }
+    },
+    {
+      "name": "S4.w09OthersZero",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S4.twoManualTaps",
+      "pass": true,
+      "detail": [
+        "W00",
+        "W01",
+        "W02",
+        "W03",
+        "W04",
+        "W05",
+        "W06",
+        "W07",
+        "W08",
+        "W09",
+        "W14"
+      ]
+    },
+    {
+      "name": "S4.w08Full",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S4.camLockedW08_W14",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S5.w02NoNext",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S5.w01StartsDive",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S5.diveEndsAtWide",
+      "pass": true,
+      "detail": [
+        2.15,
+        1.75,
+        2.7
+      ]
+    },
+    {
+      "name": "S5.diveMidTransition",
+      "pass": true,
+      "detail": {
+        "beat": "W01",
+        "localTime": 1550,
+        "diveP": 0.5,
+        "coveredLostAt": null
+      }
+    },
+    {
+      "name": "S5.prevFromW02GoesW00noreplay",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S5.nextDuringTransitionIgnored",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S5.deterministic",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "S1.homeFrozenState",
+      "pass": true,
+      "detail": {
+        "showJuli": true,
+        "educationPhysical": true,
+        "authorization": true,
+        "schoolTask": true,
+        "complete": true,
+        "authorizationCompleted": true,
+        "schoolTaskCompleted": true,
+        "focus": null,
+        "date": "Domingo, 16 de agosto"
+      }
+    },
+    {
+      "name": "S1.homeAspect",
+      "pass": true,
+      "detail": {
+        "texW": 1024,
+        "texH": 2203
+      }
+    },
+    {
+      "name": "S1.homeNoDeform",
+      "pass": true,
+      "detail": {
+        "crop": 0.019685277651687108
+      }
+    }
+  ]
+}

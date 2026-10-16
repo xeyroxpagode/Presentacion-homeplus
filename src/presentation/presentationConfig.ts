@@ -16,6 +16,7 @@ import S15HomiAction from './slides/S15HomiAction'
 import S16HomiContext from './slides/S16HomiContext'
 import S17HumanControl from './slides/S17HumanControl'
 import S18Closing from './slides/S18Closing'
+import FinalKitchenCanvas, { INTEGRATED_FINAL_BEATS } from './slides/FinalKitchen/FinalKitchenCanvas'
 import type { SlideDefinition } from './presentationTypes'
 
 export const presentationConfig = {
@@ -39,6 +40,7 @@ export const presentationConfig = {
     { id: 'S15', name: 'HOMI Action', stepCount: 5, component: S15HomiAction },
     { id: 'S16', name: 'HOMI Context', stepCount: 5, component: S16HomiContext },
     { id: 'S17', name: 'Human Control', stepCount: 4, component: S17HumanControl },
+    { id: 'FINAL_KITCHEN', name: 'Final Kitchen', stepCount: INTEGRATED_FINAL_BEATS.length, component: FinalKitchenCanvas },
     { id: 'S18', name: 'Closing', stepCount: 4, component: S18Closing },
   ] satisfies readonly SlideDefinition[],
 } as const

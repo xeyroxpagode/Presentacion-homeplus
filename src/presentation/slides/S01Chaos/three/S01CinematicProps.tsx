@@ -1,8 +1,8 @@
-import { useEffect, useMemo, useRef } from 'react'
+import { createContext, useContext, useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { s01Palette as c } from './s01ThreeConfig'
-import { s01Director } from './s01Director'
+import { s01Director, type S01Frame } from './s01Director'
 import { bandRectPx, createWhatsAppScreenTexture } from './phoneScreenTexture'
 import { DEG, s01AccumDocs, s01Dishes, s01Docs, s01Geo, s01Loose, s01PhoneClearZone, s01Smoke, type DishKind } from './s01CinematicConfig'
 
@@ -10,6 +10,22 @@ import { DEG, s01AccumDocs, s01Dishes, s01Docs, s01Geo, s01Loose, s01PhoneClearZ
  * Todo se escribe por frame desde s01Director.frame (sin rerenders de React).
  * Jerarquía semántica: PANTRY_ROOT / FRIDGE_WORLD / DOCUMENT_MODULE /
  * PHONE_WORLD. Pivots reales, nada rota desde su centro salvo que sea físico. */
+
+export type S01FinalLive = {
+  screenBrightness: number
+  bulbDim: number
+  windowDim: number
+  pantryDim: number
+  stripDim: number
+}
+export type S01FinalOverride = { frame: S01Frame; screenMap: THREE.Texture | null; live: S01FinalLive }
+const FinalScope = createContext<S01FinalOverride | null>(null)
+export function S01FinalScope({ override, children }: { override: S01FinalOverride | null; children: React.ReactNode }) {
+  return <FinalScope.Provider value={override}>{children}</FinalScope.Provider>
+}
+export function useS01FinalLive() { return useContext(FinalScope)?.live ?? null }
+function useS01Frame() { return useContext(FinalScope)?.frame ?? s01Director.frame }
+function useS01ScreenMap() { return useContext(FinalScope)?.screenMap ?? null }
 
 type Vec3 = [number, number, number]
 
@@ -257,6 +273,7 @@ function PantryModule({
 }
 
 function PantryDoor({ leafKey }: { leafKey: 'leafA_L' | 'leafA_R' | 'leafB_R' }) {
+  const frame = useS01Frame()
   const hinge = useRef<THREE.Group>(null)
   const leaf = s01Geo.pantry[leafKey]
   const idx = leafKey === 'leafA_L' ? 0 : leafKey === 'leafA_R' ? 1 : 2
@@ -265,7 +282,7 @@ function PantryDoor({ leafKey }: { leafKey: 'leafA_L' | 'leafA_R' | 'leafB_R' })
   const handleName = leafKey === 'leafA_L' ? 'A_LEFT_HANDLE' : leafKey === 'leafA_R' ? 'A_RIGHT_HANDLE' : 'B_RIGHT_HANDLE'
 
   useFrame(() => {
-    if (hinge.current) hinge.current.rotation.y = s01Director.frame.pantry[idx]
+    if (hinge.current) hinge.current.rotation.y = frame.pantry[idx]
   })
 
   const cx = leaf.dirX * leaf.width * 0.5
@@ -304,14 +321,26 @@ function PantryRoot() {
       {/* lectura interior: cavidad protagonista, dorsos sin hotspot.
           Luz A centrada en módulo A (lejos del dorso de A_RIGHT); B sobre
           módulo B; fill frontal suave. Sin luz teatral de alacena. */}
-      <pointLight position={[-1.7, 1.95, -2.35]} distance={3.0} decay={1.4} intensity={3.0} color="#c9b294" />
-      <pointLight position={[-0.5, 1.95, -2.4]} distance={2.2} decay={1.5} intensity={2.2} color="#c9b294" />
-      <pointLight position={[-1.1, 1.65, -2.15]} distance={2.2} decay={1.5} intensity={1.6} color="#cfa87e" />
+      <PantryLights />
       <PantryDoor leafKey="leafA_L" />
       <PantryDoor leafKey="leafA_R" />
       <PantryDoor leafKey="leafB_R" />
     </group>
   )
+}
+
+function PantryLights() {
+  const live = useS01FinalLive()
+  const refs = useRef<(THREE.PointLight | null)[]>([])
+  useFrame(() => {
+    const k = live?.pantryDim ?? 1
+    refs.current.forEach((light, i) => { if (light) light.intensity = [3, 2.2, 1.6][i] * k })
+  })
+  return <>
+    <pointLight ref={(r) => { refs.current[0] = r }} position={[-1.7, 1.95, -2.35]} distance={3.0} decay={1.4} intensity={3.0} color="#c9b294" />
+    <pointLight ref={(r) => { refs.current[1] = r }} position={[-0.5, 1.95, -2.4]} distance={2.2} decay={1.5} intensity={2.2} color="#c9b294" />
+    <pointLight ref={(r) => { refs.current[2] = r }} position={[-1.1, 1.65, -2.15]} distance={2.2} decay={1.5} intensity={1.6} color="#cfa87e" />
+  </>
 }
 
 /* ------------------------------------------------------------------ */
@@ -325,10 +354,12 @@ const FRIDGE_INNER = '#b9c4cc'
 /* Luz fría interior V5.2 (§05B): localizada, suave; encendida al abrir
  * (S01.2), dos flickers finitos en el fallo, apagada después. */
 function FridgeInnerLight() {
+  const frame = useS01Frame()
+  const live = useS01FinalLive()
   const light = useRef<THREE.PointLight>(null)
   const strip = useRef<THREE.Mesh>(null)
   useFrame(() => {
-    const k = s01Director.frame.fridgeLight
+    const k = frame.fridgeLight * (live?.stripDim ?? 1)
     if (light.current) light.current.intensity = k * 2.6
     const m = strip.current?.material as THREE.MeshStandardMaterial | undefined
     if (m) m.emissiveIntensity = 0.05 + k * 2.2
@@ -345,13 +376,14 @@ function FridgeInnerLight() {
 }
 
 function Fridge() {
+  const frame = useS01Frame()
   const rig = useRef<THREE.Group>(null)
   const topDoor = useRef<THREE.Group>(null)
   const botDoor = useRef<THREE.Group>(null)
   const f = s01Geo.fridge
 
   useFrame(() => {
-    const s = s01Director.frame
+    const s = frame
     if (rig.current) {
       rig.current.position.set(s.fShift, s.fLift, 0)
       rig.current.rotation.z = s.fRoll
@@ -468,6 +500,7 @@ function Fridge() {
 /* ------------------------------------------------------------------ */
 
 function DocSector() {
+  const frame = useS01Frame()
   const slide = useRef<THREE.Group>(null)
   const stack = useRef<THREE.Group>(null)
   const manual = useRef<THREE.Group>(null)
@@ -475,7 +508,7 @@ function DocSector() {
   const closedZ = -2.43
 
   useFrame(() => {
-    const f = s01Director.frame
+    const f = frame
     if (slide.current) slide.current.position.z = closedZ + f.drawer
     // El stack vive dentro del cajón cerrado (ocluido); al abrir, los
     // documentos vuelan por separado desde la boca — sin duplicados.
@@ -559,13 +592,14 @@ function ManualCover({ closed, coverRef }: { closed?: boolean; coverRef?: React.
 /* ------------------------------------------------------------------ */
 
 function PolicyDocs() {
+  const frame = useS01Frame()
   const policyMap = useMemo(policyTexture, [])
   const p = s01Geo.policy
   const [pw, pz] = p.size
   const g = useRef<THREE.Group>(null)
 
   useFrame(() => {
-    const f = s01Director.frame.policy
+    const f = frame.policy
     if (g.current && f) {
       g.current.position.set(f.p[0], f.p[1], f.p[2])
       g.current.rotation.set(f.r[0], f.r[1], f.r[2])
@@ -695,10 +729,11 @@ function CarKeys() {
 /* ------------------------------------------------------------------ */
 
 function ShoppingList() {
+  const frame = useS01Frame()
   const g = useRef<THREE.Group>(null)
   const listMap = useMemo(shoppingTexture, [])
   useFrame(() => {
-    const l = s01Director.frame.list
+    const l = frame.list
     if (g.current) {
       g.current.position.set(l.p[0], l.p[1], l.p[2])
       g.current.rotation.set(l.r[0], l.r[1], l.r[2])
@@ -720,9 +755,10 @@ function ShoppingList() {
 }
 
 function LooseDocs() {
+  const frame = useS01Frame()
   const refs = useRef<(THREE.Group | null)[]>([])
   useFrame(() => {
-    const loose = s01Director.frame.loose
+    const loose = frame.loose
     refs.current.forEach((g, i) => {
       if (!g) return
       g.position.set(loose[i].p[0], loose[i].p[1], loose[i].p[2])
@@ -874,10 +910,11 @@ function DocSheet({ variant, index }: { variant: 0 | 1 | 2; index: number }) {
 }
 
 function FlyingManual() {
+  const frame = useS01Frame()
   const cover = useRef<THREE.Group>(null)
   const manualMap = warrantyTexture('MANUAL', 'DE USUARIO')
   useFrame(() => {
-    if (cover.current) cover.current.rotation.y = s01Director.frame.manualCover
+    if (cover.current) cover.current.rotation.y = frame.manualCover
   })
   return (
     <group>
@@ -907,9 +944,10 @@ function FlyingManual() {
 }
 
 function DispersedDocs() {
+  const frame = useS01Frame()
   const refs = useRef<(THREE.Group | null)[]>([])
   useFrame(() => {
-    const docs = s01Director.frame.docs
+    const docs = frame.docs
     refs.current.forEach((g, i) => {
       if (!g) return
       const d = docs[i]
@@ -940,9 +978,10 @@ function DispersedDocs() {
 /** Seis hojas nuevas del beat 4. Viven en clusters locales; los documentos
  * preexistentes no se reparentan ni cambian de pose. */
 function AccumulationDocs() {
+  const frame = useS01Frame()
   const refs = useRef<(THREE.Group | null)[]>([])
   useFrame(() => {
-    const docs = s01Director.frame.accumDocs
+    const docs = frame.accumDocs
     refs.current.forEach((g, i) => {
       if (!g) return
       const d = docs[i]
@@ -1126,9 +1165,10 @@ function DishMesh({ kind, tint = '#cbd0d1', index }: { kind: DishKind; tint?: st
 }
 
 function SinkDishes() {
+  const frame = useS01Frame()
   const refs = useRef<(THREE.Group | null)[]>([])
   useFrame(() => {
-    const dishes = s01Director.frame.dishes
+    const dishes = frame.dishes
     refs.current.forEach((g, i) => {
       if (!g) return
       const d = dishes[i]
@@ -1154,9 +1194,10 @@ function SinkDishes() {
 /* ------------------------------------------------------------------ */
 
 function SmokePuffs() {
+  const frame = useS01Frame()
   const refs = useRef<(THREE.Mesh | null)[]>([])
   useFrame(() => {
-    const smoke = s01Director.frame.smoke
+    const smoke = frame.smoke
     refs.current.forEach((m, i) => {
       if (!m) return
       const s = smoke[i]
@@ -1204,12 +1245,13 @@ function SmokePuffs() {
 /* ------------------------------------------------------------------ */
 
 function FridgeFoods() {
+  const frame = useS01Frame()
   const apple = useRef<THREE.Group>(null)
   const water = useRef<THREE.Group>(null)
   const eggA = useRef<THREE.Group>(null)
   const eggB = useRef<THREE.Group>(null)
   useFrame(() => {
-    const f = s01Director.frame
+    const f = frame
     if (apple.current) {
       apple.current.position.set(f.apple.p[0], f.apple.p[1], f.apple.p[2])
       apple.current.rotation.set(f.apple.r[0], f.apple.r[1], f.apple.r[2])
@@ -1293,13 +1335,19 @@ function FridgeFoods() {
 /* ------------------------------------------------------------------ */
 
 function PhoneScreenMesh({ screenY, sw, sd }: { screenY: number; sw: number; sd: number }) {
-  const tex = useMemo(() => createWhatsAppScreenTexture(), [])
+  const screenMap = useS01ScreenMap()
+  const live = useS01FinalLive()
+  const tex = useMemo(() => screenMap ?? createWhatsAppScreenTexture(), [screenMap])
   const mats = useMemo(() => {
     const edge = new THREE.MeshBasicMaterial({ color: '#000000', toneMapped: false })
     const face = new THREE.MeshBasicMaterial({ map: tex, toneMapped: false })
     // BoxGeometry: [+x, -x, +y, -y, +z, -z]. Display = cara +Y.
     return [edge, edge, face, edge, edge, edge]
   }, [tex])
+  useFrame(() => {
+    const face = mats[2] as THREE.MeshBasicMaterial
+    face.color.setScalar(live?.screenBrightness ?? 1)
+  })
   useEffect(() => {
     if (typeof window !== 'undefined') {
       const w = window as unknown as Record<string, unknown>
@@ -1312,10 +1360,10 @@ function PhoneScreenMesh({ screenY, sw, sd }: { screenY: number; sw: number; sd:
       }
     }
     return () => {
-      tex.dispose()
+      if (!screenMap) tex.dispose()
       mats.forEach((m) => m.dispose())
     }
-  }, [tex, mats])
+  }, [tex, mats, screenMap])
   return (
     <mesh position={[0, screenY, 0]} material={mats} receiveShadow>
       <boxGeometry args={[sw, 0.0012, sd]} />

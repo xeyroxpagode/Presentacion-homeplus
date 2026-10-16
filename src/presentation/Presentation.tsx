@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react'
+import { useCallback, useEffect, useReducer, useRef } from 'react'
 import PresentationFrame from './components/PresentationFrame'
 import { initialState, navigate, navigationAction } from './navigation'
 import { presentationConfig } from './presentationConfig'
@@ -6,6 +6,7 @@ import type { NavigationAction, PresentationState } from './presentationTypes'
 import OpeningSequence from './opening/OpeningSequence'
 import HomePlannerSequence from './components/HomePlannerSequence'
 import S07CoordinarNoEsVigilar from './slides/S07CoordinarNoEsVigilar'
+import FinalKitchenCanvas from './slides/FinalKitchen/FinalKitchenCanvas'
 
 function reducer(state: PresentationState, action: NavigationAction) {
   return navigate(state, action, presentationConfig.slides)
@@ -27,17 +28,27 @@ export default function Presentation() {
   const slide = presentationConfig.slides[state.slideIndex]
   const Slide = slide.component
   const devMode = new URLSearchParams(window.location.search).get('dev') === '1'
+  const finalReady = useRef(false)
+  const onFinalNavigateReady = useCallback((ready: boolean) => { finalReady.current = ready }, [])
+  const finalActive = slide.id === 'FINAL_KITCHEN'
+  const prepareFinal = slide.id === 'S17' && state.stepIndex === slide.stepCount - 1
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       const action = navigationAction(event)
       if (!action || event.defaultPrevented) return
       event.preventDefault()
-      if (!event.repeat) dispatch(action)
+      if (event.repeat) return
+      if (finalActive && action === 'NEXT') {
+        if (!finalReady.current) return
+        finalReady.current = false
+      }
+      if (prepareFinal && action === 'NEXT') finalReady.current = false
+      dispatch(action)
     }
     window.addEventListener('keydown', onKeyDown)
     return () => window.removeEventListener('keydown', onKeyDown)
-  }, [])
+  }, [finalActive, prepareFinal])
 
   return (
     <PresentationFrame>
@@ -59,8 +70,11 @@ export default function Presentation() {
             <HomePlannerSequence slideIndex={state.slideIndex} stepIndex={state.stepIndex} />
             {state.slideIndex === 6 && <S07CoordinarNoEsVigilar stepIndex={state.stepIndex} />}
           </>
-        ) : <Slide stepIndex={state.stepIndex} />}
+        ) : finalActive ? null : <Slide stepIndex={state.stepIndex} />}
       </section>
+      {(finalActive || prepareFinal) && (
+        <FinalKitchenCanvas stepIndex={finalActive ? state.stepIndex : null} onNavigateReady={onFinalNavigateReady} />
+      )}
       {devMode && (
         <output className="presentation-dev" aria-live="polite">
           slideIndex: {state.slideIndex} · stepIndex: {state.stepIndex} · {slide.id} {slide.name}
