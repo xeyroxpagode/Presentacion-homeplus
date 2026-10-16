@@ -1,31 +1,70 @@
-// S03 — reloj compartido portal/S03 (GATE 1: una única línea temporal).
-// Tanto LetterPortalBridge como S03HomePlus derivan su progreso del mismo
-// epoch: el instante del commit en que OpeningSequence pasa a slideIndex 2.
-// Sin dos timers independientes: el dibujo del logo empieza a t=650ms del
-// MISMO origen que el portal (t=0–1200ms), de modo que a t=1200 el trazo
-// sigue visiblemente en curso.
+// S03 — autoridad temporal única de entrada (reloj controlado por el host).
 //
-// El epoch se fija durante el render (no en efecto): los hijos del mismo
-// commit ya lo observan. La clave es el slideIndex: sólo cambia al entrar
-// o salir de S03, nunca entre steps.
+// Diseño: OpeningSequence (host de entrada) fija el epoch en un EFECTO cuando
+// la navegación entra realmente en S03, y lo invalida al salir. Portal
+// (LetterPortalBridge) y S03.0 (useS03EntryProgress) derivan su progreso del
+// MISMO valor `epochMs`: mismo instante de origen por construcción, sin dos
+// rAF con relojes distintos.
+//
+// Propiedades garantizadas:
+// - Mientras S03 está inactiva (epoch null) el progreso es 0: el timeline NO
+//   se consume aunque el componente esté montado detrás del portal.
+// - El epoch sólo cambia en transiciones reales de navegación (efecto con
+//   deps [entered]): un render normal jamás lo reinicia.
+// - S03.0→S03.1 no re-dispara el efecto (entered no cambia) → el portal no
+//   se reinicia.
+// - Abandonar S03 invalida el ciclo (epoch null → progreso 0, loop parado).
+// - Reingresar desde S02 inicia un ciclo nuevo (epoch fresco).
+// - Deep link directo a S03: el efecto corre en el montaje → ciclo nuevo.
+// - Sin efectos secundarios globales durante el render (sólo en efectos).
+// - Matemática del portal intacta: el portal muestrea el mismo epoch.
 
-let epochMs = 0
-let epochKey = ''
+let epochMs: number | null = null
+let generation = 0
+const listeners = new Set<() => void>()
 
-export function s03EntryEpoch(key: string): number {
-  if (key !== epochKey) {
-    epochKey = key
-    epochMs = typeof performance !== 'undefined' ? performance.now() : 0
-  }
+function emit(): void {
+  for (const fn of listeners) fn()
+}
+
+function perfNow(): number {
+  return typeof performance !== 'undefined' ? performance.now() : 0
+}
+
+/** El host la llama al entrar en S03: abre un ciclo nuevo. */
+export function s03StartEntry(): void {
+  epochMs = perfNow()
+  generation += 1
+  emit()
+}
+
+/** El host la llama al salir de S03: invalida el ciclo (progreso → 0). */
+export function s03InvalidateEntry(): void {
+  if (epochMs === null) return
+  epochMs = null
+  generation += 1
+  emit()
+}
+
+/** Instante de origen compartido (null = ciclo inactivo). */
+export function s03Epoch(): number | null {
   return epochMs
 }
 
-export function s03Epoch(): number {
-  return epochMs
+/** Identidad del ciclo: cambia en cada start/invalidate. */
+export function s03Generation(): number {
+  return generation
+}
+
+export function subscribeS03Entry(fn: () => void): () => void {
+  listeners.add(fn)
+  return () => {
+    listeners.delete(fn)
+  }
 }
 
 export function nowMs(): number {
-  return typeof performance !== 'undefined' ? performance.now() : 0
+  return perfNow()
 }
 
 /** Congelado QA de S03.0 en ms (`?s03t=`). Sin él, si `?portalp=` está
@@ -37,7 +76,7 @@ export function frozenS03EntryMs(): number | null {
   const rawT = params.get('s03t')
   if (rawT !== null && rawT !== '') {
     const v = Number(rawT)
-    return Number.isFinite(v) ? Math.min(2680, Math.max(0, v)) : null
+    return Number.isFinite(v) ? Math.min(3000, Math.max(0, v)) : null
   }
   const rawP = params.get('portalp')
   if (rawP !== null && rawP !== '') {
@@ -54,7 +93,7 @@ export function reducedMotion(): boolean {
 
 export const clamp01 = (v: number): number => (v < 0 ? 0 : v > 1 ? 1 : v)
 
-/** cubic-bezier genérico por muestreo (curvas del prompt). */
+/** cubic-bezier genérico por muestreo (curvas del contrato). */
 export function cubicBezier(p1x: number, p1y: number, p2x: number, p2y: number): (t: number) => number {
   const cx = 3 * p1x, bx = 3 * (p2x - p1x) - cx, ax = 1 - cx - bx
   const cy = 3 * p1y, by = 3 * (p2y - p1y) - cy, ay = 1 - cy - by

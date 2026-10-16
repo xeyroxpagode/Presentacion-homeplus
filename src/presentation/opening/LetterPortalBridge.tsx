@@ -19,8 +19,8 @@
 // F0 identidad exacta; F100: G centrado en C, abertura cubriendo el stage
 // + margen → el puente se desmonta (S03 fullscreen, cero restos).
 
-import { useEffect, useMemo, useState } from 'react'
-import { s03Epoch } from '../slides/S03HomePlus/s03Clock'
+import { useEffect, useMemo, useState, useSyncExternalStore } from 'react'
+import { s03Epoch, s03Generation, subscribeS03Entry } from '../slides/S03HomePlus/s03Clock'
 import {
   Q_BASELINES,
   Q_SCALE,
@@ -62,6 +62,9 @@ export default function LetterPortalBridge() {
     const cc = counterCenter(m)
     return { g: { x: cc.x, y: cc.y }, gx: cc.gx, sf: portalFinalScale() }
   }, [m])
+  // Generación del ciclo de entrada: re-sincroniza si el host abre un ciclo
+  // nuevo mientras el puente sigue montado (nunca entre steps de S03.0).
+  const entryGen = useSyncExternalStore(subscribeS03Entry, s03Generation, s03Generation)
 
   useEffect(() => {
     if (freeze !== null || reduce) {
@@ -69,17 +72,21 @@ export default function LetterPortalBridge() {
       return
     }
     // Reloj compartido con S03 (s03Clock): el portal y el dibujo del logo
-    // derivan del mismo epoch fijado por OpeningSequence en este commit.
-    // Matemática del zoom intacta (G, C, smootherstep, s, T).
+    // derivan del MISMO epoch fijado en efecto por OpeningSequence al entrar
+    // en S03. Matemática del zoom intacta (G, C, smootherstep, s, T).
+    // Demostración de sincronía: ambos muestrean `s03Epoch()` (un único
+    // número) dividido por su duración; el origen es idéntico por
+    // construcción, el desfase máximo es un frame de arranque (<16ms).
     let raf = 0
     const tick = () => {
-      const t = Math.min(1, Math.max(0, (performance.now() - s03Epoch()) / DURATION))
+      const epoch = s03Epoch()
+      const t = epoch === null ? 0 : Math.min(1, Math.max(0, (performance.now() - epoch) / DURATION))
       setProgress(t)
       if (t < 1) raf = requestAnimationFrame(tick)
     }
     raf = requestAnimationFrame(tick)
     return () => cancelAnimationFrame(raf)
-  }, [freeze, reduce])
+  }, [freeze, reduce, entryGen])
 
   // Reduced motion: sin zoom (S03 directa, estados preservados).
   // Abertura completa: S03 fullscreen, el puente se retira sin fundido

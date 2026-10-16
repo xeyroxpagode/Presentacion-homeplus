@@ -1,13 +1,21 @@
 // S03 — isotipo auténtico + wordmark (capas derivadas del PNG oficial).
 // Todo posicionamiento es absoluto en coords de stage (1280×720) dentro de
 // un SVG viewBox equivalente: sin medidas DOM por frame, sin reflow.
-import { PNG, PLUS_PNG, HEAD_MAIN_PNG, WHITE_HEX } from './s03Geometry'
+//
+// El blanco se revela recorriendo la geometría REAL del símbolo: la máscara
+// es el trazo central medido de la capa oficial (MAIN_STROKE_D) más las dos
+// cabezas con revelación localizada. Sólo se muestran píxeles blancos del
+// PNG original: la geometría final es idéntica por construcción.
+import {
+  PNG, PLUS_PNG, HEAD_MAIN_PNG, HEAD_SECOND_PNG, WHITE_HEX,
+  MAIN_STROKE_D, MAIN_STROKE_W,
+} from './s03Geometry'
 import { S03_ORANGE_URL, S03_WHITE_URL, S03_PLUS_URL, PLUS_CROP, PLUS_CROP_W, PLUS_CROP_H } from './s03BrandAssets'
 import type { IsotipoPlacement } from './s03Geometry'
 
 export type WhiteReveal =
   | { mode: 'full' }
-  | { mode: 'draw'; frontPng: number }
+  | { mode: 'draw'; stroke: number; head0: number; head1: number }
 
 export type S03IsotipoProps = {
   placement: IsotipoPlacement
@@ -33,8 +41,6 @@ export type S03IsotipoProps = {
   idSuffix: string
 }
 
-const FEATHER_PNG = 34
-
 export default function S03Isotipo(props: S03IsotipoProps) {
   const { placement, white, orangeRadiusPng, orangeMaxPng, plus, word, vectorHeadOpacity, idSuffix } = props
   const { imgLeft, imgTop, imgSize, k } = placement
@@ -43,14 +49,29 @@ export default function S03Isotipo(props: S03IsotipoProps) {
   const wordClipId = `s03wordclip-${idSuffix}`
   const showOrange = orangeRadiusPng > 0.5
   const orangeFull = orangeRadiusPng >= orangeMaxPng - 0.5
+  const drawing = white.mode === 'draw'
+  const strokeOff = drawing ? Math.max(0, 100 * (1 - white.stroke)) : 0
 
   return (
     <g transform={`translate(${imgLeft.toFixed(2)} ${imgTop.toFixed(2)}) scale(${k.toFixed(6)})`}>
       <defs>
-        {white.mode === 'draw' && (
+        {drawing && (
           <mask id={maskId} maskUnits="userSpaceOnUse" x="0" y="0" width={PNG.w} height={PNG.h}>
-            <rect x="0" y="0" width={PNG.w} height={Math.max(0, white.frontPng)} fill="#fff" />
-            <rect x="0" y={Math.max(0, white.frontPng)} width={PNG.w} height={FEATHER_PNG} fill="#fff" opacity="0.55" />
+            {/* Trazo principal: recorre techo→muro→personas en orden real. */}
+            <path
+              d={MAIN_STROKE_D}
+              fill="none" stroke="#fff" strokeWidth={MAIN_STROKE_W}
+              strokeLinecap="round" strokeLinejoin="round"
+              pathLength={100} strokeDasharray={100}
+              strokeDashoffset={strokeOff}
+            />
+            {/* Cabezas: revelación localizada (radio 0→R). */}
+            {white.head0 > 0.001 && (
+              <circle cx={HEAD_MAIN_PNG.cx} cy={HEAD_MAIN_PNG.cy} r={Math.max(0.1, HEAD_MAIN_PNG.r * white.head0)} fill="#fff" />
+            )}
+            {white.head1 > 0.001 && (
+              <circle cx={HEAD_SECOND_PNG.cx} cy={HEAD_SECOND_PNG.cy} r={Math.max(0.1, HEAD_SECOND_PNG.r * white.head1)} fill="#fff" />
+            )}
           </mask>
         )}
         {showOrange && !orangeFull && (
@@ -74,7 +95,7 @@ export default function S03Isotipo(props: S03IsotipoProps) {
       <image
         href={S03_WHITE_URL}
         x="0" y="0" width={PNG.w} height={PNG.h}
-        mask={white.mode === 'draw' ? `url(#${maskId})` : undefined}
+        mask={drawing ? `url(#${maskId})` : undefined}
       />
       {plus.visible && (
         <g

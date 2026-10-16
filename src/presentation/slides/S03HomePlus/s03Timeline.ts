@@ -1,30 +1,50 @@
 // S03 — duraciones y sampling del ACTO I (nacimiento del logo).
-// Timeline interno de S03.0: 2680ms desde el epoch compartido con el portal.
-// Tramos: B techo 650–1300 · C estructura 850–1520 · D «+» 1450–1690
-//          · E naranja 1620–2050 · F wordmark 2000–2680.
+// Timeline interno de S03.0: 3000ms desde el epoch compartido con el portal.
+// Tramos (§5): T0 portal 0–1200 · T1 dibujo 650–1600 · T2 «+» 1600–1840
+//          · T3 naranja 1800–2250 · T4 wordmark 2250–3000.
 import { clamp01, cubicBezier, easeDraw, easeLockup, easeOutExpo } from './s03Clock'
 import { PNG_BBOX, PLUS_PNG, POSE_ISO_CENTER, POSE_ISO_LOCKUP } from './s03Geometry'
 
-export const S03_ENTRY_MS = 2680
+export const S03_ENTRY_MS = 3000
 export const PORTAL_MS = 1200
 
 // Duración de la transición de ENTRADA de cada step (0 = autoplay por epoch).
-export const S03_DURATIONS = [2680, 780, 500, 700, 700, 1100, 850, 980, 600, 690, 1400]
+export const S03_DURATIONS = [3000, 780, 500, 700, 700, 1100, 850, 980, 600, 690, 1400]
 
 const seg = (t: number, a: number, b: number): number => clamp01((t - a) / (b - a))
 export const lerp = (a: number, b: number, t: number): number => a + (b - a) * t
 
-// Banda de revelación del blanco (coords PNG): frente desciende 300→1000.
-const DRAW_TOP = 300
-const DRAW_BOTTOM = 1000
-const DRAW_A = 650
-const DRAW_B = 1520
+// Trazo principal (techo→muro→personas): recorre la geometría real 650–1600.
+// A t=1200 el progreso eased ≈ 0.72: visiblemente en curso, logo incompleto.
+const STROKE_A = 650
+const STROKE_B = 1600
 
-export function drawFrontPng(t: number): number {
-  return lerp(DRAW_TOP, DRAW_BOTTOM, easeDraw(seg(t, DRAW_A, DRAW_B)))
+export function strokeP(t: number): number {
+  return easeDraw(seg(t, STROKE_A, STROKE_B))
 }
 
-// Microimpacto del «+»: keys locales [ms, escala, dyPxStage].
+// Cabezas: revelación localizada (radio 0→R), integradas al lenguaje del
+// trazo, nunca barrido vertical. Big 1330–1540 · small 1420–1600.
+const HEAD_A0 = 1330
+const HEAD_B0 = 1540
+const HEAD_A1 = 1420
+const HEAD_B1 = 1600
+const easeHead = cubicBezier(0.33, 1, 0.68, 1)
+
+export function headP0(t: number): number {
+  return easeHead(seg(t, HEAD_A0, HEAD_B0))
+}
+
+export function headP1(t: number): number {
+  return easeHead(seg(t, HEAD_A1, HEAD_B1))
+}
+
+/** El blanco está completo (pasar a modo 'full' sin máscara). */
+export function whiteComplete(t: number): boolean {
+  return t >= 1605
+}
+
+// Microimpacto del «+» (T2 1600–1840): keys locales [ms, escala, dyPxStage].
 const PLUS_KEYS: ReadonlyArray<readonly [number, number, number]> = [
   [0, 0.91, -4.7],
   [90, 1.055, 0.7],
@@ -45,7 +65,7 @@ function cosineKeys(keys: ReadonlyArray<readonly [number, number]>, t: number): 
 }
 
 export type PlusPose = { visible: boolean; scale: number; dy: number }
-const PLUS_A = 1450
+const PLUS_A = 1600
 
 export function plusPose(t: number): PlusPose {
   if (t < PLUS_A) return { visible: false, scale: 0.91, dy: -4.7 }
@@ -57,9 +77,10 @@ export function plusPose(t: number): PlusPose {
   }
 }
 
-// Naranja: radio en coords PNG desde el centro del «+».
-const ORANGE_A = 1620
-const ORANGE_B = 2050
+// Naranja (T3 1800–2250): radio en coords PNG desde el centro del «+»,
+// nace detrás del «+», easing próximo a cubic-bezier(0.22,1,0.36,1).
+const ORANGE_A = 1800
+const ORANGE_B = 2250
 
 export function orangeMaxRadiusPng(): number {
   const corners = [
@@ -79,9 +100,9 @@ export function orangeRadiusPng(t: number): number {
   return orangeMaxRadiusPng() * easeOutExpo(seg(t, ORANGE_A, ORANGE_B))
 }
 
-// Wordmark / lockup.
-const LOCK_A = 2000
-const LOCK_B = 2680
+// Wordmark / lockup (T4 2250–3000).
+const LOCK_A = 2250
+const LOCK_B = 3000
 
 export function lockupP(t: number): number {
   return easeLockup(seg(t, LOCK_A, LOCK_B))

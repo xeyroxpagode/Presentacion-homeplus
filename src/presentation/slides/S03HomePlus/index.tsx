@@ -1,21 +1,23 @@
 // S03 — raíz: única fuente de verdad (stepIndex + progress).
-// ACTO I (step 0): autoplay sincronizado al epoch compartido con el portal.
-// Steps 1–10: transición determinista hacia el nuevo estado (sin retarget
-// desde mitad de vuelo: cada entrada parte de la pose final nominal del
-// estado anterior; HOLD estable al terminar, loop apagado).
+// ACTO I (step 0): autoplay sincronizado al epoch compartido con el portal
+// (autoridad temporal del host: sin consumo mientras S03 está inactiva).
+// Steps 1–10: transición determinista hacia el nuevo estado; cada entrada
+// parte de la pose final nominal del estado anterior (política de
+// navegación: una acción por beat; sin retarget a mitad de vuelo, sin
+// activaciones múltiples, sin reinicios). HOLD estable al terminar.
 import { useEffect, useMemo, useState } from 'react'
 import S03Isotipo from './S03Isotipo'
-import { conceptPoses, yoPoses, renderWord, TYPE_WHITE, TYPE_SECONDARY } from './S03Words'
+import { conceptPoses, axisLineOpacity, axisLineRect, renderWord, TYPE_WHITE } from './S03Words'
 import type { S03Measures } from './S03Words'
 import {
   INK_BG, HOME_SURFACE, ORANGE_HEX, HERO_CENTER,
   CONCEPTS, POSE_ISO_CENTER, POSE_ISO_LOCKUP, WORDMARK, SIGNATURE_TOP,
-  YO_SINGLE, YO_QUAD, YO_QUAD_SIZE, YO_LINE, MI_PARTE_SIZE,
   placeIsotipo, pngToStage, zoomCoverScale, HEAD_MAIN_PNG,
   type ConceptId,
 } from './s03Geometry'
 import {
-  S03_ENTRY_MS, drawFrontPng, plusPose, orangeRadiusPng, orangeMaxRadiusPng,
+  S03_ENTRY_MS, strokeP, headP0, headP1, whiteComplete,
+  plusPose, orangeRadiusPng, orangeMaxRadiusPng,
   lockupPose, lockupP, lerp,
 } from './s03Timeline'
 import { clamp01, easeInOut, easeOutExpo, s03Epoch, nowMs } from './s03Clock'
@@ -57,20 +59,14 @@ function useS03Measures(): S03Measures {
   }, [])
   return useMemo(() => {
     const heroW = {} as Record<ConceptId, number>
-    const yoCol31 = {} as Record<ConceptId, number>
     for (const c of CONCEPTS) {
       heroW[c.id] = measure(c.label, c.heroSize, CONCEPT_WEIGHT, CONCEPT_TRACKING)
-      yoCol31[c.id] = measure(c.label, 31, CONCEPT_WEIGHT, CONCEPT_TRACKING)
     }
     void gen
     return {
       heroW,
       word100: measure(WORD_TEXT, 100, WORD_WEIGHT, -1.5),
       word36: measure(WORD_TEXT, 36, WORD_WEIGHT, -0.54),
-      yo115: measure('YO', YO_SINGLE.size, 700, 0),
-      yo72: measure('YO', YO_QUAD_SIZE, 700, 0),
-      yoCol31,
-      miParte17: measure('MI PARTE', MI_PARTE_SIZE, 500, 0.12 * MI_PARTE_SIZE),
     }
   }, [gen])
 }
@@ -90,7 +86,7 @@ function signatureBox(m: S03Measures): IsoBox {
 
 export default function S03HomePlus({ active = true, stepIndex = 0 }: { active?: boolean; stepIndex?: number }) {
   const step = Math.min(Math.max(stepIndex | 0, 0), 10)
-  const entryP = useS03EntryProgress()
+  const entryP = useS03EntryProgress(active)
   const stepP = useS03Progress(step)
   const m = useS03Measures()
 
@@ -109,7 +105,7 @@ export default function S03HomePlus({ active = true, stepIndex = 0 }: { active?:
   const centerBox: IsoBox = { x: 541, y: 261, w: 198 }
 
   let iso: IsoBox
-  let white: { mode: 'full' } | { mode: 'draw'; frontPng: number }
+  let white: { mode: 'full' } | { mode: 'draw'; stroke: number; head0: number; head1: number }
   let orangeR = ORANGE_MAX
   let plus = { visible: true, scale: 1, dy: 0 }
   let word: {
@@ -121,7 +117,9 @@ export default function S03HomePlus({ active = true, stepIndex = 0 }: { active?:
     const L = lockupPose(tMs)
     const eL = lockupP(tMs)
     iso = { x: L.isoX + shift * eL, y: L.isoY, w: L.isoW }
-    white = { mode: 'draw', frontPng: drawFrontPng(tMs) }
+    white = whiteComplete(tMs)
+      ? { mode: 'full' }
+      : { mode: 'draw', stroke: strokeP(tMs), head0: headP0(tMs), head1: headP1(tMs) }
     const pp = plusPose(tMs)
     plus = pp
     orangeR = orangeRadiusPng(tMs)
@@ -201,11 +199,12 @@ export default function S03HomePlus({ active = true, stepIndex = 0 }: { active?:
 
   // --- palabras ------------------------------------------------------------------
   const poses = conceptPoses(step, step === 0 ? 1 : p, m)
-  const yo = yoPoses(step, step === 0 ? 1 : p, m)
   const heroClips = CONCEPTS.filter(c => {
     const ps = poses[c.id]
     return ps.visible && ps.reveal < 0.999
   })
+  const axisE = axisLineOpacity(step, step === 0 ? 1 : p)
+  const axis = axisLineRect()
 
   return (
     <div className="s03-stage" data-active={active} data-step={step} aria-hidden={!active}>
@@ -238,48 +237,10 @@ export default function S03HomePlus({ active = true, stepIndex = 0 }: { active?:
             `concept-${c.id}`, c.label, poses[c.id], CONCEPT_WEIGHT, CONCEPT_TRACKING,
             TYPE_WHITE, `s03hero-${c.id}`,
           ))}
-          {/* YO único */}
-          {yo.single.opacity > 0.001 && (
-            <text
-              x={640 - m.yo115 * (yo.single.size / YO_SINGLE.size) / 2}
-              y={YO_SINGLE.y + yo.single.size * 0.35 - yo.single.rise}
-              fontFamily="Manrope, sans-serif" fontWeight={700} fontSize={yo.single.size}
-              fill={TYPE_WHITE} opacity={yo.single.opacity}
-            >
-              YO
-            </text>
+          {/* eje de concentración (S03.6): una única línea naranja corta */}
+          {axisE > 0.001 && (
+            <rect x={axis.x} y={axis.y} width={axis.w} height={axis.h} fill={ORANGE_HEX} opacity={axisE} />
           )}
-          {yo.divider > 0.001 && (
-            <rect x={640 - 1.5} y={296} width={3} height={30} fill={ORANGE_HEX} opacity={yo.divider} />
-          )}
-          {/* columna (render dentro de conceptos) */}
-          {/* cuádruple perspectiva */}
-          {yo.quad.map((q, j) => q.opacity > 0.001 && (
-            <text
-              key={`yo-${j}`}
-              x={YO_QUAD[j]!.x - m.yo72 * (q.size / 72) / 2}
-              y={q.baseline}
-              fontFamily="Manrope, sans-serif" fontWeight={700} fontSize={q.size}
-              fill={TYPE_WHITE} opacity={q.opacity}
-            >
-              YO
-            </text>
-          ))}
-          {yo.lines.map((L, j) => L.opacity > 0.001 && (
-            <rect key={`yol-${j}`} x={L.x} y={L.y} width={YO_LINE.w} height={L.h} fill={ORANGE_HEX} opacity={L.opacity} />
-          ))}
-          {yo.miParte.opacity > 0.001 && YO_QUAD.map((q, j) => (
-            <text
-              key={`mp-${j}`}
-              x={q.x - m.miParte17 / 2}
-              y={YO_QUAD[j]!.y + 72 * 0.35 + 19 + 2.7 + 16 + MI_PARTE_SIZE * 0.35 - yo.miParte.rise}
-              fontFamily="Manrope, sans-serif" fontWeight={500} fontSize={MI_PARTE_SIZE}
-              letterSpacing={(0.12 * MI_PARTE_SIZE).toFixed(2)} fill={TYPE_SECONDARY}
-              opacity={yo.miParte.opacity} textAnchor="start"
-            >
-              MI PARTE
-            </text>
-          ))}
         </g>
       </svg>
       {homeOpacity > 0.001 && (

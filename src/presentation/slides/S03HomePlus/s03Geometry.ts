@@ -67,16 +67,53 @@ export const CONCEPT_SLOTS: Record<ConceptId, { x: number; y: number; size: numb
 }
 export const SLOT_LINE = { w: 64, h: 2.7, gap: 16 } as const
 
-// --- ACTO III: autonomía -------------------------------------------------------
-export const YO_SINGLE = { x: 640, y: 247, size: 115 } as const
-export const COLUMN_ITEMS_Y = [337, 387, 437, 487] as const
-export const COLUMN_ITEM_SIZE = 31 as const
-export const YO_QUAD: ReadonlyArray<{ x: number; y: number }> = [
-  { x: 240, y: 357 }, { x: 507, y: 357 }, { x: 773, y: 357 }, { x: 1040, y: 357 },
-]
-export const YO_QUAD_SIZE = 72 as const
-export const YO_LINE = { w: 59, h: 2.7, gap: 19 } as const
-export const MI_PARTE_SIZE = 17 as const
+// --- Trazo auténtico del isotipo ------------------------------------------------
+// Línea central del trazo blanco continuo (coords PNG 1254²), derivada por
+// medición directa de la capa blanca oficial (runs por columna/fila):
+// punta del alero derecho → techo (ápice 627,353) → alero izquierdo → muro →
+// U inferior → arco grande → valle → arco pequeño → remate derecho.
+// Las dos cabezas son discos sólidos revelados de forma localizada.
+// La máscara de dibujo recorre ESTA geometría y revela exclusivamente
+// píxeles blancos del PNG original: wipe vertical prohibido.
+export const MAIN_STROKE_D = [
+  'M 948,672',
+  'C 930,630 915,595 900,560',
+  'C 870,535 835,505 800,477',
+  'C 765,450 732,422 700,395',
+  'C 675,375 650,362 627,353',
+  'C 600,365 560,390 500,440',
+  'C 465,465 432,492 400,520',
+  'C 365,552 332,595 300,638',
+  'C 312,665 322,690 334,720',
+  'L 334,880',
+  'C 340,930 352,950 375,950',
+  'C 398,950 425,925 430,890',
+  'L 440,830',
+  'C 445,800 480,775 550,771',
+  'C 605,775 630,820 645,870',
+  'C 655,905 658,925 665,940',
+  'C 675,915 685,880 700,858',
+  'C 720,852 745,852 770,855',
+  'C 795,860 810,880 818,910',
+  'C 821,925 823,938 823,948',
+].join(' ')
+export const MAIN_STROKE_W = 84 // cubre el trazo real (~52px) con tolerancia
+
+// --- ACTO III: autonomía (concentración → apertura distribuida) --------------
+// Sin personajes ni textos nuevos: sólo los cuatro conceptos reutilizados.
+// S03.6 columna central compacta; S03.7 composición radial abierta;
+// S03.8 activa una línea naranja bajo cada palabra (stagger 110ms).
+export const COLUMN_CENTERS_Y = [255, 325, 395, 465] as const
+export const COLUMN_ITEM_SIZE = 32 as const
+export const AXIS_LINE = { w: 64, h: 3, y: 520 } as const
+export const RADIAL: Record<ConceptId, { cx: number; cy: number; size: number }> = {
+  personas: { cx: 640, cy: 210, size: 50 },
+  momentos: { cx: 270, cy: 385, size: 47 },
+  responsabilidades: { cx: 1010, cy: 385, size: 38 },
+  informacion: { cx: 640, cy: 550, size: 48 },
+}
+export const RADIAL_LINE = { w: 48, h: 3, gap: 14 } as const
+export const RADIAL_LINE_STAGGER = 110 // ms entre activaciones (S03.8)
 
 // --- Zoom final ----------------------------------------------------------------
 // Escala mínima que garantiza cobertura total desde el círculo focal:

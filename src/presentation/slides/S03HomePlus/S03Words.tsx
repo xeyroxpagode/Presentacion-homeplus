@@ -1,11 +1,14 @@
 // S03 — tipografía protagonista (ACTO II conceptos, ACTO III autonomía).
 // Toda posición deriva de (step, p) + medidas canvas (sin lecturas DOM).
-// Shared elements reales: la misma palabra viaja de protagonista a slot.
+// Shared elements reales: la misma palabra viaja de protagonista a slot,
+// luego a columna (S03.6), a composición radial (S03.7–S03.8) y sale (S03.9).
+// Sin YO / MI PARTE: la autonomía se narra sólo con los cuatro conceptos.
 import type { ReactNode } from 'react'
 import {
   CONCEPTS, CONCEPT_SLOTS, HERO_CENTER, HERO_LINE, SLOT_LINE,
-  YO_SINGLE, COLUMN_ITEMS_Y, COLUMN_ITEM_SIZE, YO_QUAD, YO_QUAD_SIZE,
-  YO_LINE, MI_PARTE_SIZE, TYPE_WHITE, TYPE_SECONDARY, ORANGE_HEX,
+  COLUMN_CENTERS_Y, COLUMN_ITEM_SIZE, RADIAL, RADIAL_LINE,
+  RADIAL_LINE_STAGGER, AXIS_LINE,
+  TYPE_WHITE, ORANGE_HEX,
   type ConceptId,
 } from './s03Geometry'
 import { easeInOut, clamp01 } from './s03Clock'
@@ -15,10 +18,6 @@ export type S03Measures = {
   heroW: Record<ConceptId, number>
   word100: number
   word36: number
-  yo115: number
-  yo72: number
-  yoCol31: Record<ConceptId, number>
-  miParte17: number
 }
 
 const seg = (p: number, a: number, b: number): number => clamp01((p - a) / (b - a))
@@ -69,6 +68,31 @@ function slotPose(id: ConceptId, w: number): ConceptPose {
   }
 }
 
+function columnPose(id: ConceptId, wCol: number, idx: number): ConceptPose {
+  return {
+    visible: true,
+    x: 640 - wCol / 2,
+    baseline: COLUMN_CENTERS_Y[idx]! + COLUMN_ITEM_SIZE * 0.35,
+    size: COLUMN_ITEM_SIZE,
+    opacity: 1, rise: 0, blur: 0, reveal: 1,
+    lineW: 0, lineH: 0, lineX: 0, lineY: 0, lineOpacity: 0,
+  }
+}
+
+function radialPose(id: ConceptId, wRad: number, lineE: number): ConceptPose {
+  const r = RADIAL[id]
+  const baseline = r.cy + r.size * 0.35
+  return {
+    visible: true,
+    x: r.cx - wRad / 2, baseline, size: r.size,
+    opacity: 1, rise: 0, blur: 0, reveal: 1,
+    lineW: RADIAL_LINE.w, lineH: RADIAL_LINE.h,
+    lineX: r.cx - RADIAL_LINE.w / 2,
+    lineY: baseline + r.size * 0.22 + RADIAL_LINE.gap,
+    lineOpacity: lineE,
+  }
+}
+
 function mixPose(a: ConceptPose, b: ConceptPose, e: number): ConceptPose {
   return {
     visible: a.visible || b.visible,
@@ -93,8 +117,11 @@ export function conceptPoses(step: number, p: number, m: S03Measures): Record<Co
   const out = {} as Record<ConceptId, ConceptPose>
 
   for (const c of CONCEPTS) {
+    const idx = CONCEPTS.findIndex(k => k.id === c.id)
     const slot = slotPose(c.id, heroW(c.id, CONCEPT_SLOTS[c.id].size, c.heroSize))
     const hero = (e: number, le: number) => heroPose(c.label, m.heroW[c.id], c.heroSize, e, le)
+    const col = columnPose(c.id, heroW(c.id, COLUMN_ITEM_SIZE, c.heroSize), idx)
+    const rad = (lineE: number) => radialPose(c.id, heroW(c.id, RADIAL[c.id].size, c.heroSize), lineE)
     let pose: ConceptPose = hidden
     if (step <= 1) pose = hidden
     else if (step === 2) {
@@ -130,125 +157,46 @@ export function conceptPoses(step: number, p: number, m: S03Measures): Record<Co
         pose.opacity = lerp(eB, 1, eC)
       }
     } else if (step === 6) {
-      // slots → columna central (stagger 50ms), líneas se atenúan
-      const idx = CONCEPTS.findIndex(k => k.id === c.id)
+      // S03.6 concentración (850ms): slots → columna central con stagger de
+      // 50ms; las líneas individuales se atenúan durante la convergencia.
       const e = easeHero(seg(p, (idx * 50) / 850, (idx * 50 + 600) / 850))
-      const colW = heroW(c.id, COLUMN_ITEM_SIZE, c.heroSize)
-      const col: ConceptPose = {
-        visible: true,
-        x: 640 - colW / 2, baseline: COLUMN_ITEMS_Y[idx]! + COLUMN_ITEM_SIZE * 0.35,
-        size: COLUMN_ITEM_SIZE, opacity: lerp(1, 0.8, e), rise: 0, blur: 0, reveal: 1,
-        lineW: 0, lineH: 0, lineX: 0, lineY: 0, lineOpacity: lerp(1, 0, e),
-      }
       pose = mixPose(slot, col, e)
+      pose.lineOpacity = lerp(1, 0, easeHero(seg(p, 0, 0.5)))
+    } else if (step === 7) {
+      // S03.7 apertura (980ms): la columna deja el eje compartido y cada
+      // palabra viaja a su posición radial. Sin líneas ni conexiones.
+      const e = easeInOut(seg(p, (idx * 40) / 980, (idx * 40 + 700) / 980))
+      pose = mixPose(col, rad(0), e)
+    } else if (step === 8) {
+      // S03.8 autonomía compartida (600ms): composición radial estable;
+      // bajo cada palabra aparece su línea con 110ms de desfase y permanece.
+      const tMs = p * 600
+      const lineE = seg(tMs, idx * RADIAL_LINE_STAGGER, idx * RADIAL_LINE_STAGGER + 250)
+      pose = rad(lineE)
+    } else if (step === 9) {
+      // S03.9 retorno (690ms): los conceptos pierden protagonismo con escala
+      // y opacidad, sin salidas extravagantes; las líneas se van primero.
+      const outE = seg(p, 0, 220 / 690)
+      const wordE = seg(p, 100 / 690, 430 / 690)
+      pose = { ...rad(0), lineOpacity: 1 - outE, opacity: 1 - wordE }
+      pose.visible = wordE < 0.999
     } else {
-      // steps 7+: la columna se disuelve durante S03.7
-      const idx = CONCEPTS.findIndex(k => k.id === c.id)
-      const colW = heroW(c.id, COLUMN_ITEM_SIZE, c.heroSize)
-      const fade = 1 - seg(p, step === 7 ? (140 + idx * 20) / 980 : 0, step === 7 ? 500 / 980 : 0.001)
-      pose = {
-        visible: fade > 0.001 && step === 7,
-        x: 640 - colW / 2, baseline: COLUMN_ITEMS_Y[idx]! + COLUMN_ITEM_SIZE * 0.35,
-        size: COLUMN_ITEM_SIZE, opacity: 0.8 * fade, rise: 0, blur: 0, reveal: 1,
-        lineW: 0, lineH: 0, lineX: 0, lineY: 0, lineOpacity: 0,
-      }
+      pose = hidden
     }
     out[c.id] = pose
   }
   return out
 }
 
-export type YoQuadPose = { x: number; baseline: number; size: number; opacity: number }[]
+/** Línea única del eje central (S03.6): aparece con la concentración y se
+ *  retira al abrir (S03.7). Recurso de concentración, sin texto. */
+export function axisLineOpacity(step: number, p: number): number {
+  if (step === 6) return seg(p, 0.35, 0.7)
+  return 0
+}
 
-export function yoPoses(step: number, p: number, m: S03Measures): {
-  single: { opacity: number; rise: number; size: number }
-  quad: YoQuadPose
-  lines: { x: number; y: number; opacity: number; h: number }[]
-  miParte: { opacity: number; rise: number }
-  divider: number
-} {
-  const singleX = (s: number, w: number) => 640 - w * (s / 115) / 2
-  if (step <= 5) {
-    return {
-      single: { opacity: 0, rise: 0, size: YO_SINGLE.size },
-      quad: YO_QUAD.map(() => ({ x: 0, baseline: 0, size: YO_QUAD_SIZE, opacity: 0 })),
-      lines: YO_QUAD.map(() => ({ x: 0, y: 0, opacity: 0, h: YO_LINE.h })),
-      miParte: { opacity: 0, rise: 0 },
-      divider: 0,
-    }
-  }
-  if (step === 6) {
-    const eYO = easeHero(seg(p, 0.15, 0.75))
-    return {
-      single: { opacity: eYO, rise: (1 - eYO) * 12, size: YO_SINGLE.size },
-      quad: YO_QUAD.map(() => ({ x: 0, baseline: 0, size: YO_QUAD_SIZE, opacity: 0 })),
-      lines: YO_QUAD.map(() => ({ x: 0, y: 0, opacity: 0, h: YO_LINE.h })),
-      miParte: { opacity: 0, rise: 0 },
-      divider: seg(p, 0.4, 0.7),
-    }
-  }
-  // step 7: expansión; step 8: foco; step 9: salida coordinada
-  const singleBase = { x: singleX(YO_SINGLE.size, m.yo115), baseline: YO_SINGLE.y + YO_SINGLE.size * 0.35 }
-  const quadBase = YO_QUAD.map(q => ({
-    x: q.x - (m.yo72 / 2), baseline: q.y + YO_QUAD_SIZE * 0.35,
-  }))
-  if (step === 7) {
-    const cross = seg(p, 140 / 980, 300 / 980)
-    const quad: YoQuadPose = YO_QUAD.map((q, j) => {
-      const e = easeInOut(seg(p, (140 + j * 50) / 980, 740 / 980))
-      return {
-        x: lerp(singleBase.x, quadBase[j]!.x, e),
-        baseline: lerp(singleBase.baseline, quadBase[j]!.baseline, e),
-        size: lerp(108, YO_QUAD_SIZE, e),
-        opacity: cross,
-      }
-      void q
-    })
-    const lines = YO_QUAD.map((q, j) => {
-      const e = seg(p, (620 + j * 30) / 980, 850 / 980)
-      return { x: q.x - YO_LINE.w / 2, y: quadBase[j]!.baseline + 19, opacity: e, h: YO_LINE.h }
-    })
-    return {
-      single: { opacity: 1 - cross, rise: 0, size: lerp(YO_SINGLE.size, 108, seg(p, 0, 140 / 980)) },
-      quad, lines,
-      miParte: { opacity: seg(p, 760 / 980, 1), rise: (1 - seg(p, 760 / 980, 1)) * 8 },
-      divider: 1 - seg(p, 140 / 980, 400 / 980),
-    }
-  }
-  if (step === 8) {
-    const pms = p * 600
-    const lines = YO_QUAD.map((q, j) => {
-      const a = seg(pms, j * 110, j * 110 + 250)
-      return {
-        x: q.x - YO_LINE.w / 2, y: quadBase[j]!.baseline + 19,
-        opacity: 0.55 + 0.45 * a, h: YO_LINE.h + 0.7 * a,
-      }
-    })
-    return {
-      single: { opacity: 0, rise: 0, size: YO_SINGLE.size },
-      quad: YO_QUAD.map((q, j) => ({ ...quadBase[j]!, size: YO_QUAD_SIZE, opacity: 1 })),
-      lines,
-      miParte: { opacity: 1, rise: 0 },
-      divider: 0,
-    }
-  }
-  // step 9: MI PARTE y acentos fuera 0–220; YOs pierden escala/opacidad 100–430
-  const outE = seg(p, 0, 220 / 690)
-  const yoE = seg(p, 100 / 690, 430 / 690)
-  return {
-    single: { opacity: 0, rise: 0, size: YO_SINGLE.size },
-    quad: YO_QUAD.map((q, j) => ({
-      ...quadBase[j]!,
-      size: lerp(YO_QUAD_SIZE, YO_QUAD_SIZE * 0.82, yoE),
-      opacity: 1 - yoE,
-    })),
-    lines: YO_QUAD.map((q, j) => ({
-      x: q.x - YO_LINE.w / 2, y: quadBase[j]!.baseline + 19,
-      opacity: (0.55 + 0.45) * (1 - outE), h: YO_LINE.h,
-    })),
-    miParte: { opacity: 1 - outE, rise: outE * 6 },
-    divider: 0,
-  }
+export function axisLineRect(): { x: number; y: number; w: number; h: number } {
+  return { x: 640 - AXIS_LINE.w / 2, y: AXIS_LINE.y, w: AXIS_LINE.w, h: AXIS_LINE.h }
 }
 
 export function renderWord(
@@ -282,4 +230,4 @@ export function renderWord(
   )
 }
 
-export { TYPE_WHITE, TYPE_SECONDARY }
+export { TYPE_WHITE }

@@ -1,21 +1,30 @@
+import { useEffect } from 'react'
 import AmbientGlow from '../components/AmbientGlow'
 import S01Chaos from '../slides/S01Chaos'
 import S02FragmentedInfo from '../slides/S02FragmentedInfo'
 import S03HomePlus from '../slides/S03HomePlus'
-import { s03EntryEpoch } from '../slides/S03HomePlus/s03Clock'
+import { s03StartEntry, s03InvalidateEntry } from '../slides/S03HomePlus/s03Clock'
 import LetterPortalBridge from './LetterPortalBridge'
 import { openingTokens, openingVariables } from './openingTokens'
 import './opening.css'
 
-type OpeningSequenceProps = { slideIndex: number; stepIndex: number; handoff?: boolean }
+type OpeningSequenceProps = { slideIndex: number; stepIndex: number; handoff?: boolean; s03live?: boolean }
 
 // These layers stay mounted across S01–S03: leaving elements can finish moving
 // while the next idea appears. Every target is derived from navigation state.
-export default function OpeningSequence({ slideIndex, stepIndex, handoff = false }: OpeningSequenceProps) {
-  // S03: epoch compartido portal/dibujo (s03Clock). Se fija en este render
-  // para que LetterPortalBridge y S03HomePlus del mismo commit compartan
-  // el origen temporal; sólo cambia al cambiar de slide, nunca entre steps.
-  s03EntryEpoch(`opening-${slideIndex}`)
+export default function OpeningSequence({ slideIndex, stepIndex, handoff = false, s03live }: OpeningSequenceProps) {
+  // S03 — autoridad temporal del host: el epoch compartido portal/dibujo se
+  // fija en EFECTO (nunca durante el render) sólo en transiciones reales:
+  // entrar en S03 abre un ciclo nuevo; salir lo invalida; S03.0→S03.1 no
+  // re-dispara (entered no cambia) y un render normal jamás lo reinicia.
+  // `s03live` es el slide REAL (el prop slideIndex viene capado con min() y
+  // no distingue S03 de S04+): sin él, S04 reactivaría el ciclo en oculto.
+  const live = s03live ?? slideIndex === 2
+  const entered = live && !handoff && slideIndex === 2
+  useEffect(() => {
+    if (entered) s03StartEntry()
+    else s03InvalidateEntry()
+  }, [entered])
   // Handoff S03.10→S04.0: el frame ya es superficie Home (#F6F5F2); esta
   // capa entrega un velo del mismo material para que el fundido del wrapper
   // (.opening-to-home) sea invisible: sin frame negro, sin segundo zoom.
@@ -61,12 +70,14 @@ export default function OpeningSequence({ slideIndex, stepIndex, handoff = false
           z=3 taparía el primer trazo). Elemento conservado por compatibilidad. */}
       <div aria-hidden="true" className="opening-blackout" data-active={false} />
       {/* S03 cinematográfica (11 beats): recibe el step para su timeline
-          interno; montada desde t=0 detrás del portal (GATE 1). */}
-      <S03HomePlus active={slideIndex === 2} stepIndex={slideIndex === 2 ? stepIndex : 0} />
+          interno; montada desde t=0 detrás del portal. `active` usa el slide
+          real: fuera de S03 el timeline de entrada NO se consume. */}
+      <S03HomePlus active={entered} stepIndex={slideIndex === 2 ? stepIndex : 0} />
       {/* S02 V1.6: portal vectorial S02.8→S03 (contraforma de la «g» de
           «hogar», línea 2; 1200 ms). S03 intacta: el overlay la revela
-          exclusivamente a través de la abertura y se retira. */}
-      {slideIndex === 2 && <LetterPortalBridge />}
+          exclusivamente a través de la abertura y se retira. Sólo en S03.0:
+          en steps posteriores o al volver con PREV a S03.10+ no se repite. */}
+      {entered && stepIndex === 0 && <LetterPortalBridge />}
     </div>
   )
 }

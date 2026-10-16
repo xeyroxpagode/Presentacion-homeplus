@@ -54,7 +54,7 @@ export default function Presentation() {
             <div className="opening-to-home" data-active={state.slideIndex <= 2}
               data-handoff={state.slideIndex === 3 && state.stepIndex === 0} aria-hidden={state.slideIndex > 2}>
               <OpeningSequence slideIndex={Math.min(state.slideIndex, 2)} stepIndex={state.slideIndex <= 2 ? state.stepIndex : 0}
-                handoff={state.slideIndex === 3 && state.stepIndex === 0} />
+                handoff={state.slideIndex === 3 && state.stepIndex === 0} s03live={state.slideIndex === 2} />
             </div>
             <HomePlannerSequence slideIndex={state.slideIndex} stepIndex={state.stepIndex} />
             {state.slideIndex === 6 && <S07CoordinarNoEsVigilar stepIndex={state.stepIndex} />}
