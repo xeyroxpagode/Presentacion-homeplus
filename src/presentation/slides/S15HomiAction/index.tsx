@@ -1,15 +1,16 @@
-import HomiStage from '../homi-cinema/HomiStage'
-import { S15_BEATS } from '../homi-cinema/homiCinemaData'
+import HomiV4Stage from '../homi-cinema-v4/HomiV4Stage'
+import { S15_TRIGGERS } from '../homi-cinema-v4/homiV4Data'
 import type { SlideProps } from '../../presentationTypes'
 
-// V3.1 — Acción de Homi: frase → propuesta → (confirmación) → TaskRow en Planner.
-// s0 I00 reveal · s1 I01 cede espacio · s2 I02–I03 solicitud ·
-// s3 I04–I05 morph + propuesta · s4 I06–I07 transformación protagonista.
+// V4.2 — HOMI Action (contraste B + acción):
+// s0 T01 reveal Homi · s1 T02 recuerdo formulario Fricción ·
+// s2 T03 sustitución hacia Homi · s3 T04 solicitud Coca ·
+// s4 T05 propuesta pendiente · s5 T06 confirmación y resultado en Planner.
 export default function S15HomiAction({ stepIndex }: SlideProps) {
-  const beat = S15_BEATS[Math.min(stepIndex, S15_BEATS.length - 1)]
+  const trigger = S15_TRIGGERS[Math.min(stepIndex, S15_TRIGGERS.length - 1)]
   return (
     <div className="s15-scene" data-step={stepIndex} aria-label="Homi actúa sobre HomePlus">
-      <HomiStage beat={beat} />
+      <HomiV4Stage key={trigger} trigger={trigger} />
     </div>
   )
 }

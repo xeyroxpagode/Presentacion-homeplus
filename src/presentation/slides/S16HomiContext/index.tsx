@@ -1,14 +1,15 @@
-import HomiStage from '../homi-cinema/HomiStage'
-import { S16_BEATS } from '../homi-cinema/homiCinemaData'
+import HomiV4Stage from '../homi-cinema-v4/HomiV4Stage'
+import { S16_TRIGGERS } from '../homi-cinema-v4/homiV4Data'
 import type { SlideProps } from '../../presentationTypes'
 
-// V3.1 — Valor de la interfaz: s0 I08 Planner ampliado (mirar/comparar/
-// control) · s1 I09 dos formas de interactuar con el mismo dato.
+// V4.2 — HOMI Context / Two Ways:
+// s0 T07 Planner visual amplio · s1 T08 regreso a Homi ·
+// s2 T09 destello de las dos formas (única composición dual).
 export default function S16HomiContext({ stepIndex }: SlideProps) {
-  const beat = S16_BEATS[Math.min(stepIndex, S16_BEATS.length - 1)]
+  const trigger = S16_TRIGGERS[Math.min(stepIndex, S16_TRIGGERS.length - 1)]
   return (
     <div className="s16-scene" data-step={stepIndex} aria-label="La interfaz sigue siendo valiosa">
-      <HomiStage beat={beat} />
+      <HomiV4Stage key={trigger} trigger={trigger} />
     </div>
   )
 }

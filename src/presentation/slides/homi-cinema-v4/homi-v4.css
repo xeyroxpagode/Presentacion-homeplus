@@ -1,0 +1,264 @@
+/* HOMI V4.2 — geometría editorial y motion propios (1280×720, 16:9).
+   Curvas: EASE_SOFT / EASE_CINEMATIC / EASE_EXIT. Sin spring, bounce, glow,
+   partículas, rotación 3D, destellos, blur sobre contenido esencial.
+   Cada trigger monta su estado final estable; la entrada corre `both`.
+   Recorte editorial permitido: barras externas ocultadas por construcción
+   (las shells solo montan módulo + conversación), composer oculto en T05/T11
+   y destello para no recortar nunca Cancelar/Confirmar. */
+
+.s15-scene, .s16-scene, .s17-scene { position: absolute; inset: 0; }
+
+.h4-stage {
+  --h4-soft: cubic-bezier(.22,.61,.36,1);
+  --h4-cine: cubic-bezier(.16,1,.3,1);
+  --h4-exit: cubic-bezier(.4,0,1,1);
+  --h4-bg: #090706;
+  --h4-accent: #E7643F;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--h4-bg);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+}
+
+.h4-layer { position: absolute; inset: 0; pointer-events: none; }
+.h4-layer[data-layer='bg'] { z-index: 0; }
+
+/* Cajas editoriales congeladas (escenario lógico 1280×720). */
+.h4-box { position: absolute; z-index: 20; overflow: hidden; }
+.h4-box[data-box='hero'] { left: 390px; top: 278px; width: 500px; height: 130px; overflow: visible; }
+.h4-friction-scope { left: 216px; top: 118px; width: 848px; height: 486px; display: flex; align-items: center; justify-content: center; }
+.h4-box[data-box='homi'] { left: 150px; top: 100px; width: 980px; height: 530px; }
+.h4-box[data-box='planner'] { left: 135px; top: 100px; width: 1010px; height: 530px; }
+.h4-box[data-box='planner-wide'] { left: 110px; top: 82px; width: 1060px; height: 556px; }
+.h4-box[data-box='glimpse-homi'] { left: 88px; top: 167px; width: 518px; height: 385px; }
+.h4-box[data-box='glimpse-planner'] { left: 674px; top: 167px; width: 518px; height: 385px; }
+
+/* ---------- T01 hero ---------- */
+.h4-hero { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+.h4-hero-word {
+  margin: 0; color: #fff; font-size: 84px; line-height: 1; font-weight: 600; letter-spacing: -0.03em;
+  animation:
+    h4-hero-opacity 180ms var(--h4-soft) both,
+    h4-hero-rise 560ms var(--h4-soft) both;
+}
+@keyframes h4-hero-opacity { from { opacity: 0; } to { opacity: 1; } }
+@keyframes h4-hero-rise { from { opacity: 0; scale: .97; translate: 0 8px; } to { opacity: 1; scale: 1; translate: 0 0; } }
+
+/* ---------- T02 recuerdo Fricción (anatomía donante, espaciado compactado
+   para el recorte editorial apaisado; tipos y colores del componente real) ---------- */
+.h4-friction-scope .fr-sheet {
+  width: 480px; flex: none; background: #fff; border-radius: 28px;
+  font-family: 'DM Sans', Inter, system-ui, sans-serif;
+  box-shadow: 0 -12px 48px rgb(26 23 20 / 0.22);
+}
+.h4-friction-scope .fr-sheet { animation: none; }
+.h4-box[data-box='friction'] .fr-sheet { animation: h4-form-in 500ms var(--h4-soft) 120ms both; }
+@keyframes h4-form-in { from { opacity: 0; scale: .98; } to { opacity: 1; scale: 1; } }
+.h4-friction-scope .fr-sheet-handle { width: 40px; height: 4px; margin: 10px auto 0; border-radius: 2px; background: #ded5cb; }
+.h4-friction-scope .fr-sheet-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 10px; border-bottom: 1px solid #eee7e0; }
+.h4-friction-scope .fr-sheet-title { margin: 0; color: #1a1714; font-size: 22px; line-height: 1.25; font-weight: 700; }
+.h4-friction-scope .fr-sheet-x { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f4f0eb; color: #4a4540; font-size: 14px; }
+.h4-friction-scope .fr-sheet-body { padding: 10px 16px 6px; }
+.h4-friction-scope .fr-sheet-titlefield { padding: 10px 12px; border: 1px solid #ded5cb; border-radius: 12px; color: #1a1714; font-size: 21px; font-weight: 600; background: #fcfbf9; }
+.h4-friction-scope .fr-presets { display: flex; gap: 8px; margin-top: 10px; }
+.h4-friction-scope .fr-preset { flex: 1; height: 60px; display: flex; align-items: center; justify-content: center; border: 1px solid #eee7e0; border-radius: 14px; background: #f4f0eb; color: #4a4540; font-size: 15px; font-weight: 600; }
+.h4-friction-scope .fr-preset[data-active='true'] { background: #ffe3da; border-color: #e7643f; color: #a83e25; }
+.h4-friction-scope .fr-fieldrow { display: flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 6px; padding: 0 4px 0 2px; border-bottom: 1px solid #eee7e0; }
+.h4-friction-scope .fr-fieldrow-label { width: 110px; flex: none; color: #6b6560; font-size: 16px; }
+.h4-friction-scope .fr-fieldrow-value { flex: 1; color: #1a1714; font-size: 17px; font-weight: 500; }
+.h4-friction-scope .fr-fieldrow-caret { color: #beb4aa; font-size: 18px; }
+.h4-friction-scope .fr-inlinepicker { display: none; }
+.h4-friction-scope .fr-moredetails { display: flex; align-items: center; min-height: 38px; color: #e7643f; font-size: 16px; font-weight: 600; }
+.h4-friction-scope .fr-sheet-footer { padding: 6px 16px 16px; background: #fff; border-radius: 0 0 28px 28px; }
+.h4-friction-scope .fr-cta { display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 16px; background: #e7643f; color: #fff; font-size: 19px; font-weight: 600; }
+
+/* Fantasma de salida en T03: el formulario cede (exposición + escala mínima
+   0.975, sin blur) mientras Homi entra. Capa puramente escénica. */
+.h4-ghost-form { position: absolute; z-index: 15; left: 216px; top: 118px; width: 848px; height: 486px; display: flex; align-items: center; justify-content: center; pointer-events: none; }
+.h4-ghost-form .fr-sheet { width: 480px; flex: none; background: #fff; border-radius: 28px; font-family: 'DM Sans', Inter, system-ui, sans-serif; }
+.h4-stage[data-trigger='T03'] .h4-ghost-form { animation: h4-form-exit 460ms var(--h4-exit) 100ms both; }
+@keyframes h4-form-exit {
+  0% { opacity: 1; visibility: visible; scale: 1; }
+  100% { opacity: 0; visibility: hidden; scale: .975; }
+}
+
+/* ---------- Superficie Homi (contenido real ampliado proporcionalmente) ---------- */
+.h4-homi-surface { border-radius: 28px; }
+.h4-stage .homi-assistant-bar { padding: 20px 30px 14px; }
+.h4-stage .homi-assistant-bar img { width: 56px; height: 56px; border-radius: 16px; }
+.h4-stage .homi-assistant-name { font-size: 40px; }
+.h4-stage .homi-assistant-sub { font-size: 20px; }
+.h4-stage .homi-thread { gap: 18px; padding: 12px 30px 16px; justify-content: flex-start; }
+.h4-stage .homi-greeting p { font-size: 30px; }
+.h4-stage .homi-user-bubble { padding: 20px 26px; border-radius: 26px 26px 10px 26px; }
+.h4-stage .homi-user-bubble p { font-size: 38px; }
+.h4-stage .homi-user-bubble[data-compact='true'] p { font-size: 31px; }
+.h4-stage .homi-proposal { padding: 22px 28px; border-radius: 22px; }
+.h4-stage .homi-proposal p { font-size: 24px; }
+.h4-stage .homi-confirm, .h4-stage .homi-dismiss { height: 62px; font-size: 25px; }
+.h4-stage .homi-composer { margin: 0 30px 20px; padding: 10px 10px 10px 24px; }
+.h4-stage .homi-composer-hint { font-size: 20px; }
+.h4-stage .homi-send { width: 48px; height: 48px; }
+.h4-stage .homi-done { padding: 16px 20px; border-radius: 18px; }
+.h4-stage .homi-done-title { font-size: 24px; }
+.h4-stage .homi-done-sub { font-size: 19px; }
+
+/* Fijar estados: las piezas de demo usan transiciones de visibilidad; en la
+   película cada trigger ya es su estado final (sin parpadeos). */
+.h4-stage .h4-always { transition: none; }
+.h4-stage .homi-user-bubble.h4-always,
+.h4-stage .homi-proposal.h4-always,
+.h4-stage .homi-decision-row.h4-always,
+.h4-stage .homi-done.h4-always,
+.h4-stage .homi-greeting.h4-always { opacity: 1; visibility: visible; transform: none; }
+
+/* Propuesta Coca dentro de la conversación (no aislada sobre negro). */
+.h4-proposal-kicker { margin: 0; color: var(--home-ink); font-size: 32px !important; font-weight: 600; }
+.h4-proposal-divider { display: block; height: 2px; margin: 14px 0; background: rgb(26 24 22 / 0.08); }
+.h4-proposal-title { margin: 0; color: var(--home-ink); font-size: 34px !important; font-weight: 500; }
+.h4-proposal-date { display: flex; align-items: center; gap: 12px; margin: 12px 0 0 !important; color: var(--home-muted); font-size: 27px !important; }
+
+/* Propuesta importante: actual y propuesto coexisten. */
+.h4-change-cols { display: flex; gap: 28px; }
+.h4-change-col { flex: 1; }
+.h4-change-kicker { margin: 0; color: var(--home-muted); font-size: 21px !important; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; }
+.h4-change-day { margin: 6px 0 0; color: var(--home-ink); font-size: 48px !important; line-height: 1.05; font-weight: 600; }
+.h4-change-hour { margin: 4px 0 0; color: var(--home-muted); font-size: 27px !important; }
+
+/* En T05/T11 la solicitud es secundaria: se compacta la barra para que la
+   propuesta + Cancelar/Confirmar quepan íntegros sin recorte (ajuste de
+   espacio exterior; anatomía y tokens intactos). */
+.h4-stage[data-trigger='T05'] .homi-assistant-bar,
+.h4-stage[data-trigger='T11'] .homi-assistant-bar { padding: 12px 30px 8px; }
+.h4-stage[data-trigger='T05'] .homi-assistant-bar img,
+.h4-stage[data-trigger='T11'] .homi-assistant-bar img { width: 40px; height: 40px; border-radius: 12px; }
+.h4-stage[data-trigger='T05'] .homi-assistant-name,
+.h4-stage[data-trigger='T11'] .homi-assistant-name { font-size: 30px; }
+.h4-stage[data-trigger='T05'] .homi-assistant-sub,
+.h4-stage[data-trigger='T11'] .homi-assistant-sub { font-size: 17px; }
+.h4-stage[data-trigger='T05'] .homi-thread,
+.h4-stage[data-trigger='T11'] .homi-thread { gap: 14px; padding: 8px 30px 12px; }
+.h4-stage[data-trigger='T05'] .homi-user-bubble { padding: 14px 22px; }
+.h4-stage[data-trigger='T05'] .homi-proposal,
+.h4-stage[data-trigger='T11'] .homi-proposal { padding: 18px 24px; }
+.h4-stage[data-trigger='T05'] .homi-confirm, .h4-stage[data-trigger='T05'] .homi-dismiss,
+.h4-stage[data-trigger='T11'] .homi-confirm, .h4-stage[data-trigger='T11'] .homi-dismiss { height: 60px; }
+
+/* Composer oculto por recorte editorial solo donde la propuesta + acciones
+   necesitan todo el alto (T05/T11 y destello); visible en T03/T04/T08/T10. */
+.h4-stage[data-trigger='T05'] .homi-composer,
+.h4-stage[data-trigger='T11'] .homi-composer,
+.h4-stage[data-trigger='T09'] .homi-composer { display: none; }
+
+/* ---------- Entradas Homi ---------- */
+.h4-stage[data-trigger='T03'] .h4-box[data-box='homi'] { animation: h4-homi-enter 850ms var(--h4-cine) 220ms both; }
+@keyframes h4-homi-enter { from { opacity: 0; } to { opacity: 1; } }
+.h4-stage[data-trigger='T04'] .homi-user-bubble { animation: h4-msg-in 340ms var(--h4-soft) both; }
+@keyframes h4-msg-in { from { opacity: 0; translate: 0 12px; } to { opacity: 1; translate: 0 0; } }
+
+/* T05: solicitud se acomoda (0–250) → propuesta (200–520) → título/fecha
+   (300–620) → ambos botones juntos (450–750). */
+.h4-stage[data-trigger='T05'] .homi-user-bubble { animation: h4-settle 250ms var(--h4-soft) both; }
+.h4-stage[data-trigger='T05'] .h4-proposal-coca { animation: h4-card-in 320ms var(--h4-cine) 200ms both; }
+.h4-stage[data-trigger='T05'] .h4-proposal-title,
+.h4-stage[data-trigger='T05'] .h4-proposal-date { animation: h4-fade 320ms var(--h4-soft) 300ms both; }
+.h4-stage[data-trigger='T05'] .homi-decision-row { animation: h4-fade 300ms var(--h4-soft) 450ms both; }
+@keyframes h4-settle { from { opacity: 0.4; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
+@keyframes h4-card-in { from { opacity: 0; translate: 0 18px; } to { opacity: 1; translate: 0 0; } }
+@keyframes h4-fade { from { opacity: 0; } to { opacity: 1; } }
+
+/* ---------- Planner (anatomía auténtica, type escalado por tokens) ---------- */
+.h4-planner-surface { border-radius: 28px; }
+.h4-planner-surface .home-status-bar,
+.h4-planner-surface .home-top-bar,
+.h4-planner-surface .home-navigation,
+.h4-planner-surface .home-system-indicator { display: none; }
+.h4-planner-surface .planner-heading { padding: 18px 30px 10px; }
+.h4-planner-surface .planner-heading h1 { font-size: 44px; }
+.h4-tabs-scale { margin: 0 30px 12px; }
+.h4-planner-surface .planner-workspace { padding: 0 30px 22px; }
+.h4-planner-surface .planner-task-row { min-height: 104px; }
+.h4-planner-surface .planner-panel-stack { margin: 0; }
+
+/* T06: match cut editorial (sin morph). Entrada Planner 300–560, Coca
+   legible 480–800, contexto estable a 1050. Destello único sobre la fila. */
+.h4-stage[data-trigger='T06'] .h4-box[data-box='planner'] { animation: h4-planner-in 560ms var(--h4-cine) 300ms both; }
+@keyframes h4-planner-in { from { opacity: 0; translate: 0 16px; } to { opacity: 1; translate: 0 0; } }
+.h4-planner-surface[data-focus-coca='true'] .planner-task-row[data-task-id='coca-homi-v4'] { animation: h4-coca-spot 1050ms var(--h4-soft) 480ms both; }
+@keyframes h4-coca-spot {
+  0% { background-color: transparent; }
+  35% { background-color: var(--home-brand-soft); }
+  70% { background-color: var(--home-brand-soft); }
+  100% { background-color: transparent; }
+}
+/* Fantasma de confirmación T06: press del botón (0–160) y cesión del foco. */
+.h4-ghost-confirm { position: absolute; z-index: 15; left: 234px; top: 309px; width: 812px; height: 302px; pointer-events: none; display: flex; align-items: flex-end; justify-content: flex-end; padding: 24px; }
+.h4-ghost-confirm span { display: flex; align-items: center; justify-content: center; width: 220px; height: 62px; border-radius: 14px; background: var(--home-brand); color: #fff; font-size: 25px; font-weight: 600; }
+.h4-stage[data-trigger='T06'] .h4-ghost-confirm { animation: h4-confirm-press 380ms var(--h4-soft) both; }
+@keyframes h4-confirm-press {
+  0% { opacity: 1; scale: 1; }
+  20% { opacity: 1; scale: .975; }
+  40% { opacity: 1; scale: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+/* T07: reencuadre 540–650 + deriva de comparación 24px sobre metadatos. */
+.h4-stage[data-trigger='T07'] .h4-box[data-box='planner-wide'] { animation: h4-wide-in 650ms var(--h4-cine) 120ms both; }
+@keyframes h4-wide-in { from { opacity: 0; scale: .985; } to { opacity: 1; scale: 1; } }
+.h4-planner-surface[data-compare='true'] .h4-tasks-scale { animation: h4-compare-drift 400ms var(--h4-soft) 650ms both; }
+@keyframes h4-compare-drift { from { translate: 0 0; } 50% { translate: 0 24px; } to { translate: 0 0; } }
+
+/* T08: cambio editorial de atención (recorte, sin teléfonos en movimiento). */
+.h4-stage[data-trigger='T08'] .h4-box[data-box='homi'] { animation: h4-homi-return 690ms var(--h4-cine) 180ms both; }
+@keyframes h4-homi-return { from { opacity: 0; translate: 0 14px; } to { opacity: 1; translate: 0 0; } }
+
+/* T09 destello: Homi se reencuadra (0–420), Planner aparece (180–520,
+   translateX +18→0), coexisten hasta el próximo trigger. Sin flechas,
+   signos, marcos ni títulos explicativos. */
+.h4-stage[data-trigger='T09'] .h4-box[data-box='glimpse-homi'] { animation: h4-glimpse-left 420ms var(--h4-cine) both; }
+.h4-stage[data-trigger='T09'] .h4-box[data-box='glimpse-planner'] { animation: h4-glimpse-right 340ms var(--h4-cine) 180ms both; }
+@keyframes h4-glimpse-left { from { opacity: 0; translate: -18px 0; } to { opacity: 1; translate: 0 0; } }
+@keyframes h4-glimpse-right { from { opacity: 0; translate: 18px 0; } to { opacity: 1; translate: 0 0; } }
+.h4-stage[data-trigger='T09'] .homi-user-bubble p { font-size: 28px !important; }
+.h4-stage[data-trigger='T09'] .homi-assistant-name { font-size: 30px; }
+.h4-stage[data-trigger='T09'] .homi-assistant-sub { font-size: 16px; }
+.h4-stage[data-trigger='T09'] .homi-assistant-bar img { width: 44px; height: 44px; }
+.h4-stage[data-trigger='T09'] .homi-done-title { font-size: 20px; }
+.h4-stage[data-trigger='T09'] .homi-done-sub { font-size: 16px; }
+.h4-stage[data-trigger='T09'] .planner-heading h1 { font-size: 34px; }
+.h4-stage[data-trigger='T09'] .h4-tabs-scale { margin: 0 22px 10px; }
+.h4-stage[data-trigger='T09'] .planner-workspace { padding: 0 22px 18px; }
+
+/* T10: entra la solicitud importante (260ms, +10→0) tras la coexistencia. */
+.h4-stage[data-trigger='T10'] .h4-box[data-box='homi'] { animation: h4-homi-return 450ms var(--h4-cine) both; }
+.h4-stage[data-trigger='T10'] .homi-user-bubble { animation: h4-msg-small 260ms var(--h4-soft) 200ms both; }
+@keyframes h4-msg-small { from { opacity: 0; translate: 0 10px; } to { opacity: 1; translate: 0 0; } }
+
+/* T11: acomodo (0–220) → encabezado (180–440) → actual (300–550) →
+   propuesto (420–660) → botones juntos (580–800). Quietud posterior. */
+.h4-stage[data-trigger='T11'] .homi-user-bubble { animation: h4-settle 220ms var(--h4-soft) both; }
+.h4-stage[data-trigger='T11'] .h4-change { animation: h4-card-in 320ms var(--h4-cine) 180ms both; }
+.h4-stage[data-trigger='T11'] .h4-change-col[data-side='current'] { animation: h4-fade 250ms var(--h4-soft) 300ms both; }
+.h4-stage[data-trigger='T11'] .h4-change-col[data-side='proposed'] { animation: h4-fade 240ms var(--h4-soft) 420ms both; }
+.h4-stage[data-trigger='T11'] .homi-decision-row { animation: h4-fade 220ms var(--h4-soft) 580ms both; }
+
+/* T12 negro absoluto: sale mensaje (0–180) y propuesta (80–280), cae el
+   contexto (240–380), fondo cálido→negro (300–420). Hold estable. */
+.h4-black { position: absolute; inset: 0; z-index: 60; background: #000; animation: h4-to-black 420ms linear 300ms both; }
+@keyframes h4-to-black { from { opacity: 0; } to { opacity: 1; } }
+.h4-ghost-out { position: absolute; z-index: 20; left: 150px; top: 100px; width: 980px; height: 530px; pointer-events: none; }
+.h4-stage[data-trigger='T12'] { animation: h4-stage-black 420ms linear 300ms both; }
+@keyframes h4-stage-black { from { background-color: var(--h4-bg); } to { background-color: #000; } }
+.h4-stage[data-trigger='T12'] .homi-composer { display: none; }
+.h4-stage[data-trigger='T12'] .h4-ghost-out .homi-user-bubble { animation: h4-ghost-msg 180ms var(--h4-exit) both; }
+.h4-stage[data-trigger='T12'] .h4-ghost-out .h4-change,
+.h4-stage[data-trigger='T12'] .h4-ghost-out .homi-decision-row { animation: h4-ghost-card 200ms var(--h4-exit) 80ms both; }
+.h4-stage[data-trigger='T12'] .h4-ghost-out { animation: h4-ghost-context 140ms var(--h4-exit) 240ms both; }
+@keyframes h4-ghost-msg { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+@keyframes h4-ghost-card { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+@keyframes h4-ghost-context { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .h4-stage * { animation-duration: 1ms !important; animation-delay: 0ms !important; }
+}
