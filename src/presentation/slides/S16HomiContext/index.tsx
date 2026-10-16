@@ -1,26 +1,15 @@
-import AmbientGlow from '../../components/AmbientGlow'
-import PhoneFrame from '../../components/PhoneFrame'
-import HomiContextDemoScreen from '../../app-screens/HomiContextDemoScreen'
+import HomiV8Stage from '../homi-cinema-v8/HomiV8Stage'
+import { S16_BEATS } from '../homi-cinema-v8/homiV8Data'
 import type { SlideProps } from '../../presentationTypes'
-import './s16-homi.css'
 
-export default function S16HomiContext({ stepIndex }: SlideProps) {
+// V8 — HOMI Context (Gaby): P08 mirar · P09 comparar · P10 control visual·
+// P11 regreso a Homi · P12 intención importante · P13 interpretar ·
+// P14 proponer · P15 negro · P16–P23 Gaby.
+export default function S16HomiContext({ stepIndex, directSnapshot }: SlideProps) {
+  const beat = S16_BEATS[Math.min(stepIndex, S16_BEATS.length - 1)]
   return (
-    <div className="s16-scene" data-step={stepIndex} aria-label="Homi entiende tu contexto">
-      <AmbientGlow x={640} y={380} size={900} intensity={0.6} opacity={0.14} />
-      <div className="s16-idea-zone">
-        <p className="s16-idea">La misma pregunta.</p>
-        <p className="s16-idea s16-idea-quiet">Distinto contexto.</p>
-      </div>
-      <div className="s16-phone-motion">
-        <div className="s16-phone-slot">
-          <PhoneFrame scale={1.08}>
-            <div className="s16-screen-fill">
-              <HomiContextDemoScreen stepIndex={stepIndex} />
-            </div>
-          </PhoneFrame>
-        </div>
-      </div>
+    <div className="s16-scene" data-step={stepIndex} aria-label="La interfaz sigue siendo valiosa">
+      <HomiV8Stage beat={beat} directSnapshot={directSnapshot} />
     </div>
   )
 }
