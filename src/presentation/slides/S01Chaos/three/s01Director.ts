@@ -223,6 +223,68 @@ export class S01Director {
     return this.mode !== 'idle' || this.step === 3 || this.step === 4
   }
 
+  /* ---- Puente S01→S02 (handoff): HOLD en el final del portal ---------
+   * El travelling WIDE→PHONE_INSIDE vive íntegramente en el beat 5 de
+   * S01 (sampleScript5, 1450 ms, sin modificar). Durante S02.0, S01 sigue
+   * montada detrás y la cámara se mantiene en PHONE_INSIDE (cobertura
+   * geométrica total): S02.0 permanece invisible hasta su llegada y el
+   * relevo 3D→2D es píxel-equivalente (misma composición WhatsApp).
+   * Sin poses nuevas, sin curvas nuevas, sin segundo zoom.
+   * Adaptado al S01 V5.2.1 actual: el rango del dive es el portal propio
+   * [portal[0] → portal[1]] y el muestreo es el propio sampleScript5. */
+
+  /** Intervalo del travelling hacia el teléfono (ms de enter5). */
+  diveRange(): [number, number] {
+    return [s01Timings.enter5.portal[0], s01Timings.enter5.portal[1]]
+  }
+
+  /**
+   * Muestreo del puente durante S02.0. p ∈ [0,1] es el progreso lineal de
+   * S02.0; la cámara se mantiene en el final del portal (el dive ya ocurrió
+   * en S01.5). Anti-salto: si la pose actual difiere >5 mm (p. ej. deep-link
+   * directo a S02.0), converge en 150 ms con la política de mezcla de las
+   * interrupciones existentes, sin alterar la trayectoria.
+   */
+  sampleDiveAt(p: number, aspect = this.aspect, dtMs = 0) {
+    void p
+    this.aspect = aspect
+    const [, t1] = this.diveRange()
+    const target: Record<string, number> = {}
+    this.sampleScript5(t1, target)
+    if (!this.diveBlend && dtMs > 0 && this.camDistToParams(target) > 0.005) {
+      this.diveBlend = { from: { ...this.params }, t: 0 }
+    }
+    if (this.diveBlend) {
+      this.diveBlend.t += dtMs
+      const u = easeOut(clamp01(this.diveBlend.t / 150))
+      for (const key of Object.keys(target)) {
+        const from = this.diveBlend.from[key] ?? target[key]!
+        this.params[key] = lerp(from, target[key]!, u)
+      }
+      if (this.diveBlend.t >= 150) this.diveBlend = null
+    } else {
+      for (const key of Object.keys(target)) this.params[key] = target[key]!
+    }
+    this.mode = 'idle'
+    this.blendFrom = null
+    this.elapsed = t1
+    this.writeFrame()
+  }
+
+  private diveBlend: { from: Record<string, number>; t: number } | null = null
+
+  /** ¿Hay una convergencia anti-salto en curso? (el canvas debe invalidar). */
+  get diveBlendActive(): boolean {
+    return this.diveBlend !== null
+  }
+
+  private camDistToParams(target: Record<string, number>): number {
+    const dx = (this.params['camPos.0'] ?? 0) - (target['camPos.0'] ?? 0)
+    const dy = (this.params['camPos.1'] ?? 0) - (target['camPos.1'] ?? 0)
+    const dz = (this.params['camPos.2'] ?? 0) - (target['camPos.2'] ?? 0)
+    return Math.sqrt(dx * dx + dy * dy + dz * dz)
+  }
+
   /** Duración del beat actual (para QA). */
   beatDuration() {
     if (this.mode === 'script5') return this.scriptEnd

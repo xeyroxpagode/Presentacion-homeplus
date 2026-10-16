@@ -1,8 +1,9 @@
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { s01Palette as c } from './s01ThreeConfig'
 import { s01Director } from './s01Director'
+import { bandRectPx, createWhatsAppScreenTexture } from './phoneScreenTexture'
 import { DEG, s01AccumDocs, s01Dishes, s01Docs, s01Geo, s01Loose, s01PhoneClearZone, s01Smoke, type DishKind } from './s01CinematicConfig'
 
 /* S01 CINEMATIC FINAL PRIME — props HERO con estado físico.
@@ -1283,9 +1284,44 @@ function FridgeFoods() {
 /* ------------------------------------------------------------------ */
 /* PHONE HERO — PHONE_WORLD → PHONE_RIG → CHASSIS/BEZEL/GLASS/SCREEN /  */
 /* BUTTONS. Face-up, top al fondo, yaw 8°. Screen = mesh independiente */
-/* negro apagado todo S01 (básico, sin tone mapping: negro garantizado) */
-/* Anchors A_PHONE_SCREEN_* para debug y futuro handoff S02.           */
+/* con WhatsApp canónico S02 V15 (phoneScreenTexture, sRGB, sin tone   */
+/* mapping: emite como pantalla encendida). Geometría, chasis, bisel,   */
+/* orientación y rig intactos V5.2.1; sólo el material del display deja */
+/* de ser negro. Box con 6 materiales: cara +Y emite la interfaz;      */
+/* laterales y base siguen negros (sin UV estirada en cantos).          */
+/* Anchors A_PHONE_SCREEN_* para debug y handoff S02.                  */
 /* ------------------------------------------------------------------ */
+
+function PhoneScreenMesh({ screenY, sw, sd }: { screenY: number; sw: number; sd: number }) {
+  const tex = useMemo(() => createWhatsAppScreenTexture(), [])
+  const mats = useMemo(() => {
+    const edge = new THREE.MeshBasicMaterial({ color: '#000000', toneMapped: false })
+    const face = new THREE.MeshBasicMaterial({ map: tex, toneMapped: false })
+    // BoxGeometry: [+x, -x, +y, -y, +z, -z]. Display = cara +Y.
+    return [edge, edge, face, edge, edge, edge]
+  }, [tex])
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const w = window as unknown as Record<string, unknown>
+      w.__s01ScreenBand = bandRectPx()
+      try {
+        const cvs = tex.image as HTMLCanvasElement | undefined
+        if (cvs?.toDataURL) w.__s01ScreenTexURL = cvs.toDataURL('image/png')
+      } catch {
+        /* offline canvas: sin volcado */
+      }
+    }
+    return () => {
+      tex.dispose()
+      mats.forEach((m) => m.dispose())
+    }
+  }, [tex, mats])
+  return (
+    <mesh position={[0, screenY, 0]} material={mats} receiveShadow>
+      <boxGeometry args={[sw, 0.0012, sd]} />
+    </mesh>
+  )
+}
 
 function Phone() {
   const p = s01Geo.phone
@@ -1320,12 +1356,9 @@ function Phone() {
           <Box size={[bw + 0.0008, 0.0008, 0.0012]} position={[0, bh / 2 + 0.0004, bd / 2]} color="#232428" roughness={0.65} metalness={0.2} />
           <Box size={[bw + 0.0008, 0.0008, 0.0012]} position={[0, bh / 2 + 0.0004, -bd / 2]} color="#232428" roughness={0.65} metalness={0.2} />
         </group>
-        {/* PHONE_SCREEN — mesh independiente, APAGADA todo S01 */}
+        {/* PHONE_SCREEN — mesh físico con WhatsApp canónico en su display */}
         <group name="PHONE_SCREEN">
-          <mesh position={[0, screenY, 0]} receiveShadow>
-            <boxGeometry args={[sw, 0.0012, sd]} />
-            <meshBasicMaterial color="#000000" toneMapped={false} />
-          </mesh>
+          <PhoneScreenMesh screenY={screenY} sw={sw} sd={sd} />
           {/* anchors del plano de pantalla (handoff S02 + QA angular) */}
           <group name="A_PHONE_SCREEN" position={[0, screenY, 0]} />
           <group name="A_PHONE_SCREEN_TOP" position={[0, screenY, -sd / 2]} />

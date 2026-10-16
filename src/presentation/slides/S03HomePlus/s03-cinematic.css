@@ -1,0 +1,53 @@
+/* S03 — identidad cinematográfica HomePlus. Stage absoluto 1280×720.
+   Sin scroll, sin navegación interna, sin glows ni sombras decorativas.
+   @font-face Manrope duplicada a propósito: S03 no depende del CSS de S02. */
+@font-face {
+  font-family: 'Manrope';
+  src: url('../S02FragmentedInfo/fonts/manrope-latin-wght-normal.woff2') format('woff2-variations');
+  font-style: normal;
+  font-weight: 200 800;
+  font-display: swap;
+}
+
+.s03-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* S03 sólo existe en su slide: fuera de él permanece oculta (como el
+   .homeplus-reveal original) para no tapar S01/S02 que están debajo. */
+.s03-stage[data-active='false'] {
+  visibility: hidden;
+}
+
+.s03-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.s03-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
+
+.s03-svg text {
+  user-select: none;
+}
+
+.s03-home-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s03-stage { visibility: visible; }
+}

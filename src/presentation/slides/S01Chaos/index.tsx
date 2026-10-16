@@ -20,26 +20,30 @@ import {
 } from './DioramaProps'
 import './chaos-scene.css'
 
-// S01 V2.1 — cocina-diorama 2.5D con cámara virtual. Seis beats (stepIndex
-// 0–5), todo el estado deriva de data-step / data-present / data-invade.
-// Fondo y halo viven fuera de .chaos-camera (no viajan con el zoom).
-// Lookdev 3D (?dev=1&s01Renderer=three): carga diferida para que el bundle
-// normal no pague el costo de three.js.
+// S01 V5.2.1 — mundo 3D canónico (Three.js + React Three Fiber, FOV 36°).
+// Seis beats (stepIndex 0–5); el beat 5 es exclusivamente el dive físico
+// WIDE→PHONE_INSIDE (1450 ms). El renderer 3D es el recorrido de producción
+// por defecto; el diorama 2.5D queda sólo tras ?s01Renderer=flat (debug).
+// Handoff S01→S02: S01 permanece montada y visible durante S02.0 (el puente
+// s01DiveBridge mantiene la cámara en PHONE_INSIDE); S02.0 toma la superficie
+// sólo con cobertura geométrica total, sin fade ni corte. Al avanzar a S02.1+
+// el fullscreen de WhatsApp ya la ocluye y S01 puede retirarse.
 const S01ThreeCanvas = lazy(() => import('./three/S01Canvas'))
 
-export default function S01Chaos({ stepIndex, active = true }: SlideProps & { active?: boolean }) {
+export default function S01Chaos({ stepIndex, active = true, phoneHidden = false, sceneKey = 0 }: SlideProps & { active?: boolean; phoneHidden?: boolean; sceneKey?: number }) {
   const step = Math.min(Math.max(stepIndex, 0), 5)
   const climax = step === 5
   const search = step >= 3
+  void phoneHidden
   // Dev-only (?s01Camera=off): congela la cámara en el plano general.
   const cameraOff = new URLSearchParams(window.location.search).get('s01Camera') === 'off'
-  // Dev-only (?dev=1&s01Renderer=three): lookdev 3D estático en vez del
-  // diorama 2.5D. El renderer original queda intacto por defecto.
+  // Renderer 3D original (producción). Carga diferida para que el bundle
+  // normal no pague el costo de three.js.
   if (isS01ThreeRenderer()) {
     return (
       <div className="chaos-scene opening-layer" data-active={active} aria-hidden={!active}>
         <Suspense fallback={null}>
-          <S01ThreeCanvas stepIndex={step} />
+          <S01ThreeCanvas stepIndex={step} sceneKey={sceneKey} />
         </Suspense>
       </div>
     )

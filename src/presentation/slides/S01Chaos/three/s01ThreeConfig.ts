@@ -1,11 +1,14 @@
-// S01 LOOKDEV 3D — configuración compartida del lookdev estático.
-// Se activa con ?dev=1&s01Renderer=three; sin ese param, S01 usa el
-// renderer SVG/CSS existente sin ningún cambio de comportamiento.
+// S01 CANÓNICA 3D — configuración del renderer original (mundo V5.2.1).
+// La S01 final aprobada ES la experiencia tridimensional (Three.js + React
+// Three Fiber, FOV 36°). El renderer 3D es el recorrido de producción por
+// defecto; `?s01Renderer=flat` conserva el diorama 2.5D sólo como fallback
+// de depuración (no forma parte del recorrido aprobado).
+// Integración S02/S03: el handoff S01→S02 exige el renderer 3D real.
 
-/** Dev flag: ¿S01 debe renderizar el lookdev Three.js en vez del diorama 2.5D? */
+/** ¿S01 debe usar el diorama 2.5D en vez del renderer 3D original? (sólo debug) */
 export function isS01ThreeRenderer(): boolean {
   if (typeof window === 'undefined') return false
-  return new URLSearchParams(window.location.search).get('s01Renderer') === 'three'
+  return new URLSearchParams(window.location.search).get('s01Renderer') !== 'flat'
 }
 
 /** Paleta apagada: negros cálidos, antracita azulada, maderas neutras,
