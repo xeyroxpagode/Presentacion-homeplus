@@ -9,7 +9,6 @@ import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
 import {
   V6ComposerTyping, V6FrozenMemory, V6HomiAccess, V6HomiConfirmed,
   V6HomiFocused, V6HomiProposal, V6HomiReady, V6HomiRequest, V6PlannerAfterConfirm,
-  V6PlannerContext,
 } from './BenjaShots'
 import {
   V6_CLIPPINGS, V6ContextModules, V6HomeFinal, V6HomiIdentity, V6ProfileCard,
@@ -74,6 +73,8 @@ function MorphProposalToPlanner() {
           aria-hidden="true"
           style={{ '--v6-dx': `${flight.dx}px`, '--v6-dy': `${flight.dy}px`, '--v6-scale': flight.scale } as CSSProperties}
         >
+          <p className="v6-proposal-kicker">Crear tarea</p>
+          <span className="v6-proposal-divider" aria-hidden="true" />
           <p className="v6-proposal-title">{COCA_TASK_TITLE}</p>
           <p className="v6-proposal-date"><span>Mañana · lun 17 de agosto</span></p>
         </div>
@@ -91,7 +92,7 @@ function BeatScene({ beat }: { beat: HomiV6Beat }) {
     case 'P01':
       return (
         <div className="v6-duo">
-          <div className="v6-form-exit" aria-hidden="true"><FrictionEchoV4 /></div>
+          <div className="v6-form-exit v6-friction-scope" aria-hidden="true"><FrictionEchoV4 /></div>
           <div className="v6-box v6-homi-enter"><V6HomiReady /></div>
         </div>
       )
@@ -101,7 +102,7 @@ function BeatScene({ beat }: { beat: HomiV6Beat }) {
           <div className="v6-echoes" aria-hidden="true">
             <div className="v6-echo" data-echo="planner"><span>Planner · Tareas · Calendario · Planes</span></div>
             <div className="v6-echo" data-echo="add"><span>+</span></div>
-            <div className="v6-echo" data-echo="form"><FrictionEchoV4 /></div>
+            <div className="v6-echo v6-friction-scope" data-echo="form"><FrictionEchoV4 /></div>
           </div>
           <div className="v6-box v6-homi-center"><V6HomiReady /></div>
         </div>
@@ -177,14 +178,14 @@ function BeatScene({ beat }: { beat: HomiV6Beat }) {
     case 'P17':
       return (
         <div className="v6-wide" data-memory="true">
-          <div className="v6-wide-planner" data-dim="true"><V6PlannerContext /></div>
+          <div className="v6-wide-planner" data-dim="true"><V6PlannerAfterConfirm wide /></div>
           <div className="v6-memory"><V6FrozenMemory /></div>
         </div>
       )
     case 'P18':
       return (
         <div className="v6-wide" data-memory="true" data-decide="true">
-          <div className="v6-wide-planner" data-dim="true"><V6PlannerContext /></div>
+          <div className="v6-wide-planner" data-dim="true"><V6PlannerAfterConfirm wide /></div>
           <div className="v6-memory" data-focus-decide="true"><V6FrozenMemory /></div>
         </div>
       )

@@ -46,8 +46,8 @@ case "$CSS" in *"v6-black"*"{ position: absolute; inset: 0; background: #000;"*)
 case "$DATA$STAGE$BENJA$GABY" in
   *"Date.now"*|*"Math.random"*|*"fetch("*|*"localStorage"*|*"setInterval"*) fail E05 "no determinista";; *) pass E05 "sin reloj/azar/red";; esac
 
-# E06: alcance.
-case "$STAGE$BENJA$GABY$CSS" in
+# E06: alcance (solo .tsx; el CSS puede citar donantes en comentarios).
+case "$STAGE$BENJA$GABY" in
   *"S14Barrier"*|*"S01Chaos"*|*"S18Closing"*|*"PhoneFrame"*|*"Cumple de Juli"*|*"birthday"*) fail E06 "fuga de alcance";; *) pass E06 "sin fugas";; esac
 
 # L02/L08/L04.

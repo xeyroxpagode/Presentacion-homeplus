@@ -77,6 +77,32 @@
 .v6-stage .homi-done-title { font-size: 22px; }
 .v6-stage .homi-done-sub { font-size: 18px; }
 
+/* ——— Recuerdo Fricción: anatomía donante verbatim de homi-cinema-v4
+ * (homi-v4.css `.h4-friction-scope .fr-*`, copia fiel de S14Barrier de la
+ * rama donante s14/friction-cinematic-v5). Scope renombrado a V6. ——— */
+.v6-stage .v6-friction-scope .fr-sheet {
+  width: 480px; flex: none; background: #fff; border-radius: 28px;
+  font-family: 'DM Sans', Inter, system-ui, sans-serif;
+  box-shadow: 0 -12px 48px rgb(26 23 20 / 0.22);
+}
+.v6-stage .v6-friction-scope .fr-sheet-handle { width: 40px; height: 4px; margin: 10px auto 0; border-radius: 2px; background: #ded5cb; }
+.v6-stage .v6-friction-scope .fr-sheet-header { display: flex; align-items: center; justify-content: space-between; padding: 12px 16px 10px; border-bottom: 1px solid #eee7e0; }
+.v6-stage .v6-friction-scope .fr-sheet-title { margin: 0; color: #1a1714; font-size: 22px; line-height: 1.25; font-weight: 700; }
+.v6-stage .v6-friction-scope .fr-sheet-x { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; background: #f4f0eb; color: #4a4540; font-size: 14px; }
+.v6-stage .v6-friction-scope .fr-sheet-body { padding: 10px 16px 6px; }
+.v6-stage .v6-friction-scope .fr-sheet-titlefield { padding: 10px 12px; border: 1px solid #ded5cb; border-radius: 12px; color: #1a1714; font-size: 21px; font-weight: 600; background: #fcfbf9; }
+.v6-stage .v6-friction-scope .fr-presets { display: flex; gap: 8px; margin-top: 10px; }
+.v6-stage .v6-friction-scope .fr-preset { flex: 1; height: 60px; display: flex; align-items: center; justify-content: center; border: 1px solid #eee7e0; border-radius: 14px; background: #f4f0eb; color: #4a4540; font-size: 15px; font-weight: 600; }
+.v6-stage .v6-friction-scope .fr-preset[data-active='true'] { background: #ffe3da; border-color: #e7643f; color: #a83e25; }
+.v6-stage .v6-friction-scope .fr-fieldrow { display: flex; align-items: center; gap: 10px; min-height: 44px; margin-top: 6px; padding: 0 4px 0 2px; border-bottom: 1px solid #eee7e0; }
+.v6-stage .v6-friction-scope .fr-fieldrow-label { width: 110px; flex: none; color: #6b6560; font-size: 16px; }
+.v6-stage .v6-friction-scope .fr-fieldrow-value { flex: 1; color: #1a1714; font-size: 17px; font-weight: 500; }
+.v6-stage .v6-friction-scope .fr-fieldrow-caret { color: #beb4aa; font-size: 18px; }
+.v6-stage .v6-friction-scope .fr-inlinepicker { display: none; }
+.v6-stage .v6-friction-scope .fr-moredetails { display: flex; align-items: center; min-height: 38px; color: #e7643f; font-size: 16px; font-weight: 600; }
+.v6-stage .v6-friction-scope .fr-sheet-footer { padding: 6px 16px 16px; background: #fff; border-radius: 0 0 28px 28px; }
+.v6-stage .v6-friction-scope .fr-cta { display: flex; align-items: center; justify-content: center; height: 52px; border-radius: 16px; background: #e7643f; color: #fff; font-size: 19px; font-weight: 600; }
+
 /* ——— P01 ——— */
 .v6-stage[data-beat='P01'] .v6-duo { position: absolute; inset: 0; }
 .v6-stage[data-beat='P01'] .v6-form-exit {
@@ -84,7 +110,7 @@
   display: flex; align-items: center; justify-content: center; pointer-events: none;
   animation: v6-form-exit 630ms var(--v6-reframe) 120ms both;
 }
-.v6-stage[data-beat='P01'] .v6-form-exit .fr-sheet { width: 480px; background: #fff; border-radius: 28px; }
+.v6-stage[data-beat='P01'] .v6-form-exit .fr-sheet { width: 480px; }
 .v6-stage[data-beat='P01'] .v6-homi-enter { animation: v6-homi-enter 400ms var(--v6-enter) 220ms both; }
 
 @keyframes v6-form-exit {
@@ -111,7 +137,7 @@
 .v6-stage[data-beat='P02'] .v6-echo[data-echo='planner'] { left: 120px; top: 150px; width: 330px; height: 90px; --v6-ex: -70px; animation-delay: 60ms; }
 .v6-stage[data-beat='P02'] .v6-echo[data-echo='add'] { left: 1060px; top: 170px; width: 90px; height: 90px; border-radius: 50%; font-size: 44px; --v6-ex: 70px; animation-delay: 140ms; }
 .v6-stage[data-beat='P02'] .v6-echo[data-echo='form'] { left: 880px; top: 400px; width: 300px; height: 200px; overflow: hidden; --v6-ex: 70px; animation-delay: 220ms; }
-.v6-stage[data-beat='P02'] .v6-echo[data-echo='form'] .fr-sheet { width: 280px; transform: scale(0.62); background: #fff; border-radius: 24px; }
+.v6-stage[data-beat='P02'] .v6-echo[data-echo='form'].v6-friction-scope .fr-sheet { width: 280px; transform: scale(0.62); }
 
 @keyframes v6-echo-life {
   0% { opacity: 0; transform: translateX(0); }
@@ -183,13 +209,11 @@
   animation: v6-source-away 300ms ease 900ms both;
 }
 .v6-stage .v6-morph-clone {
-  position: absolute; left: 50%; top: 46%; width: 560px; transform: translate(-50%, -50%);
-  border-radius: 18px; padding: 16px 22px; background: var(--app-surface);
+  position: absolute; left: 50%; top: 46%; width: 640px; transform: translate(-50%, -50%);
+  border-radius: 22px; padding: 20px 26px; background: var(--app-surface);
   border: 1px solid rgb(26 24 22 / 0.12); box-shadow: 0 18px 48px rgb(26 24 22 / 0.22);
   animation: v6-flight 800ms var(--v6-reframe) 250ms both;
 }
-.v6-stage .v6-morph-clone .v6-proposal-title { font-size: 27px; }
-.v6-stage .v6-morph-clone .v6-proposal-date { font-size: 20px; }
 .v6-stage .v6-morph[data-landed='true'] [data-task-id='coca-homi-v6'] { animation: v6-row-flash 500ms ease 100ms both; }
 @keyframes v6-planner-reveal { to { opacity: 1; } }
 @keyframes v6-source-away { to { opacity: 0; transform: translate(-50%, -50%) scale(0.97); visibility: hidden; } }
@@ -382,13 +406,23 @@
 .v6-stage .v6-profile-record-title { margin: 0; font-size: 24px; font-weight: 650; color: var(--app-text); }
 .v6-stage .v6-profile-record-meta { margin: 2px 0 8px; font-size: 20px; color: rgb(26 24 22 / 0.65); }
 
-/* P28: Tomi centro · P29: Tomi izq .88 + Juli centro · P30: trío */
+/* P28: Tomi centro · P29: Tomi viaja a izq .88 + Juli entra centro */
 .v6-stage .v6-trio[data-count='1'] .v6-profile { left: 480px; animation: v6-profile-in 700ms var(--v6-enter) both; }
-.v6-stage .v6-trio[data-count='2'] .v6-profile[data-layout='left'] { left: 200px; transform: scale(0.88); transform-origin: center; }
+.v6-stage .v6-trio[data-count='2'] .v6-profile[data-layout='left'] { left: 200px; animation: v6-tomi-travel 600ms var(--v6-enter) both; }
 .v6-stage .v6-trio[data-count='2'] .v6-profile[data-layout='center'] { left: 640px; animation: v6-profile-in 700ms var(--v6-enter) 80ms both; }
+/* P30: cámara amplia — asentamiento coordinado del trío */
+.v6-stage .v6-trio[data-count='3'] .v6-profile { animation: v6-trio-settle 550ms var(--v6-enter) both; }
 .v6-stage .v6-trio[data-count='3'] .v6-profile[data-layout='left'] { left: 130px; transform: scale(0.92); }
 .v6-stage .v6-trio[data-count='3'] .v6-profile[data-layout='center'] { left: 480px; }
-.v6-stage .v6-trio[data-count='3'] .v6-profile[data-layout='right'] { left: 830px; transform: scale(0.92); animation: v6-profile-in 700ms var(--v6-enter) 80ms both; }
+.v6-stage .v6-trio[data-count='3'] .v6-profile[data-layout='right'] { left: 830px; transform: scale(0.92); animation-delay: 80ms; }
+@keyframes v6-tomi-travel {
+  from { opacity: 0; transform: translateX(280px); }
+  to { opacity: 1; transform: scale(0.88); }
+}
+@keyframes v6-trio-settle {
+  from { opacity: 0.35; transform: translateY(20px); }
+  to { opacity: 1; }
+}
 /* P31: comparación — tres paneles iguales X247/640/1033, ancho 320 */
 .v6-stage .v6-trio[data-compare='true'] .v6-profile { top: 247px; transform: none; animation: v6-profile-in 600ms var(--v6-enter) both; }
 .v6-stage .v6-trio[data-compare='true'] .v6-profile[data-profile='tomi'] { left: 87px; }

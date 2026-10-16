@@ -13,7 +13,7 @@ import '../../app-screens/PlannerDemoScreen/planner-screen.css'
 import FrictionEcho from '../homi-cinema-v4/FrictionEcho'
 import {
   COCA_GROUPS, COCA_MESSAGE_FULL, COCA_OP_KIND, COCA_TASK_TITLE, D1_LABEL, D1_SHORT,
-  PLANNER_AFTER_CONFIRM, TODAY_TASKS,
+  PLANNER_AFTER_CONFIRM,
 } from './homiV6Data'
 import type { CSSProperties, ReactNode } from 'react'
 
@@ -197,15 +197,6 @@ export function V6PlannerAfterConfirm({ wide = false, focusControl = false }: {
   return (
     <div className="v6-planner-native" data-wide={wide} data-focus-control={focusControl}>
       <PlannerDemoScreen view="tasks" tasks={PLANNER_AFTER_CONFIRM} emphasizeTasks settled={false} />
-    </div>
-  )
-}
-
-/** Planner nativo sin Coca (P11–P14 usan el estado posterior: con Coca). */
-export function V6PlannerContext() {
-  return (
-    <div className="v6-planner-native" data-wide data-focus-control={false}>
-      <PlannerDemoScreen view="tasks" tasks={TODAY_TASKS} emphasizeTasks settled={false} />
     </div>
   )
 }
