@@ -1,6 +1,8 @@
 import * as THREE from 'three'
+import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
 import { s01Palette as c } from './s01ThreeConfig'
-import S01CinematicProps from './S01CinematicProps'
+import S01CinematicProps, { S01FinalScope, useS01FinalLive, type S01FinalOverride } from './S01CinematicProps'
 import { s01Geo } from './s01CinematicConfig'
 
 /* S01 LOOKDEV — rincón de cocina/living low-poly, noche, sobrio.
@@ -98,10 +100,7 @@ function Room() {
       <Box size={[1.01, 0.07, 0.05]} position={[-2.46, 2.18, -2.96]} color={c.trim} />
       {/* Ventana nocturna en la pared izquierda */}
       <Box size={[0.015, 0.85, 1.05]} position={[-2.99, 1.8, -1.15]} color="#101826" roughness={0.4} />
-      <mesh position={[-2.99, 1.8, -1.15]}>
-        <boxGeometry args={[0.016, 0.85, 1.05]} />
-        <meshStandardMaterial color="#101826" roughness={0.4} emissive="#223552" emissiveIntensity={0.35} />
-      </mesh>
+      <WindowGlow />
       <Box size={[0.05, 0.06, 1.15]} position={[-2.97, 2.27, -1.15]} color={c.trim} />
       <Box size={[0.05, 0.06, 1.15]} position={[-2.97, 1.33, -1.15]} color={c.trim} />
       <Box size={[0.05, 0.97, 0.06]} position={[-2.97, 1.8, -1.72]} color={c.trim} />
@@ -182,6 +181,36 @@ function Island() {
 
 // ---- Lámparas colgantes sobre la isla (el acento cálido de la escena) ----
 
+/* Brillo de ventana nocturna (V6.0: atenuable por el apagado, 1 = S01). */
+function WindowGlow() {
+  const live = useS01FinalLive()
+  const mat = useRef<THREE.MeshStandardMaterial>(null)
+  useFrame(() => {
+    if (mat.current) mat.current.emissiveIntensity = 0.35 * (live?.windowDim ?? 1)
+  })
+  return (
+    <mesh position={[-2.99, 1.8, -1.15]}>
+      <boxGeometry args={[0.016, 0.85, 1.05]} />
+      <meshStandardMaterial ref={mat} color="#101826" roughness={0.4} emissive="#223552" emissiveIntensity={0.35} />
+    </mesh>
+  )
+}
+
+/* Bulbo de lámpara (V6.0: atenuable por el apagado, 1 = S01). */
+function PendantBulb() {
+  const live = useS01FinalLive()
+  const mat = useRef<THREE.MeshStandardMaterial>(null)
+  useFrame(() => {
+    if (mat.current) mat.current.emissiveIntensity = 2.4 * (live?.bulbDim ?? 1)
+  })
+  return (
+    <mesh position={[0, 1.96, 0]}>
+      <sphereGeometry args={[0.02, 10, 8]} />
+      <meshStandardMaterial ref={mat} color={c.bulb} emissive={c.bulb} emissiveIntensity={2.4} roughness={0.4} />
+    </mesh>
+  )
+}
+
 function Pendants() {
   return (
     <group>
@@ -189,10 +218,7 @@ function Pendants() {
         <group key={i} position={[x, 0, -0.35]}>
           <Cyl args={[0.006, 0.006, 1.02, 6]} position={[0, 2.57, 0]} color={c.kick} flat={false} />
           <Cyl args={[0.035, 0.125, 0.15, 10]} position={[0, 2.03, 0]} color="#232228" roughness={0.45} metalness={0.55} open />
-          <mesh position={[0, 1.96, 0]}>
-            <sphereGeometry args={[0.02, 10, 8]} />
-            <meshStandardMaterial color={c.bulb} emissive={c.bulb} emissiveIntensity={2.4} roughness={0.4} />
-          </mesh>
+          <PendantBulb />
         </group>
       ))}
     </group>
@@ -268,7 +294,23 @@ function WallShelf() {
   )
 }
 
-export default function S01World() {
+export default function S01World({ finalOverride = null }: { finalOverride?: S01FinalOverride | null }) {
+  return (
+    <S01FinalScope override={finalOverride}>
+      <group>
+        <S01StaticSet />
+        {/* Props con estado cinematográfico (puertas, heladera, docs, humo, teléfono) */}
+        <S01CinematicProps override={finalOverride} />
+      </group>
+    </S01FinalScope>
+  )
+}
+
+/* S01StaticSet — shell estático sin estado narrativo (opt-in V6.0).
+ * La escena final lo reutiliza y gobierna los props dinámicos con su
+ * propio frame congelado vía override de S01CinematicProps. Sin cambios
+ * de comportamiento para S01: S01World sigue siendo idéntico. */
+export function S01StaticSet() {
   return (
     <group>
       <Room />
@@ -279,8 +321,6 @@ export default function S01World() {
       <FruitBowl />
       <GroceryBag />
       <WallShelf />
-      {/* Props con estado cinematográfico (puertas, heladera, docs, humo, teléfono) */}
-      <S01CinematicProps />
     </group>
   )
 }

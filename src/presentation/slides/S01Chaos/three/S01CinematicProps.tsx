@@ -1,14 +1,61 @@
-import { useMemo, useRef } from 'react'
+import { createContext, useContext, useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
 import { s01Palette as c } from './s01ThreeConfig'
-import { s01Director } from './s01Director'
+import { s01Director, type S01Frame } from './s01Director'
 import { DEG, s01Docs, s01Geo, s01Loose, s01PhoneClearZone, s01Smoke } from './s01CinematicConfig'
 
 /* S01 CINEMATIC FINAL PRIME — props HERO con estado físico.
- * Todo se escribe por frame desde s01Director.frame (sin rerenders de React).
+ * Todo se escribe por frame desde el frame activo (sin rerenders de React).
  * Jerarquía semántica: PANTRY_ROOT / FRIDGE_WORLD / DOCUMENT_MODULE /
- * PHONE_WORLD. Pivots reales, nada rota desde su centro salvo que sea físico. */
+ * PHONE_WORLD. Pivots reales, nada rota desde su centro salvo que sea físico.
+ *
+ * OVERRIDE OPT-IN V6.0 (escena final): por defecto todo lee el singleton
+ * s01Director.frame (comportamiento S01 intacto). La escena FinalKitchen
+ * provee `override={{ frame, screenMap, live }}` y los componentes leen el
+ * frame congelado + la textura de pantalla sin tocar el estado global. */
+
+/** Estado vivo mínimo que el FinalDirector muta por frame (sin rerenders). */
+export type S01FinalLive = {
+  screenBrightness: number
+  /** 1 = lookdev S01 intacto; <1 atenúa durante el apagado W09–W14. */
+  bulbDim: number
+  windowDim: number
+  pantryDim: number
+  stripDim: number
+}
+
+export type S01FinalOverride = {
+  /** Frame congelado finalRest (sustituye al singleton sólo en este subárbol). */
+  frame: S01Frame
+  /** Textura Home para PHONE_SCREEN (null = pantalla negra S01). */
+  screenMap: THREE.Texture | null
+  /** Ref estable con valores mutados por FinalDirector. */
+  live: S01FinalLive
+}
+
+const S01OverrideContext = createContext<S01FinalOverride | null>(null)
+
+/** Scope del override final (envuelve mundo estático + props dinámicos). */
+export function S01FinalScope({
+  override,
+  children,
+}: {
+  override: S01FinalOverride | null
+  children: React.ReactNode
+}) {
+  return <S01OverrideContext.Provider value={override}>{children}</S01OverrideContext.Provider>
+}
+
+/** Ref viva del override (luces/emisivas), o null en S01 puro. */
+export function useS01FinalLive(): S01FinalLive | null {
+  return useContext(S01OverrideContext)?.live ?? null
+}
+
+/** Frame activo: override final o singleton S01 (default idéntico a antes). */
+function useS01Frame(): S01Frame {
+  return useContext(S01OverrideContext)?.frame ?? s01Director.frame
+}
 
 type Vec3 = [number, number, number]
 
@@ -178,6 +225,7 @@ function PantryModule({
 
 function PantryDoor({ leafKey }: { leafKey: 'leafA_L' | 'leafA_R' | 'leafB_R' }) {
   const hinge = useRef<THREE.Group>(null)
+  const frame = useS01Frame()
   const leaf = s01Geo.pantry[leafKey]
   const idx = leafKey === 'leafA_L' ? 0 : leafKey === 'leafA_R' ? 1 : 2
   const hingeName = leafKey === 'leafA_L' ? 'A_LEFT_HINGE' : leafKey === 'leafA_R' ? 'A_RIGHT_HINGE' : 'B_RIGHT_HINGE'
@@ -185,7 +233,7 @@ function PantryDoor({ leafKey }: { leafKey: 'leafA_L' | 'leafA_R' | 'leafB_R' })
   const handleName = leafKey === 'leafA_L' ? 'A_LEFT_HANDLE' : leafKey === 'leafA_R' ? 'A_RIGHT_HANDLE' : 'B_RIGHT_HANDLE'
 
   useFrame(() => {
-    if (hinge.current) hinge.current.rotation.y = s01Director.frame.pantry[idx]
+    if (hinge.current) hinge.current.rotation.y = frame.pantry[idx]
   })
 
   const cx = leaf.dirX * leaf.width * 0.5
@@ -221,12 +269,31 @@ function PantryRoot() {
       {/* lectura interior: cavidad protagonista, dorsos sin hotspot.
           Luz A centrada en módulo A (lejos del dorso de A_RIGHT); B sobre
           módulo B; fill frontal suave. Sin luz teatral de alacena. */}
-      <pointLight position={[-1.7, 1.95, -2.35]} distance={3.0} decay={1.4} intensity={3.0} color="#c9b294" />
-      <pointLight position={[-0.5, 1.95, -2.4]} distance={2.2} decay={1.5} intensity={2.2} color="#c9b294" />
-      <pointLight position={[-1.1, 1.65, -2.15]} distance={2.2} decay={1.5} intensity={1.6} color="#cfa87e" />
+      <PantryLights />
       <PantryDoor leafKey="leafA_L" />
       <PantryDoor leafKey="leafA_R" />
       <PantryDoor leafKey="leafB_R" />
+    </group>
+  )
+}
+
+/* Luces de alacena (V6.0: atenuables por el apagado final, 1 = S01). */
+function PantryLights() {
+  const live = useS01FinalLive()
+  const a = useRef<THREE.PointLight>(null)
+  const b = useRef<THREE.PointLight>(null)
+  const f = useRef<THREE.PointLight>(null)
+  useFrame(() => {
+    const k = live?.pantryDim ?? 1
+    if (a.current) a.current.intensity = 3.0 * k
+    if (b.current) b.current.intensity = 2.2 * k
+    if (f.current) f.current.intensity = 1.6 * k
+  })
+  return (
+    <group>
+      <pointLight ref={a} position={[-1.7, 1.95, -2.35]} distance={3.0} decay={1.4} intensity={3.0} color="#c9b294" />
+      <pointLight ref={b} position={[-0.5, 1.95, -2.4]} distance={2.2} decay={1.5} intensity={2.2} color="#c9b294" />
+      <pointLight ref={f} position={[-1.1, 1.65, -2.15]} distance={2.2} decay={1.5} intensity={1.6} color="#cfa87e" />
     </group>
   )
 }
@@ -244,11 +311,14 @@ const FRIDGE_INNER = '#b9c4cc'
 function FridgeInnerLight() {
   const light = useRef<THREE.PointLight>(null)
   const strip = useRef<THREE.Mesh>(null)
+  const frame = useS01Frame()
+  const live = useS01FinalLive()
   useFrame(() => {
-    const k = s01Director.frame.fridgeLight
-    if (light.current) light.current.intensity = k * 2.4
+    const k = frame.fridgeLight
+    const stripDim = live?.stripDim ?? 1
+    if (light.current) light.current.intensity = k * 2.4 * stripDim
     const m = strip.current?.material as THREE.MeshStandardMaterial | undefined
-    if (m) m.emissiveIntensity = 0.05 + k * 2.2
+    if (m) m.emissiveIntensity = (0.05 + k * 2.2) * stripDim
   })
   return (
     <group position={[0, 0.82, 0.24]}>
@@ -266,9 +336,10 @@ function Fridge() {
   const topDoor = useRef<THREE.Group>(null)
   const botDoor = useRef<THREE.Group>(null)
   const f = s01Geo.fridge
+  const frame = useS01Frame()
 
   useFrame(() => {
-    const s = s01Director.frame
+    const s = frame
     if (rig.current) {
       rig.current.position.set(s.fShift, s.fLift, 0)
       rig.current.rotation.z = s.fRoll
@@ -393,9 +464,10 @@ function DocSector() {
   const manual = useRef<THREE.Group>(null)
   const t = s01Geo.docTower
   const closedZ = -2.43
+  const frame = useS01Frame()
 
   useFrame(() => {
-    const f = s01Director.frame
+    const f = frame
     if (slide.current) slide.current.position.z = closedZ + f.drawer
     // El stack vive dentro del cajón cerrado (ocluido); al abrir, los
     // documentos vuelan por separado desde la boca — sin duplicados.
@@ -483,9 +555,10 @@ function PolicyDocs() {
   const stampMap = useMemo(vencidoTexture, [])
   const p = s01Geo.policy
   const g = useRef<THREE.Group>(null)
+  const frame = useS01Frame()
 
   useFrame(() => {
-    const f = s01Director.frame.policy
+    const f = frame.policy
     if (g.current && f) {
       g.current.position.set(f.p[0], f.p[1], f.p[2])
       g.current.rotation.set(f.r[0], f.r[1], f.r[2])
@@ -577,8 +650,9 @@ function CarKeys() {
 function ShoppingList() {
   const g = useRef<THREE.Group>(null)
   const listMap = useMemo(shoppingTexture, [])
+  const frame = useS01Frame()
   useFrame(() => {
-    const l = s01Director.frame.list
+    const l = frame.list
     if (g.current) {
       g.current.position.set(l.p[0], l.p[1], l.p[2])
       g.current.rotation.set(l.r[0], l.r[1], l.r[2])
@@ -601,8 +675,9 @@ function ShoppingList() {
 
 function LooseDocs() {
   const refs = useRef<(THREE.Group | null)[]>([])
+  const frame = useS01Frame()
   useFrame(() => {
-    const loose = s01Director.frame.loose
+    const loose = frame.loose
     refs.current.forEach((g, i) => {
       if (!g) return
       g.position.set(loose[i].p[0], loose[i].p[1], loose[i].p[2])
@@ -747,8 +822,9 @@ function DocSheet({ variant, index }: { variant: 0 | 1 | 2; index: number }) {
 
 function FlyingManual() {
   const cover = useRef<THREE.Group>(null)
+  const frame = useS01Frame()
   useFrame(() => {
-    if (cover.current) cover.current.rotation.y = s01Director.frame.manualCover
+    if (cover.current) cover.current.rotation.y = frame.manualCover
   })
   return (
     <group>
@@ -775,8 +851,9 @@ function FlyingManual() {
 
 function DispersedDocs() {
   const refs = useRef<(THREE.Group | null)[]>([])
+  const frame = useS01Frame()
   useFrame(() => {
-    const docs = s01Director.frame.docs
+    const docs = frame.docs
     refs.current.forEach((g, i) => {
       if (!g) return
       const d = docs[i]
@@ -809,8 +886,9 @@ function DispersedDocs() {
 
 function SmokePuffs() {
   const refs = useRef<(THREE.Mesh | null)[]>([])
+  const frame = useS01Frame()
   useFrame(() => {
-    const smoke = s01Director.frame.smoke
+    const smoke = frame.smoke
     refs.current.forEach((m, i) => {
       if (!m) return
       const s = smoke[i]
@@ -860,8 +938,9 @@ function FridgeFoods() {
   const water = useRef<THREE.Group>(null)
   const eggA = useRef<THREE.Group>(null)
   const eggB = useRef<THREE.Group>(null)
+  const frame = useS01Frame()
   useFrame(() => {
-    const f = s01Director.frame
+    const f = frame
     if (apple.current) {
       apple.current.position.set(f.apple.p[0], f.apple.p[1], f.apple.p[2])
       apple.current.rotation.set(f.apple.r[0], f.apple.r[1], f.apple.r[2])
@@ -947,6 +1026,20 @@ function Phone() {
   const screenY = bh / 2 + 0.0006
   const clearW = bw * s01PhoneClearZone.w
   const clearH = bd * s01PhoneClearZone.h
+  // Override V6.0: Home en un plano a 0.1mm sobre la cara +Y (misma
+  // geometría/UV/rig: el box negro original queda intacto debajo y la única
+  // superficie VISIBLE es el plano. Plano: v-up → top físico (−z), u → +x,
+  // sin espejos ni rotaciones (flipY estándar). Decisión documentada en V6.0:
+  // se evita cirugía UV sobre la geometría compartida de S01.
+  const ov = useContext(S01OverrideContext)
+  const screenMesh = useRef<THREE.Mesh>(null)
+  const screenMat = useRef<THREE.MeshBasicMaterial>(null)
+  useFrame(() => {
+    if (!ov?.screenMap || !screenMat.current) return
+    const b = Math.max(ov.live.screenBrightness, 0)
+    screenMat.current.color.setScalar(Math.max(b, 0.0001))
+    if (screenMesh.current) screenMesh.current.visible = b > 0.003
+  })
   return (
     <group name="PHONE_WORLD" position={p.group}>
       <group name="PHONE_RIG" rotation={[0, p.yaw, 0]}>
@@ -973,12 +1066,21 @@ function Phone() {
           <Box size={[bw + 0.0008, 0.0008, 0.0012]} position={[0, bh / 2 + 0.0004, bd / 2]} color="#232428" roughness={0.65} metalness={0.2} />
           <Box size={[bw + 0.0008, 0.0008, 0.0012]} position={[0, bh / 2 + 0.0004, -bd / 2]} color="#232428" roughness={0.65} metalness={0.2} />
         </group>
-        {/* PHONE_SCREEN — mesh independiente, APAGADA todo S01 */}
+        {/* PHONE_SCREEN — mesh independiente, APAGADA todo S01.
+            V6.0: con override.screenMap un plano muestra Home 0.1mm sobre la
+            cara +Y (el box negro original no se toca; una sola superficie
+            visible, sin z-fighting: 0.1mm ≫ precisión de depth a 5cm). */}
         <group name="PHONE_SCREEN">
           <mesh position={[0, screenY, 0]} receiveShadow>
             <boxGeometry args={[sw, 0.0012, sd]} />
             <meshBasicMaterial color="#000000" toneMapped={false} />
           </mesh>
+          {ov?.screenMap && (
+            <mesh ref={screenMesh} position={[0, screenY + 0.0007, 0]} rotation={[-Math.PI / 2, 0, 0]}>
+              <planeGeometry args={[sw, sd]} />
+              <meshBasicMaterial ref={screenMat} map={ov.screenMap} toneMapped={false} />
+            </mesh>
+          )}
           {/* anchors del plano de pantalla (handoff S02 + QA angular) */}
           <group name="A_PHONE_SCREEN" position={[0, screenY, 0]} />
           <group name="A_PHONE_SCREEN_TOP" position={[0, screenY, -sd / 2]} />
@@ -1045,21 +1147,23 @@ function RigDebug() {
   )
 }
 
-export default function S01CinematicProps() {
+export default function S01CinematicProps({ override = null }: { override?: S01FinalOverride | null }) {
   return (
-    <group>
-      <PantryRoot />
-      <Fridge />
-      <FridgeFoods />
-      <DocSector />
-      <PolicyDocs />
-      <CarKeys />
-      <ShoppingList />
-      <LooseDocs />
-      <DispersedDocs />
-      <SmokePuffs />
-      <Phone />
-      <RigDebug />
-    </group>
+    <S01FinalScope override={override}>
+      <group>
+        <PantryRoot />
+        <Fridge />
+        <FridgeFoods />
+        <DocSector />
+        <PolicyDocs />
+        <CarKeys />
+        <ShoppingList />
+        <LooseDocs />
+        <DispersedDocs />
+        <SmokePuffs />
+        <Phone />
+        <RigDebug />
+      </group>
+    </S01FinalScope>
   )
 }
