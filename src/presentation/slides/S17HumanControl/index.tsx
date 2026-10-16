@@ -1,15 +1,18 @@
-import HomiV4Stage from '../homi-cinema-v4/HomiV4Stage'
-import { S17_TRIGGERS } from '../homi-cinema-v4/homiV4Data'
+import HomiV6Stage from '../homi-cinema-v6/HomiV6Stage'
+import { S17_BEATS } from '../homi-cinema-v6/homiV6Data'
 import type { SlideProps } from '../../presentationTypes'
 
-// V4.2 — Human Control:
-// s0 T10 solicitud importante · s1 T11 propuesta sin confirmar ·
-// s2 T12 negro absoluto para Gaby.
+// V6 — Human Control / Contexto y propósito (Gaby): P20 identidad Homi ·
+// P21 tres superficies · P22 pendiente · P23 gastos · P24 faltantes ·
+// P25 convergencia · P26 pregunta simple · P27 consulta mañana ·
+// P28 Tomi · P29 Juli · P30 papá · P31 comparación · P32 el mañana de
+// cada uno · P33 HomePlus · P34–P37 menos que administrar/recordar/
+// buscar/preocuparse · P38 Home final listo para el hilo 3D.
 export default function S17HumanControl({ stepIndex }: SlideProps) {
-  const trigger = S17_TRIGGERS[Math.min(stepIndex, S17_TRIGGERS.length - 1)]
+  const beat = S17_BEATS[Math.min(stepIndex, S17_BEATS.length - 1)]
   return (
     <div className="s17-scene" data-step={stepIndex} aria-label="Homi propone, la decisión es nuestra">
-      <HomiV4Stage key={trigger} trigger={trigger} />
+      <HomiV6Stage key={beat} beat={beat} />
     </div>
   )
 }
