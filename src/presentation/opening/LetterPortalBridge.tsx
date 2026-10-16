@@ -20,6 +20,7 @@
 // + margen → el puente se desmonta (S03 fullscreen, cero restos).
 
 import { useEffect, useMemo, useState } from 'react'
+import { s03Epoch } from '../slides/S03HomePlus/s03Clock'
 import {
   Q_BASELINES,
   Q_SCALE,
@@ -67,11 +68,12 @@ export default function LetterPortalBridge() {
       setProgress(freeze ?? 1)
       return
     }
+    // Reloj compartido con S03 (s03Clock): el portal y el dibujo del logo
+    // derivan del mismo epoch fijado por OpeningSequence en este commit.
+    // Matemática del zoom intacta (G, C, smootherstep, s, T).
     let raf = 0
-    let start = -1
-    const tick = (now: number) => {
-      if (start < 0) start = now
-      const t = Math.min(1, (now - start) / DURATION)
+    const tick = () => {
+      const t = Math.min(1, Math.max(0, (performance.now() - s03Epoch()) / DURATION))
       setProgress(t)
       if (t < 1) raf = requestAnimationFrame(tick)
     }

@@ -1,6 +1,7 @@
 import AmbientGlow from './AmbientGlow'
 import PhoneFrame from './PhoneFrame'
 import HomeDemoScreen from '../app-screens/HomeDemoScreen'
+import S04HomeEditorial from '../slides/S04Home/S04HomeEditorial'
 import S05Planner from '../slides/S05Planner'
 import '../slides/S04Home/home-scene.css'
 import './home-planner-sequence.css'
@@ -22,6 +23,19 @@ export default function HomePlannerSequence({ slideIndex, stepIndex }: HomePlann
   const stageRef = useRef<HTMLDivElement>(null)
   const mapSlotRef = useRef<HTMLDivElement>(null)
   const expanded = inFamily && stepIndex >= 1 && stepIndex <= 3
+  // S04 es editorial horizontal 16:9 (handoff directo del zoom de S03.10):
+  // sin teléfono vertical, sin segundo zoom, misma superficie #F6F5F2.
+  // Planner/Family conservan el teléfono físico intacto.
+  if (slideIndex === 3) {
+    return (
+      <div ref={stageRef} className="home-scene home-planner-sequence" data-active
+        data-exiting={exiting}
+        data-map-expanded={false}
+        data-home-step={stepIndex} data-product-screen="home" aria-hidden={false}>
+        <S04HomeEditorial stepIndex={stepIndex} />
+      </div>
+    )
+  }
   return (
     <div ref={stageRef} className="home-scene home-planner-sequence" data-active={slideIndex >= 3}
       data-exiting={exiting}

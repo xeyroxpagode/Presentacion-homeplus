@@ -24,7 +24,7 @@ export const presentationConfig = {
   slides: [
     { id: 'S01', name: 'Chaos', stepCount: 4, component: S01Chaos },
     { id: 'S02', name: 'Fragmented Info', stepCount: 9, component: S02FragmentedInfo },
-    { id: 'S03', name: 'HomePlus', stepCount: 1, component: S03HomePlus },
+    { id: 'S03', name: 'HomePlus', stepCount: 11, component: S03HomePlus },
     { id: 'S04', name: 'Home', stepCount: 6, component: S04Home },
     { id: 'S05', name: 'Planner', stepCount: 4, component: S05Planner },
     { id: 'S06', name: 'Family', stepCount: 6, component: S06Family },
