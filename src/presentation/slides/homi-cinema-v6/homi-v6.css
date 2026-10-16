@@ -206,7 +206,7 @@
 .v6-stage .v6-morph[data-landed='false'] .v6-morph-planner [data-task-id='coca-homi-v6'] { visibility: hidden; }
 .v6-stage .v6-morph-source {
   position: absolute; left: 50%; top: 46%; width: 640px; transform: translate(-50%, -50%);
-  animation: v6-source-away 300ms ease 900ms both;
+  animation: v6-source-away 300ms ease 300ms both;
 }
 .v6-stage .v6-morph-clone {
   position: absolute; left: 50%; top: 46%; width: 640px; transform: translate(-50%, -50%);
@@ -290,6 +290,8 @@
 
 /* ——— P19: negro absoluto ——— */
 .v6-stage[data-beat='P19'] { background: #000; }
+/* P20 nace del mismo negro: sin flash entre el cambio de orador y Homi. */
+.v6-stage[data-beat='P20'] { background: #000; }
 .v6-stage .v6-black { position: absolute; inset: 0; background: #000; animation: v6-to-black 600ms ease 100ms both; }
 @keyframes v6-to-black { from { opacity: 0.35; } to { opacity: 1; } }
 

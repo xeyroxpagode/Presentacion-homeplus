@@ -63,6 +63,7 @@ function MorphProposalToPlanner() {
       {!landed && (
         <div className="v6-morph-source" data-morph-source aria-hidden="true">
           <p className="v6-proposal-kicker">Crear tarea</p>
+          <span className="v6-proposal-divider" aria-hidden="true" />
           <p className="v6-proposal-title">{COCA_TASK_TITLE}</p>
           <p className="v6-proposal-date"><span>Mañana · lun 17 de agosto</span></p>
         </div>
