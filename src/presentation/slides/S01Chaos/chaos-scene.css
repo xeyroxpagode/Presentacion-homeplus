@@ -484,10 +484,9 @@
   width: 100%;
   height: 100%;
 }
-/* ---- S02 V1.6 — Phone Dive terminal: capa propia sobre el diorama.
-   El teléfono yace en primer plano desde S01.4 (entrada suave al montar);
-   en S01.5 la geometría la conduce rAF (S01PhoneDive) con la misma función
-   pura que continúa S02.0. Diorama intacto debajo. ---- */
+/* ---- V1.6.1 — Teléfono físico en S01.3: capa propia sobre el diorama.
+   Representación estática (el dive completo lo anima S02.0 con la misma
+   función pura). Diorama intacto debajo. ---- */
 .chaos-dive {
   position: absolute;
   inset: 0;

@@ -6,8 +6,8 @@
 export const S02_STEP_COUNT = 9
 
 // Duraciones (ms) por step operativo 0..8 (§21).
-// step0 = cola del Phone Dive (la cámara ya viene de S01).
-export const S02_DURATIONS = [1100, 760, 500, 740, 1550, 560, 650, 1020, 760] as const
+// step0 = Phone Dive completo S01.3→S02.0 (V1.6.1 §6: referencia 1400 ms).
+export const S02_DURATIONS = [1400, 760, 500, 740, 1550, 560, 650, 1020, 760] as const
 
 export const SENT_TEXT = '¿Quién lo busca a Tomi hoy?'
 export const MOTHER_TEXT = 'Esta semana lo busco yo a Tomi.'

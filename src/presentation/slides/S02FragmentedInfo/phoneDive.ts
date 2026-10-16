@@ -1,24 +1,27 @@
-// S02 V1.6 — geometría compartida del Phone Dive S01→S02 (§9).
-// UNA sola función pura consumida por la capa dive de S01 y por el
-// step0 de S02: el empalme en d=D_SPLICE es bit a bit idéntico porque
-// el cálculo y el componente visual son los mismos.
+// S02 V1.6.1 — geometría compartida del Phone Dive S01→S02.
+// UNA sola trayectoria monótona propiedad de S02.0: F0 = teléfono físico
+// en S01.3, F100 = WhatsApp fullscreen (0,0,1280,720). Un único progreso
+// d ∈ [0,1] con una sola curva smootherstep: sin empalmes intermedios,
+// sin overscan que retroceda, sin D_SPLICE como frenada (V1.6.1 §6).
 //
-// d ∈ [0,1]: 0 = teléfono en reposo (S01.4), D_SPLICE = fin del tramo S01
-// (pantalla cubriendo el viewport), 1 = S02.0 exacto (fullscreen 1:1).
 // La superficie 1280×720 se mapea con cover-fit centrada en W (centro
 // óptico de la garantía) y recortada: nunca se estira la interfaz, el
 // campo visible se amplía al atravesar el plano de la pantalla.
-
-export const D_SPLICE = 0.55
 
 // Centro óptico de la garantía en coords de superficie.
 export const WARRANTY_CX = 365.5
 export const WARRANTY_CY = 341.5
 
-// Rectángulo de pantalla en reposo (coords de stage, S01.4).
+// Rectángulo de pantalla en reposo (coords de stage, S01.3).
+// V1.6.1 §4: el teléfono vive en una capa externa de primer plano (fuera
+// del rig de cámara del diorama), por lo que este rect es válido tanto en
+// S01.3 como en el F0 de S02.0 sin necesidad de transformar por la cámara.
 export const REST_SCREEN = { x: 742, y: 330, w: 300, h: 180 } as const
 // Grosor de bisel del teléfono (px de stage en reposo).
 export const BEZEL = 14
+
+// Duración de referencia del dive completo (V1.6.1 §6: 1400 ms).
+export const DIVE_MS = 1400
 
 export type Rect = { x: number; y: number; w: number; h: number }
 
@@ -37,19 +40,13 @@ function lerpRect(a: Rect, b: Rect, t: number): Rect {
   return { x: lerp(a.x, b.x, t), y: lerp(a.y, b.y, t), w: lerp(a.w, b.w, t), h: lerp(a.h, b.h, t) }
 }
 
-// Pantalla en el empalme: cubre el viewport con overscan 6% (aspecto 16:9,
-// el bisel ya está fuera de campo y se recorta sin fundidos).
-const SPLICE_SCREEN: Rect = { x: -77, y: -43, w: 1434, h: 806 }
 const FULL_SCREEN: Rect = { x: 0, y: 0, w: 1280, h: 720 }
 
+// Trayectoria única: interpolación lineal reposo→fullscreen. La curva
+// temporal (una sola smootherstep sobre p) la aplica el propietario del
+// dive (S02.0); esta función es geometría pura y monótona en d.
 export function diveScreenRect(d: number): Rect {
-  const x = clamp01(d)
-  if (x <= D_SPLICE) {
-    const e = smootherstep(x / D_SPLICE)
-    return lerpRect(REST_SCREEN, SPLICE_SCREEN, e)
-  }
-  const e = smootherstep((x - D_SPLICE) / (1 - D_SPLICE))
-  return lerpRect(SPLICE_SCREEN, FULL_SCREEN, e)
+  return lerpRect(REST_SCREEN, FULL_SCREEN, clamp01(d))
 }
 
 export type SurfaceMap = {
@@ -98,4 +95,10 @@ export function diveFrame(d: number): { screen: Rect; map: SurfaceMap; body: Rec
 // (ya está fuera de campo; sin fundido).
 export function diveBezelVisible(screen: Rect, margin = 40): boolean {
   return screen.x > -margin || screen.y > -margin || screen.x + screen.w < 1280 + margin || screen.y + screen.h < 720 + margin
+}
+
+// Radio de esquina de la pantalla durante el dive: 20px físicos en reposo
+// que se disuelven al alcanzar fullscreen (F100 sin bisel ni redondeo).
+export function diveScreenRadius(d: number): number {
+  return 20 * (1 - smootherstep(d))
 }

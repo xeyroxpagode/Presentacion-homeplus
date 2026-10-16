@@ -1,7 +1,14 @@
-// S02 V1.5 — coordinador motion: UNA única fuente de progreso por step.
+// S02 V1.6.1 — coordinador motion: UNA única fuente de progreso por step.
 // Todo valor visual deriva de estado absoluto + progreso (0..1).
 // Soporta `?s02p=0..1` (QA determinista: congela el progreso del step
 // actual) y respeta prefers-reduced-motion (salto directo a F100).
+//
+// V1.6.1 §9 (causa raíz del flicker): la identidad del movimiento es
+// (slide-step, dirección/fase, generación). Un progreso React del beat
+// anterior NUNCA se reutiliza en una identidad nueva: el reset ocurre
+// durante el render (antes del primer commit visible), no en useEffect.
+// Todo rAF pertenece a una generación y los callbacks de generaciones
+// anteriores se ignoran y cancelan por construcción.
 
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { S02_DURATIONS } from './s02Data'
@@ -34,36 +41,55 @@ export function reducedMotion(): boolean {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
+function initialFor(freeze: number | null, reduce: boolean): number {
+  if (freeze !== null) return freeze
+  return reduce ? 1 : 0
+}
+
 /**
- * Progreso 0→1 del step actual. Se reinicia con cada stepIndex (o phase):
- * el loop rAF previo se cancela (anti-híbridos) y el nuevo converge al
- * estado destino. Todo derivado: sin setTimeout encadenados.
+ * Progreso 0→1 del step actual con autoridad de identidad.
+ * - Primera pintura de una identidad nueva: progress = 0 (o freeze/1 en
+ *   modos especiales) ya en el primer commit: sin frames del beat anterior.
+ * - Un único loop rAF por generación; generaciones viejas ni pintan ni
+ *   reanudan: se ignoran por contador y se cancelan en la limpieza.
+ * - Al terminar (t=1) el loop se detiene: HOLD sin actividad.
  */
 export function useStepProgress(stepIndex: number, phase: string): number {
   const freeze = useMemo(() => frozenProgress(), [stepIndex])
   const reduce = useMemo(() => reducedMotion(), [])
   const duration = S02_DURATIONS[Math.min(Math.max(stepIndex, 0), S02_DURATIONS.length - 1)] ?? 500
-  const [progress, setProgress] = useState(() => freeze ?? (reduce ? 1 : 0))
-  const raf = useRef(0)
+  const identity = `${stepIndex}|${phase}|${freeze === null ? 'live' : `f${freeze}`}|${reduce ? 'r' : 'm'}`
+  const [state, setState] = useState(() => ({ id: identity, progress: initialFor(freeze, reduce) }))
+  // Reset en fase de render: el primer commit de la identidad nueva ya
+  // porta su F0 correcto (React re-renderiza antes de pintar).
+  if (state.id !== identity) {
+    setState({ id: identity, progress: initialFor(freeze, reduce) })
+  }
+  const generation = useRef(0)
 
   useEffect(() => {
-    if (freeze !== null || reduce) {
-      setProgress(freeze ?? 1)
-      return
-    }
-    setProgress(0)
+    if (freeze !== null || reduce) return
+    const myGen = ++generation.current
+    let raf = 0
     let start = -1
     const tick = (now: number) => {
+      if (myGen !== generation.current) return
       if (start < 0) start = now
       const t = clamp01((now - start) / duration)
-      setProgress(t)
-      if (t < 1) raf.current = requestAnimationFrame(tick)
+      setState(prev => (prev.id === identity ? { ...prev, progress: t } : prev))
+      if (t < 1 && myGen === generation.current) raf = requestAnimationFrame(tick)
     }
-    raf.current = requestAnimationFrame(tick)
-    return () => cancelAnimationFrame(raf.current)
-  }, [stepIndex, phase, duration, freeze, reduce])
+    raf = requestAnimationFrame(tick)
+    return () => {
+      if (myGen === generation.current) generation.current++
+      cancelAnimationFrame(raf)
+    }
+  }, [identity, duration, freeze, reduce])
 
-  return freeze ?? progress
+  // Durante el re-render intermedio (identidad ya cambiada, estado aún
+  // viejo) se expone el F0 por construcción: jamás progreso ajeno.
+  if (state.id !== identity) return initialFor(freeze, reduce)
+  return freeze ?? state.progress
 }
 
 // ---- Interpolación por keyframes con tangentes continuas (Catmull-Rom

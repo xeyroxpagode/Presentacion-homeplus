@@ -426,6 +426,11 @@
 .s02-measure .s02-date-chip { position: relative; }
 
 /* ---------- Phone Dive (step0 + capa S01) ---------- */
+/* V1.6.1 §7: durante el step0 el stage y el dive son transparentes: S01.3
+   permanece montado detrás y el diorama sólo lo oculta la geometría del
+   teléfono en crecimiento. Ninguna capa negra fullscreen. */
+.s02-stage[data-step='0'] { background: transparent; }
+.s02-stage[data-step='0'] .s02-dive { background: transparent; }
 .s02-dive { position: absolute; inset: 0; background: #000; overflow: hidden; }
 .s02-phone-body {
   position: absolute;

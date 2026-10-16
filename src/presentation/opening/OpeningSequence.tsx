@@ -22,7 +22,15 @@ export default function OpeningSequence({ slideIndex, stepIndex }: OpeningSequen
         opacity={slideIndex === 0 && stepIndex === 5 ? openingTokens.glow.chaosFocus : 0} />
       <AmbientGlow className="opening-brand-depth" x={410} y={470} size={700} intensity={0.5}
         opacity={slideIndex === 2 ? openingTokens.glow.brandDepth : 0} />
-      <S01Chaos stepIndex={slideIndex === 0 ? stepIndex : 5} active={slideIndex === 0} />
+      {/* V1.6.1 §7: S01.3 permanece montado y visible detrás durante el
+          Phone Dive (S02.0): el diorama lo oculta la geometría del teléfono,
+          nunca un fade ni una capa negra. Al avanzar a S02.1+ el fullscreen
+          de WhatsApp ya lo ocluye y puede retirarse. */}
+      <S01Chaos
+        stepIndex={slideIndex === 0 ? stepIndex : 3}
+        active={slideIndex === 0 || (slideIndex === 1 && stepIndex === 0)}
+        phoneHidden={slideIndex !== 0}
+      />
       <S02FragmentedInfo
         stepIndex={slideIndex === 1 ? stepIndex : slideIndex === 0 ? 0 : 6}
         phase={slideIndex === 1 ? 'active' : slideIndex === 2 ? 'converging' : 'hidden'}

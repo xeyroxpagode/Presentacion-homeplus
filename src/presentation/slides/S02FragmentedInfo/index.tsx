@@ -3,9 +3,9 @@
 // Todo el estado visual deriva de (stepIndex, progress): forward, reverse
 // e interrupciones convergen al estado destino sin ownerships colgados.
 //
-// Step0 = cola del Phone Dive (dDIVE 0.55→1, geometría compartida con S01
-// vía phoneDive.ts): F0 coincide con el último fotograma de S01, F100 es
-// exactamente S02.0. Sin fundidos a negro ni pantallas intermedias.
+// Step0 = Phone Dive completo S01.3→S02.0 (V1.6.1 §6: un solo progreso,
+// una sola curva, F0 idéntico al teléfono físico de S01.3, F100 WhatsApp
+// fullscreen exacto). Sin fundidos a negro ni pantallas intermedias.
 
 import { useMemo, useRef } from 'react'
 import type { SlideProps } from '../../presentationTypes'
@@ -26,7 +26,7 @@ import {
   useStepProgress,
   type Rect,
 } from './useStepProgress'
-import { D_SPLICE, diveBezelVisible, diveFrame } from './phoneDive'
+import { diveBezelVisible, diveFrame, diveScreenRadius } from './phoneDive'
 import { useHistoryLayout } from './historyLayout'
 import ChatFaceStatic from './PhoneFace'
 import QuestionSVG from './QuestionSVG'
@@ -150,9 +150,14 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
   // scroll anchors y geometría de selección/morph. Estimador sólo pre-medición.
   const layout = useHistoryLayout(history.blocks, measureRef)
 
-  // ================= STEP 0 — cola del Phone Dive =================
+  // ================= STEP 0 — Phone Dive completo (V1.6.1 §6) =================
+  // Único propietario de la transición S01.3→S02.0: un solo progreso
+  // p ∈ [0,1], una sola curva, F0 = teléfono físico de S01.3 (idéntico al
+  // estático de S01: mismo componente, misma geometría), F100 = WhatsApp
+  // fullscreen (0,0,1280,720). S01.3 permanece montado detrás: el diorama
+  // lo oculta la geometría del teléfono, nunca una capa negra.
   if (step === 0) {
-    const d = D_SPLICE + (1 - D_SPLICE) * smootherstep(p)
+    const d = smootherstep(p)
     const frame = diveFrame(d)
     const bezel = diveBezelVisible(frame.screen)
     // El home indicator viaja dentro de la propia superficie (entra
@@ -174,7 +179,10 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
           )}
           <div
             className="s02-phone-screen"
-            style={{ left: frame.screen.x, top: frame.screen.y, width: frame.screen.w, height: frame.screen.h }}
+            style={{
+              left: frame.screen.x, top: frame.screen.y, width: frame.screen.w, height: frame.screen.h,
+              borderRadius: Math.round(diveScreenRadius(d) * 10) / 10,
+            }}
           >
             {/* El mapa es coords de stage; el bloque contenedor es la pantalla. */}
             <div
@@ -309,7 +317,12 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
     chromeOpacity = 1 - clamp01(p / 0.15)
     morphTextOpacity = 1 - clamp01((p - 0.08) / 0.38)
   }
-  const morphRadius = step === 7 ? 22 * (1 - morphQ) : 22
+  // V1.6.1 §13: la burbuja conserva su silueta redondeada durante toda la
+  // expansión visible. El radio crece proporcionalmente al ancho visual y
+  // las esquinas desaparecen únicamente al abandonar el encuadre, nunca
+  // porque el border-radius se reduzca a cero. Sin salto con el long-press
+  // (ambos nacen en 22px).
+  const morphRadius = step === 7 ? Math.min(160, 22 + 0.105 * (elevRect.w - R0.w)) : 22
   // Color de la materia: #1f2c34 (burbuja) → #080504 (negro cálido).
   const morphBg = step === 7
     ? `rgb(${[31, 44, 52].map((c, i) => Math.round(lerp(c, [8, 5, 4][i]!, morphQ))).join(',')})`
@@ -318,6 +331,11 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
   // ----- Pregunta (step 8) -----
   const qP = step === 8 ? clamp01(p) : 0
   const showEditorial = step === 7 || step === 8
+  // V1.6.1 §15: mientras alguna esquina de la burbuja siga visible, ninguna
+  // superficie editorial fullscreen puede cubrirla (la burbuja es la única
+  // autoridad material). Cobertura total de R0→R1 en q≈0.83: la editorial
+  // entra sólo de 0.85→1 con el mismo color/glow → entrega invisible.
+  const editorialQ = step === 7 ? smootherstep((morphQ - 0.85) / 0.15) : 0
 
   // Home indicator del sistema: oculto con teclado y en fondo editorial.
   const homeOpacity = showKeyboard ? 0 : step === 7 ? 1 - morphQ : step === 8 ? 0 : 1
@@ -343,7 +361,7 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
           className="s02-appscale"
           style={{
             transform: `scale(${waScale.toFixed(4)})`,
-            borderRadius: waRadius.toFixed(1),
+            borderRadius: Math.round(waRadius * 10) / 10,
             boxShadow: waShadow,
           }}
         >
@@ -397,7 +415,7 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
           className="s02-appscale s02-cal"
           style={{
             transform: `scale(${calScale.toFixed(4)})`,
-            borderRadius: calRadius.toFixed(1),
+            borderRadius: Math.round(calRadius * 10) / 10,
             boxShadow: calShadow,
           }}
         >
@@ -447,7 +465,7 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
           style={{
             left: elevRect.x, top: elevRect.y, width: elevRect.w, height: elevRect.h,
             transform: `scale(${elevScale.toFixed(4)})`,
-            borderRadius: morphRadius.toFixed(1),
+            borderRadius: Math.round(morphRadius * 10) / 10,
             background: morphBg,
           }}
         >
@@ -470,7 +488,7 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
       )}
 
       {/* ============ FONDO EDITORIAL + PREGUNTA ============ */}
-      {showEditorial && (step === 8 || morphQ > 0.55) && <div className="s02-editorial" style={step === 7 ? { opacity: smootherstep((morphQ - 0.55) / 0.45).toFixed(3) } : undefined} aria-hidden="true" />}
+      {showEditorial && (step === 8 || editorialQ > 0) && <div className="s02-editorial" style={step === 7 ? { opacity: editorialQ.toFixed(3) } : undefined} aria-hidden="true" />}
       {step === 8 && (
         <div className="s02-question-wrap" role="heading" aria-level={1}>
           <QuestionSVG revealP={qP} idSuffix="s02" />
