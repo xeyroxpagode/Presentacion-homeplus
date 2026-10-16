@@ -45,6 +45,9 @@ export const PAPER_STACK = {
   topY: 0.978,
 }
 
+/** Posición final de la póliza sobre la pila (réplica de POLICY_ACCUM). */
+export const POLICY_ACCUM = { p: [-0.13, 0.051, -0.06] as Vec3, r: [0, 0.12, 0] as Vec3 }
+
 /** Pileta empotrada en mesada trasera (topY≈0.902). */
 export const SINK = {
   center: [-0.07, 0.902, -2.7] as Vec3,

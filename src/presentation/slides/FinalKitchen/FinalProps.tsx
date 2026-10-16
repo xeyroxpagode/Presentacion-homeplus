@@ -6,8 +6,9 @@
 
 import Backpack from './Backpack'
 import DishArea from './DishArea'
+import FacturaOverlay from './FacturaOverlay'
 import FridgeService from './FridgeService'
-import TechnicianRig from './TechnicianRig'
+import TechnicianGLB from './TechnicianGLB'
 import type { TechRigApi } from './TechnicianRig'
 
 export default function FinalProps({ techApiRef }: { techApiRef: React.MutableRefObject<TechRigApi | null> }) {
@@ -15,8 +16,9 @@ export default function FinalProps({ techApiRef }: { techApiRef: React.MutableRe
     <group name="FINAL_PROPS">
       <Backpack />
       <DishArea />
+      <FacturaOverlay />
       <FridgeService />
-      <TechnicianRig apiRef={techApiRef} />
+      <TechnicianGLB apiRef={techApiRef} />
     </group>
   )
 }

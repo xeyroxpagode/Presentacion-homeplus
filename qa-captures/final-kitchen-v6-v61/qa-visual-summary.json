@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-16T11:09:57.699Z",
+  "beats": [
+    "W00",
+    "W01",
+    "W02",
+    "W03",
+    "W04",
+    "W05",
+    "W06",
+    "W07",
+    "W08",
+    "W09",
+    "W10",
+    "W11",
+    "W12",
+    "W13",
+    "W14"
+  ],
+  "consoleErrors": [],
+  "w14maxPixel": 0,
+  "contactSheet": "qa-captures/final-kitchen-v6-v61/contact-sheet.png",
+  "capturesDir": "qa-captures/final-kitchen-v6-v61"
+}
