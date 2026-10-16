@@ -1,367 +1,336 @@
 /**
- * S14 Friction — cinematic implementation V5.0 (§§4–21).
+ * S14 Friction Editorial V6.0 — scene host.
  *
- * Seven operable narrative states (stepIndex 0..6), each playing its full
- * local timeline on mount and terminating in manual HOLD (§4). Remount per
- * step (key={stepIndex}) gives: deterministic replay, cancellation of prior
- * timelines, snapshot reconstruction on PREVIOUS, direct-jump support.
+ * Seven operable narrative states (§22), stepIndex 0..6, stepCount = 7.
+ * Each step owns ONE local timeline: a single rAF loop samples
+ * `sampleStep(step, t)` and every layer renders purely from that snapshot
+ * (§24.2). Mount = replay from t=0. Unmount = cancel + dismount every track
+ * (§24.4). Direct jumps and PREVIOUS reconstruct from a known snapshot.
  *
- * Data safety (§23): all fixtures are local read-only (surfaces.tsx).
- * No mutations, no persistence, stable ids.
+ * Data safety (§27): fixtures are read-only; the CTA never fires; the date
+ * selection only flips scenic state. No POST/PUT/delete anywhere.
+ *
+ * Handoff (§6): S14 step 0 fades the horizontal EditorialSurface in from
+ * stage black (isolated adapter). No Frontend/Backend panels are remounted,
+ * no Stack content is reinvented. If S13 still ends on tech panels, the
+ * standard slide cut lands here — reported as integration point, not
+ * papered over with invented Stack scenery.
  */
 
-import { useLayoutEffect, useRef, type CSSProperties, type ReactNode, type RefObject } from 'react'
-import PhoneFrame from '../../components/PhoneFrame'
-import HomeDemoScreen from '../../app-screens/HomeDemoScreen'
-import PlannerDemoScreen from '../../app-screens/PlannerDemoScreen'
-import { mx, toRuntimeStyle, TARGETS, NATIVE, FORM_CAM } from './geometry'
-import { freezeTimeParam, sampleStep } from './timeline'
+import { useEffect, useRef, useState } from 'react'
+import type { MasterRect } from './geometry'
+import { sampleStep, freezeTimeParam, stepDuration, win, type StepSnapshot } from './timeline'
 import {
-  FrictionTaskRow,
-  FrictionTaskSheet,
-  FrictionAssetsList,
-  FrictionPs5Detail,
-  FrictionWarrantySheet,
-  FrictionPdfDetail,
-} from './surfaces'
-import './s14-barrier.css'
+  EditorialSurface,
+  EditorialContent,
+  EditorialHome,
+  PlannerList,
+  TaskIntentPreview,
+  SharedTaskTitle,
+  EditorialTaskForm,
+  EditorialAssets,
+  SharedAssetAvatar,
+  SharedAssetTitle,
+  EditorialAssetDetail,
+  QuestionStage,
+} from './editorial'
+import './s14-editorial.css'
 
-/** Optional static detail (§21) — set false to use the approved no-dot fallback. */
-const QUESTION_DOT = true
+/* ---------------- local clock (§24.2) ---------------- */
 
-/* Phone scale derives from width so content never distorts (§2.2). */
-function phoneLayout(rect: { x: number; y: number; w: number; h: number }) {
-  const r = toRuntimeStyle({ x: rect.x, y: rect.y, w: rect.w, h: rect.h })
-  const scale = r.width / 300
-  const frameH = 620 * scale
-  return {
-    left: r.left + r.width / 2 - (300 * scale) / 2,
-    top: r.top + r.height / 2 - frameH / 2,
-    scale,
-  }
-}
-
-/**
- * Shared-element measurement hook (§22.2 steps 1–3): on mount, measure each
- * [data-hero-origin] source rect relative to the stage and publish it as
- * CSS vars consumed by extraction keyframes. Controlled single measurement —
- * never per-frame (§22.5).
- */
-function useSharedMeasure(stageRef: RefObject<HTMLDivElement | null>, step: number) {
-  useLayoutEffect(() => {
-    const stage = stageRef.current
-    if (!stage || freezeTimeParam() !== null) return
-    try {
-      const stageRect = stage.getBoundingClientRect()
-      stage.querySelectorAll('[data-hero-origin]').forEach(el => {
-        const id = (el as HTMLElement).dataset.heroOrigin
-        if (!id) return
-        const r = (el as HTMLElement).getBoundingClientRect()
-        stage.style.setProperty(`--org-${id}-x`, `${r.left - stageRect.left + r.width / 2}px`)
-        stage.style.setProperty(`--org-${id}-y`, `${r.top - stageRect.top + r.height / 2}px`)
-      })
-    } catch {
-      /* measurement is progressive enhancement; keyframe fallbacks hold */
+function useLocalClock(step: number, duration: number, frozen: number | null): number {
+  const [now, setNow] = useState<number>(frozen ?? 0)
+  useEffect(() => {
+    if (frozen !== null) {
+      setNow(Math.min(frozen, duration))
+      return
     }
-  }, [stageRef, step])
+    let raf = 0
+    const t0 = performance.now()
+    const tick = (t: number): void => {
+      const e = Math.min(duration, t - t0)
+      setNow(e)
+      if (e < duration) raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [step, duration, frozen])
+  return now
 }
 
-function StagePhone({ rect, children, label, bare = false }: {
-  rect: { x: number; y: number; w: number; h: number }
-  children: ReactNode
-  label: string
-  bare?: boolean
-}) {
-  const p = phoneLayout(rect)
-  const style = (bare
-    ? { left: 0, top: 0 }
-    : { left: p.left, top: p.top }) as CSSProperties
+/* ---------------- geometry audit (dev only, §25/§29.1) ----------------
+ * Compares declared TARGET rects (data-expect="x,y,w,h" master) against
+ * real DOM boxes at HOLD. Identity transforms and fully transparent nodes
+ * are skipped. Results on window.__S14_AUDIT__ + console summary. */
+
+function isIdentityTransform(value: string): boolean {
+  if (value === 'none') return true
+  const m = value.match(/matrix\(([^)]+)\)/)
+  if (!m) return false
+  const v = m[1].split(',').map(Number)
+  if (v.length !== 6 || v.some(n => !Number.isFinite(n))) return false
+  const [a, b, c, d, e, f] = v
+  return Math.abs(a - 1) < 1e-3 && Math.abs(d - 1) < 1e-3
+    && Math.abs(b) < 1e-3 && Math.abs(c) < 1e-3
+    && Math.abs(e) < 0.6 && Math.abs(f) < 0.6
+}
+
+function useGeometryAudit(
+  stageRef: React.RefObject<HTMLDivElement | null>,
+  step: number,
+  settled: boolean,
+) {
+  useEffect(() => {
+    if (!settled) return
+    if (typeof window === 'undefined') return
+    if (new URLSearchParams(window.location.search).get('dev') !== '1') return
+    const stage = stageRef.current
+    if (!stage) return
+    try {
+      const stageBox = stage.getBoundingClientRect()
+      const s = stageBox.width / 1280
+      if (!Number.isFinite(s) || s <= 0) return
+      const rows: { key: string; dx: number; dy: number; dw: number; dh: number; max: number }[] = []
+      stage.querySelectorAll('[data-expect]').forEach(el => {
+        const raw = (el as HTMLElement).dataset.expect
+        if (!raw) return
+        const parts = raw.split(',').map(Number)
+        if (parts.length !== 4 || parts.some(n => !Number.isFinite(n))) return
+        const [x, y, w, h] = parts as [number, number, number, number]
+        const cs = window.getComputedStyle(el as Element)
+        if (Number(cs.opacity) < 0.05 || !isIdentityTransform(cs.transform)) return
+        let p: Element | null = el as Element
+        let blocked = false
+        while (p && p !== stage) {
+          const t = window.getComputedStyle(p).transform
+          if (!isIdentityTransform(t) && p !== (el as Element)) { blocked = true; break }
+          p = p.parentElement
+        }
+        if (blocked) return
+        const box = (el as HTMLElement).getBoundingClientRect()
+        if (box.width < 1 || box.height < 1) return // dismounted/hidden layer
+        const ex = stageBox.left + (x * 2) / 3 * s
+        const ey = stageBox.top + (y * 2) / 3 * s
+        const ew = (w * 2) / 3 * s
+        const eh = (h * 2) / 3 * s
+        const dx = Math.abs(box.left - ex) / s
+        const dy = Math.abs(box.top - ey) / s
+        const dw = Math.abs(box.width - ew) / s
+        const dh = Math.abs(box.height - eh) / s
+        rows.push({ key: `${(el as HTMLElement).className} [${raw}]`, dx, dy, dw, dh, max: Math.max(dx, dy, dw, dh) })
+      })
+      const worst = rows.reduce((m, r) => Math.max(m, r.max), 0)
+      const over = rows.filter(r => r.max > 2)
+      const ranked = [...rows].sort((a, b) => b.max - a.max).slice(0, 10)
+      ;(window as unknown as { __S14_AUDIT__: unknown }).__S14_AUDIT__ = { step, checked: rows.length, worstRuntimePx: worst, over, ranked }
+      // eslint-disable-next-line no-console
+      console.info(`[S14-V6] geometry audit step=${step} checked=${rows.length} worst=${worst.toFixed(2)}rt-px over2px=${over.length}`, over.slice(0, 12))
+    } catch {
+      /* audit is progressive enhancement; never break the scene */
+    }
+  }, [stageRef, step, settled])
+}
+
+/* ---------------- step scenes ---------------- */
+
+function clamp01(v: number): number {
+  return Math.min(1, Math.max(0, v))
+}
+
+function SceneStep0({ snap }: { snap: StepSnapshot }) {
   return (
-    <div className="s14f-phone" data-label={label} style={style}>
-      <PhoneFrame scale={p.scale}>
-        <div className="s14f-screen">{children}</div>
-      </PhoneFrame>
-    </div>
+    <EditorialSurface surfaceIn={snap.surfaceIn}>
+      <EditorialContent>
+        <EditorialHome secondaryDim={0} />
+      </EditorialContent>
+    </EditorialSurface>
   )
 }
 
-/* ---------------- H00 · handoff desde Stack (§5) ---------------- */
-function H00() {
+function SceneStep1({ snap }: { snap: StepSnapshot }) {
   return (
-    <>
-      <div className="s14f-stackecho" aria-hidden="true">
-        <div className="s14f-stackpanel" data-side="front">
-          <p>Frontend</p><span>La app que usás</span>
-        </div>
-        <div className="s14f-stacklink" aria-hidden="true" />
-        <div className="s14f-stackpanel" data-side="back">
-          <p>Backend</p><span>Datos y servicios</span>
-        </div>
-      </div>
-      <div className="s14f-h00-phone">
-        <StagePhone rect={TARGETS.PHONE_CENTER} label="homeplus">
-          <HomeDemoScreen />
-        </StagePhone>
-      </div>
-    </>
+    <EditorialSurface surfaceIn={1}>
+      <EditorialContent>
+        <EditorialHome secondaryDim={snap.secondaryDim} />
+      </EditorialContent>
+    </EditorialSurface>
   )
 }
 
-/* ---------------- H01 · último paso (§6) ---------------- */
-function H01() {
+function SceneStep2({ snap }: { snap: StepSnapshot }) {
+  const showPlanner = snap.plannerIn > 0
+  const showPreview = snap.previewIn > 0 && snap.morph <= 0
+  const showForm = snap.morph > 0
+  const showFlight = snap.titleShared > 0 && snap.titleShared < 1
   return (
-    <div className="s14f-h01-phone">
-      <StagePhone rect={TARGETS.PHONE_ATTENUATED} label="homeplus-attenuated">
-        <HomeDemoScreen />
-      </StagePhone>
-    </div>
-  )
-}
-
-/* ---------------- H02 · crear tarea (§§7–8) ---------------- */
-function H02({ frozenCamP, frozenPicker, frozenValue }: {
-  frozenCamP: number | null
-  frozenPicker: number | null
-  frozenValue: 'from' | 'to' | null
-}) {
-  const hero = toRuntimeStyle({ x: TARGETS.TASK_HERO_ROW.x, y: TARGETS.TASK_HERO_ROW.y, w: TARGETS.TASK_HERO_ROW.w, h: TARGETS.TASK_HERO_ROW.h })
-  const cam = toRuntimeStyle({ x: TARGETS.TASK_CAMERA.x, y: TARGETS.TASK_CAMERA.y, w: TARGETS.TASK_CAMERA.w, h: TARGETS.TASK_CAMERA.h })
-  const sheetLeft = mx(NATIVE.sheetStageX - TARGETS.TASK_CAMERA.x)
-  return (
-    <>
-      <div className="s14f-h02-phone">
-        <StagePhone rect={TARGETS.PHONE_CONTEXT} label="planner-context" bare>
-          <div className="s14f-planner-dim">
-            <PlannerDemoScreen view="tasks" />
-            <span className="s14f-planner-origin" data-hero-origin="taskrow" aria-hidden="true" />
+    <EditorialSurface surfaceIn={1}>
+      <EditorialContent>
+        {snap.homeOut < 1 ? (
+          <div style={{ opacity: 1 - snap.homeOut }}>
+            <EditorialHome secondaryDim={1} />
           </div>
-        </StagePhone>
-      </div>
-      <div className="s14f-hero-row" data-hero="taskrow"
-        style={{ left: hero.left, top: hero.top, width: hero.width }}>
-        <div className="s14f-scale" style={{ transform: `scale(${NATIVE.taskScale})` }}>
-          <FrictionTaskRow />
-        </div>
-      </div>
-      <div className="s14f-fly-title" aria-hidden="true">Preparar la mochila de Juli</div>
-      <div className="s14f-camera" style={{ left: cam.left, top: cam.top, width: cam.width, height: cam.height }}>
-        <div className="s14f-cam-scale" style={{ left: sheetLeft, transform: `scale(${NATIVE.sheetScale})` }}>
+        ) : null}
+        {showPlanner ? (
           <div
-            className="s14f-cam-pan"
-            data-frozen={frozenCamP !== null}
-            style={frozenCamP !== null ? { transform: `translateY(${-frozenCamP / NATIVE.sheetScale}px)` } : undefined}
+            style={{
+              // M01 (§10.3): Planner context retires as the morph begins,
+              // fully gone well before the form establishes.
+              opacity: 1 - clamp01(snap.morph / 0.35),
+              display: snap.morph >= 1 ? 'none' : undefined,
+            }}
           >
-            <FrictionTaskSheet pickerOpen={frozenPicker !== null ? frozenPicker > 0.5 : undefined}
-              valueShown={frozenValue ?? undefined} />
+            <PlannerList entry={snap.plannerIn} listDim={snap.listDim} plusPulse={snap.plusPulse} />
           </div>
-        </div>
-      </div>
-    </>
+        ) : null}
+        {showPreview ? <TaskIntentPreview progress={snap.previewIn} /> : null}
+        {showForm ? (
+          <EditorialTaskForm
+            morph={snap.morph}
+            titleShared={snap.titleShared}
+            metaSplit={snap.metaSplit}
+            fieldsIn={snap.fieldsIn}
+            ctaIn={snap.ctaIn}
+            pickerOpen={snap.pickerOpen}
+            dateIsManana={snap.dateIsManana}
+          />
+        ) : null}
+        {/* Shared instance paints ABOVE destination surface (§25.2). */}
+        {showFlight ? <SharedTaskTitle progress={snap.titleShared} /> : null}
+      </EditorialContent>
+    </EditorialSurface>
   )
 }
 
-/* ---------------- H03+H04 · salida + garantía (§§9–18) ---------------- */
-function H03H04() {
-  const taskHero = toRuntimeStyle({ x: TARGETS.TASK_HERO_ROW.x, y: TARGETS.TASK_HERO_ROW.y, w: TARGETS.TASK_HERO_ROW.w, h: TARGETS.TASK_HERO_ROW.h })
-  const taskCam = toRuntimeStyle({ x: TARGETS.TASK_CAMERA.x, y: TARGETS.TASK_CAMERA.y, w: TARGETS.TASK_CAMERA.w, h: TARGETS.TASK_CAMERA.h })
-  const ps5 = toRuntimeStyle({ x: TARGETS.PS5_HERO_ROW.x, y: TARGETS.PS5_HERO_ROW.y, w: TARGETS.PS5_HERO_ROW.w, h: TARGETS.PS5_HERO_ROW.h })
-  const war = toRuntimeStyle({ x: TARGETS.WARRANTY_HERO_ROW.x, y: TARGETS.WARRANTY_HERO_ROW.y, w: TARGETS.WARRANTY_HERO_ROW.w, h: TARGETS.WARRANTY_HERO_ROW.h })
-  const pdf = toRuntimeStyle({ x: TARGETS.PDF_HERO_ROW.x, y: TARGETS.PDF_HERO_ROW.y, w: TARGETS.PDF_HERO_ROW.w, h: TARGETS.PDF_HERO_ROW.h })
-  const acam = toRuntimeStyle({ x: TARGETS.ASSETS_CAMERA.x, y: TARGETS.ASSETS_CAMERA.y, w: TARGETS.ASSETS_CAMERA.w, h: TARGETS.ASSETS_CAMERA.h })
-  const detailScale = (TARGETS.ASSETS_CAMERA.w * 2) / 3 / 370
+function SceneStep3({ snap }: { snap: StepSnapshot }) {
+  const showFormExit = snap.formOut < 1
+  const showAssets = snap.assetsIn > 0 && snap.psMorph < 1
+  const showDetail = snap.psMorph > 0
+  const assetsOpacity = showAssets ? 1 - clamp01(snap.psMorph / 0.4) : 0
+  const detailOpacity = clamp01((snap.psMorph - 0.15) / 0.5)
+  const flying = snap.psMorph > 0 && snap.psMorph < 1
+  const avatarP = win(snap.t, 590, 420, 'M_SHARED')
+  const titleP = win(snap.t, 620, 460, 'M_SHARED')
   return (
-    <>
-      <div className="s14f-h03-phone">
-        <StagePhone rect={TARGETS.PHONE_CONTEXT} label="planner-then-assets">
-          <div className="s14f-phone-xfade">
-            <div className="s14f-phone-view" data-view="planner">
-              <div className="s14f-planner-dim" data-dim="exit">
-                <PlannerDemoScreen view="tasks" />
-              </div>
-            </div>
-            <div className="s14f-phone-view" data-view="assets">
-              <div className="s14f-assets-scroll">
-                <FrictionAssetsList />
-                <span className="s14f-ps5-origin" data-hero-origin="ps5" aria-hidden="true" />
-              </div>
-            </div>
+    <EditorialSurface surfaceIn={1}>
+      <EditorialContent>
+        {showFormExit ? (
+          <div style={{ opacity: 1 - snap.formOut * 0.5 }}>
+            <EditorialTaskForm
+              morph={1}
+              titleShared={1}
+              metaSplit={1}
+              fieldsIn={1}
+              ctaIn={1}
+              pickerOpen={0}
+              dateIsManana
+              exit={snap.formOut}
+            />
           </div>
-        </StagePhone>
-      </div>
-      {/* H03 exit: camera starts at FOOTER, reframes, folds; row exits (§9) */}
-      <div className="s14f-camera" data-camera="task-exit"
-        style={{ left: taskCam.left, top: taskCam.top, width: taskCam.width, height: taskCam.height }}>
-        <div className="s14f-cam-scale" style={{ left: mx(NATIVE.sheetStageX - TARGETS.TASK_CAMERA.x), transform: `scale(${NATIVE.sheetScale})` }}>
-          <div className="s14f-cam-pan" data-pan="task-exit">
-            <FrictionTaskSheet valueShown="to" />
+        ) : null}
+        {showAssets ? (
+          <div style={{ opacity: assetsOpacity * snap.assetsIn }}>
+            <EditorialAssets entry={snap.assetsIn} psFocus={snap.psFocus} />
           </div>
-        </div>
-      </div>
-      <div className="s14f-hero-row" data-hero="taskrow-exit"
-        style={{ left: taskHero.left, top: taskHero.top, width: taskHero.width }}>
-        <div className="s14f-scale" style={{ transform: `scale(${NATIVE.taskScale})` }}>
-          <FrictionTaskRow />
-        </div>
-      </div>
-      <div className="s14f-hero-row" data-hero="ps5"
-        style={{ left: ps5.left, top: ps5.top, width: ps5.width }}>
-        <div className="s14f-scale" style={{ transform: `scale(${NATIVE.ps5Scale})` }}>
-          <div className="fr-assetrow" data-hero-clone="true">
-            <span className="fr-assetrow-avatar" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.6">
-                <path d="M10 1.8 17 5.4v9.2l-7 3.6-7-3.6V5.4l7-3.6Z" />
-                <path d="M3.2 5.5 10 9l6.8-3.5M10 9v9" />
-              </svg>
-            </span>
-            <div className="fr-assetrow-copy">
-              <p className="fr-assetrow-title">PlayStation 5</p>
-              <p className="fr-assetrow-meta">Ahora con Tomi</p>
-            </div>
-            <span className="fr-assetrow-chevron" aria-hidden="true">›</span>
+        ) : null}
+        {showDetail ? (
+          <div style={{ opacity: Math.max(detailOpacity, snap.warrantyExpand > 0 || snap.pdfIn > 0 ? 1 : 0) }}>
+            <EditorialAssetDetail
+              detailIn={Math.max(detailOpacity, snap.warrantyExpand > 0 || snap.pdfIn > 0 ? 1 : 0)}
+              warrantyExpand={snap.warrantyExpand}
+              pdfIn={snap.pdfIn}
+              hideIdentity={flying}
+            />
           </div>
-        </div>
-      </div>
-      <div className="s14f-camera" data-camera="assets"
-        style={{ left: acam.left, top: acam.top, width: acam.width, height: acam.height }}>
-        <div className="s14f-cam-scale" style={{ transform: `scale(${detailScale})` }}>
-          <div className="s14f-cam-pan" data-pan="assets-to-docs">
-            <FrictionPs5Detail />
-          </div>
-        </div>
-      </div>
-      <div className="s14f-hero-row" data-hero="warranty"
-        style={{ left: war.left, top: war.top, width: war.width }}>
-        <div className="s14f-scale" style={{ transform: `scale(${NATIVE.warrantyScale})` }}>
-          <div className="fr-docrow" data-hero-clone="true">
-            <span className="fr-docrow-icon" aria-hidden="true">◈</span>
-            <div>
-              <p className="fr-docrow-title">Garantía PlayStation 5</p>
-              <p className="fr-docrow-meta">Garantía · hasta enero de 2027 · 1 documento</p>
-            </div>
-            <span className="fr-docrow-chevron" aria-hidden="true">›</span>
-          </div>
-        </div>
-      </div>
-      <div className="s14f-wsheet-layer" data-layer="wsheet">
-        <div className="s14f-cam-scale" style={{ transform: `scale(${NATIVE.sheetScale})` }}>
-          <FrictionWarrantySheet />
-        </div>
-      </div>
-      <div className="s14f-hero-row" data-hero="pdf"
-        style={{ left: pdf.left, top: pdf.top, width: pdf.width }}>
-        <div className="s14f-scale" style={{ transform: `scale(${NATIVE.pdfScale})` }}>
-          <div className="fr-pacerow" data-hero-clone="true">
-            <span className="fr-pacerow-icon" aria-hidden="true">PDF</span>
-            <div>
-              <p className="fr-pacerow-title">Garantía PS5.pdf</p>
-              <p className="fr-pacerow-meta">PDF · 620 KB</p>
-            </div>
-            <span className="fr-pacerow-chevron" aria-hidden="true">›</span>
-          </div>
-        </div>
-      </div>
-      <div className="s14f-wsheet-layer" data-layer="pdfdetail">
-        <div className="s14f-cam-scale" style={{ transform: `scale(${NATIVE.sheetScale})` }}>
-          <FrictionPdfDetail />
-        </div>
-      </div>
-    </>
+        ) : null}
+        {flying ? (
+          <>
+            <SharedAssetAvatar progress={avatarP} />
+            <SharedAssetTitle progress={titleP} />
+          </>
+        ) : null}
+      </EditorialContent>
+    </EditorialSurface>
   )
 }
 
-/* ---------------- H05+H06 · reintegración (§19) ---------------- */
-function H05H06() {
-  const acam = toRuntimeStyle({ x: TARGETS.ASSETS_CAMERA.x, y: TARGETS.ASSETS_CAMERA.y, w: TARGETS.ASSETS_CAMERA.w, h: TARGETS.ASSETS_CAMERA.h })
-  const detailScale = (TARGETS.ASSETS_CAMERA.w * 2) / 3 / 370
+function SceneStep4({ snap }: { snap: StepSnapshot }) {
+  const t = snap.t
+  const pdfQ = 1 - win(t, 0, 150, 'M_EXIT')
+  const regQ = 1 - win(t, 100, 380, 'M_REFRAME')
+  const detailQ = 1 - win(t, 350, 250, 'M_REFRAME')
+  const homeQ = win(t, 500, 250, 'M_REFRAME')
   return (
-    <>
-      <div className="s14f-h0506-phone">
-        <StagePhone rect={TARGETS.PHONE_CENTER} label="homeplus-clean" bare>
-          <div className="s14f-phone-xfade" data-reverse="true">
-            <div className="s14f-phone-view" data-view="home"><HomeDemoScreen /></div>
-            <div className="s14f-phone-view" data-view="assets-out">
-              <FrictionPs5Detail />
-            </div>
+    <EditorialSurface surfaceIn={1}>
+      <EditorialContent>
+        {detailQ > 0 ? (
+          <div style={{ opacity: detailQ }}>
+            <EditorialAssetDetail
+              detailIn={1}
+              warrantyExpand={regQ}
+              pdfIn={pdfQ * (regQ > 0.05 ? 1 : 0)}
+            />
           </div>
-        </StagePhone>
-      </div>
-      <div className="s14f-camera" data-camera="assets-out"
-        style={{ left: acam.left, top: acam.top, width: acam.width, height: acam.height }}>
-        <div className="s14f-cam-scale" style={{ transform: `scale(${detailScale})` }}>
-          <div className="s14f-cam-pan" data-pan="docs-to-head">
-            <FrictionPs5Detail />
+        ) : null}
+        {homeQ > 0 ? (
+          <div style={{ opacity: homeQ }}>
+            <EditorialHome secondaryDim={0} />
           </div>
-        </div>
-      </div>
-      <div className="s14f-wsheet-layer" data-layer="wsheet-out">
-        <div className="s14f-cam-scale" style={{ transform: `scale(${NATIVE.sheetScale})` }}>
-          <FrictionWarrantySheet />
-        </div>
-      </div>
-      <div className="s14f-wsheet-layer" data-layer="pdfdetail-out">
-        <div className="s14f-cam-scale" style={{ transform: `scale(${NATIVE.sheetScale})` }}>
-          <FrictionPdfDetail />
-        </div>
-      </div>
-    </>
+        ) : null}
+      </EditorialContent>
+    </EditorialSurface>
   )
 }
 
-/* ---------------- H07 · retirada (§20) ---------------- */
-function H07() {
+function SceneStep5({ snap }: { snap: StepSnapshot }) {
   return (
-    <div className="s14f-h07-phone">
-      <StagePhone rect={TARGETS.PHONE_CENTER} label="homeplus-exit">
-        <HomeDemoScreen />
-      </StagePhone>
-    </div>
+    <EditorialSurface surfaceIn={1} surfaceOut={snap.surfaceOut}>
+      <EditorialContent>
+        <EditorialHome secondaryDim={0} />
+      </EditorialContent>
+    </EditorialSurface>
   )
 }
 
-/* ---------------- H08 · pregunta final (§21) ---------------- */
-function H08() {
-  const q = toRuntimeStyle({ x: TARGETS.QUESTION_REGION.x, y: TARGETS.QUESTION_REGION.y, w: TARGETS.QUESTION_REGION.w, h: TARGETS.QUESTION_REGION.h })
-  return (
-    <div className="s14f-qstage">
-      <p className="s14f-question"
-        style={{ left: q.left, top: q.top, width: q.width, height: q.height }}>
-        <span className="s14f-qline">¿Y si ni siquiera tuviéramos</span>
-        <span className="s14f-qline">que saber cómo?</span>
-      </p>
-      {QUESTION_DOT && <span className="s14f-qdot" aria-hidden="true"
-        style={{ left: mx(1750), top: mx(920) }} />}
-    </div>
-  )
+function SceneStep6({ snap }: { snap: StepSnapshot }) {
+  return <QuestionStage progress={snap.questionIn} />
 }
+
+/* ---------------- host ---------------- */
 
 export default function S14Barrier({ stepIndex }: { stepIndex: number }) {
   const step = Math.min(6, Math.max(0, stepIndex))
   const stageRef = useRef<HTMLDivElement | null>(null)
-  useSharedMeasure(stageRef, step)
+  const duration = stepDuration(step)
   const frozen = freezeTimeParam()
-  const frozenSnap = frozen !== null ? sampleStep(Math.min(6, Math.max(0, stepIndex)), frozen) : null
-  const formCamFallback = frozenSnap ? frozenSnap.camP : step === 2 ? FORM_CAM.FOOTER : FORM_CAM.TOP
+  const now = useLocalClock(step, duration, frozen)
+  const snap = sampleStep(step, now)
+  useGeometryAudit(stageRef, step, snap.settled || frozen !== null)
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return
+    if (new URLSearchParams(window.location.search).get('dev') !== '1') return
+    ;(window as unknown as { __S14__: unknown }).__S14__ = { step, t: snap.t, settled: snap.settled, duration }
+  }, [step, snap.t, snap.settled, duration])
 
   return (
-    <div ref={stageRef} className="s14f-stage" data-step={step}
-      data-frozen={frozen !== null} aria-label="Fricción: el último paso">
-      <div className="s14f-void" aria-hidden="true" />
-      <div key={step} className="s14f-beat" data-beat={step}>
-        {step === 0 && <H00 />}
-        {step === 1 && <H01 />}
-        {step === 2 && <H02 frozenCamP={frozenSnap ? frozenSnap.camP : null}
-          frozenPicker={frozenSnap ? frozenSnap.picker : null}
-          frozenValue={frozenSnap ? (frozenSnap.picker > 0.5 ? 'from' : frozenSnap.mañana > 0.5 ? 'to' : 'from') : null} />}
-        {step === 3 && <H03H04 />}
-        {step === 4 && <H05H06 />}
-        {step === 5 && <H07 />}
-        {step === 6 && <H08 />}
+    <div
+      ref={stageRef}
+      className="ed-stage"
+      data-step={step}
+      data-settled={snap.settled}
+      aria-label="Fricción: el último paso"
+    >
+      <div key={step} className="ed-beat" data-beat={step}>
+        {step === 0 ? <SceneStep0 snap={snap} /> : null}
+        {step === 1 ? <SceneStep1 snap={snap} /> : null}
+        {step === 2 ? <SceneStep2 snap={snap} /> : null}
+        {step === 3 ? <SceneStep3 snap={snap} /> : null}
+        {step === 4 ? <SceneStep4 snap={snap} /> : null}
+        {step === 5 ? <SceneStep5 snap={snap} /> : null}
+        {step === 6 ? <SceneStep6 snap={snap} /> : null}
       </div>
-      {frozen !== null && step === 2 && (
-        <span className="s14f-freeze-note" aria-hidden="true">
-          frozen @ {Math.round(frozen)}ms · camP {Math.round(formCamFallback)}
-        </span>
-      )}
     </div>
   )
 }
+
+export type { MasterRect }
