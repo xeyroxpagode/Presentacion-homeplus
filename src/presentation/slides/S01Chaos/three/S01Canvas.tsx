@@ -9,7 +9,7 @@ import { s01Director } from './s01Director'
 // deterministas y render bajo demanda (la state machine invalida mientras
 // anima y se detiene en los HOLD). No hay timers: todo el tiempo es local
 // al beat y se deriva de (previousStep, currentStep).
-export default function S01Canvas({ stepIndex }: { stepIndex: number }) {
+export default function S01Canvas({ stepIndex, sceneKey = 0 }: { stepIndex: number; sceneKey?: number }) {
   return (
     <div className="chaos-three" aria-hidden="true">
       <Canvas
@@ -30,7 +30,7 @@ export default function S01Canvas({ stepIndex }: { stepIndex: number }) {
       >
         <color attach="background" args={[s01Palette.void]} />
         <fog attach="fog" args={[s01Palette.void, 7, 17]} />
-        <S01Camera stepIndex={stepIndex} />
+        <S01Camera stepIndex={stepIndex} sceneKey={sceneKey} />
         <S01Lighting />
         <S01World />
       </Canvas>

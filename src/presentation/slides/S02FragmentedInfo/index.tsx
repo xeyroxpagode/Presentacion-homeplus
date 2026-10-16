@@ -3,12 +3,14 @@
 // Todo el estado visual deriva de (stepIndex, progress): forward, reverse
 // e interrupciones convergen al estado destino sin ownerships colgados.
 //
-// Step0 = Phone Dive completo S01.3→S02.0 (V1.6.1 §6: un solo progreso,
-// una sola curva, F0 idéntico al teléfono físico de S01.3, F100 WhatsApp
-// fullscreen exacto). Sin fundidos a negro ni pantallas intermedias.
+// Step0 = HOLD S02.0 del handoff canónico S01→S02: el Phone Dive es la
+// cámara 3D original (s01DiveBridge + s01Director.sampleDiveAt, intervalo,
+// curvas y duración del portal donante). S02.0 es fullscreen estable desde
+// su primer frame visible: sin zoom CSS, sin segundo teléfono, sin fundidos.
 
-import { useMemo, useRef } from 'react'
+import { useEffect, useMemo, useRef } from 'react'
 import type { SlideProps } from '../../presentationTypes'
+import { setDiveProgress } from '../S01Chaos/three/s01DiveBridge'
 import {
   HISTORY_VIEWPORT_H,
   HISTORY_VIEWPORT_Y,
@@ -26,7 +28,6 @@ import {
   useStepProgress,
   type Rect,
 } from './useStepProgress'
-import { diveBezelVisible, diveFrame, diveScreenRadius } from './phoneDive'
 import { useHistoryLayout } from './historyLayout'
 import ChatFaceStatic from './PhoneFace'
 import QuestionSVG from './QuestionSVG'
@@ -150,49 +151,49 @@ export default function S02FragmentedInfo({ stepIndex, phase = 'active' }: Props
   // scroll anchors y geometría de selección/morph. Estimador sólo pre-medición.
   const layout = useHistoryLayout(history.blocks, measureRef)
 
-  // ================= STEP 0 — Phone Dive completo (V1.6.1 §6) =================
-  // Único propietario de la transición S01.3→S02.0: un solo progreso
-  // p ∈ [0,1], una sola curva, F0 = teléfono físico de S01.3 (idéntico al
-  // estático de S01: mismo componente, misma geometría), F100 = WhatsApp
-  // fullscreen (0,0,1280,720). S01.3 permanece montado detrás: el diorama
-  // lo oculta la geometría del teléfono, nunca una capa negra.
+  // Handoff canónico S01→S02: el Phone Dive es la cámara 3D original (el
+  // progreso lineal de este beat muestrea su intervalo vía el puente; la
+  // duración es la del portal original). S02.0 no anima ningún zoom: es el
+  // HOLD fullscreen estable y permanece invisible hasta la llegada (p>=1),
+  // momento en que la pantalla física ya cubre el viewport → el relevo es
+  // píxel-equivalente, sin fade, sin flash, sin segundo movimiento.
+  // Sólo se publica cuando este beat es el slide activo: oculta o en
+  // converging, S02 no maneja la cámara.
+  //
+  // PREVIOUS desde S02.1+ vuelve al HOLD (no re-ejecuta el dive): el latch
+  // `heldRef` lo mantiene llegado; se libera al salir del slide activo
+  // (volver desde S01.3 con NEXT sí re-ejecuta el travelling original).
+  const prevStepRef = useRef(step)
+  const heldRef = useRef(false)
+  if (phase !== 'active') heldRef.current = false
+  else if (step === 0 && prevStepRef.current > 0) heldRef.current = true
+  else if (step !== 0) heldRef.current = false
+  useEffect(() => {
+    prevStepRef.current = step
+  }, [step])
+  const held = step === 0 && heldRef.current
+  const diveDriving = step === 0 && phase === 'active'
+  useEffect(() => {
+    setDiveProgress(diveDriving ? (held ? 1 : p) : null)
+  }, [diveDriving, held, p])
+  useEffect(() => () => setDiveProgress(null), [])
+
+  // ================= STEP 0 — HOLD S02.0 (handoff 3D→2D) =================
   if (step === 0) {
-    const d = smootherstep(p)
-    const frame = diveFrame(d)
-    const bezel = diveBezelVisible(frame.screen)
-    // El home indicator viaja dentro de la propia superficie (entra
-    // deslizándose con el acoplamiento final, sin duplicados).
+    const arrived = p >= 1 || held
     return (
-      <div className="s02-stage opening-layer" data-phase={phase} data-step={step} aria-hidden={phase !== 'active'}>
-        <div className="s02-dive">
-          {bezel && (
-            <div
-              className="s02-phone-body"
-              style={{
-                left: frame.body.x, top: frame.body.y, width: frame.body.w, height: frame.body.h,
-                transform: `rotate(${frame.tilt.toFixed(2)}deg)`,
-              }}
-              aria-hidden="true"
-            >
-              <div className="s02-phone-notch" />
-            </div>
-          )}
-          <div
-            className="s02-phone-screen"
-            style={{
-              left: frame.screen.x, top: frame.screen.y, width: frame.screen.w, height: frame.screen.h,
-              borderRadius: Math.round(diveScreenRadius(d) * 10) / 10,
-            }}
-          >
-            {/* El mapa es coords de stage; el bloque contenedor es la pantalla. */}
-            <div
-              className="s02-phone-surface"
-              style={{ transform: `translate(${(frame.map.offX - frame.screen.x).toFixed(1)}px, ${(frame.map.offY - frame.screen.y).toFixed(1)}px) scale(${frame.map.scale.toFixed(4)})` }}
-            >
-              <ChatFaceStatic />
-            </div>
-          </div>
-        </div>
+      <div
+        className="s02-stage opening-layer"
+        data-phase={phase}
+        data-step={step}
+        style={{ visibility: arrived && phase === 'active' ? 'visible' : 'hidden' }}
+        aria-hidden={!arrived || phase !== 'active'}
+      >
+        {/* Instancia única de WhatsApp fullscreen: idéntica a la franja
+            central de la textura del teléfono físico (mismo markup que el
+            resto de S02: ChatFaceStatic). Sin animación de entrada, sin
+            scroll, sin bezel: el primer frame visible YA es el destino. */}
+        <ChatFaceStatic />
       </div>
     )
   }

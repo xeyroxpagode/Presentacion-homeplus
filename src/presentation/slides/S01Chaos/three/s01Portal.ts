@@ -70,6 +70,34 @@ const _q = /* @__PURE__ */ new THREE.Quaternion()
 const _pos = /* @__PURE__ */ new THREE.Vector3()
 const _tgt = /* @__PURE__ */ new THREE.Vector3()
 const _up = /* @__PURE__ */ new THREE.Vector3()
+const _v = /* @__PURE__ */ new THREE.Vector3()
+
+function screenCornersWorld(): Array<[number, number, number]> {
+  const f = s01ScreenFrame()
+  const hw = f.width / 2
+  const hh = f.height / 2
+  return [
+    [f.center[0] - f.right[0] * hw + f.up[0] * hh, f.center[1] + f.up[1] * hh, f.center[2] - f.right[2] * hw + f.up[2] * hh],
+    [f.center[0] + f.right[0] * hw + f.up[0] * hh, f.center[1] + f.up[1] * hh, f.center[2] + f.right[2] * hw + f.up[2] * hh],
+    [f.center[0] + f.right[0] * hw - f.up[0] * hh, f.center[1] - f.up[1] * hh, f.center[2] + f.right[2] * hw - f.up[2] * hh],
+    [f.center[0] - f.right[0] * hw - f.up[0] * hh, f.center[1] - f.up[1] * hh, f.center[2] - f.right[2] * hw - f.up[2] * hh],
+  ]
+}
+
+/**
+ * Cobertura real con la cámara viva (§10): proyecta las cuatro esquinas
+ * físicas de PHONE_SCREEN a NDC y exige que todas queden fuera del
+ * viewport con el margen dado (pantalla cubriendo el encuadre, bisel y
+ * mundo fuera de campo). No es un temporizador: es geometría proyectada.
+ */
+export function s01ScreenCoversViewport(camera: THREE.Camera, margin = 0.08): boolean {
+  for (const c of screenCornersWorld()) {
+    _v.set(c[0], c[1], c[2]).project(camera)
+    // Detrás de cámara o dentro del encuadre → aún no hay cobertura total.
+    if (_v.z > 1 || (Math.abs(_v.x) < 1 + margin && Math.abs(_v.y) < 1 + margin)) return false
+  }
+  return true
+}
 
 /** Metadata del portal para QA angular/píxel y futuro handoff S02 (§97). */
 export function s01PortalMetadata(aspect: number, widthPx: number, heightPx: number) {

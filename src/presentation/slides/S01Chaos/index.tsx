@@ -21,27 +21,29 @@ import {
 } from './DioramaProps'
 import './chaos-scene.css'
 
-// S01 V1.6.1 — cocina-diorama 2.5D con cámara virtual. Cuatro beats
-// (stepIndex 0–3), todo el estado deriva de data-step / data-present.
-// Los antiguos beats 4/5 dejan de formar parte de la navegación: sin
-// reencuadre, sin acumulación extra, sin clímax invasivo (§2–§3).
-// Fondo y halo viven fuera de .chaos-camera (no viajan con el zoom).
-// Lookdev 3D (?dev=1&s01Renderer=three): carga diferida para que el bundle
-// normal no pague el costo de three.js.
+// S01 CANÓNICA 3D — cuatro beats navegables sobre el renderer original.
+// Beats 0–2 → estados históricos 1–3 del director; beat 3 → HOLD en el
+// origen del Phone Dive (acumulación original asentada + cámara A_WIDE,
+// ver S01Camera.enterBeat). El dive vive en el intervalo original
+// [holdUntil → portal[1]] y lo maneja el puente S01→S02 (s01DiveBridge):
+// S01 permanece montada y visible durante S02.0 hasta la cobertura total.
+// El diorama 2.5D queda sólo tras ?s01Renderer=flat (debug, fuera del
+// recorrido aprobado); el teléfono artificial de V1.6.1 no se ejecuta en
+// producción.
 const S01ThreeCanvas = lazy(() => import('./three/S01Canvas'))
 
-export default function S01Chaos({ stepIndex, active = true, phoneHidden = false }: SlideProps & { active?: boolean; phoneHidden?: boolean }) {
+export default function S01Chaos({ stepIndex, active = true, phoneHidden = false, sceneKey = 0 }: SlideProps & { active?: boolean; phoneHidden?: boolean; sceneKey?: number }) {
   const step = Math.min(Math.max(stepIndex, 0), 3)
   const search = step >= 3
   // Dev-only (?s01Camera=off): congela la cámara en el plano general.
   const cameraOff = new URLSearchParams(window.location.search).get('s01Camera') === 'off'
-  // Dev-only (?dev=1&s01Renderer=three): lookdev 3D estático en vez del
-  // diorama 2.5D. El renderer original queda intacto por defecto.
+  // Renderer 3D original (producción). Carga diferida para que el bundle
+  // normal no pague el costo de three.js.
   if (isS01ThreeRenderer()) {
     return (
       <div className="chaos-scene opening-layer" data-active={active} aria-hidden={!active}>
         <Suspense fallback={null}>
-          <S01ThreeCanvas stepIndex={step} />
+          <S01ThreeCanvas stepIndex={step} sceneKey={sceneKey} />
         </Suspense>
       </div>
     )

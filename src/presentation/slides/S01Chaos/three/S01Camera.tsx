@@ -3,13 +3,40 @@ import * as THREE from 'three'
 import { useFrame, useThree } from '@react-three/fiber'
 import { s01Director } from './s01Director'
 import { s01Anchors, type AnchorName } from './s01CinematicConfig'
-import { s01PortalMetadata } from './s01Portal'
+import { s01PortalMetadata, s01ScreenCoversViewport } from './s01Portal'
+import { getDiveProgress, registerDiveTick, setDiveCovered } from './s01DiveBridge'
 
 // Cámara narrativa única de S01: FOV fijo 36° en toda la secuencia, cero
 // animación de FOV. Los acercamientos son movimiento físico (position +
 // lookAt + up). También actúa como reloj del director: avanza la state
 // machine e invalida sólo mientras hay animación (frameloop="demand").
-export default function S01Camera({ stepIndex }: { stepIndex: number }) {
+//
+// Handoff canónico S01→S02: la presentación expone 4 beats navegables y el
+// director conserva sus 6 estados históricos. Mapeo explícito:
+//   beat 0 → director 1 · beat 1 → director 2 · beat 2 → director 3
+//   beat 3 → HOLD en el origen del dive (enterDiveStaging).
+// Durante S02.0 el puente publica el progreso lineal del beat y la cámara
+// muestrea el intervalo ORIGINAL [holdUntil → portal[1]] vía
+// sampleDiveAt(): mismas poses, mismas curvas, misma duración. Sin reencuadre,
+// sin zoom CSS, sin segunda cámara.
+
+/** Beat navegable (0–3) → step histórico del director (1–3). */
+const BEAT_STEP = [1, 2, 3] as const
+
+function enterBeat(beat: number) {
+  if (beat >= 3) s01Director.enterDiveStaging()
+  else s01Director.setStep(BEAT_STEP[Math.min(Math.max(beat, 0), 2)] ?? 1)
+}
+
+function initBeat(beat: number, aspect: number) {
+  if (beat >= 3) {
+    s01Director.init(4, aspect)
+    s01Director.enterDiveStaging()
+  } else {
+    s01Director.init(BEAT_STEP[Math.min(Math.max(beat, 0), 2)] ?? 1, aspect)
+  }
+}
+export default function S01Camera({ stepIndex, sceneKey = 0 }: { stepIndex: number; sceneKey?: number }) {
   const camera = useThree((state) => state.camera) as THREE.PerspectiveCamera
   const invalidate = useThree((state) => state.invalidate)
   const size = useThree((state) => state.size)
@@ -62,13 +89,15 @@ export default function S01Camera({ stepIndex }: { stepIndex: number }) {
     }
     if (!started.current) {
       started.current = true
-      s01Director.init(stepIndex, aspect)
+      initBeat(stepIndex, aspect)
     } else {
       s01Director.aspect = aspect
-      s01Director.setStep(stepIndex)
+      enterBeat(stepIndex)
     }
     invalidate()
-  }, [stepIndex, invalidate, aspect])
+    // sceneKey re-dispara el beat al cambiar de slide con el mismo step
+    // (S02.0→S01.3 con step 3 en ambos: ejecuta el reverse del travelling).
+  }, [stepIndex, sceneKey, invalidate, aspect])
 
   useEffect(() => {
     scene.add(blackout)
@@ -77,10 +106,52 @@ export default function S01Camera({ stepIndex }: { stepIndex: number }) {
     }
   }, [scene, blackout])
 
-  useFrame((state, delta) => {
-    const live = s01Director.update(Math.min(delta, 0.05) * 1000, aspect)
-    const f = s01Director.frame
+  // El puente invalida el canvas en cada publicación de progreso (S02.0).
+  useEffect(() => {
+    registerDiveTick(() => invalidate())
+    return () => registerDiveTick(null)
+  }, [invalidate])
 
+  useFrame((state, delta) => {
+    // Dive canónico: el progreso de S02.0 muestrea el intervalo original.
+    // Sobrescribe cualquier staging/reverse en curso (convergencia exacta).
+    const diveP = getDiveProgress()
+    if (diveP !== null) {
+      s01Director.sampleDiveAt(diveP, aspect, Math.min(delta, 0.05) * 1000)
+      applyFrame()
+      setDiveCovered(s01ScreenCoversViewport(camera))
+      if (typeof window !== 'undefined') {
+        const w = window as unknown as Record<string, unknown>
+        w.__s01PortalMeta = s01PortalMetadata(aspect, size.width, size.height)
+        w.__s01DivePose = {
+          p: diveP,
+          camPos: [...s01Director.frame.camPos],
+          camTarget: [...s01Director.frame.camTarget],
+          camUp: [...s01Director.frame.camUp],
+          covered: s01ScreenCoversViewport(camera),
+        }
+      }
+      // La convergencia anti-salto necesita sus propios frames (el puente
+      // no publica durante un freeze): invalidar hasta completarla.
+      if (s01Director.diveBlendActive) state.invalidate()
+      return
+    }
+    const live = s01Director.update(Math.min(delta, 0.05) * 1000, aspect)
+    applyFrame()
+
+    // Metadata del portal para QA y futuro handoff S02 (§97). Dev + QA.
+    if (typeof window !== 'undefined') {
+      const w = window as unknown as Record<string, unknown>
+      if (s01Director.step === 5 && !live) {
+        w.__s01PortalMeta = s01PortalMetadata(aspect, size.width, size.height)
+      }
+    }
+
+    if (live) state.invalidate()
+  })
+
+  function applyFrame() {
+    const f = s01Director.frame
     camera.position.set(f.camPos[0], f.camPos[1], f.camPos[2])
     camera.up.set(f.camUp[0], f.camUp[1], f.camUp[2])
     camera.lookAt(f.camTarget[0], f.camTarget[1], f.camTarget[2])
@@ -95,17 +166,7 @@ export default function S01Camera({ stepIndex }: { stepIndex: number }) {
     } else if (blackout.visible) {
       blackout.visible = false
     }
-
-    // Metadata del portal para QA y futuro handoff S02 (§97). Dev + QA.
-    if (typeof window !== 'undefined') {
-      const w = window as unknown as Record<string, unknown>
-      if (s01Director.step === 5 && !live) {
-        w.__s01PortalMeta = s01PortalMetadata(aspect, size.width, size.height)
-      }
-    }
-
-    if (live) state.invalidate()
-  })
+  }
 
   return null
 }

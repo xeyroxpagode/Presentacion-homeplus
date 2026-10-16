@@ -94,6 +94,14 @@ const POLICY_ACCUM = { p: [-0.13, 0.051, -0.06] as Vec3, r: [0, 0.12, 0] as Vec3
 /** Slide final post-aterrizaje por documento (m, en su heading). */
 const DOC_SLIDE = [0.04, 0.06, 0.02, 0.02, 0, 0.02]
 
+/**
+ * Duración del reverse del dive (PREVIOUS desde S02.0, §14): el mismo
+ * travelling original muestreado en sentido inverso. El forward conserva
+ * su duración original (1350 ms); este valor sólo rige la reversa y queda
+ * documentado como política de navegación.
+ */
+const S01_UNDIVE_MS = 700
+
 export class S01Director {
   /** Estado visible del beat actual (lectura directa desde useFrame). */
   readonly frame = makeFrame()
@@ -106,7 +114,7 @@ export class S01Director {
 
   private params: Record<string, number> = {}
   private channels: { key: string; from: number; to: number; t0: number; t1: number; ease: Ease }[] = []
-  private mode: 'idle' | 'tween' | 'script3' | 'script5' = 'idle'
+  private mode: 'idle' | 'tween' | 'script3' | 'script5' | 'stage5' | 'undive' = 'idle'
   private scriptEnd = 0
   private camFrom: Vec3 = [0, 0, 0]
   private camTargetFrom: Vec3 = [0, 0, 0]
@@ -190,7 +198,7 @@ export class S01Director {
 
   /** Duración del beat actual (para QA). */
   beatDuration() {
-    if (this.mode === 'script5') return this.scriptEnd
+    if (this.mode === 'script5' || this.mode === 'stage5' || this.mode === 'undive') return this.scriptEnd
     if (this.mode === 'script3') return this.scriptEnd
     if (this.mode === 'tween') return this.tweenEnd()
     return s01BeatDuration[this.step] ?? 1000
@@ -203,9 +211,14 @@ export class S01Director {
     this.elapsed += dt
     if (this.mode === 'tween') this.applyTween()
     else if (this.mode === 'script3') this.applyScript3(this.elapsed)
-    else this.sampleScript5(this.elapsed, this.params)
+    else if (this.mode === 'stage5') this.sampleScript5(this.elapsed, this.params)
+    else if (this.mode === 'undive') {
+      const [t0, t1] = this.diveRange()
+      const u = clamp01(this.elapsed / S01_UNDIVE_MS)
+      this.sampleScript5(t1 - u * (t1 - t0), this.params)
+    } else this.sampleScript5(this.elapsed, this.params)
     // Interrupción / entrada: mezcla desde el estado previo (120–220 ms).
-    if (this.blendFrom && (this.mode === 'script3' || this.mode === 'script5')) {
+    if (this.blendFrom && (this.mode === 'script3' || this.mode === 'script5' || this.mode === 'stage5')) {
       const bu = easeOut(clamp01(this.elapsed / 180))
       for (const key of Object.keys(this.params)) {
         const from = this.blendFrom[key] ?? this.params[key]
@@ -217,6 +230,10 @@ export class S01Director {
     if (this.elapsed >= end) {
       if (this.mode === 'tween') {
         for (const ch of this.channels) this.params[ch.key] = ch.to
+      } else if (this.mode === 'stage5' || this.mode === 'undive') {
+        // HOLD en el origen del dive: acumulación asentada + cámara WIDE.
+        // Nunca f100(5) (PHONE_INSIDE): ese estado sólo lo muestrea el dive.
+        this.sampleDiveOrigin(this.params)
       } else {
         this.f100(this.step, this.params)
       }
@@ -548,7 +565,12 @@ export class S01Director {
 
   /* ----------- beat 5: acumulación + staging + portal --------------- */
 
-  private sampleScript5(t: number, out: Record<string, number>) {
+  /**
+   * Muestreo analítico del script 5 (público para el handoff canónico S02:
+   * staging, dive y QA reutilizan exactamente esta función, sin curvas
+   * nuevas). t en ms locales del beat (enter5).
+   */
+  sampleScript5(t: number, out: Record<string, number>) {
     const T = s01Timings.enter5
     // Base: estado post-fridge (F100 paso 4) como punto de partida analítico.
     this.f100(4, out)
@@ -640,6 +662,141 @@ export class S01Director {
   }
 
   /* ---------------- salida al frame de consumo ---------------- */
+
+  /* ---- Handoff canónico S01→S02: el tramo terminal de enter5 ---------
+   * La presentación expone 4 beats navegables; el director conserva sus 6
+   * estados históricos. Mapeo explícito:
+   *   beat 0 → director 1 · beat 1 → director 2 · beat 2 → director 3
+   *   beat 3 → HOLD en el origen del dive (sampleScript5(holdUntil)):
+   *            acumulación original asentada + cámara A_WIDE.
+   * El dive (NEXT desde beat 3) muestrea el intervalo original
+   * [holdUntil → portal[1]] como función pura del progreso de S02.0.
+   * Sin poses nuevas, sin curvas nuevas, sin otra duración. */
+
+  /** Intervalo original del travelling hacia el teléfono (ms de enter5). */
+  diveRange(): [number, number] {
+    return [s01Timings.enter5.holdUntil, s01Timings.enter5.portal[1]]
+  }
+
+  /** Duración original del travelling (portal[1] − holdUntil = 1350 ms). */
+  diveDurationMs(): number {
+    const [t0, t1] = this.diveRange()
+    return t1 - t0
+  }
+
+  /** Escribe la pose de origen del dive (HOLD del último beat S01). */
+  sampleDiveOrigin(out: Record<string, number> = this.params) {
+    this.sampleScript5(s01Timings.enter5.holdUntil, out)
+    return out
+  }
+
+  /**
+   * Muestreo absoluto del travelling original para progreso p ∈ [0, 1].
+   * Llamado por S01Camera cuando el puente publica progreso de S02.0:
+   * sobrescribe cualquier staging/reverse en curso (las interrupciones
+   * convergen por construcción, sin saltos).
+   *
+   * Anti-salto (§14): si la pose muestreada difiere de la actual en más de
+   * 5 mm (p. ej. NEXT en mitad del reverse), se converge en 150 ms con la
+   * misma política de mezcla de las interrupciones existentes (120–220 ms),
+   * sin alterar la trayectoria: el régimen es la función pura original.
+   */
+  sampleDiveAt(p: number, aspect = this.aspect, dtMs = 0) {
+    this.aspect = aspect
+    const [t0, t1] = this.diveRange()
+    const target: Record<string, number> = {}
+    this.sampleScript5(t0 + clamp01(p) * (t1 - t0), target)
+    if (!this.diveBlend && dtMs > 0 && this.camDistToParams(target) > 0.005) {
+      this.diveBlend = { from: { ...this.params }, t: 0 }
+    }
+    if (this.diveBlend) {
+      this.diveBlend.t += dtMs
+      const u = easeOut(clamp01(this.diveBlend.t / 150))
+      for (const key of Object.keys(target)) {
+        const from = this.diveBlend.from[key] ?? target[key]!
+        this.params[key] = lerp(from, target[key]!, u)
+      }
+      if (this.diveBlend.t >= 150) this.diveBlend = null
+    } else {
+      for (const key of Object.keys(target)) this.params[key] = target[key]!
+    }
+    this.blendFrom = null
+    this.writeFrame()
+  }
+
+  private diveBlend: { from: Record<string, number>; t: number } | null = null
+
+  /** ¿Hay una convergencia anti-salto en curso? (el canvas debe invalidar). */
+  get diveBlendActive(): boolean {
+    return this.diveBlend !== null
+  }
+
+  private camDistToParams(target: Record<string, number>): number {
+    const dx = (this.params['camPos.0'] ?? 0) - (target['camPos.0'] ?? 0)
+    const dy = (this.params['camPos.1'] ?? 0) - (target['camPos.1'] ?? 0)
+    const dz = (this.params['camPos.2'] ?? 0) - (target['camPos.2'] ?? 0)
+    return Math.sqrt(dx * dx + dy * dy + dz * dz)
+  }
+
+  /** ¿La pose actual coincide con el origen del dive? (tolerancia 1 mm). */
+  isAtDiveOrigin(): boolean {
+    return this.camDistTo(s01Timings.enter5.holdUntil) < 0.001
+  }
+
+  /** ¿La pose actual coincide con el final del portal (PHONE_INSIDE)? */
+  isAtPortalEnd(): boolean {
+    return this.camDistTo(s01Timings.enter5.portal[1]) < 0.001
+  }
+
+  private camDistTo(t: number): number {
+    const probe: Record<string, number> = {}
+    this.sampleScript5(t, probe)
+    const dx = (this.params['camPos.0'] ?? 0) - (probe['camPos.0'] ?? 0)
+    const dy = (this.params['camPos.1'] ?? 0) - (probe['camPos.1'] ?? 0)
+    const dz = (this.params['camPos.2'] ?? 0) - (probe['camPos.2'] ?? 0)
+    return Math.sqrt(dx * dx + dy * dy + dz * dz)
+  }
+
+  /**
+   * Entrada al último HOLD de S01 (beat 3 navegable):
+   * - Si ya estamos en el origen → HOLD inmediato (sin re-drama).
+   * - Si estamos al final del portal (PREVIOUS desde S02.0) → se recorre
+   *   el mismo travelling original en sentido inverso (700 ms, documentado
+   *   en §14; el forward conserva su duración original intacta).
+   * - En otro caso → segmento original de acumulación [0 → holdUntil] con
+   *   la mezcla de entrada estándar (120–220 ms).
+   * Llamadas repetidas durante staging/undive no reinician (sin flicker).
+   */
+  enterDiveStaging() {
+    if (this.mode === 'stage5' || this.mode === 'undive') return
+    this.step = 5
+    if (this.reduced) {
+      this.f100(4, this.params)
+      this.sampleDiveOrigin(this.params)
+      this.channels = []
+      this.mode = 'idle'
+      this.elapsed = s01Timings.enter5.holdUntil
+      this.blendFrom = null
+      this.writeFrame()
+      return
+    }
+    if (this.isAtDiveOrigin()) {
+      this.mode = 'idle'
+      this.blendFrom = null
+      this.writeFrame()
+      return
+    }
+    this.elapsed = 0
+    this.blendFrom = { ...this.params }
+    this.channels = []
+    if (this.isAtPortalEnd()) {
+      this.mode = 'undive'
+      this.scriptEnd = S01_UNDIVE_MS
+      return
+    }
+    this.mode = 'stage5'
+    this.scriptEnd = s01Timings.enter5.holdUntil
+  }
 
   private writeFrame() {
     const f = this.frame
