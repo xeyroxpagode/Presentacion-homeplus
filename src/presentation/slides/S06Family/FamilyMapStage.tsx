@@ -9,7 +9,7 @@ type ActiveFlight = { timer: number; finish: (event?: TransitionEvent) => void }
 type FamilyMapStageProps = {
   active: boolean
   stepIndex: number
-  stageRef: RefObject<HTMLDivElement | null>
+  stageEl: HTMLDivElement | null
   slotRef: RefObject<HTMLDivElement | null>
 }
 
@@ -17,14 +17,14 @@ type FamilyMapStageProps = {
 // switches layout to its destination once, then animates only a compositor
 // transform. The current visual rect is sampled from the active matrix so a
 // direction change mid-flight continues from its actual on-screen position.
-export default function FamilyMapStage({ active, stepIndex, stageRef, slotRef }: FamilyMapStageProps) {
+export default function FamilyMapStage({ active, stepIndex, stageEl, slotRef }: FamilyMapStageProps) {
   const [slot, setSlot] = useState({ x: 0, y: 0, width: 0, height: 0 })
   const travelerRef = useRef<HTMLDivElement>(null)
   const layoutRef = useRef<LayoutRect | null>(null)
   const flightRef = useRef<ActiveFlight | null>(null)
 
   useLayoutEffect(() => {
-    const stage = stageRef.current
+    const stage = stageEl
     const target = slotRef.current
     if (!stage || !target) return
     const measure = () => {
@@ -40,7 +40,7 @@ export default function FamilyMapStage({ active, stepIndex, stageRef, slotRef }:
     observer.observe(stage)
     observer.observe(target)
     return () => observer.disconnect()
-  }, [stageRef, slotRef, active])
+  }, [stageEl, slotRef, active])
 
   useLayoutEffect(() => {
     const traveler = travelerRef.current

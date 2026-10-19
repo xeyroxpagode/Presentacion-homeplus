@@ -6,6 +6,7 @@ import type { NavigationAction, PresentationState } from './presentationTypes'
 import OpeningSequence from './opening/OpeningSequence'
 import HomePlannerSequence from './components/HomePlannerSequence'
 import S07CoordinarNoEsVigilar from './slides/S07CoordinarNoEsVigilar'
+import { cineRunKey, isCineSlide } from './cineSlides'
 import FinalKitchenCanvas from './slides/FinalKitchen/FinalKitchenCanvas'
 
 function reducer(state: PresentationState, action: NavigationAction) {
@@ -33,6 +34,15 @@ export default function Presentation() {
   const onFinalNavigateReady = useCallback((ready: boolean) => { finalReady.current = ready }, [])
   const finalActive = slide.id === 'FINAL_KITCHEN'
   const prepareFinal = slide.id === 'S17' && state.stepIndex === slide.stepCount - 1
+  // The cinematic run is one continuous composition, so its slides share a
+  // stable section key per run. That keeps `CineScene` mounted across the slide
+  // boundary and lets the travelers animate instead of snapping.
+  const cine = isCineSlide(state.slideIndex)
+  const sceneKey = cine
+    ? cineRunKey(state.slideIndex)
+    : state.slideIndex <= 6
+      ? 'intro-product'
+      : slide.id
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -55,14 +65,16 @@ export default function Presentation() {
   return (
     <PresentationFrame>
       <section
-        key={state.slideIndex <= 6 ? 'intro-product' : slide.id}
+        key={sceneKey}
         className="presentation-scene"
         aria-label={slide.name}
         data-slide-id={slide.id}
         data-slide-index={state.slideIndex}
         data-step-index={state.stepIndex}
       >
-        {state.slideIndex <= 6 ? (
+        {cine ? (
+          <Slide stepIndex={state.stepIndex} slideIndex={state.slideIndex} directSnapshot={directSnapshot} />
+        ) : state.slideIndex <= 6 ? (
           <>
             <div className="opening-to-home" data-active={state.slideIndex <= 2}
               data-handoff={state.slideIndex === 3 && state.stepIndex === 0} aria-hidden={state.slideIndex > 2}>

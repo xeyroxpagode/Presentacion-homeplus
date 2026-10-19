@@ -1,7 +1,7 @@
 import HomeIcon from '../HomeDemoScreen/HomeIcon'
 import { plannerWeek, type PlannerEvent } from './plannerData'
 
-export default function PlannerCalendar({ event }: { event: PlannerEvent }) {
+export default function PlannerCalendar({ event, showEventRow = true }: { event: PlannerEvent; showEventRow?: boolean }) {
   return (
     <div className="planner-calendar">
       <div className="planner-card planner-week">
@@ -20,14 +20,16 @@ export default function PlannerCalendar({ event }: { event: PlannerEvent }) {
         </div>
       </div>
       <h2 className="planner-section-label planner-event-label">{event.dateLabel}</h2>
-      <div className="planner-card planner-event-row">
-        <span className="planner-event-dot" aria-hidden="true" />
-        <div className="planner-row-copy">
-          <p className="planner-row-title">{event.title}</p>
-          <p className="planner-row-meta">{event.context}</p>
+      {showEventRow && (
+        <div className="planner-card planner-event-row">
+          <span className="planner-event-dot" aria-hidden="true" />
+          <div className="planner-row-copy">
+            <p className="planner-row-title">{event.title}</p>
+            <p className="planner-row-meta">{event.context}</p>
+          </div>
+          <span className="planner-chevron"><HomeIcon name="right" size={16} /></span>
         </div>
-        <span className="planner-chevron"><HomeIcon name="right" size={16} /></span>
-      </div>
+      )}
     </div>
   )
 }

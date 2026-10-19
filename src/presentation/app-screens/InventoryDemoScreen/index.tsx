@@ -5,7 +5,13 @@ import { inventoryFilters, inventoryProducts, shoppingSummary } from './inventor
 import '../HomeDemoScreen/home-screen.css'
 import './inventory-screen.css'
 
-export default function InventoryDemoScreen({ focusShortages = false }: { focusShortages?: boolean }) {
+type InventoryDemoScreenProps = {
+  focusShortages?: boolean
+  showShoppingSummary?: boolean
+  showAvailableStatus?: boolean
+}
+
+export default function InventoryDemoScreen({ focusShortages = false, showShoppingSummary = true, showAvailableStatus = false }: InventoryDemoScreenProps) {
   return (
     <div className="home-demo-screen inventory-demo-screen" style={homeVariables}
       data-focus-shortages={focusShortages} aria-label="Inventario HomePlus">
@@ -26,19 +32,23 @@ export default function InventoryDemoScreen({ focusShortages = false }: { focusS
                 <p className="inventory-row-title">{product.name}</p>
                 <p className="inventory-row-meta">{product.place} · {product.qty}</p>
               </div>
-              {product.statusLabel && (
-                <span className={`inventory-status inventory-status-${product.status}`}>{product.statusLabel}</span>
+              {(product.statusLabel || (showAvailableStatus && product.status === 'ok' && 'En stock')) && (
+                <span className={`inventory-status inventory-status-${product.status}`}>
+                  {product.statusLabel || 'En stock'}
+                </span>
               )}
             </div>
           ))}
         </div>
-        <div className="inventory-shopping">
-          <div className="inventory-row-copy">
-            <p className="inventory-row-title">{shoppingSummary.title}</p>
-            <p className="inventory-row-meta">{shoppingSummary.subtitle}</p>
+        {showShoppingSummary && (
+          <div className="inventory-shopping">
+            <div className="inventory-row-copy">
+              <p className="inventory-row-title">{shoppingSummary.title}</p>
+              <p className="inventory-row-meta">{shoppingSummary.subtitle}</p>
+            </div>
+            <span className="inventory-count" aria-label={`${shoppingSummary.count} productos`}>{shoppingSummary.count}</span>
           </div>
-          <span className="inventory-count" aria-label={`${shoppingSummary.count} productos`}>{shoppingSummary.count}</span>
-        </div>
+        )}
       </div>
       <InventoryNavigation />
       <div className="home-system-indicator" aria-hidden="true" />

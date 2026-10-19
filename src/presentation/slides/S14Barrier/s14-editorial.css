@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: 'HomePlus DM Sans';
-  src: url('../app-screens/HomeDemoScreen/fonts/dm-sans-latin.woff2') format('woff2');
+  src: url('../../app-screens/HomeDemoScreen/fonts/dm-sans-latin.woff2') format('woff2');
   font-style: normal;
   font-weight: 300 700;
   font-display: swap;
