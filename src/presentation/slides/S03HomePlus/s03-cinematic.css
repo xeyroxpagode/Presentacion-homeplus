@@ -48,6 +48,32 @@
   pointer-events: none;
 }
 
+/* S03 V6 — película 1920×1080 (steps 1–10). El stage se escala uniformemente
+   para encajar en el navegador (§1.1). */
+.s03v6-stage {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.s03v6-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 1;
+}
+
+.s03v6-svg text {
+  user-select: none;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .s03-stage { visibility: visible; }
+  .s03v6-stage { visibility: visible; }
 }

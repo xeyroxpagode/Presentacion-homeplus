@@ -24,6 +24,7 @@ logs/
 /qa-captures/**/*.png
 /qa-captures/**/*.jpg
 /qa-captures/**/*.jpeg
+/qa-captures/**/*.webm
 /audit/runtime/**/*.png
 /audit/runtime/**/*.jpg
 /audit/runtime/**/*.jpeg

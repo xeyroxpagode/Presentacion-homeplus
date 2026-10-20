@@ -9,7 +9,8 @@ export const S03_ENTRY_MS = 3000
 export const PORTAL_MS = 1200
 
 // Duración de la transición de ENTRADA de cada step (0 = autoplay por epoch).
-export const S03_DURATIONS = [3000, 780, 500, 700, 700, 1100, 850, 980, 600, 690, 1400]
+// Steps 1–10: contrato V6 (§3–§12 del brief de dirección).
+export const S03_DURATIONS = [3000, 900, 760, 900, 870, 1230, 1030, 1250, 2200, 1600, 1100]
 
 const seg = (t: number, a: number, b: number): number => clamp01((t - a) / (b - a))
 export const lerp = (a: number, b: number, t: number): number => a + (b - a) * t
