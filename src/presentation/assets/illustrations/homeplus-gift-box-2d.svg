@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 330" fill="none" role="img" aria-label="Caja de regalo ilustrada 2D en crema y terracota">
+ <ellipse cx="181" cy="306" rx="144" ry="16" fill="#D6C9BE" opacity=".27"/>
+ <path d="M52 114L187 90L310 120L311 263L177 295L52 264V114Z" fill="#F6D1AB"/>
+ <path d="M52 115L182 149L182 294L52 264V115Z" fill="#E7B991"/>
+ <path d="M182 149L310 119V264L182 294V149Z" fill="#FCE1C2"/>
+ <path d="M51 113L181 81L310 119L181 151L51 113Z" fill="#F9E2C7"/>
+ <path d="M121 96L162 87L257 132L220 142L121 96Z" fill="#E76B43"/>
+ <path d="M152 143L190 152V294L152 286V143Z" fill="#D65F3C"/>
+ <path d="M215 142L247 134V280L215 287V142Z" fill="#E76B43"/>
+ <path d="M51 114L181 148L310 118" stroke="#DCA982" stroke-width="4" stroke-linecap="round"/>
+ <path d="M201 171L263 159L274 216L210 229L201 171Z" fill="#FFF8EF" stroke="#E0CCBC" stroke-width="3"/>
+ <path d="M239 188C234 179 224 188 231 195L245 207L252 192C254 183 243 181 239 188Z" stroke="#E76B43" stroke-width="4" stroke-linejoin="round"/>
+</svg>

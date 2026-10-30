@@ -1,0 +1,23 @@
+{
+  "safe": {
+    "profile": "safe",
+    "averageRenderMs": 71.01249999925494,
+    "maxRenderMs": 926.5999999940395,
+    "frameCount": 16,
+    "renderer": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+  },
+  "balanced": {
+    "profile": "balanced",
+    "averageRenderMs": 171.75000000248352,
+    "maxRenderMs": 871.6000000089407,
+    "frameCount": 6,
+    "renderer": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+  },
+  "cinematic": {
+    "profile": "cinematic",
+    "averageRenderMs": 252.70000000049671,
+    "maxRenderMs": 1319.6000000089407,
+    "frameCount": 6,
+    "renderer": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.8078.4 Safari/537.36"
+  }
+}

@@ -3,7 +3,7 @@ import HomeIcon from '../HomeDemoScreen/HomeIcon'
 export default function PlannerNavigation() {
   return (
     <nav className="home-navigation" aria-label="Navegación de HomePlus">
-      <div className="home-navigation-pill">
+      <div className="home-navigation-pill" data-active="calendar">
         <span className="home-navigation-item" role="img" aria-label="Home"><HomeIcon name="home" /></span>
         <span className="home-navigation-item" role="img" aria-label="Familia"><HomeIcon name="family" /></span>
         <span className="home-navigation-add" role="img" aria-label="Crear"><HomeIcon name="add" size={22} /></span>

@@ -1,0 +1,351 @@
+{
+  "passed": 12,
+  "total": 12,
+  "results": [
+    {
+      "name": "Procedural technician hierarchy is mounted in every required beat",
+      "pass": true,
+      "detail": {
+        "w02-wide": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        },
+        "w04-continuity": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        },
+        "w05-invoice-continuity": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        },
+        "w06-initial-p0": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        },
+        "w06-repair-p1": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        },
+        "w06-final-p2": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        },
+        "w07-present": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        },
+        "w08-hold": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        }
+      }
+    },
+    {
+      "name": "Historical low-poly rig is active instead of the GLB skeleton",
+      "pass": true,
+      "detail": {
+        "rootPresent": true,
+        "rootVisible": true,
+        "torso": true,
+        "head": true,
+        "rightShoulder": true,
+        "leftShoulder": true,
+        "rightKnee": true,
+        "leftKnee": true,
+        "toolSocket": true,
+        "glbRepairOverlay": false,
+        "skinnedMeshes": 0,
+        "bones": 0
+      }
+    },
+    {
+      "name": "GLB and human texture are not requested at runtime",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "Rendered screwdriver tip contacts the service screw",
+      "pass": true,
+      "detail": {
+        "tip": [
+          1.47,
+          0.13999999999999999,
+          -2.001
+        ],
+        "screw": [
+          1.47,
+          0.14,
+          -2.001
+        ],
+        "distance": 2.7755575615628914e-17
+      }
+    },
+    {
+      "name": "Baked contact and kneeling QA remain within contract",
+      "pass": true,
+      "detail": {
+        "p1Coverage": 0.8235294117647058,
+        "maxBakedTipErr": 8.326672684688674e-17,
+        "kneeY": 0.07195205324822784,
+        "footY": 0.08999999999999997,
+        "leftHandErr": 0.01855144631376727
+      }
+    },
+    {
+      "name": "W06 plays in real time with deterministic gesture progression",
+      "pass": true,
+      "detail": [
+        {
+          "t": 7.399999991059303,
+          "gestureT": null,
+          "phase": "transition",
+          "contact": null
+        },
+        {
+          "t": 413.59999999403954,
+          "gestureT": null,
+          "phase": "transition",
+          "contact": null
+        },
+        {
+          "t": 763.7999999970198,
+          "gestureT": 283.79999999701977,
+          "phase": "transition",
+          "contact": 0.8235294117647058
+        },
+        {
+          "t": 1085.5999999940395,
+          "gestureT": 605.5999999940395,
+          "phase": "transition",
+          "contact": 0.8235294117647058
+        },
+        {
+          "t": 1412.3999999910593,
+          "gestureT": 932.3999999910593,
+          "phase": "transition",
+          "contact": 0.8235294117647058
+        },
+        {
+          "t": 1725.0999999940395,
+          "gestureT": 1245.0999999940395,
+          "phase": "transition",
+          "contact": 0.8235294117647058
+        },
+        {
+          "t": 2036.5,
+          "gestureT": 1556.5,
+          "phase": "transition",
+          "contact": 0.8235294117647058
+        },
+        {
+          "t": 2343.199999988079,
+          "gestureT": 1600,
+          "phase": "stable",
+          "contact": 0.8235294117647058
+        },
+        {
+          "t": 2629.3999999910593,
+          "gestureT": 1600,
+          "phase": "stable",
+          "contact": 0.8235294117647058
+        }
+      ]
+    },
+    {
+      "name": "W06 accepts NEXT during the gesture without a stability gate",
+      "pass": true,
+      "detail": {
+        "before": {
+          "phase": "transition",
+          "gestureT": null
+        },
+        "headlessCommitMs": 1072.1
+      }
+    },
+    {
+      "name": "ArrowLeft from W07 restores W06 without a stability gate and keeps the technician present",
+      "pass": true,
+      "detail": {
+        "before": {
+          "stageBeat": "W07",
+          "renderedBeat": "W07",
+          "renderedPhase": "transition"
+        },
+        "headlessCommitMs": 1008.5,
+        "state": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        }
+      }
+    },
+    {
+      "name": "W08 remains compositionally stable for 20s with subtle body life",
+      "pass": true,
+      "detail": {
+        "cameraDelta": 0.0,
+        "torsoRange": 0.005656336087501768,
+        "rotations": [
+          {
+            "torso": -0.45417354741051763,
+            "head": -0.5521424003825344
+          },
+          {
+            "torso": -0.4553841542426064,
+            "head": -0.5527056469667156
+          },
+          {
+            "torso": -0.4558778542703054,
+            "head": -0.5548465645876757
+          },
+          {
+            "torso": -0.45882113648829914,
+            "head": -0.5514774502867728
+          },
+          {
+            "torso": -0.4598298834980194,
+            "head": -0.5482069751724044
+          }
+        ]
+      }
+    },
+    {
+      "name": "Reduced motion resolves safely with the procedural technician present",
+      "pass": true,
+      "detail": {
+        "phase": "stable",
+        "scene": {
+          "rootPresent": true,
+          "rootVisible": true,
+          "torso": true,
+          "head": true,
+          "rightShoulder": true,
+          "leftShoulder": true,
+          "rightKnee": true,
+          "leftKnee": true,
+          "toolSocket": true,
+          "glbRepairOverlay": false,
+          "skinnedMeshes": 0,
+          "bones": 0
+        }
+      }
+    },
+    {
+      "name": "Complete closing reaches credits and W09 blacks out house and phone together",
+      "pass": true,
+      "detail": {
+        "blackout": 1,
+        "lights": {
+          "spot": 0,
+          "lamp": 0,
+          "pantry": 0,
+          "window": 0,
+          "rim": 0,
+          "bounce": 0,
+          "ambient": 0,
+          "hemi": 0,
+          "bulbEmissive": 0,
+          "windowEmissive": 0,
+          "strip": 0,
+          "screen": 0
+        }
+      }
+    },
+    {
+      "name": "Browser console stays free of errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "consoleErrors": [],
+  "glbRequests": []
+}

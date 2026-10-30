@@ -8,12 +8,20 @@ import LetterPortalBridge from './LetterPortalBridge'
 import { openingTokens, openingVariables } from './openingTokens'
 import './opening.css'
 
-type OpeningSequenceProps = { slideIndex: number; stepIndex: number; handoff?: boolean; s03live?: boolean }
+type OpeningSequenceProps = {
+  slideIndex: number
+  stepIndex: number
+  handoff?: boolean
+  s03live?: boolean
+  onStep10Complete?: () => void
+  /** El step activo de S03 alcanzó su estado final (reposo). */
+  onStepSettled?: () => void
+}
 
 // These layers stay mounted across S01–S03: leaving elements can finish moving
 // while the next idea appears. Every target is derived from navigation state.
 // S01 V5.2.1: seis beats (0–5); el terminal es el step 5 (PHONE_INSIDE).
-export default function OpeningSequence({ slideIndex, stepIndex, handoff = false, s03live }: OpeningSequenceProps) {
+export default function OpeningSequence({ slideIndex, stepIndex, handoff = false, s03live, onStep10Complete, onStepSettled }: OpeningSequenceProps) {
   // S03 — autoridad temporal del host: el epoch compartido portal/dibujo se
   // fija en EFECTO (nunca durante el render) sólo en transiciones reales:
   // entrar en S03 abre un ciclo nuevo; salir lo invalida; S03.0→S03.1 no
@@ -73,7 +81,12 @@ export default function OpeningSequence({ slideIndex, stepIndex, handoff = false
       {/* S03 cinematográfica (11 beats): recibe el step para su timeline
           interno; montada desde t=0 detrás del portal. `active` usa el slide
           real: fuera de S03 el timeline de entrada NO se consume. */}
-      <S03HomePlus active={entered} stepIndex={slideIndex === 2 ? stepIndex : 0} />
+      <S03HomePlus
+        active={entered}
+        stepIndex={slideIndex === 2 ? stepIndex : 0}
+        onStep10Complete={onStep10Complete}
+        onStepSettled={onStepSettled}
+      />
       {/* Portal vectorial S02.8→S03 (contraforma de la «g» de «hogar»,
           línea 2; 1200 ms). S03 intacta: el overlay la revela exclusivamente
           a través de la abertura y se retira. Sólo en S03.0: en steps

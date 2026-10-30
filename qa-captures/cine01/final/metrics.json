@@ -1,0 +1,1547 @@
+{
+  "phase": "final",
+  "base": "http://127.0.0.1:8451",
+  "errors": [],
+  "captures": [
+    {
+      "name": "1280x720-s01-0",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0,
+      "mean": 2.5072142650462963,
+      "step": 0,
+      "elapsed": 0,
+      "frame": {
+        "camPos": [
+          -0.516,
+          2.026,
+          0.264
+        ],
+        "camTarget": [
+          -0.075,
+          0.925,
+          -0.34
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 1415.5,
+      "averageRenderMs": 1415.5,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 1,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-1-mid",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.9944173177083333,
+      "mean": 101.1204296875,
+      "step": 1,
+      "elapsed": 468.79999999701977,
+      "frame": {
+        "camPos": [
+          -0.4694094805742268,
+          1.8819189620686472,
+          0.1836292974744903
+        ],
+        "camTarget": [
+          -0.07500000000000001,
+          0.925,
+          -0.3400000000000001
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 8.5,
+      "averageRenderMs": 57.06071428582072,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 28,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-1-final",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.9947406684027778,
+      "mean": 101.45505823206018,
+      "step": 1,
+      "elapsed": 712.7999999970198,
+      "frame": {
+        "camPos": [
+          -0.4425,
+          1.84375,
+          0.164
+        ],
+        "camTarget": [
+          -0.075,
+          0.925,
+          -0.34
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 3.4000000059604645,
+      "averageRenderMs": 39.29523809679917,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 42,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-2-pantry",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.9860416666666667,
+      "mean": 43.52821650752315,
+      "step": 2,
+      "elapsed": 510.2999999821186,
+      "frame": {
+        "camPos": [
+          -0.4408215232027299,
+          2.1253358412555956,
+          -0.2802659743040273
+        ],
+        "camTarget": [
+          -0.7667555672160111,
+          1.7285569146282385,
+          -2.569935164568705
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 3.2999999970197678,
+      "averageRenderMs": 30.32463768167772,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 69,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-2-travel",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.7280631510416666,
+      "mean": 19.935709997106482,
+      "step": 2,
+      "elapsed": 1470.7999999821186,
+      "frame": {
+        "camPos": [
+          0.3379305079636976,
+          1.2913834421631796,
+          -0.9639424971474768
+        ],
+        "camTarget": [
+          1.4127209631359468,
+          0.7826449199575596,
+          -2.199446780832715
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0.06763889392020099,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 4.399999991059303,
+      "averageRenderMs": 18.796825396636176,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 126,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-2-final",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.7175553385416666,
+      "mean": 39.81903501157407,
+      "step": 2,
+      "elapsed": 1902.8999999761581,
+      "frame": {
+        "camPos": [
+          0.5,
+          1.1,
+          -1
+        ],
+        "camTarget": [
+          1.8,
+          0.6,
+          -2.1
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0.7330382858376184,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 3.2999999970197678,
+      "averageRenderMs": 16.30331125796236,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 151,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-3-320",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.867421875,
+      "mean": 32.98325954861111,
+      "step": 3,
+      "elapsed": 320,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0.7330382858376184,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 7.699999988079071,
+      "averageRenderMs": 16.246710525923653,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 152,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-3-500",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.867421875,
+      "mean": 32.98325954861111,
+      "step": 3,
+      "elapsed": 500,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0.7330382858376184,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 6.9000000059604645,
+      "averageRenderMs": 16.185620914682065,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 153,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-3-1000",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.8377549913194444,
+      "mean": 31.876198278356483,
+      "step": 3,
+      "elapsed": 1000,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.3502629212164203,
+        "fBot": 0.987774955813197,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 6,
+      "averageRenderMs": 16.119480519132182,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 154,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-3-1300",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.8365679253472222,
+      "mean": 31.112565104166666,
+      "step": 3,
+      "elapsed": 1300,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 15.799999997019768,
+      "averageRenderMs": 16.11741935447339,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 155,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-3-1650",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.8356521267361111,
+      "mean": 31.128047236689813,
+      "step": 3,
+      "elapsed": 1650,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 10.299999997019768,
+      "averageRenderMs": 16.080128204746124,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 156,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-3-2320",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.9702625868055555,
+      "mean": 108.76970594618055,
+      "step": 3,
+      "elapsed": 2320,
+      "frame": {
+        "camPos": [
+          0.020000000000000018,
+          2.45,
+          0.5
+        ],
+        "camTarget": [
+          0.06000000000000005,
+          0.93,
+          -0.3599999999999999
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 11,
+      "averageRenderMs": 16.047770700257296,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 157,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-3-3350",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.9702625868055555,
+      "mean": 108.71626916956019,
+      "step": 3,
+      "elapsed": 3350,
+      "frame": {
+        "camPos": [
+          0.020000000000000018,
+          2.45,
+          0.5
+        ],
+        "camTarget": [
+          0.06000000000000005,
+          0.93,
+          -0.3599999999999999
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 5.200000002980232,
+      "averageRenderMs": 15.97911392369225,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 158,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-4-0",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.9702387152777778,
+      "mean": 108.71555230034723,
+      "step": 4,
+      "elapsed": 0,
+      "frame": {
+        "camPos": [
+          0.02,
+          2.45,
+          0.5
+        ],
+        "camTarget": [
+          0.06,
+          0.93,
+          -0.36
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 6.5,
+      "averageRenderMs": 15.919496854989784,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 159,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-4-850",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.8056673177083333,
+      "mean": 32.584169921875,
+      "step": 4,
+      "elapsed": 850,
+      "frame": {
+        "camPos": [
+          2.15,
+          1.75,
+          2.7
+        ],
+        "camTarget": [
+          0.15,
+          0.82,
+          -0.9
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 505.3999999910593,
+      "averageRenderMs": 18.978749999590217,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 160,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-4-1370",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.8242013888888889,
+      "mean": 33.733868272569445,
+      "step": 4,
+      "elapsed": 1370,
+      "frame": {
+        "camPos": [
+          2.15,
+          1.75,
+          2.7
+        ],
+        "camTarget": [
+          0.15,
+          0.82,
+          -0.9
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 16.700000002980232,
+      "averageRenderMs": 18.9645962729032,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 161,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-4-1850",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.8235036892361111,
+      "mean": 33.73399848090278,
+      "step": 4,
+      "elapsed": 1850,
+      "frame": {
+        "camPos": [
+          2.15,
+          1.75,
+          2.7
+        ],
+        "camTarget": [
+          0.15,
+          0.82,
+          -0.9
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 15.700000002980232,
+      "averageRenderMs": 18.944444444076513,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 162,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-5-start",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.8237185329861111,
+      "mean": 33.73575267650463,
+      "step": 5,
+      "elapsed": 0,
+      "frame": {
+        "camPos": [
+          2.15,
+          1.75,
+          2.7
+        ],
+        "camTarget": [
+          0.15,
+          0.82,
+          -0.9
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 16.5,
+      "averageRenderMs": 18.929447852395064,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 163,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-5-approach",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.8406673177083334,
+      "mean": 36.30475802951389,
+      "step": 5,
+      "elapsed": 360,
+      "frame": {
+        "camPos": [
+          1.9244838267585012,
+          1.7124306614443239,
+          2.398216071320801
+        ],
+        "camTarget": [
+          0.15664379468384262,
+          0.8355018954816409,
+          -0.7745715531565246
+        ],
+        "camUp": [
+          -0.00516475847810457,
+          0.9629880808431712,
+          -0.03664979439962079
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 13.099999994039536,
+      "averageRenderMs": 18.893902438624604,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 164,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-5-align",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.7634906684027778,
+      "mean": 43.319952980324075,
+      "step": 5,
+      "elapsed": 680,
+      "frame": {
+        "camPos": [
+          1.2467253728217977,
+          1.5268047440492796,
+          1.5673721289938205
+        ],
+        "camTarget": [
+          0.13529786968308932,
+          0.8789024247093011,
+          -0.44214789017822376
+        ],
+        "camUp": [
+          -0.04420207503343603,
+          0.683237147557379,
+          -0.31366364349462655
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 10.599999994039536,
+      "averageRenderMs": 18.843636363202876,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 165,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-5-entry",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 0.8302875434027778,
+      "mean": 66.30108000578704,
+      "step": 5,
+      "elapsed": 900,
+      "frame": {
+        "camPos": [
+          0.6879567883282096,
+          1.318985508489002,
+          0.8648663267196391
+        ],
+        "camTarget": [
+          0.11240170176747527,
+          0.9070655540604113,
+          -0.20367955655741676
+        ],
+        "camUp": [
+          -0.08097940702982682,
+          0.41968181492664214,
+          -0.5746403497527246
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 9.700000002980232,
+      "averageRenderMs": 18.788554216454546,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 166,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1280x720-s01-5-final",
+      "width": 1280,
+      "height": 720,
+      "litRatio": 1,
+      "mean": 48.342931495949074,
+      "step": 5,
+      "elapsed": 1450,
+      "frame": {
+        "camPos": [
+          0.1,
+          0.9699495695334618,
+          -0.02
+        ],
+        "camTarget": [
+          0.1,
+          0.9207,
+          -0.02
+        ],
+        "camUp": [
+          -0.1395431146442365,
+          0,
+          -0.9902159962126371
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 339.20000000298023,
+      "averageRenderMs": 20.707185628349908,
+      "maxRenderMs": 1415.5,
+      "renderedFrames": 167,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-0",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0,
+      "mean": 2.506333429783951,
+      "step": 0,
+      "elapsed": 0,
+      "frame": {
+        "camPos": [
+          -0.516,
+          2.026,
+          0.264
+        ],
+        "camTarget": [
+          -0.075,
+          0.925,
+          -0.34
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 272.09999999403954,
+      "averageRenderMs": 272.09999999403954,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 1,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-1-mid",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.9942491319444444,
+      "mean": 101.08221241640946,
+      "step": 1,
+      "elapsed": 470.40000000596046,
+      "frame": {
+        "camPos": [
+          -0.46901144410969464,
+          1.8812533953926258,
+          0.1832628848287951
+        ],
+        "camTarget": [
+          -0.07499999999999998,
+          0.925,
+          -0.34
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 6.9000000059604645,
+      "averageRenderMs": 14.700000000851494,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 28,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-1-final",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.9943701774691358,
+      "mean": 101.39351578575103,
+      "step": 1,
+      "elapsed": 714.4000000059605,
+      "frame": {
+        "camPos": [
+          -0.4425,
+          1.84375,
+          0.164
+        ],
+        "camTarget": [
+          -0.075,
+          0.925,
+          -0.34
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 6.0999999940395355,
+      "averageRenderMs": 11.571428571783361,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 42,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-2-pantry",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.9853322723765432,
+      "mean": 43.35031458976337,
+      "step": 2,
+      "elapsed": 511.6000000089407,
+      "frame": {
+        "camPos": [
+          -0.43934672848717105,
+          2.125005705961876,
+          -0.2760802799060689
+        ],
+        "camTarget": [
+          -0.7675601297844069,
+          1.7291803867714046,
+          -2.572860127267721
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 5.5999999940395355,
+      "averageRenderMs": 9.202777778729796,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 72,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-2-travel",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.7315012538580247,
+      "mean": 19.894470325360082,
+      "step": 2,
+      "elapsed": 1468.5000000149012,
+      "frame": {
+        "camPos": [
+          0.3345783131667515,
+          1.2960006765091494,
+          -0.9626655378270281
+        ],
+        "camTarget": [
+          1.4034101274190527,
+          0.7873467781916139,
+          -2.202000458237382
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0.06494303995567069,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 2.9000000059604645,
+      "averageRenderMs": 7.313953488834144,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 129,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-2-final",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.7175583526234568,
+      "mean": 39.803082722479424,
+      "step": 2,
+      "elapsed": 1902.800000011921,
+      "frame": {
+        "camPos": [
+          0.5,
+          1.1,
+          -1
+        ],
+        "camTarget": [
+          1.8,
+          0.6,
+          -2.1
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0.7330382858376184,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 6.700000002980232,
+      "averageRenderMs": 7.115584415952107,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 154,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-3-320",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8658632330246914,
+      "mean": 32.90651668595679,
+      "step": 3,
+      "elapsed": 320,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0.7330382858376184,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 7.5,
+      "averageRenderMs": 7.118064516494351,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 155,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-3-500",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8658632330246914,
+      "mean": 32.90651668595679,
+      "step": 3,
+      "elapsed": 500,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0,
+        "fBot": 0.7330382858376184,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 6.5999999940395355,
+      "averageRenderMs": 7.114743590068358,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 156,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-3-1000",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8345548804012346,
+      "mean": 31.77168820730453,
+      "step": 3,
+      "elapsed": 1000,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.3502629212164203,
+        "fBot": 0.987774955813197,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 14.100000008940697,
+      "averageRenderMs": 7.1592356691694565,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 157,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-3-1300",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8344357638888888,
+      "mean": 31.037728587962963,
+      "step": 3,
+      "elapsed": 1300,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 15.599999994039536,
+      "averageRenderMs": 7.212658228187621,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 158,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-3-1650",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8333222415123457,
+      "mean": 31.05442081404321,
+      "step": 3,
+      "elapsed": 1650,
+      "frame": {
+        "camPos": [
+          1.08,
+          1.58,
+          1.92
+        ],
+        "camTarget": [
+          1.51,
+          0.8,
+          -2.04
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0
+      },
+      "profile": "cinematic",
+      "renderMs": 7.299999997019768,
+      "averageRenderMs": 7.2132075474884525,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 159,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-3-2320",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.9699647955246914,
+      "mean": 108.6028644225823,
+      "step": 3,
+      "elapsed": 2320,
+      "frame": {
+        "camPos": [
+          0.020000000000000018,
+          2.45,
+          0.5
+        ],
+        "camTarget": [
+          0.06000000000000005,
+          0.93,
+          -0.3599999999999999
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 14.900000005960464,
+      "averageRenderMs": 7.261250000353902,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 160,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-3-3350",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.9699647955246914,
+      "mean": 108.53963959619341,
+      "step": 3,
+      "elapsed": 3350,
+      "frame": {
+        "camPos": [
+          0.020000000000000018,
+          2.45,
+          0.5
+        ],
+        "camTarget": [
+          0.06000000000000005,
+          0.93,
+          -0.3599999999999999
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 7.100000008940697,
+      "averageRenderMs": 7.260248447612206,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 161,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-4-0",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.9697820216049383,
+      "mean": 108.53880658436213,
+      "step": 4,
+      "elapsed": 0,
+      "frame": {
+        "camPos": [
+          0.02,
+          2.45,
+          0.5
+        ],
+        "camTarget": [
+          0.06,
+          0.93,
+          -0.36
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 8.599999994039536,
+      "averageRenderMs": 7.268518518886449,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 162,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-4-850",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.7962678433641975,
+      "mean": 32.264693930041155,
+      "step": 4,
+      "elapsed": 850,
+      "frame": {
+        "camPos": [
+          2.15,
+          1.75,
+          2.7
+        ],
+        "camTarget": [
+          0.15,
+          0.82,
+          -0.9
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 69.40000000596046,
+      "averageRenderMs": 7.649693251935982,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 163,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-4-1370",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8140620177469136,
+      "mean": 33.281884002057616,
+      "step": 4,
+      "elapsed": 1370,
+      "frame": {
+        "camPos": [
+          2.15,
+          1.75,
+          2.7
+        ],
+        "camTarget": [
+          0.15,
+          0.82,
+          -0.9
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 27.200000002980232,
+      "averageRenderMs": 7.76890243944235,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 164,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-4-1850",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8133068094135802,
+      "mean": 33.28250369727366,
+      "step": 4,
+      "elapsed": 1850,
+      "frame": {
+        "camPos": [
+          2.15,
+          1.75,
+          2.7
+        ],
+        "camTarget": [
+          0.15,
+          0.82,
+          -0.9
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 15.299999997019768,
+      "averageRenderMs": 7.814545454942819,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 165,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-5-start",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8133637152777777,
+      "mean": 33.28459217463992,
+      "step": 5,
+      "elapsed": 0,
+      "frame": {
+        "camPos": [
+          2.15,
+          1.75,
+          2.7
+        ],
+        "camTarget": [
+          0.15,
+          0.82,
+          -0.9
+        ],
+        "camUp": [
+          0,
+          1,
+          0
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 10.399999991059303,
+      "averageRenderMs": 7.830120482268822,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 166,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-5-approach",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8303110532407407,
+      "mean": 35.778122910236625,
+      "step": 5,
+      "elapsed": 360,
+      "frame": {
+        "camPos": [
+          1.9244838267585012,
+          1.7124306614443239,
+          2.398216071320801
+        ],
+        "camTarget": [
+          0.15664379468384262,
+          0.8355018954816409,
+          -0.7745715531565246
+        ],
+        "camUp": [
+          -0.00516475847810457,
+          0.9629880808431712,
+          -0.03664979439962079
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 12.5,
+      "averageRenderMs": 7.858083832674398,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 167,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-5-align",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.7559876543209877,
+      "mean": 43.08638197659465,
+      "step": 5,
+      "elapsed": 680,
+      "frame": {
+        "camPos": [
+          1.2467253728217977,
+          1.5268047440492796,
+          1.5673721289938205
+        ],
+        "camTarget": [
+          0.13529786968308932,
+          0.8789024247093011,
+          -0.44214789017822376
+        ],
+        "camUp": [
+          -0.04420207503343603,
+          0.683237147557379,
+          -0.31366364349462655
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 14.700000002980232,
+      "averageRenderMs": 7.898809524164314,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 168,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-5-entry",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 0.8296059992283951,
+      "mean": 66.19874662422839,
+      "step": 5,
+      "elapsed": 900,
+      "frame": {
+        "camPos": [
+          0.6879567883282096,
+          1.318985508489002,
+          0.8648663267196391
+        ],
+        "camTarget": [
+          0.11240170176747527,
+          0.9070655540604113,
+          -0.20367955655741676
+        ],
+        "camUp": [
+          -0.08097940702982682,
+          0.41968181492664214,
+          -0.5746403497527246
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 10.700000002980232,
+      "averageRenderMs": 7.91538461575494,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 169,
+      "renderer": "WebKit WebGL"
+    },
+    {
+      "name": "1920x1080-s01-5-final",
+      "width": 1920,
+      "height": 1080,
+      "litRatio": 1,
+      "mean": 48.33902584876543,
+      "step": 5,
+      "elapsed": 1450,
+      "frame": {
+        "camPos": [
+          0.1,
+          0.9699495695334618,
+          -0.02
+        ],
+        "camTarget": [
+          0.1,
+          0.9207,
+          -0.02
+        ],
+        "camUp": [
+          -0.1395431146442365,
+          0,
+          -0.9902159962126371
+        ],
+        "fTop": 0.20943951023931956,
+        "fBot": 0.8726646259971648,
+        "drawer": 0.24
+      },
+      "profile": "cinematic",
+      "renderMs": 30.899999991059303,
+      "averageRenderMs": 8.050588235609672,
+      "maxRenderMs": 272.09999999403954,
+      "renderedFrames": 170,
+      "renderer": "WebKit WebGL"
+    }
+  ]
+}

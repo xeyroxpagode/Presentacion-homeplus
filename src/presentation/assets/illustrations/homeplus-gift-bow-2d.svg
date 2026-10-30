@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 116" fill="none" role="img" aria-label="Moño de regalo 2D animable">
+  <path d="M96 63C45 55 17 26 31 13C47 -4 85 29 98 55C106 23 151 -2 168 14C187 35 147 64 108 67" fill="#E96D45" stroke="#C85838" stroke-width="5" stroke-linejoin="round"/>
+  <path d="M38 22C66 28 81 43 97 58M160 22C140 28 124 42 108 58" stroke="#FFC49B" stroke-width="8" stroke-linecap="round" opacity=".7"/>
+  <path d="M97 67C93 85 80 103 72 111L57 94C66 78 77 65 89 62M108 66C123 77 142 91 149 111L165 87C152 76 135 64 111 61" fill="#D8613E"/>
+  <rect x="90" y="52" width="25" height="24" rx="9" fill="#C85838"/>
+  <rect x="95" y="56" width="16" height="14" rx="6" fill="#F08258"/>
+</svg>

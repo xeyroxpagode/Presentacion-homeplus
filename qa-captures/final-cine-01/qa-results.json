@@ -1,0 +1,273 @@
+{
+  "passed": 14,
+  "total": 14,
+  "results": [
+    {
+      "name": "NAV-01 W01 accepts one NEXT without a stability gate",
+      "pass": true,
+      "detail": {
+        "enterMs": 2464.7,
+        "observedHeadlessMs": 1247.1,
+        "beforePhase": "stable",
+        "beforeT": 2810.2000000029802
+      }
+    },
+    {
+      "name": "NAV-02 W04 accepts one NEXT without a stability gate",
+      "pass": true,
+      "detail": {
+        "observedHeadlessMs": 1248.1,
+        "beforePhase": "stable"
+      }
+    },
+    {
+      "name": "NAV-03 one PREVIOUS reconstructs prior beat",
+      "pass": true,
+      "detail": {
+        "observedHeadlessMs": 2220.6,
+        "frame": {
+          "camPos": [
+            -1.15,
+            0.95,
+            1.6
+          ],
+          "camTarget": [
+            -0.85,
+            0.26,
+            0.32999999999999996
+          ],
+          "camUp": [
+            0,
+            1,
+            0
+          ],
+          "techPose": "P0",
+          "gestureT": null,
+          "lights": {
+            "spot": 1,
+            "lamp": 1,
+            "pantry": 1,
+            "window": 1,
+            "rim": 1,
+            "bounce": 1,
+            "ambient": 1,
+            "hemi": 1,
+            "bulbEmissive": 1,
+            "windowEmissive": 1,
+            "strip": 1,
+            "screen": 1
+          },
+          "blackout": 0,
+          "phase": "stable",
+          "qa": {
+            "beat": "W04",
+            "localTime": 3016.5,
+            "diveP": null,
+            "coveredLostAt": 0.6447692307677024
+          }
+        }
+      }
+    },
+    {
+      "name": "NAV-04 W06 accepts one NEXT during gesture",
+      "pass": true,
+      "detail": {
+        "observedHeadlessMs": 1229.5
+      }
+    },
+    {
+      "name": "NAV-05 W08 hold remains compositionally stable for 20s",
+      "pass": true,
+      "detail": {
+        "before": {
+          "cam": [
+            2.15,
+            1.75,
+            2.7
+          ],
+          "target": [
+            0.15,
+            0.82,
+            -0.9
+          ],
+          "lights": {
+            "spot": 1,
+            "lamp": 1,
+            "pantry": 1,
+            "window": 1,
+            "rim": 1,
+            "bounce": 1,
+            "ambient": 1,
+            "hemi": 1,
+            "bulbEmissive": 1,
+            "windowEmissive": 1,
+            "strip": 1,
+            "screen": 1
+          },
+          "pose": "P2"
+        },
+        "after": {
+          "cam": [
+            2.15,
+            1.75,
+            2.7
+          ],
+          "target": [
+            0.15,
+            0.82,
+            -0.9
+          ],
+          "lights": {
+            "spot": 1,
+            "lamp": 1,
+            "pantry": 1,
+            "window": 1,
+            "rim": 1,
+            "bounce": 1,
+            "ambient": 1,
+            "hemi": 1,
+            "bulbEmissive": 1,
+            "windowEmissive": 1,
+            "strip": 1,
+            "screen": 1
+          },
+          "pose": "P2"
+        }
+      }
+    },
+    {
+      "name": "NAV-06 W09 accepts NEXT during blackout",
+      "pass": true,
+      "detail": {
+        "nextMs": 108.2
+      }
+    },
+    {
+      "name": "NAV-07 credits PREVIOUS restores completed W09",
+      "pass": true,
+      "detail": {
+        "previousMs": 24.6,
+        "lights": {
+          "spot": 0,
+          "lamp": 0,
+          "pantry": 0,
+          "window": 0,
+          "rim": 0,
+          "bounce": 0,
+          "ambient": 0,
+          "hemi": 0,
+          "bulbEmissive": 0,
+          "windowEmissive": 0,
+          "strip": 0,
+          "screen": 0
+        }
+      }
+    },
+    {
+      "name": "NAV-08 three fast physical presses advance three beats",
+      "pass": true,
+      "detail": {
+        "slide": 17,
+        "step": 3,
+        "id": "FINAL_KITCHEN"
+      }
+    },
+    {
+      "name": "NAV-09 held key repeat is ignored",
+      "pass": true,
+      "detail": {
+        "slide": 17,
+        "step": 1,
+        "id": "FINAL_KITCHEN"
+      }
+    },
+    {
+      "name": "NAV-10 direct W09 snapshot is final black",
+      "pass": true,
+      "detail": {
+        "lights": {
+          "spot": 0,
+          "lamp": 0,
+          "pantry": 0,
+          "window": 0,
+          "rim": 0,
+          "bounce": 0,
+          "ambient": 0,
+          "hemi": 0,
+          "bulbEmissive": 0,
+          "windowEmissive": 0,
+          "strip": 0,
+          "screen": 0
+        },
+        "blackout": 1
+      }
+    },
+    {
+      "name": "NAV-11 quality reload preserves selected beat",
+      "pass": true,
+      "detail": {
+        "safe": {
+          "beat": "W08",
+          "phase": "stable",
+          "dpr": 1,
+          "profile": "safe"
+        },
+        "balanced": {
+          "beat": "W08",
+          "phase": "stable",
+          "dpr": 1,
+          "profile": "balanced"
+        },
+        "cinematic": {
+          "beat": "W08",
+          "phase": "stable",
+          "dpr": 1,
+          "profile": "cinematic"
+        }
+      }
+    },
+    {
+      "name": "NAV-12 reduced motion resolves the dive safely",
+      "pass": true,
+      "detail": {
+        "beat": "W01",
+        "localTime": 3864,
+        "diveP": 0,
+        "coveredLostAt": null
+      }
+    },
+    {
+      "name": "BLACKOUT house and phone fade in the same W09 transition",
+      "pass": true,
+      "detail": [
+        {
+          "t": 0,
+          "screen": 1,
+          "spot": 1,
+          "ambient": 1,
+          "blackout": 0
+        },
+        {
+          "t": 375,
+          "screen": 0.6923142339518575,
+          "spot": 0.6426004477915733,
+          "ambient": 0.6426004477915733,
+          "blackout": 0
+        },
+        {
+          "t": 750,
+          "screen": 0,
+          "spot": 0,
+          "ambient": 0,
+          "blackout": 1
+        }
+      ]
+    },
+    {
+      "name": "Browser console has no errors",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "consoleErrors": []
+}
