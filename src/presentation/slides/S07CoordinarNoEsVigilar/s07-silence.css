@@ -1,15 +1,7 @@
-/* S07: visual silence after the map/feed. The product stage exits as a block
-   (rule below) while this near-black veil settles in; the statement then
-   enters once, with opacity + a short rise. Fully state-driven and reversible. */
-
-.home-planner-sequence.home-scene[data-exiting='true'] {
-  opacity: 0;
-  visibility: hidden;
-  transform: none;
-  transition:
-    opacity var(--motion-exit-duration) var(--motion-easing),
-    visibility 0s var(--motion-exit-duration);
-}
+/* S07: the family closure is kept mounted one beat beneath this scene, so the
+   black pause grows out of Mamá's message instead of cutting away from it.
+   Everything is state-driven: the outro attributes live on the retained S06
+   cine scene and this overlay only holds the final statement. */
 
 .s07-silence {
   position: absolute;
@@ -18,10 +10,86 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #060404;
+  background: transparent;
   pointer-events: none;
-  animation: s07-veil-in var(--motion-blackout-duration) var(--motion-easing) both;
 }
+
+/* ---------- outgoing S06.5: focus the resolution, then dissolve ---------- */
+
+.cine-scene[data-family-outro='true'] .cine-family-bridge {
+  animation:
+    s07-stage-isolate 950ms cubic-bezier(0.4, 0, 0.2, 1) 500ms forwards,
+    s07-stage-to-black 1000ms cubic-bezier(0.4, 0, 0.2, 1) 2550ms forwards;
+}
+
+.cine-scene[data-family-outro='true'] .cine-family-bridge .home-top-bar,
+.cine-scene[data-family-outro='true'] .cine-family-bridge .home-navigation,
+.cine-scene[data-family-outro='true'] .cine-family-screen-title {
+  animation: s07-chrome-out 950ms cubic-bezier(0.4, 0, 0.2, 1) 500ms both;
+}
+
+.cine-scene[data-family-outro='true'] .cine-family-bridge .cine-map-stage {
+  animation: s07-map-out 950ms cubic-bezier(0.4, 0, 0.2, 1) 520ms both;
+}
+
+.cine-scene[data-family-outro='true'] .cine-family-closure {
+  transform-origin: center center;
+  animation: s07-message-focus 2100ms cubic-bezier(0.4, 0, 0.2, 1) 1450ms both;
+}
+
+.cine-scene[data-family-outro='true'] .cine-family-closure-card {
+  animation: s07-message-glow 2100ms cubic-bezier(0.4, 0, 0.2, 1) 1450ms both;
+}
+
+@keyframes s07-stage-isolate {
+  0% { background-color: var(--home-canvas, #f6f5f2); }
+  100% { background-color: #ded5ca; }
+}
+
+@keyframes s07-stage-to-black {
+  0% { background-color: #ded5ca; }
+  100% { background-color: #000; }
+}
+
+@keyframes s07-chrome-out {
+  0% { opacity: 1; filter: blur(0); }
+  55% { opacity: 0.42; filter: blur(1px); }
+  100% { opacity: 0; filter: blur(3px); }
+}
+
+@keyframes s07-map-out {
+  0% { opacity: 1; filter: blur(0); transform: none; }
+  55% { opacity: 0.34; filter: blur(2px); transform: scale(0.99); }
+  100% { opacity: 0; filter: blur(6px); transform: scale(0.96); }
+}
+
+/* The card keeps its exact copy and typography: it simply advances to the
+   centre, grows, and is the last thing that releases into the black. */
+@keyframes s07-message-focus {
+  0% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  52.38% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translate3d(-259px, 61px, 0) scale(1.17);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(2px);
+    transform: translate3d(-266px, 66px, 0) scale(1.22);
+  }
+}
+
+@keyframes s07-message-glow {
+  0% { box-shadow: 0 14px 36px rgb(26 24 22 / 0.08); }
+  52.38% { box-shadow: 0 44px 120px rgb(0 0 0 / 0.6), 0 0 0 1px rgb(255 255 255 / 0.06); }
+  100% { box-shadow: 0 54px 150px rgb(0 0 0 / 0.8), 0 0 0 1px rgb(255 255 255 / 0.04); }
+}
+
+/* ---------- incoming S07 statement, two quiet beats ---------- */
 
 .s07-statement {
   margin: 0;
@@ -31,28 +99,55 @@
   letter-spacing: -0.03em;
   font-weight: 600;
   color: var(--presentation-text);
-  opacity: 0;
-  transform: translateY(12px);
-  transition:
-    opacity var(--motion-reframe-duration) var(--motion-easing),
-    transform var(--motion-reframe-duration) var(--motion-easing);
-}
-
-.s07-silence[data-phrase='true'] .s07-statement {
-  opacity: 1;
-  transform: none;
 }
 
 .s07-line {
   display: block;
+  opacity: 0;
+  will-change: opacity, transform, filter;
+  animation: s07-line-in 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
+
+.s07-line:nth-child(1) { animation-delay: 3550ms; }
+.s07-line:nth-child(2) { animation-delay: 3740ms; }
 
 .s07-line-quiet {
   font-weight: 500;
   color: #c7a084;
 }
 
-@keyframes s07-veil-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+/* Entering the slide directly on its settled beat (for example, navigating
+   back from S08) skips the choreography and lands on the finished image. */
+.s07-silence[data-settled='true'] .s07-line {
+  animation: none;
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+.presentation-scene[data-slide-id='S07'][data-step-index='1'] .cine-scene[data-family-outro='true'] .cine-family-bridge {
+  animation: none;
+  background-color: #000;
+}
+
+.presentation-scene[data-slide-id='S07'][data-step-index='1'] .cine-scene[data-family-outro='true'] .cine-family-bridge .home-top-bar,
+.presentation-scene[data-slide-id='S07'][data-step-index='1'] .cine-scene[data-family-outro='true'] .cine-family-bridge .home-navigation,
+.presentation-scene[data-slide-id='S07'][data-step-index='1'] .cine-scene[data-family-outro='true'] .cine-family-screen-title,
+.presentation-scene[data-slide-id='S07'][data-step-index='1'] .cine-scene[data-family-outro='true'] .cine-family-bridge .cine-map-stage,
+.presentation-scene[data-slide-id='S07'][data-step-index='1'] .cine-scene[data-family-outro='true'] .cine-family-closure {
+  animation: none;
+  opacity: 0;
+}
+
+@keyframes s07-line-in {
+  0% { opacity: 0; transform: translateY(22px); filter: blur(10px); }
+  60% { opacity: 1; filter: blur(0); }
+  100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+}
+
+/* Reduced motion keeps the conceptual cut, without the spatial choreography:
+   the retained family scene is covered by black and the statement is present. */
+@media (prefers-reduced-motion: reduce) {
+  .s07-silence { background: #000; }
+  .s07-line { opacity: 1; transform: none; filter: none; }
 }

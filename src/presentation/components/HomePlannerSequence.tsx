@@ -4,7 +4,7 @@ import HomeDemoScreen from '../app-screens/HomeDemoScreen'
 import S05Planner from '../slides/S05Planner'
 import '../slides/S04Home/home-scene.css'
 import './home-planner-sequence.css'
-import { useRef } from 'react'
+import { useRef, useState } from 'react'
 import S06Family from '../slides/S06Family'
 import FamilyMapStage from '../slides/S06Family/FamilyMapStage'
 
@@ -19,11 +19,14 @@ export default function HomePlannerSequence({ slideIndex, stepIndex }: HomePlann
   const exiting = slideIndex === 6
   const homeStep = slideIndex === 3 ? stepIndex : slideIndex >= 4 ? 5 : 0
   const familyStep = inFamily ? stepIndex : exiting ? 5 : 0
-  const stageRef = useRef<HTMLDivElement>(null)
+  // The stage node lives on this component's own root, so a child layout effect
+  // cannot read it yet: React attaches ancestor refs after descendant effects.
+  // Publishing it as state makes the node available on the next commit.
+  const [stageEl, setStageEl] = useState<HTMLDivElement | null>(null)
   const mapSlotRef = useRef<HTMLDivElement>(null)
   const expanded = inFamily && stepIndex >= 1 && stepIndex <= 3
   return (
-    <div ref={stageRef} className="home-scene home-planner-sequence" data-active={slideIndex >= 3}
+    <div ref={setStageEl} className="home-scene home-planner-sequence" data-active={slideIndex >= 3}
       data-exiting={exiting}
       data-map-expanded={expanded}
       data-home-step={homeStep} data-product-screen={inFamily ? 'family' : inPlanner ? 'planner' : 'home'} aria-hidden={slideIndex < 3}>
@@ -44,7 +47,7 @@ export default function HomePlannerSequence({ slideIndex, stepIndex }: HomePlann
           </div>
         </PhoneFrame>
       </div>
-      <FamilyMapStage active={inFamily} stepIndex={inFamily ? stepIndex : 0} stageRef={stageRef} slotRef={mapSlotRef} />
+      <FamilyMapStage active={inFamily} stepIndex={inFamily ? stepIndex : 0} stageEl={stageEl} slotRef={mapSlotRef} />
     </div>
   )
 }

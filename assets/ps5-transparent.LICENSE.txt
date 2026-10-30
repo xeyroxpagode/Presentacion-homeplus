@@ -1,0 +1,8 @@
+File: assets/ps5-transparent.png
+Source: "PlayStation 5 and DualSense with transparent background.png"
+from Wikimedia Commons
+(https://commons.wikimedia.org/wiki/File:PlayStation_5_and_DualSense_with_transparent_background.png)
+Authors: Soberian (retouch) / Osh33m (original photograph)
+License: Creative Commons Attribution-Share Alike 4.0 (CC BY-SA 4.0)
+Used in: cine.html (HOMePLUS cinematic presentation, Assets scene).
+Kept as a separate, unmodified file.

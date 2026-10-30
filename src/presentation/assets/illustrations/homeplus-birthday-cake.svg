@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 500" fill="none">
+  <defs>
+    <linearGradient id="plate" x1="85" y1="402" x2="360" y2="454" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFDF8"/><stop offset=".55" stop-color="#F5E8D7"/><stop offset="1" stop-color="#E4CBAA"/>
+    </linearGradient>
+    <linearGradient id="cake-side" x1="105" y1="276" x2="334" y2="388" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D9985E"/><stop offset=".48" stop-color="#C87A47"/><stop offset="1" stop-color="#9E5737"/>
+    </linearGradient>
+    <linearGradient id="cake-top" x1="120" y1="251" x2="319" y2="303" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF5E5"/><stop offset=".6" stop-color="#F7DFC1"/><stop offset="1" stop-color="#EEC79F"/>
+    </linearGradient>
+    <linearGradient id="upper-side" x1="144" y1="174" x2="299" y2="258" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7AD75"/><stop offset=".55" stop-color="#D58C58"/><stop offset="1" stop-color="#B96A43"/>
+    </linearGradient>
+    <linearGradient id="icing" x1="130" y1="157" x2="306" y2="208" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFCF4"/><stop offset="1" stop-color="#F3E2CE"/>
+    </linearGradient>
+    <filter id="shadow" x="34" y="380" width="372" height="99" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+  </defs>
+
+  <ellipse cx="220" cy="432" fill="#71513A" opacity=".15" rx="170" ry="28" filter="url(#shadow)"/>
+  <path d="M66 398c0-14 69-27 154-27s154 13 154 27v16c0 16-69 29-154 29S66 430 66 414v-16Z" fill="url(#plate)" stroke="#D9B997" stroke-width="2"/>
+  <ellipse cx="220" cy="397" fill="#FFFDF8" stroke="#E6D4BE" stroke-width="2" rx="154" ry="28"/>
+  <ellipse cx="220" cy="399" fill="#F6EADD" rx="125" ry="16"/>
+
+  <!-- Broad lower tier: caramel sponge, cream filling and a soft piped edge. -->
+  <path d="M96 280v105c0 22 56 40 124 40s124-18 124-40V280H96Z" fill="url(#cake-side)"/>
+  <path d="M96 317c0 18 56 33 124 33s124-15 124-33v16c0 18-56 33-124 33s-124-15-124-33v-16Z" fill="#F9E7D3"/>
+  <path d="M96 280c0-20 56-37 124-37s124 17 124 37v14c0 20-56 37-124 37S96 314 96 294v-14Z" fill="url(#cake-top)"/>
+  <ellipse cx="220" cy="280" fill="#FFF7EB" stroke="#EBCFAF" stroke-width="2" rx="124" ry="37"/>
+  <path d="M96 290c0 13 15 20 25 8 8 17 25 19 36 6 9 18 26 20 38 7 9 16 25 18 37 7 12 15 30 13 38-3 14 12 30 8 36-9 13 9 28 3 34-13v15c0 20-56 37-124 37S96 314 96 294v-4Z" fill="#FFF8EC" opacity=".96"/>
+
+  <!-- Smaller upper tier. -->
+  <path d="M137 185v76c0 17 37 31 83 31s83-14 83-31v-76H137Z" fill="url(#upper-side)"/>
+  <path d="M137 218c0 13 37 23 83 23s83-10 83-23v13c0 13-37 23-83 23s-83-10-83-23v-13Z" fill="#FAE9D6"/>
+  <path d="M137 185c0-16 37-29 83-29s83 13 83 29v10c0 16-37 29-83 29s-83-13-83-29v-10Z" fill="url(#icing)"/>
+  <ellipse cx="220" cy="185" fill="#FFFBF4" stroke="#E7CBAA" stroke-width="2" rx="83" ry="29"/>
+  <path d="M137 192c2 12 13 17 22 7 8 13 20 14 29 5 8 13 20 13 28 4 10 12 24 10 29-4 12 9 24 5 28-7 11 7 23 0 27-9v7c0 16-37 29-83 29s-83-13-83-29v-3Z" fill="#FFF8EE"/>
+
+  <!-- Five warm candles and gentle flames make the cake unmistakable at stage scale. -->
+  <g stroke="#B46D43" stroke-width="1.5">
+    <path d="M163 111v47"/><path d="M192 101v50"/><path d="M220 95v53"/><path d="M248 101v50"/><path d="M277 111v47"/>
+  </g>
+  <g fill="#F4C785">
+    <path d="M153 122v34c0 4 19 4 19 0v-34c0-4-19-4-19 0Z"/>
+    <path d="M182 112v36c0 4 19 4 19 0v-36c0-4-19-4-19 0Z"/>
+    <path d="M210 106v38c0 4 20 4 20 0v-38c0-4-20-4-20 0Z"/>
+    <path d="M239 112v36c0 4 19 4 19 0v-36c0-4-19-4-19 0Z"/>
+    <path d="M268 122v34c0 4 19 4 19 0v-34c0-4-19-4-19 0Z"/>
+  </g>
+  <g fill="#E7643F">
+    <path d="M162 99c-10 12-8 20 1 20s12-9 1-20Z"/>
+    <path d="M191 89c-10 12-8 20 1 20s12-9 1-20Z"/>
+    <path d="M220 82c-11 13-8 22 1 22s12-10 1-22Z"/>
+    <path d="M248 89c-10 12-8 20 1 20s12-9 1-20Z"/>
+    <path d="M277 99c-10 12-8 20 1 20s12-9 1-20Z"/>
+  </g>
+  <g fill="#FFF0D7">
+    <circle cx="128" cy="280" r="3"/><circle cx="171" cy="268" r="3"/><circle cx="258" cy="270" r="3"/><circle cx="305" cy="284" r="3"/>
+    <circle cx="145" cy="319" r="3"/><circle cx="287" cy="320" r="3"/><circle cx="183" cy="380" r="3"/><circle cx="260" cy="385" r="3"/>
+  </g>
+</svg>

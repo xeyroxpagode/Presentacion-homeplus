@@ -125,6 +125,21 @@
 .opening-blackout[data-active='true'] { animation: opening-blackout var(--opening-reveal-delay) var(--motion-easing) both; }
 @keyframes opening-blackout { 0% { opacity: 0; } 48%, 66% { opacity: 1; } 100% { opacity: 0; } }
 
+/* Velo de handoff S03→S04: mismo material que la superficie Home para que
+   la desactivación del wrapper sea un fundido invisible (blanco sobre blanco). */
+.opening-handoff-veil { position: absolute; inset: 0; background: #F6F5F2; }
+
+/* Handoff S03.10→S04.0 sin bache: el velo blanco permanece opaco hasta que
+   la escena S04 ya emerge (su fundido arranca con retardo), y no se encoge
+   (un scale expondría el viewport oscuro en los bordes). Blanco sobre blanco. */
+.opening-to-home[data-active='false'][data-handoff='true'] {
+  transform: none;
+  transition:
+    opacity 180ms var(--motion-easing) 280ms,
+    transform 180ms var(--motion-easing) 280ms,
+    visibility 0s 480ms;
+}
+
 .homeplus-reveal {
   z-index: 4;
   display: flex;

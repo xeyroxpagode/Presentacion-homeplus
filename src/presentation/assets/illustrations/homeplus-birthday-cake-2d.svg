@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 450" fill="none" role="img" aria-label="Torta de cumpleaños 2D ilustrada con glaseado rosa y tres velas">
+  <ellipse cx="283" cy="424" rx="207" ry="20" fill="#DCD3C9" opacity=".27"/>
+  <path d="M97 243C111 199 151 187 275 184C405 182 451 205 461 243V354C457 385 420 402 280 403C146 403 100 383 97 357V243Z" fill="#9A4E30"/>
+  <path d="M97 269C177 291 382 287 460 265V300C378 323 176 330 97 309V269Z" fill="#C96C33"/>
+  <path d="M97 318C179 347 377 346 461 312V345C371 370 181 369 97 344V318Z" fill="#DA883D"/>
+  <path d="M97 351C155 376 399 378 460 347V358C456 385 417 403 280 403C146 403 100 383 97 359V351Z" fill="#843C2D"/>
+  <path d="M90 243C92 194 144 172 280 170C412 170 463 195 468 244C469 265 453 269 443 268C432 267 423 261 423 275V285C421 310 401 314 391 300C386 292 387 267 377 265C364 263 361 280 358 297C354 327 334 336 321 312C309 290 317 269 300 266C284 264 280 288 279 314C277 349 249 350 244 324C238 289 242 266 223 265C204 263 203 286 199 303C194 327 168 320 165 298C161 274 154 261 138 265C127 267 122 279 109 278C91 275 86 261 90 243Z" fill="#F36D9D"/>
+  <path d="M105 237C132 195 193 190 276 190C369 190 424 202 450 238C383 217 182 220 105 237Z" fill="#FFB0C3"/>
+  <path d="M95 234C103 218 109 210 123 217C136 224 131 237 143 237C163 235 159 219 177 219C191 219 196 233 210 232C227 230 225 213 242 213C260 212 255 229 273 231C291 232 298 216 311 216C331 216 326 233 345 231C360 230 364 219 379 221C397 224 395 237 411 237C427 236 432 223 445 228" stroke="#FFE1CF" stroke-width="18" stroke-linecap="round"/>
+  <g fill="#E95480"><circle cx="176" cy="241" r="7"/><circle cx="254" cy="235" r="8"/><circle cx="356" cy="239" r="7"/></g>
+  <g stroke="#F6C3C9" stroke-width="7" stroke-linecap="round"><path d="M107 291V305"/><path d="M147 335V345"/><path d="M416 331V339"/><path d="M382 375V381"/></g>
+  <g>
+    <rect x="171" y="113" width="23" height="100" rx="7" fill="#74CDEA"/>
+    <path d="M173 129L193 114M173 155L193 140M173 181L193 166M173 207L193 192" stroke="white" stroke-width="9"/>
+    <path d="M182 113V107" stroke="#5B4A44" stroke-width="3" stroke-linecap="round"/>
+    <rect x="272" y="91" width="24" height="120" rx="7" fill="#74CDEA"/>
+    <path d="M274 111L294 96M274 139L294 124M274 167L294 152M274 195L294 180" stroke="white" stroke-width="9"/>
+    <path d="M284 91V85" stroke="#5B4A44" stroke-width="3" stroke-linecap="round"/>
+    <rect x="366" y="118" width="23" height="96" rx="7" fill="#74CDEA"/>
+    <path d="M368 133L388 118M368 160L388 145M368 187L388 172M368 210L386 195" stroke="white" stroke-width="9"/>
+    <path d="M377 118V112" stroke="#5B4A44" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <path d="M122 385C150 398 180 398 203 400M325 403C370 400 403 398 432 385" stroke="#6E352B" stroke-width="5" stroke-linecap="round" opacity=".26"/>
+</svg>

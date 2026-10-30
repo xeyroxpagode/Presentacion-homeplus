@@ -1,57 +1,29 @@
 import type { SlideProps } from '../../presentationTypes'
-import AmbientGlow from '../../components/AmbientGlow'
-import expo from '../../assets/tech/expo.svg'
-import nodejs from '../../assets/tech/nodejs.svg'
-import postgresql from '../../assets/tech/postgresql.svg'
-import reactNative from '../../assets/tech/react-native.svg'
-import supabase from '../../assets/tech/supabase.svg'
 import './s12-layers.css'
 
-const frontendStack = [
-  { name: 'React Native', src: reactNative },
-  { name: 'Expo', src: expo },
-]
-
-const backendStack = [
-  { name: 'Node.js', src: nodejs },
-  { name: 'Supabase', src: supabase },
-  { name: 'PostgreSQL', src: postgresql },
-]
+function BackendOps() {
+  return <div className="s12-back-list">
+    <div className="s12-back-op"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="14"/><path d="m13 20 5 5 10-11"/></svg>Validar</div>
+    <div className="s12-back-op"><svg viewBox="0 0 40 40"><circle cx="14" cy="14" r="6"/><circle cx="28" cy="16" r="5"/><path d="M4 34c0-9 19-9 19 0M22 33c0-7 13-7 13 0"/></svg>Relacionar</div>
+    <div className="s12-back-op"><svg viewBox="0 0 40 40"><ellipse cx="20" cy="10" rx="13" ry="6"/><path d="M7 10v20c0 8 26 8 26 0V10M7 20c0 8 26 8 26 0"/></svg>Guardar</div>
+  </div>
+}
 
 export default function S12FrontendBackend({ stepIndex }: SlideProps) {
-  return (
-    <div className="s12-stage" data-step={stepIndex} aria-label="Frontend y backend">
-      <AmbientGlow x={640} y={360} size={900} intensity={0.6} opacity={0.14} />
-      <div className="s12-panels">
-        <section className="s12-panel" aria-label="Frontend">
-          <h1 className="s12-title">Frontend</h1>
-          <p className="s12-desc">La app que usás</p>
-          <ul className="s12-tech">
-            {frontendStack.map(tech => (
-              <li key={tech.name}>
-                <img src={tech.src} alt="" aria-hidden="true" draggable={false} />
-                <span>{tech.name}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-        <div className="s12-bridge" data-visible={stepIndex >= 2} aria-hidden={stepIndex < 2}>
-          <span className="s12-bridge-line" aria-hidden="true" />
-          <span className="s12-bridge-node" aria-hidden="true" />
-        </div>
-        <section className="s12-panel" data-visible={stepIndex >= 1} aria-hidden={stepIndex < 1} aria-label="Backend">
-          <h1 className="s12-title">Backend</h1>
-          <p className="s12-desc">Datos y servicios</p>
-          <ul className="s12-tech">
-            {backendStack.map(tech => (
-              <li key={tech.name}>
-                <img src={tech.src} alt="" aria-hidden="true" draggable={false} />
-                <span>{tech.name}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
-      </div>
+  const beat = Math.min(Math.max(stepIndex, 0), 4)
+  return <main className="s12-arch-stage" data-step={beat} aria-label="Dos partes. Una experiencia.">
+    <header className="s12-arch-head"><strong>Home<span>Plus</span></strong><small>BENJA · FRONTEND / BACKEND</small></header>
+    <h1 className="s12-arch-title">Dos partes. <span>Una experiencia.</span></h1>
+    <p className="s12-arch-subtitle">Lo que usamos · Lo que sucede detrás</p>
+    <div className="s12-arch-layout">
+      <section className="s12-arch-panel s12-front"><h2>Frontend</h2><span className="s12-arch-tag">01</span>
+        <div className="s12-expense-sheet"><div className="s12-expense-small">Registrar gasto</div><div className="s12-expense-price">$18.500</div><div className="s12-expense-meta"><span>Compras</span><span className="s12-chip">Hogar</span></div><div className="s12-expense-save" aria-hidden="true">Guardar gasto</div></div>
+      </section>
+      <div className="s12-arch-connector" aria-hidden="true"><span className="s12-token"/></div>
+      <section className="s12-arch-panel s12-back"><h2>Backend</h2><span className="s12-arch-tag">02</span><BackendOps/></section>
     </div>
-  )
+    <p className="s12-arch-bottom">Una acción conecta ambos lados.</p>
+    <footer className="s12-arch-foot">ARQUITECTURA · EJEMPLO VISUAL</footer>
+    <div className="s12-arch-rule"/>
+  </main>
 }

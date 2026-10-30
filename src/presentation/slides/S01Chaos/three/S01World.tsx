@@ -1,6 +1,8 @@
 import * as THREE from 'three'
+import { useRef } from 'react'
+import { useFrame } from '@react-three/fiber'
 import { s01Palette as c } from './s01ThreeConfig'
-import S01CinematicProps from './S01CinematicProps'
+import S01CinematicProps, { S01FinalScope, useS01FinalLive, type S01FinalOverride } from './S01CinematicProps'
 import { s01Geo } from './s01CinematicConfig'
 
 /* S01 LOOKDEV — rincón de cocina/living low-poly, noche, sobrio.
@@ -72,6 +74,11 @@ function Cyl({
 // ---- Shell: piso, techo, paredes, zócalos, vano de puerta y ventana ----
 
 function Room() {
+  const live = useS01FinalLive()
+  const windowMaterial = useRef<THREE.MeshStandardMaterial>(null)
+  useFrame(() => {
+    if (windowMaterial.current) windowMaterial.current.emissiveIntensity = 0.35 * (live?.windowDim ?? 1)
+  })
   return (
     <group>
       <mesh position={[0, 0, 0.5]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
@@ -100,7 +107,7 @@ function Room() {
       <Box size={[0.015, 0.85, 1.05]} position={[-2.99, 1.8, -1.15]} color="#101826" roughness={0.4} />
       <mesh position={[-2.99, 1.8, -1.15]}>
         <boxGeometry args={[0.016, 0.85, 1.05]} />
-        <meshStandardMaterial color="#101826" roughness={0.4} emissive="#223552" emissiveIntensity={0.35} />
+        <meshStandardMaterial ref={windowMaterial} color="#101826" roughness={0.4} emissive="#223552" emissiveIntensity={0.35} />
       </mesh>
       <Box size={[0.05, 0.06, 1.15]} position={[-2.97, 2.27, -1.15]} color={c.trim} />
       <Box size={[0.05, 0.06, 1.15]} position={[-2.97, 1.33, -1.15]} color={c.trim} />
@@ -121,9 +128,48 @@ function Room() {
 function BackKitchen() {
   return (
     <group>
-      {/* Muebles bajos con mesada */}
+      {/* Muebles bajos. La mesada se construye por tramos alrededor de la
+          abertura de la bacha: no hay una losa sólida bajo el hueco. */}
       <Box size={[2.3, 0.86, 0.6]} position={[-0.85, 0.43, -2.72]} color={c.cabinet} cast receive />
-      <Box size={[2.42, 0.04, 0.66]} position={[-0.85, 0.88, -2.7]} color={c.counterBack} cast receive />
+      <group name="SINK_COUNTER_CUTOUT">
+        <Box size={[0.76, 0.04, 0.66]} position={[-1.68, 0.882, -2.7]} color={c.counterBack} cast receive />
+        <Box size={[1.1, 0.04, 0.66]} position={[-0.19, 0.882, -2.7]} color={c.counterBack} cast receive />
+        <Box size={[0.56, 0.04, 0.15]} position={[-1.02, 0.882, -2.955]} color={c.counterBack} cast receive />
+        <Box size={[0.56, 0.04, 0.11]} position={[-1.02, 0.882, -2.425]} color={c.counterBack} cast receive />
+      </group>
+      {/* Cubeta real 0.56×0.40×0.19: fondo + cuatro paredes interiores,
+          acero mate, borde visible y desagüe. */}
+      <group name="SINK_BASIN">
+        <Box size={[0.5, 0.025, 0.34]} position={[-1.02, 0.705, -2.68]} color="#71787d" roughness={0.42} metalness={0.72} receive />
+        <Box size={[0.025, 0.19, 0.4]} position={[-1.2875, 0.797, -2.68]} color="#899095" roughness={0.38} metalness={0.72} receive />
+        <Box size={[0.025, 0.19, 0.4]} position={[-0.7525, 0.797, -2.68]} color="#899095" roughness={0.38} metalness={0.72} receive />
+        <Box size={[0.51, 0.19, 0.025]} position={[-1.02, 0.797, -2.8675]} color="#858c91" roughness={0.4} metalness={0.7} receive />
+        <Box size={[0.51, 0.19, 0.025]} position={[-1.02, 0.797, -2.4925]} color="#858c91" roughness={0.4} metalness={0.7} receive />
+        <mesh position={[-1.02, 0.72, -2.68]} rotation={[-Math.PI / 2, 0, 0]} receiveShadow>
+          <cylinderGeometry args={[0.045, 0.045, 0.006, 16]} />
+          <meshStandardMaterial color="#3f464b" roughness={0.32} metalness={0.82} />
+        </mesh>
+        <mesh position={[-1.02, 0.724, -2.68]} rotation={[-Math.PI / 2, 0, 0]}>
+          <torusGeometry args={[0.029, 0.004, 6, 16]} />
+          <meshStandardMaterial color="#9da3a6" roughness={0.25} metalness={0.9} />
+        </mesh>
+        {/* Borde perimetral independiente, apoyado sobre la mesada. */}
+        <Box size={[0.6, 0.018, 0.025]} position={[-1.02, 0.907, -2.892]} color="#a3a8aa" roughness={0.3} metalness={0.82} />
+        <Box size={[0.6, 0.018, 0.025]} position={[-1.02, 0.907, -2.468]} color="#a3a8aa" roughness={0.3} metalness={0.82} />
+        <Box size={[0.025, 0.018, 0.4]} position={[-1.307, 0.907, -2.68]} color="#a3a8aa" roughness={0.3} metalness={0.82} />
+        <Box size={[0.025, 0.018, 0.4]} position={[-0.733, 0.907, -2.68]} color="#a3a8aa" roughness={0.3} metalness={0.82} />
+      </group>
+      {/* Grifería: base, columna y pico, todos con sección real. */}
+      <group name="SINK_FAUCET">
+        <Cyl args={[0.045, 0.05, 0.025, 12]} position={[-1.02, 0.92, -2.94]} color="#91979b" roughness={0.28} metalness={0.88} />
+        <Cyl args={[0.018, 0.021, 0.25, 10]} position={[-1.02, 1.045, -2.94]} color="#a4aaad" roughness={0.24} metalness={0.9} />
+        <mesh position={[-1.02, 1.155, -2.865]} rotation={[0, 0, Math.PI / 2]}>
+          <cylinderGeometry args={[0.017, 0.017, 0.15, 10]} />
+          <meshStandardMaterial color="#a4aaad" roughness={0.24} metalness={0.9} />
+        </mesh>
+        <Cyl args={[0.018, 0.017, 0.095, 10]} position={[-1.02, 1.11, -2.79]} color="#a4aaad" roughness={0.24} metalness={0.9} />
+        <Cyl args={[0.022, 0.022, 0.035, 10]} position={[-1.02, 0.94, -2.87]} color="#8d9397" roughness={0.28} metalness={0.86} />
+      </group>
       <Box size={[0.02, 0.62, 0.02]} position={[-1.55, 0.57, -2.41]} color={c.fridgeHandle} roughness={0.35} metalness={0.8} />
       <Box size={[0.02, 0.62, 0.02]} position={[-0.15, 0.57, -2.41]} color={c.fridgeHandle} roughness={0.35} metalness={0.8} />
       {/* Tabla de cortar + olla sobre la mesada del fondo */}
@@ -164,8 +210,18 @@ function Island() {
       {/* Puerta en el extremo derecho */}
       <Box size={[0.025, 0.6, 0.6]} position={[1.165, 0.53, 0]} color={c.cabinetFront} receive />
       <Box size={[0.02, 0.34, 0.024]} position={[1.18, 0.53, 0.24]} color={c.fridgeHandle} roughness={0.35} metalness={0.8} />
-      {/* Mesada de madera con vuelo */}
-      <Box size={[2.44, 0.055, 1.05]} position={[0, 0.8875, 0]} color={c.counter} roughness={0.72} cast receive />
+      {/* Mesada de madera con vuelo — V5.1 §12: madera cálida mate,
+          variación tenue por tablones, canto diferenciado, microbevel. */}
+      <Box size={[2.44, 0.055, 1.05]} position={[0, 0.8875, 0]} color={c.counter} roughness={0.78} cast receive />
+      {/* canto diferenciado (borde frontal más oscuro) */}
+      <Box size={[2.44, 0.03, 0.015]} position={[0, 0.878, 0.525]} color="#5d452e" roughness={0.8} />
+      {/* vetas tenues: 3 tablones con tono apenas distinto */}
+      <Box size={[0.78, 0.004, 1.0]} position={[-0.8, 0.916, 0]} color="#75573c" roughness={0.8} />
+      <Box size={[0.78, 0.004, 1.0]} position={[0.02, 0.916, 0]} color="#7d5f41" roughness={0.8} />
+      <Box size={[0.78, 0.004, 1.0]} position={[0.84, 0.916, 0]} color="#75573c" roughness={0.8} />
+      {/* microbevel: filetes claros en bordes laterales */}
+      <Box size={[0.012, 0.056, 1.05]} position={[-1.214, 0.8875, 0]} color="#8a6a48" roughness={0.75} />
+      <Box size={[0.012, 0.056, 1.05]} position={[1.214, 0.8875, 0]} color="#8a6a48" roughness={0.75} />
     </group>
   )
 }
@@ -173,6 +229,11 @@ function Island() {
 // ---- Lámparas colgantes sobre la isla (el acento cálido de la escena) ----
 
 function Pendants() {
+  const live = useS01FinalLive()
+  const bulbs = useRef<(THREE.MeshStandardMaterial | null)[]>([])
+  useFrame(() => {
+    bulbs.current.forEach((material) => { if (material) material.emissiveIntensity = 2.4 * (live?.bulbDim ?? 1) })
+  })
   return (
     <group>
       {[-1.0, 0.4].map((x, i) => (
@@ -181,7 +242,7 @@ function Pendants() {
           <Cyl args={[0.035, 0.125, 0.15, 10]} position={[0, 2.03, 0]} color="#232228" roughness={0.45} metalness={0.55} open />
           <mesh position={[0, 1.96, 0]}>
             <sphereGeometry args={[0.02, 10, 8]} />
-            <meshStandardMaterial color={c.bulb} emissive={c.bulb} emissiveIntensity={2.4} roughness={0.4} />
+            <meshStandardMaterial ref={(m) => { bulbs.current[i] = m }} color={c.bulb} emissive={c.bulb} emissiveIntensity={2.4} roughness={0.4} />
           </mesh>
         </group>
       ))}
@@ -258,8 +319,9 @@ function WallShelf() {
   )
 }
 
-export default function S01World() {
+export default function S01World({ finalOverride = null }: { finalOverride?: S01FinalOverride | null }) {
   return (
+    <S01FinalScope override={finalOverride}>
     <group>
       <Room />
       <BackKitchen />
@@ -272,5 +334,6 @@ export default function S01World() {
       {/* Props con estado cinematográfico (puertas, heladera, docs, humo, teléfono) */}
       <S01CinematicProps />
     </group>
+    </S01FinalScope>
   )
 }
