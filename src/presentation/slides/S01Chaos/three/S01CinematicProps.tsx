@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
+import { RoundedBox } from '@react-three/drei'
 import { s01Palette as c } from './s01ThreeConfig'
 import { s01Director, type S01Frame } from './s01Director'
 import { bandRectPx, createWhatsAppScreenTexture } from './phoneScreenTexture'
@@ -54,6 +55,68 @@ function Box({
     <mesh position={position} rotation={rotation} castShadow={cast} receiveShadow={receive}>
       <boxGeometry args={size} />
       <meshStandardMaterial color={color} roughness={roughness} metalness={metalness} flatShading={flat} />
+    </mesh>
+  )
+}
+
+function SoftBox({ size, position, color, radius, roughness, metalness, cast = false, receive = false }: {
+  size: Vec3
+  position: Vec3
+  color: string
+  radius: number
+  roughness: number
+  metalness: number
+  cast?: boolean
+  receive?: boolean
+}) {
+  return (
+    <RoundedBox args={size} position={position} radius={radius} smoothness={2} castShadow={cast} receiveShadow={receive}>
+      <meshStandardMaterial color={color} roughness={roughness} metalness={metalness} />
+    </RoundedBox>
+  )
+}
+
+const paperGeometryCache = new Map<string, THREE.PlaneGeometry>()
+
+function paperGeometry(width: number, depth: number, curl: number) {
+  const key = `${width}:${depth}:${curl}`
+  const cached = paperGeometryCache.get(key)
+  if (cached) return cached
+  const geometry = new THREE.PlaneGeometry(width, depth, 6, 8)
+  geometry.rotateX(-Math.PI / 2)
+  const positions = geometry.getAttribute('position') as THREE.BufferAttribute
+  for (let index = 0; index < positions.count; index += 1) {
+    const x = positions.getX(index) / Math.max(width * 0.5, 0.001)
+    const z = positions.getZ(index) / Math.max(depth * 0.5, 0.001)
+    const edge = Math.pow(Math.max(0, Math.abs(x) - 0.58) / 0.42, 3)
+    const corner = Math.pow(Math.max(0, z - 0.48) / 0.52, 3) * Math.max(0, x)
+    positions.setY(index, curl * (edge * 0.45 + corner))
+  }
+  positions.needsUpdate = true
+  geometry.computeVertexNormals()
+  paperGeometryCache.set(key, geometry)
+  return geometry
+}
+
+function PaperSurface({
+  width,
+  depth,
+  curl,
+  color,
+  map,
+  position = [0, 0, 0],
+}: {
+  width: number
+  depth: number
+  curl: number
+  color: string
+  map?: THREE.Texture | null
+  position?: Vec3
+}) {
+  const geometry = useMemo(() => paperGeometry(width, depth, curl), [width, depth, curl])
+  return (
+    <mesh geometry={geometry} position={position} castShadow receiveShadow>
+      <meshStandardMaterial color={color} map={map ?? undefined} roughness={0.94} side={THREE.DoubleSide} />
     </mesh>
   )
 }
@@ -401,10 +464,7 @@ function Fridge() {
               (z local -0.28..0.02) + cavidad abierta (0.045..0.38).
               Exterior total ≈ 0.68 (cuerpo 0.30 + cavidad 0.34 + puerta
               0.04). Fondo del cuerpo a z -2.68: SIN tocar la pared (-3.00). */}
-          <mesh castShadow receiveShadow position={[0, 0, -0.13]}>
-            <boxGeometry args={[0.85, 1.85, 0.3]} />
-            <meshStandardMaterial color={c.fridge} roughness={0.42} metalness={0.15} />
-          </mesh>
+          <SoftBox size={[0.85, 1.85, 0.3]} position={[0, 0, -0.13]} color={c.fridge} radius={0.012} roughness={0.5} metalness={0.1} cast receive />
           {/* paredes del receso frontal (la boca de la cavidad) */}
           <Box size={[0.85, 0.06, 0.31]} position={[0, 0.895, 0.2]} color={c.fridge} roughness={0.42} metalness={0.15} />
           <Box size={[0.85, 0.06, 0.31]} position={[0, -0.895, 0.2]} color={c.fridge} roughness={0.42} metalness={0.15} />
@@ -442,7 +502,7 @@ function Fridge() {
 
         <group name="TOP_HINGE" ref={topDoor} position={[f.hingeX, f.topCenterY, f.hingeZ]}>
           <group name="TOP_DOOR">
-            <Box size={[0.85, f.topHeight, doorT]} position={[-0.425, 0, 0]} color={c.fridge} roughness={0.42} metalness={0.15} cast receive />
+            <SoftBox size={[0.85, f.topHeight, doorT]} position={[-0.425, 0, 0]} color={c.fridge} radius={0.01} roughness={0.5} metalness={0.1} cast receive />
             {/* TOP_GASKET — marco oscuro perimetral interior */}
             <group name="TOP_GASKET">
               <Box size={[0.79, 0.025, 0.012]} position={[-0.425, f.topHeight / 2 - 0.03, -doorT / 2]} color={FRIDGE_GASKET} roughness={0.9} />
@@ -453,11 +513,16 @@ function Fridge() {
             <group name="TOP_HANDLE">
               <Box size={[0.026, 0.17, 0.028]} position={[-0.79, 0, 0.026]} color={c.fridgeHandle} roughness={0.3} metalness={0.85} />
             </group>
+            {/* Imán doméstico pequeño: aporta escala sin competir con la avería. */}
+            <group name="FRIDGE_MAGNET" position={[-0.43, 0.11, 0.022]}>
+              <Box size={[0.055, 0.055, 0.006]} position={[0, 0, 0]} color="#8f3b35" roughness={0.72} />
+              <Box size={[0.028, 0.004, 0.007]} position={[0, -0.006, 0.004]} color="#d8cdbb" roughness={0.9} />
+            </group>
           </group>
         </group>
         <group name="BOTTOM_HINGE" ref={botDoor} position={[f.hingeX, f.botCenterY, f.hingeZ]}>
           <group name="BOTTOM_DOOR">
-            <Box size={[0.85, f.botHeight, doorT]} position={[-0.425, 0, 0]} color={c.fridge} roughness={0.42} metalness={0.15} cast receive />
+            <SoftBox size={[0.85, f.botHeight, doorT]} position={[-0.425, 0, 0]} color={c.fridge} radius={0.01} roughness={0.5} metalness={0.1} cast receive />
             <group name="BOTTOM_GASKET">
               <Box size={[0.79, 0.025, 0.012]} position={[-0.425, f.botHeight / 2 - 0.03, -doorT / 2]} color={FRIDGE_GASKET} roughness={0.9} />
               <Box size={[0.79, 0.025, 0.012]} position={[-0.425, -f.botHeight / 2 + 0.03, -doorT / 2]} color={FRIDGE_GASKET} roughness={0.9} />
@@ -622,8 +687,9 @@ function PolicyDocs() {
           {/* hoja superior con el sello VENCIDO impreso (§04) */}
           <mesh name="POLICY_TOP" position={[0, 0.925, 0]} rotation={[0.002, 0, 0]} castShadow receiveShadow>
             <boxGeometry args={[pw, 0.004, pz]} />
-            <meshStandardMaterial color={c.paper} roughness={0.9} map={policyMap} />
+            <meshStandardMaterial color={c.paper} roughness={0.94} />
           </mesh>
+          <PaperSurface width={pw * 0.992} depth={pz * 0.992} curl={0.0045} color={c.paper} map={policyMap} position={[0, 0.928, 0]} />
         </group>
       </group>
     </group>
@@ -746,10 +812,7 @@ function ShoppingList() {
         <meshStandardMaterial color="#e8e2d2" roughness={0.9} />
       </mesh>
       {/* COMPRAS: título + 6 líneas con checks vacíos, ninguna completada */}
-      <mesh position={[0, 0.0017, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-        <planeGeometry args={[0.09, 0.124]} />
-        <meshStandardMaterial map={listMap} roughness={0.9} polygonOffset polygonOffsetFactor={-1} />
-      </mesh>
+      <PaperSurface width={0.09} depth={0.124} curl={0.0032} color="#e8e2d2" map={listMap} position={[0, 0.0018, 0]} />
     </group>
   )
 }
@@ -871,10 +934,7 @@ function DocSheet({ variant, index }: { variant: 0 | 1 | 2; index: number }) {
         <meshStandardMaterial color={tone} roughness={0.9} />
       </mesh>
       {topMap && (
-        <mesh position={[0, 0.0021, 0]} rotation={[-Math.PI / 2, 0, 0]}>
-          <planeGeometry args={[w * 0.94, 0.28]} />
-          <meshStandardMaterial map={topMap} roughness={0.9} polygonOffset polygonOffsetFactor={-1} />
-        </mesh>
+        <PaperSurface width={w * 0.94} depth={0.28} curl={0.002 + (index % 3) * 0.0015} color={tone} map={topMap} position={[0, thick / 2 + 0.0007, 0]} />
       )}
       {/* esquina con micro-curl determinista (no plano perfecto) */}
       <mesh position={[w / 2 - 0.02, 0.002, 0.13]} rotation={[0, 0, index % 2 === 0 ? 0.045 : -0.04]} castShadow>
@@ -951,7 +1011,7 @@ function DispersedDocs() {
     refs.current.forEach((g, i) => {
       if (!g) return
       const d = docs[i]
-      g.visible = d.v > 0.5
+      g.visible = d.v > 0.001
       if (!g.visible) return
       g.position.set(d.p[0], d.p[1], d.p[2])
       g.rotation.set(d.r[0], d.r[1], d.r[2])
@@ -985,7 +1045,7 @@ function AccumulationDocs() {
     refs.current.forEach((g, i) => {
       if (!g) return
       const d = docs[i]
-      g.visible = d.v > 0.5
+      g.visible = d.v > 0.001
       if (!g.visible) return
       g.position.set(d.p[0], d.p[1], d.p[2])
       g.rotation.set(d.r[0], d.r[1], d.r[2])
@@ -1172,7 +1232,7 @@ function SinkDishes() {
     refs.current.forEach((g, i) => {
       if (!g) return
       const d = dishes[i]
-      g.visible = d.v > 0.5
+      g.visible = d.v > 0.001
       if (!g.visible) return
       g.position.set(d.p[0], d.p[1], d.p[2])
       g.rotation.set(d.r[0], d.r[1], d.r[2])
@@ -1195,24 +1255,40 @@ function SinkDishes() {
 
 function SmokePuffs() {
   const frame = useS01Frame()
-  const refs = useRef<(THREE.Mesh | null)[]>([])
+  const refs = useRef<(THREE.Sprite | null)[]>([])
+  const smokeMap = useMemo(() => {
+    const canvas = document.createElement('canvas')
+    canvas.width = 64
+    canvas.height = 64
+    const context = canvas.getContext('2d')!
+    const gradient = context.createRadialGradient(32, 34, 3, 32, 32, 30)
+    gradient.addColorStop(0, 'rgba(190,198,210,0.72)')
+    gradient.addColorStop(0.42, 'rgba(116,126,143,0.38)')
+    gradient.addColorStop(1, 'rgba(64,72,88,0)')
+    context.fillStyle = gradient
+    context.fillRect(0, 0, 64, 64)
+    const texture = new THREE.CanvasTexture(canvas)
+    texture.colorSpace = THREE.SRGBColorSpace
+    return texture
+  }, [])
+  useEffect(() => () => smokeMap.dispose(), [smokeMap])
   useFrame(() => {
     const smoke = frame.smoke
     refs.current.forEach((m, i) => {
       if (!m) return
       const s = smoke[i]
-      const mat = m.material as THREE.MeshStandardMaterial
+      const mat = m.material as THREE.SpriteMaterial
       mat.opacity = Math.min(s.o, 0.28)
       m.visible = s.o > 0.004
       if (!m.visible) return
       m.position.set(s.p[0], s.p[1], s.p[2])
-      m.scale.setScalar(Math.max(s.s, 0.001))
+      m.scale.set(Math.max(s.s * 1.1, 0.001), Math.max(s.s * 1.55, 0.001), 1)
     })
   })
   return (
     <group>
       {s01Smoke.map((s, i) => (
-        <mesh
+        <sprite
           key={i}
           visible={false}
           renderOrder={5}
@@ -1220,18 +1296,14 @@ function SmokePuffs() {
             refs.current[i] = el
           }}
         >
-          <icosahedronGeometry args={[1, 0]} />
-          <meshStandardMaterial
-            color="#5f6878"
-            emissive="#344052"
-            emissiveIntensity={0.38}
+          <spriteMaterial
+            map={smokeMap}
+            color="#8791a2"
             transparent
             opacity={0}
             depthWrite={false}
-            flatShading
-            roughness={1}
           />
-        </mesh>
+        </sprite>
       ))}
     </group>
   )

@@ -13,9 +13,12 @@ import FinalLighting, { type FinalLightApi } from './FinalLighting'
 import FinalProps from './FinalProps'
 import type { TechRigApi } from './TechnicianRig'
 import type { FinalBeatId } from './finalTimings'
+import FinalPostProcessing from './FinalPostProcessing'
 
 export default function FinalKitchenScene({
   beat,
+  transitionId,
+  seekToEnd,
   clockRef,
   techApiRef,
   lightApiRef,
@@ -25,6 +28,8 @@ export default function FinalKitchenScene({
   onStable,
 }: {
   beat: FinalBeatId
+  transitionId: number
+  seekToEnd: boolean
   clockRef: React.MutableRefObject<FinalClock>
   techApiRef: React.MutableRefObject<TechRigApi | null>
   lightApiRef: React.MutableRefObject<FinalLightApi | null>
@@ -52,6 +57,8 @@ export default function FinalKitchenScene({
       <FinalProps techApiRef={techApiRef} />
       <FinalCamera
         beat={beat}
+        transitionId={transitionId}
+        seekToEnd={seekToEnd}
         clockRef={clockRef}
         techApiRef={techApiRef}
         lightApiRef={lightApiRef}
@@ -59,6 +66,7 @@ export default function FinalKitchenScene({
         reducedMotion={reducedMotion}
         onStable={onStable}
       />
+      <FinalPostProcessing beat={beat} />
     </>
   )
 }

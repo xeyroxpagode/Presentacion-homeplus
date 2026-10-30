@@ -1,133 +1,161 @@
-/* S18: final silence. Brand reveals, the team fades in with a soft stagger,
-   then the thanks lands. Everything stays mounted so reverse is exact. */
-
+/* FINAL CINE-01 — un solo cierre institucional, sin pasos negros vacíos. */
 .s18-closing {
+  --s18-bg: #050404;
+  --s18-ink: #f5f1eb;
+  --s18-ink-muted: #b9afa8;
+  --s18-accent: #e65c1b;
+  --s18-line: rgb(245 241 235 / 0.18);
+  --s18-space-xs: 10px;
+  --s18-space-s: 18px;
+  --s18-space-l: 48px;
+  --s18-duration-fast: 320ms;
+  --s18-duration: 480ms;
+  --s18-ease: cubic-bezier(0.16, 1, 0.3, 1);
   position: absolute;
   inset: 0;
   z-index: 5;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background: #060404;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  place-content: center;
+  justify-items: center;
+  min-height: 100%;
+  overflow: hidden;
+  background: var(--s18-bg);
+  color: var(--s18-ink);
   pointer-events: none;
-  animation: s18-veil-in var(--motion-blackout-duration) var(--motion-easing) both;
+  animation: s18-stage-in var(--s18-duration-fast) ease-out both;
+}
+
+.s18-closing::before {
+  content: '';
+  position: absolute;
+  width: 720px;
+  height: 520px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(230 92 27 / 0.075), transparent 68%);
+  filter: blur(20px);
+  opacity: 0;
+  animation: s18-ambient-in 700ms var(--s18-ease) 80ms forwards;
 }
 
 .s18-brand {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: var(--s18-space-s);
   opacity: 0;
-  visibility: hidden;
-  scale: 0.96;
-  transition:
-    opacity var(--motion-reframe-duration) var(--motion-easing),
-    scale var(--motion-reframe-duration) var(--motion-easing),
-    visibility 0s var(--motion-reframe-duration);
-}
-
-.s18-brand[data-present='true'] {
-  opacity: 1;
-  visibility: visible;
-  scale: 1;
-  transition-delay: 0s;
+  transform: translateY(16px) scale(0.985);
+  animation: s18-rise var(--s18-duration) var(--s18-ease) 40ms forwards;
 }
 
 .s18-wordmark {
   margin: 0;
-  font-size: 64px;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
+  font-size: 58px;
+  line-height: 1;
+  letter-spacing: -0.045em;
   font-weight: 600;
-  color: var(--presentation-text);
+  color: var(--s18-ink);
+  text-wrap: balance;
+}
+
+.s18-rule {
+  width: 96px;
+  height: 1px;
+  margin-top: var(--s18-space-xs);
+  background: linear-gradient(90deg, transparent, var(--s18-accent), transparent);
+  transform: scaleX(0);
+  animation: s18-rule-in 420ms var(--s18-ease) 220ms forwards;
 }
 
 .s18-team {
-  display: flex;
-  align-items: flex-start;
-  gap: 56px;
-  margin-top: 52px;
-  opacity: 0;
-  visibility: hidden;
-  transition:
-    opacity var(--motion-reframe-duration) var(--motion-easing),
-    visibility 0s var(--motion-reframe-duration);
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  width: 940px;
+  margin-top: var(--s18-space-l);
+  border-block: 1px solid var(--s18-line);
 }
-
-.s18-team[data-present='true'] {
-  opacity: 1;
-  visibility: visible;
-  transition-delay: 0s;
-}
-
-.s18-team[data-present='false'] .s18-member { transition-delay: 0s; }
 
 .s18-member {
-  display: flex;
-  flex-direction: column;
+  --member-index: 0;
+  position: relative;
+  display: grid;
+  grid-template-columns: 30px 1fr;
   align-items: center;
-  gap: 10px;
+  gap: var(--s18-space-xs);
+  min-height: 74px;
+  padding-inline: var(--s18-space-s);
   opacity: 0;
   transform: translateY(10px);
-  transition:
-    opacity var(--motion-reframe-duration) var(--motion-easing),
-    transform var(--motion-reframe-duration) var(--motion-easing);
+  animation: s18-rise var(--s18-duration-fast) var(--s18-ease) forwards;
+  animation-delay: calc(180ms + var(--member-index) * 55ms);
 }
 
-.s18-team[data-present='true'] .s18-member {
-  opacity: 1;
-  transform: none;
+.s18-member + .s18-member::before {
+  content: '';
+  position: absolute;
+  inset-block: 18px;
+  left: 0;
+  width: 1px;
+  background: var(--s18-line);
 }
 
-.s18-avatar {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  border: 1px solid rgb(245 241 235 / 0.22);
-  background: rgb(245 241 235 / 0.07);
-  color: var(--presentation-text);
-  font-size: 24px;
-  font-weight: 600;
+.s18-initials {
+  font: 600 13px/1 var(--presentation-mono-font);
+  letter-spacing: 0.04em;
+  color: var(--s18-accent);
 }
 
 .s18-name {
   margin: 0;
-  font-size: 22px;
-  line-height: 1.3;
+  font-size: 17px;
+  line-height: 1.25;
   font-weight: 500;
-  color: var(--presentation-text);
+  color: var(--s18-ink-muted);
   white-space: nowrap;
 }
 
 .s18-thanks {
-  margin: 48px 0 0;
-  font-size: 76px;
-  line-height: 1.1;
-  letter-spacing: -0.03em;
-  font-weight: 600;
-  color: var(--presentation-text);
+  position: relative;
+  margin: var(--s18-space-l) 0 0;
+  font-size: 68px;
+  line-height: 1;
+  letter-spacing: -0.045em;
+  font-weight: 500;
+  color: var(--s18-ink);
   opacity: 0;
-  visibility: hidden;
-  transform: translateY(12px);
-  transition:
-    opacity var(--motion-reframe-duration) var(--motion-easing),
-    transform var(--motion-reframe-duration) var(--motion-easing),
-    visibility 0s var(--motion-reframe-duration);
+  transform: translateY(14px);
+  text-wrap: balance;
+  animation: s18-rise var(--s18-duration) var(--s18-ease) 360ms forwards;
 }
 
-.s18-thanks[data-present='true'] {
-  opacity: 1;
-  visibility: visible;
-  transform: none;
-  transition-delay: 0s;
-}
-
-@keyframes s18-veil-in {
+@keyframes s18-stage-in {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+@keyframes s18-rise {
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes s18-rule-in {
+  to { transform: scaleX(1); }
+}
+
+@keyframes s18-ambient-in {
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .s18-closing,
+  .s18-closing::before,
+  .s18-brand,
+  .s18-rule,
+  .s18-member,
+  .s18-thanks {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
 }

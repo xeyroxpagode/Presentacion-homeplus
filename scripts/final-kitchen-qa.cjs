@@ -63,7 +63,7 @@ function main() {
   results.push(check('S1.nearPlaneSafe', pd.distance > pd.near * 2, pd))
 
   // S1 — duración del travelling.
-  results.push(check('S1.diveDuration3100', FT.DIVE_MS === 3100, { DIVE_MS: FT.DIVE_MS }))
+  results.push(check('S1.diveDurationCinematic', FT.DIVE_MS >= 1700 && FT.DIVE_MS <= 2200, { DIVE_MS: FT.DIVE_MS }))
 
   // S3B — contactos del gesto.
   const contact = TA.gestureContactQA(50)
@@ -72,7 +72,7 @@ function main() {
   results.push(check('S3B.kneeGrazesFloor', contact.kneeY >= 0.02 && contact.kneeY <= 0.14, { kneeY: contact.kneeY }))
   results.push(check('S3B.footPlanted', contact.footY >= 0.03 && contact.footY <= 0.12, { footY: contact.footY }))
   results.push(check('S3B.leftHandStable', contact.leftHandErr < 0.02, { err: contact.leftHandErr }))
-  results.push(check('S3B.gestureWindow3000', FT.GESTURE_MS >= 2500 && FT.GESTURE_MS <= 3400, { ms: FT.GESTURE_MS }))
+  results.push(check('S3B.gestureWindow', FT.GESTURE_MS >= 1200 && FT.GESTURE_MS <= 1800, { ms: FT.GESTURE_MS }))
 
   // S2 — finalRest congelado.
   const fr = FD.buildFinalRestFrame()
@@ -87,15 +87,17 @@ function main() {
   results.push(check('S2.drawerOpen', Math.abs(fr.drawer - 0.24) < 1e-9, { drawer: fr.drawer }))
   results.push(check('S2.policyOnStack', Math.abs(fr.policy.p[0] - -0.13) < 1e-9 && fr.policy.p[1] > 0.04, fr.policy))
 
-  // S4 — apagado: W14 todo cero + blackout 1; fases monótonas.
+  // S4 — apagado conjunto: W09 lleva casa y teléfono a negro en una sola orden.
   const bo = QA.blackoutExpectation()
-  results.push(check('S4.w14AllZero', bo.allLightsZero === true, bo.lights))
-  results.push(check('S4.w14Blackout1', bo.blackout === 1, null))
+  results.push(check('S4.w09AllZero', bo.allLightsZero === true, bo.lights))
+  results.push(check('S4.w09Blackout1', bo.blackout === 1, null))
   const vp = { width: 1280, height: 720, aspect: 16 / 9 }
   const w09 = FD.finalDirector.evaluateFinalFrame('W09', 9999, vp, true, false)
-  results.push(check('S4.w09ScreenOn', Math.abs(w09.lights.screen - 1) < 1e-9, { screen: w09.lights.screen }))
+  results.push(check('S4.w09ScreenOff', w09.lights.screen === 0, { screen: w09.lights.screen }))
   results.push(check('S4.w09OthersZero', w09.lights.spot === 0 && w09.lights.ambient === 0 && w09.lights.hemi === 0, null))
-  results.push(check('S4.twoManualTaps', FT.FINAL_BEATS.slice(-3).join(',') === 'W08,W09,W14' && FT.FINAL_BEAT_DEFS.W09.moveMs === 3000 && FT.FINAL_BEAT_DEFS.W14.moveMs === 600, FT.FINAL_BEATS))
+  results.push(check('S4.oneManualTap', FT.FINAL_NAV_BEATS.slice(-2).join(',') === 'W08,W09' && !FT.FINAL_NAV_BEATS.includes('W14') && FT.FINAL_BEAT_DEFS.W09.moveMs >= 600 && FT.FINAL_BEAT_DEFS.W09.moveMs <= 900, FT.FINAL_NAV_BEATS))
+  const w09mid = FD.finalDirector.evaluateFinalFrame('W09', FT.FINAL_BEAT_DEFS.W09.moveMs / 2, vp, true, false)
+  results.push(check('S4.housePhoneFadeTogether', w09mid.lights.screen > 0 && w09mid.lights.screen < 1 && w09mid.lights.spot > 0 && w09mid.lights.spot < 1, { screen: w09mid.lights.screen, spot: w09mid.lights.spot }))
   const w08 = FD.finalDirector.evaluateFinalFrame('W08', 9999, vp, true, false)
   results.push(check('S4.w08Full', Object.values(w08.lights).every((v) => v === 1), null))
   const wide = FD.sampleUndiveAt(0, vp.aspect).pos
@@ -106,16 +108,15 @@ function main() {
 
   // Navegación: W01→(interno)W02 sin NEXT; holds estables; retroceso.
   results.push(check('S5.w02NoNext', FT.FINAL_BEAT_DEFS.W02.needsNext === false, null))
-  results.push(check('S5.w01StartsDive', FT.FINAL_BEAT_DEFS.W01.needsNext === true && FT.FINAL_BEAT_DEFS.W01.moveMs === 3100, null))
+  results.push(check('S5.w01StartsDive', FT.FINAL_BEAT_DEFS.W01.needsNext === true && FT.FINAL_BEAT_DEFS.W01.moveMs === FT.DIVE_MS, null))
   const w02 = FD.finalDirector.evaluateFinalFrame('W02', 9999, vp, true, false)
   results.push(check('S5.diveEndsAtWide', w02.camPos.every((v, i) => v === wide[i]) && w02.phase === 'stable', w02.camPos))
-  const w01mid = FD.finalDirector.evaluateFinalFrame('W01', 1550, vp, true, false)
+  const w01mid = FD.finalDirector.evaluateFinalFrame('W01', FT.DIVE_MS / 2, vp, true, false)
   results.push(check('S5.diveMidTransition', w01mid.phase === 'transition' && w01mid.qa.diveP !== null && Math.abs(w01mid.qa.diveP - 0.5) < 0.01, w01mid.qa))
   results.push(check('S5.prevFromW02GoesW00noreplay', FS.finalPrev({ beat: 'W02', localTime: 0 }).beat === 'W00', null))
-  results.push(check('S5.nextDuringTransitionIgnored', (() => {
-    // El guard vive en el canvas; aquí se verifica la primitiva pura.
+  results.push(check('S5.nextDuringTransitionImmediate', (() => {
     const s = FS.finalNext({ beat: 'W06', localTime: 0 }, false)
-    return s.beat === 'W06'
+    return s.beat === 'W07'
   })(), null))
   // Determinismo: dos evaluaciones idénticas.
   const f1 = FD.finalDirector.evaluateFinalFrame('W06', 1200, vp, true, false)

@@ -1,7 +1,7 @@
 // FINAL KITCHEN V6.0 — estado de navegación y tipos del frame final.
 
 import type { FinalBeatId } from './finalTimings'
-import { FINAL_BEATS, beatIndex } from './finalTimings'
+import { FINAL_BEATS, FINAL_NAV_BEATS } from './finalTimings'
 import type { Vec3 } from './finalGeometry'
 
 export type { FinalBeatId }
@@ -59,24 +59,20 @@ export function initialFinalNav(params?: URLSearchParams): FinalNavState {
   return { beat: 'W00', localTime: 0 }
 }
 
-/** Avance manual: ignora NEXT durante transiciones (pose íntegra, §2.4). */
-export function finalNext(state: FinalNavState, stable: boolean): FinalNavState {
-  if (!stable) return state
-  const i = beatIndex(state.beat)
-  if (i < 0 || i >= FINAL_BEATS.length - 1) return state
-  let n = FINAL_BEATS[i + 1]
-  // W01/W02: un solo movimiento — entrar a W01 ejecuta el travelling y la
-  // llegada resuelve la fase interna W02 sin NEXT adicional.
-  return { beat: n, localTime: 0 }
+/** Cada pulsación física avanza de beat, incluso durante una transición. */
+export function finalNext(state: FinalNavState, _stable = true): FinalNavState {
+  const i = FINAL_NAV_BEATS.indexOf(state.beat)
+  if (i < 0 || i >= FINAL_NAV_BEATS.length - 1) return state
+  return { beat: FINAL_NAV_BEATS[i + 1], localTime: 0 }
 }
 
 export function finalPrev(state: FinalNavState): FinalNavState {
-  const i = beatIndex(state.beat)
+  const i = FINAL_NAV_BEATS.indexOf(state.beat)
   if (i <= 0) return state
   // Retroceso sin repetición inesperada (§12.3): desde W02 se vuelve a W00
   // (portal estático, sin replay del travelling) en lugar de reentrar a W01.
   if (state.beat === 'W02') return { beat: 'W00', localTime: 0 }
-  return { beat: FINAL_BEATS[i - 1], localTime: 0 }
+  return { beat: FINAL_NAV_BEATS[i - 1], localTime: 0 }
 }
 
 export function finalJump(beat: FinalBeatId): FinalNavState {

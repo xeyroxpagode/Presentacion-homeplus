@@ -6,6 +6,22 @@ import { s01Anchors, type AnchorName } from './s01CinematicConfig'
 import { s01PortalMetadata, s01ScreenCoversViewport } from './s01Portal'
 import { getDiveProgress, registerDiveTick, setDiveCovered } from './s01DiveBridge'
 
+const poseMatrix = new THREE.Matrix4()
+const poseTarget = new THREE.Vector3()
+const poseUp = new THREE.Vector3()
+
+function applyCameraPose(camera: THREE.PerspectiveCamera) {
+  const frame = s01Director.frame
+  camera.position.set(frame.camPos[0], frame.camPos[1], frame.camPos[2])
+  poseTarget.set(frame.camTarget[0], frame.camTarget[1], frame.camTarget[2])
+  poseUp.set(frame.camUp[0], frame.camUp[1], frame.camUp[2]).normalize()
+  if (poseUp.lengthSq() < 0.5) poseUp.set(0, 1, 0)
+  camera.up.copy(poseUp)
+  poseMatrix.lookAt(camera.position, poseTarget, poseUp)
+  camera.quaternion.setFromRotationMatrix(poseMatrix)
+  camera.updateMatrixWorld()
+}
+
 // Cámara narrativa única de S01: FOV fijo 36° en toda la secuencia, cero
 // animación de FOV. Los acercamientos son movimiento físico (position +
 // lookAt + up). También actúa como reloj del director: avanza la state
@@ -93,11 +109,7 @@ export default function S01Camera({ stepIndex, sceneKey = 0 }: { stepIndex: numb
     const diveP = getDiveProgress()
     if (diveP !== null) {
       s01Director.sampleDiveAt(diveP, aspect, Math.min(delta, 0.05) * 1000)
-      const f = s01Director.frame
-      camera.position.set(f.camPos[0], f.camPos[1], f.camPos[2])
-      camera.up.set(f.camUp[0], f.camUp[1], f.camUp[2])
-      camera.lookAt(f.camTarget[0], f.camTarget[1], f.camTarget[2])
-      camera.updateMatrixWorld()
+      applyCameraPose(camera)
       setDiveCovered(s01ScreenCoversViewport(camera))
       if (typeof window !== 'undefined') {
         const w = window as unknown as Record<string, unknown>
@@ -116,10 +128,7 @@ export default function S01Camera({ stepIndex, sceneKey = 0 }: { stepIndex: numb
     const live = s01Director.update(Math.min(delta, 0.05) * 1000, aspect)
     const f = s01Director.frame
 
-    camera.position.set(f.camPos[0], f.camPos[1], f.camPos[2])
-    camera.up.set(f.camUp[0], f.camUp[1], f.camUp[2])
-    camera.lookAt(f.camTarget[0], f.camTarget[1], f.camTarget[2])
-    camera.updateMatrixWorld()
+    applyCameraPose(camera)
 
     if (f.blackout > 0.002) {
       forward.set(0, 0, -1).applyQuaternion(camera.quaternion)

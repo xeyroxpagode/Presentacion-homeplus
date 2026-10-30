@@ -151,7 +151,7 @@ export function portalDistanceQA(aspect = 16 / 9) {
 }
 
 export function blackoutExpectation() {
-  const frame = finalDirector.evaluateFinalFrame('W14', 9999, { width: 1280, height: 720, aspect: 16 / 9 }, true, false)
+  const frame = finalDirector.evaluateFinalFrame('W09', 9999, { width: 1280, height: 720, aspect: 16 / 9 }, true, false)
   const vals = Object.entries(frame.lights)
   const allZero = vals.every(([, v]) => v === 0)
   return { allLightsZero: allZero, blackout: frame.blackout, lights: frame.lights }

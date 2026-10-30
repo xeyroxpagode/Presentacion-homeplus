@@ -8,11 +8,11 @@ import { useEffect, useMemo, useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame, useThree } from '@react-three/fiber'
 import { finalDirector } from './FinalDirector'
-import { POSE_P0, POSE_P1, POSE_P2, sampleGesture } from './TechnicianAnimation'
+import { POSE_P0, POSE_P1, POSE_P2, sampleGesture, sampleTechnicianAmbient } from './TechnicianAnimation'
 import { s01ScreenFrame } from '../S01Chaos/three/s01Portal'
 import { resetFinalDiveCoverage, setFinalDiveCovered } from './finalDiveBridge'
 import type { FinalBeatId } from './finalTimings'
-import { DIVE_MS } from './finalTimings'
+import { DIVE_MS, FINAL_BEAT_DEFS, GESTURE_MS, GESTURE_START_IN_W06, LIGHT_FADE_MS } from './finalTimings'
 import type { FinalFrame } from './finalState'
 import { finalQueryPose } from './finalState'
 import type { S01FinalLive } from '../S01Chaos/three/S01CinematicProps'
@@ -20,6 +20,13 @@ import type { TechRigApi } from './TechnicianRig'
 import type { FinalLightApi } from './FinalLighting'
 
 const _v = new THREE.Vector3()
+
+function terminalTime(beat: FinalBeatId): number {
+  if (beat === 'W01') return DIVE_MS
+  if (beat === 'W06') return GESTURE_START_IN_W06 + GESTURE_MS
+  if (beat === 'W09') return LIGHT_FADE_MS
+  return FINAL_BEAT_DEFS[beat].moveMs
+}
 
 /** Cobertura real con la cámara viva (réplica de s01ScreenCoversViewport). */
 function screenCoversViewport(camera: THREE.Camera, margin = 0.08): boolean {
@@ -48,6 +55,8 @@ export type FinalClock = {
 
 export default function FinalCamera({
   beat,
+  transitionId,
+  seekToEnd,
   clockRef,
   techApiRef,
   lightApiRef,
@@ -56,6 +65,8 @@ export default function FinalCamera({
   onStable,
 }: {
   beat: FinalBeatId
+  transitionId: number
+  seekToEnd: boolean
   clockRef: React.MutableRefObject<FinalClock>
   techApiRef: React.MutableRefObject<TechRigApi | null>
   lightApiRef: React.MutableRefObject<FinalLightApi | null>
@@ -90,13 +101,16 @@ export default function FinalCamera({
 
   // Reloj local: se reinicia en cada cambio de beat (tiempo absoluto).
   const tRef = useRef(0)
-  const startRef = useRef(performance.now())
+  const startRef = useRef(performance.now() - (seekToEnd || reducedMotion ? terminalTime(beat) : 0))
   const beatRef = useRef<FinalBeatId>(beat)
+  const transitionRef = useRef(transitionId)
   const stableNotified = useRef<FinalBeatId | null>(null)
-  if (beatRef.current !== beat) {
+  if (transitionRef.current !== transitionId) {
+    transitionRef.current = transitionId
     beatRef.current = beat
     tRef.current = 0
-    startRef.current = performance.now()
+    startRef.current = performance.now() - (seekToEnd || reducedMotion ? terminalTime(beat) : 0)
+    stableNotified.current = null
     if (beat === 'W01') resetFinalDiveCoverage()
   }
 
@@ -160,7 +174,10 @@ export default function FinalCamera({
         if (poseOverride === 'P0') tech.setPose(POSE_P0)
         else if (poseOverride === 'P1') tech.setPose(POSE_P1)
         else if (poseOverride === 'P2') tech.setPose(POSE_P2)
-        else tech.setPose(frame.gestureT == null ? POSE_P0 : sampleGesture(frame.gestureT))
+        else {
+          const basePose = frame.gestureT == null ? POSE_P0 : sampleGesture(frame.gestureT)
+          tech.setPose(sampleTechnicianAmbient(basePose, t, beat === 'W06'))
+        }
       }
     }
 
@@ -179,6 +196,11 @@ export default function FinalCamera({
     }
 
     clockRef.current = { beat, t, stable: frame.phase === 'stable', frame }
+
+    if (frame.phase === 'stable' && stableNotified.current !== beat) {
+      stableNotified.current = beat
+      queueMicrotask(() => onStable(beat))
+    }
 
     // W01/W02: un solo movimiento — al estabilizar, el director registra la
     // fase interna W02 sin NEXT adicional (sin pausa ni click muerto). En
@@ -199,7 +221,8 @@ export default function FinalCamera({
           : { p: frame.qa.diveP, camPos: [...frame.camPos], camTarget: [...frame.camTarget], covered: screenCoversViewport(camera) }
     }
 
-    if (frame.phase !== 'stable') state.invalidate()
+    const technicianIsLiving = frame.techPose !== 'hidden' && beat !== 'W09' && beat !== 'W14'
+    if (frame.phase !== 'stable' || technicianIsLiving) state.invalidate()
   }, -1)
 
   return null

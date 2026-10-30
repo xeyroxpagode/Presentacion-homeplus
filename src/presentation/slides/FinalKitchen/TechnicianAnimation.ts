@@ -18,6 +18,7 @@
 
 import { FRIDGE_SERVICE, TECHNICIAN } from './finalGeometry'
 import type { Vec3 } from './finalGeometry'
+import { GESTURE_MS } from './finalTimings'
 
 /* ---------------- esqueleto (m, facing −Z, raíz = TECHNICIAN.root) ------- */
 
@@ -253,15 +254,16 @@ function buildGestureKeys(): GestureKey[] {
   const H = TECHNICIAN.hoverP0
   const rest: Vec3 = [screw[0] + 0.05, screw[1] + 0.03, screw[2] + 0.1]
   const regrip: Vec3 = [screw[0], screw[1] + 0.008, screw[2] + 0.01]
+  const at = (legacyMs: number) => legacyMs * (GESTURE_MS / 3000)
   return [
-    { t: 0, lean: 0.44, tipTarget: H, toolRoll: 0, headPitch: -0.5 },
-    { t: 400, lean: 0.5, tipTarget: screw, toolRoll: 0, headPitch: -0.62 },
-    { t: 800, lean: 0.52, tipTarget: screw, toolRoll: 0.12, headPitch: -0.64 },
-    { t: 1200, lean: 0.5, tipTarget: regrip, toolRoll: 0.02, headPitch: -0.6 },
-    { t: 1650, lean: 0.52, tipTarget: screw, toolRoll: -0.12, headPitch: -0.64 },
-    { t: 2050, lean: 0.48, tipTarget: H, toolRoll: 0, headPitch: -0.58 },
-    { t: 2500, lean: 0.46, tipTarget: rest, toolRoll: 0, headPitch: -0.55 },
-    { t: 3000, lean: 0.46, tipTarget: rest, toolRoll: 0, headPitch: -0.55 },
+    { t: at(0), lean: 0.44, tipTarget: H, toolRoll: 0, headPitch: -0.5 },
+    { t: at(400), lean: 0.5, tipTarget: screw, toolRoll: 0, headPitch: -0.62 },
+    { t: at(800), lean: 0.52, tipTarget: screw, toolRoll: 0.12, headPitch: -0.64 },
+    { t: at(1200), lean: 0.5, tipTarget: regrip, toolRoll: 0.02, headPitch: -0.6 },
+    { t: at(1650), lean: 0.52, tipTarget: screw, toolRoll: -0.12, headPitch: -0.64 },
+    { t: at(2050), lean: 0.48, tipTarget: H, toolRoll: 0, headPitch: -0.58 },
+    { t: at(2500), lean: 0.46, tipTarget: rest, toolRoll: 0, headPitch: -0.55 },
+    { t: at(3000), lean: 0.46, tipTarget: rest, toolRoll: 0, headPitch: -0.55 },
   ]
 }
 
@@ -301,9 +303,9 @@ const BAKED: JointPose[] = GESTURE_KEYS.map((k) => poseAtKey(k, LEGS))
 const smooth01 = (u: number) => u * u * (3 - 2 * u)
 const clamp01 = (u: number) => (u < 0 ? 0 : u > 1 ? 1 : u)
 
-/** Muestreo ABSOLUTO del gesto (ms 0–3000). Sin acumulación. */
+/** Muestreo ABSOLUTO del gesto. Sin acumulación ni dependencia del frame previo. */
 export function sampleGesture(tMs: number): JointPose {
-  const t = clamp(tMs, 0, 3000)
+  const t = clamp(tMs, 0, GESTURE_MS)
   const keys = GESTURE_KEYS
   let i = 0
   while (i < keys.length - 2 && t >= keys[i + 1].t) i++
@@ -327,6 +329,22 @@ export function sampleGesture(tMs: number): JointPose {
   }
 }
 
+/** Vida corporal mínima en holds. No repite el gesto de reparación: sólo
+ * respiración, compensación de cabeza y un asentamiento imperceptible. */
+export function sampleTechnicianAmbient(pose: JointPose, tMs: number, repairing: boolean): JointPose {
+  const breath = Math.sin((tMs / 2600) * Math.PI * 2)
+  const settle = Math.sin((tMs / 4100) * Math.PI * 2 + 0.8)
+  const amplitude = repairing ? 0.0025 : 0.008
+  return {
+    ...pose,
+    torso: pose.torso + breath * amplitude,
+    head: pose.head - breath * amplitude * 0.7 + settle * 0.002,
+    shoulderR: pose.shoulderR + breath * amplitude * 0.22,
+    shoulderL: pose.shoulderL - breath * amplitude * 0.18,
+    elbowL: pose.elbowL + settle * amplitude * 0.12,
+  }
+}
+
 /** Poses semánticas: P0 inspección, P1 trabajo, P2 descanso (estable). */
 export const POSE_P0 = BAKED[0]
 export const POSE_P1 = BAKED[2]
@@ -336,6 +354,44 @@ export const POSE_P2 = BAKED[BAKED.length - 1]
 export function computeToolTip(pose: JointPose): V3 {
   const sr = shoulderPos(1, -pose.torso)
   return chainTip(sr, pose.shoulderYawR, pose.shoulderR, pose.elbowR, pose.wristPitchR)
+}
+
+export type TechnicianJoints = {
+  shoulderR: V3
+  elbowR: V3
+  wristR: V3
+  toolTip: V3
+  shoulderL: V3
+  elbowL: V3
+  wristL: V3
+  hipR: V3
+  kneeR: V3
+  footR: V3
+  hipL: V3
+  kneeL: V3
+  footL: V3
+}
+
+/** Articulaciones físicas en mundo para adaptar el clip a rigs con ejes
+ * locales distintos sin copiar ángulos incompatibles. */
+export function computeTechnicianJoints(pose: JointPose): TechnicianJoints {
+  const shoulderR = shoulderPos(1, -pose.torso)
+  const elbowR = add(shoulderR, scale(limbDir(pose.shoulderYawR, pose.shoulderR), SKELETON.upperLen))
+  const wristR = add(elbowR, scale(limbDir(pose.shoulderYawR, pose.shoulderR + pose.elbowR), SKELETON.foreLen))
+  const toolTip = add(wristR, scale(limbDir(pose.shoulderYawR, pose.shoulderR + pose.elbowR + pose.wristPitchR), SKELETON.toolLen))
+
+  const shoulderL = shoulderPos(-1, -pose.torso)
+  const elbowL = add(shoulderL, scale(limbDir(pose.shoulderYawL, pose.shoulderL), SKELETON.upperLen))
+  const wristL = add(elbowL, scale(limbDir(pose.shoulderYawL, pose.shoulderL + pose.elbowL), SKELETON.foreLen))
+
+  const hipR = hipPos(1)
+  const kneeR = add(hipR, scale(limbDir(pose.hipYawR, pose.hipR), SKELETON.thighLen))
+  const footR = add(kneeR, scale(limbDir(pose.hipYawR, pose.hipR + pose.kneeR), SKELETON.shinLen))
+  const hipL = hipPos(-1)
+  const kneeL = add(hipL, scale(limbDir(pose.hipYawL, pose.hipL), SKELETON.thighLen))
+  const footL = add(kneeL, scale(limbDir(pose.hipYawL, pose.hipL + pose.kneeL), SKELETON.shinLen))
+
+  return { shoulderR, elbowR, wristR, toolTip, shoulderL, elbowL, wristL, hipR, kneeR, footR, hipL, kneeL, footL }
 }
 
 /** FK rodilla derecha (mundo): debe rozar el suelo sin hundirse. */
@@ -375,10 +431,12 @@ export function gestureContactQA(stepMs = 50): {
   let inside = 0
   let total = 0
   let maxP1 = 0
-  for (let t = 0; t <= 3000; t += stepMs) {
+  const contactStart = 400 * (GESTURE_MS / 3000)
+  const contactEnd = 2050 * (GESTURE_MS / 3000)
+  for (let t = 0; t <= GESTURE_MS; t += stepMs) {
     const d = toolTipDistance(sampleGesture(t))
     samples.push({ t, dist: d })
-    if (t >= 400 && t <= 2050) {
+    if (t >= contactStart && t <= contactEnd) {
       total++
       if (d <= 0.02) inside++
       if (d > maxP1) maxP1 = d

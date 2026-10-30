@@ -55,6 +55,36 @@ export const s01AccumulationStack = [-0.18, 0.918, -0.44] as Vec3
 
 export type AnchorName = keyof typeof s01Anchors
 
+/** Controles de trayectoria: posiciones intermedias elegidas para preservar
+ * los anchors aprobados mientras introducen paralaje, altura y continuidad.
+ * Los endpoints siguen siendo s01Anchors; estos puntos nunca son holds. */
+export const s01CameraPathControls = {
+  insurance: {
+    pos: [[-0.52, 1.99, 0.25], [-0.49, 1.9, 0.19]] as [Vec3, Vec3],
+    target: [[-0.075, 0.925, -0.34], [-0.075, 0.925, -0.34]] as [Vec3, Vec3],
+  },
+  pantry: {
+    pos: [[-0.62, 2.02, -0.08], [-0.72, 2.22, -1.22]] as [Vec3, Vec3],
+    target: [[-0.18, 1.15, -0.72], [-0.72, 1.72, -2.34]] as [Vec3, Vec3],
+  },
+  fridgeReveal: {
+    pos: [[-0.12, 2.14, -0.74], [0.22, 1.36, -0.98]] as [Vec3, Vec3],
+    target: [[-0.2, 1.7, -2.7], [1.26, 0.82, -2.22]] as [Vec3, Vec3],
+  },
+  fridgeReframe: {
+    pos: [[0.62, 1.18, -0.42], [0.82, 1.55, 1.08]] as [Vec3, Vec3],
+    target: [[1.72, 0.72, -2.17], [1.58, 0.78, -2.08]] as [Vec3, Vec3],
+  },
+  documents: {
+    pos: [[1.0, 1.96, 1.4], [0.38, 2.42, 0.88]] as [Vec3, Vec3],
+    target: [[1.2, 0.92, -1.45], [0.38, 0.94, -0.7]] as [Vec3, Vec3],
+  },
+  wide: {
+    pos: [[0.46, 2.45, 0.98], [1.72, 2.1, 2.3]] as [Vec3, Vec3],
+    target: [[0.12, 0.94, -0.45], [0.08, 0.86, -0.78]] as [Vec3, Vec3],
+  },
+} as const
+
 /** Anchor por step: dónde queda la cámara en el F100 de cada beat.
  *  V5.2: S01.3 ARRANCA de A_FRIDGE_SIDE, se reencuadra a A_FRIDGE
  *  (heladera completa, 0–320 ms del script) y TERMINA en A_DOCS
@@ -486,7 +516,7 @@ export const s01Timings = {
     doors: [
       [170, 570] as [number, number],
       [235, 590] as [number, number],
-      [305, 610] as [number, number],
+      [305, 665] as [number, number],
     ],
   },
   // Beat 3 V5.2 (§06) — 3350 ms. Escalada: reencuadre a heladera completa

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useReducer, useRef, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 import PresentationFrame from './components/PresentationFrame'
 import { initialState, navigate, navigationAction } from './navigation'
 import { presentationConfig } from './presentationConfig'
@@ -30,8 +30,7 @@ export default function Presentation() {
   const Slide = slide.component
   const devMode = new URLSearchParams(window.location.search).get('dev') === '1'
   const [directSnapshot, setDirectSnapshot] = useState(devMode)
-  const finalReady = useRef(false)
-  const onFinalNavigateReady = useCallback((ready: boolean) => { finalReady.current = ready }, [])
+  const [lastAction, setLastAction] = useState<NavigationAction | null>(null)
   const finalActive = slide.id === 'FINAL_KITCHEN'
   const prepareFinal = slide.id === 'S17' && state.stepIndex === slide.stepCount - 1
   // The cinematic run is one continuous composition, so its slides share a
@@ -51,11 +50,7 @@ export default function Presentation() {
       event.preventDefault()
       if (event.repeat) return
       setDirectSnapshot(false)
-      if (finalActive && action === 'NEXT') {
-        if (!finalReady.current) return
-        finalReady.current = false
-      }
-      if (prepareFinal && action === 'NEXT') finalReady.current = false
+      setLastAction(action)
       dispatch(action)
     }
     window.addEventListener('keydown', onKeyDown)
@@ -87,7 +82,12 @@ export default function Presentation() {
         ) : finalActive ? null : <Slide stepIndex={state.stepIndex} directSnapshot={directSnapshot} />}
       </section>
       {(finalActive || prepareFinal) && (
-        <FinalKitchenCanvas stepIndex={finalActive ? state.stepIndex : null} onNavigateReady={onFinalNavigateReady} />
+        <FinalKitchenCanvas
+          integrated
+          stepIndex={finalActive ? state.stepIndex : null}
+          directSnapshot={directSnapshot}
+          reverseEntry={lastAction === 'PREVIOUS'}
+        />
       )}
       {devMode && (
         <output className="presentation-dev" aria-live="polite">

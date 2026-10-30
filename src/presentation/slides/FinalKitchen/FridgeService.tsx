@@ -4,6 +4,7 @@
 // salvo el brazo del técnico: panel, tornillos y caja no se mueven.
 
 import { FRIDGE_SERVICE } from './finalGeometry'
+import { RoundedBox } from '@react-three/drei'
 
 const PANEL = '#9aa0a8'
 const PANEL_DARK = '#6e747c'
@@ -17,10 +18,9 @@ function ServicePanel() {
   return (
     <group name="FRIDGE_SERVICE_PANEL" position={[cx, cy, cz]}>
       {/* cubierta adaptada al zócalo (no tapa bisagras ni puerta) */}
-      <mesh castShadow receiveShadow>
-        <boxGeometry args={FRIDGE_SERVICE.panelSize} />
-        <meshStandardMaterial color={PANEL} roughness={0.5} metalness={0.4} flatShading />
-      </mesh>
+      <RoundedBox args={FRIDGE_SERVICE.panelSize} radius={0.012} smoothness={3} castShadow receiveShadow>
+        <meshStandardMaterial color={PANEL} roughness={0.48} metalness={0.42} />
+      </RoundedBox>
       {/* dos fijaciones visibles (esquinas superiores) */}
       <mesh position={[-w / 2 + 0.03, h / 2 - 0.03, FRIDGE_SERVICE.panelSize[2] / 2]}>
         <cylinderGeometry args={[0.004, 0.004, 0.006, 6]} />
@@ -43,6 +43,10 @@ function ServicePanel() {
           <cylinderGeometry args={[0.004, 0.004, 0.008, 6]} />
           <meshStandardMaterial color={SCREW} roughness={0.3} metalness={0.85} />
         </mesh>
+        <mesh position={[0, 0, 0.0044]}>
+          <boxGeometry args={[0.0055, 0.0012, 0.001]} />
+          <meshStandardMaterial color={PANEL_DARK} roughness={0.55} metalness={0.5} />
+        </mesh>
       </group>
     </group>
   )
@@ -53,15 +57,13 @@ function Toolbox() {
   return (
     <group name="TOOLBOX" position={[x, 0, z]} rotation={[0, -0.3, 0]}>
       {/* cuerpo */}
-      <mesh position={[0, 0.09, 0]} castShadow receiveShadow>
-        <boxGeometry args={[0.35, 0.16, 0.2]} />
-        <meshStandardMaterial color={TOOLBOX} roughness={0.85} flatShading />
-      </mesh>
+      <RoundedBox args={[0.35, 0.16, 0.2]} radius={0.025} smoothness={3} position={[0, 0.09, 0]} castShadow receiveShadow>
+        <meshStandardMaterial color={TOOLBOX} roughness={0.82} />
+      </RoundedBox>
       {/* tapa + asa sencilla */}
-      <mesh position={[0, 0.175, 0]} castShadow>
-        <boxGeometry args={[0.35, 0.03, 0.2]} />
-        <meshStandardMaterial color={TOOLBOX_LID} roughness={0.85} flatShading />
-      </mesh>
+      <RoundedBox args={[0.35, 0.035, 0.2]} radius={0.012} smoothness={3} position={[0, 0.175, 0]} castShadow>
+        <meshStandardMaterial color={TOOLBOX_LID} roughness={0.82} />
+      </RoundedBox>
       <mesh position={[0, 0.2, 0]}>
         <torusGeometry args={[0.05, 0.01, 5, 8, Math.PI]} />
         <meshStandardMaterial color={TOOLBOX_LID} roughness={0.85} flatShading />

@@ -13,19 +13,19 @@ export const A_WIDE = {
 
 /** Reencuadre de heladera (reutiliza A_FRIDGE original). */
 export const CAM_FRIDGE = {
-  position: [2.1, 1.8, 1.0] as Vec3,
-  target: [1.5, 0.78, -2.0] as Vec3,
+  position: [-1.3, 1.38, -0.65] as Vec3,
+  target: [1.4, 0.34, -1.98] as Vec3,
 }
 
 /** Foco factura: vecindad de A_INSURANCE reorientada a la pila física. */
 export const CAM_FACTURA = {
-  position: [-0.72, 1.5, 0.28] as Vec3,
-  target: [-0.18, 0.95, -0.44] as Vec3,
+  position: [0.75, 1.28, 0.15] as Vec3,
+  target: [-0.17, 0.98, -0.45] as Vec3,
 }
 
 /** Foco mochila: se recalcula desde el bbox real; este es el valor inicial. */
 export const CAM_MOCHILA = {
-  position: [-0.3, 0.78, 1.52] as Vec3,
+  position: [-1.15, 0.95, 1.6] as Vec3,
   target: [-0.85, 0.26, 0.33] as Vec3,
 }
 

@@ -18,7 +18,6 @@ import {
 } from './finalGeometry'
 import type { Vec3 } from './finalGeometry'
 import {
-  BLACKOUT_FADE_MS,
   DIVE_MS,
   FINAL_BEAT_DEFS,
   GESTURE_MS,
@@ -64,9 +63,9 @@ const LIGHT_TARGETS: Record<FinalBeatId, LightScales> = {
   W00: LIGHTS_FULL, W01: LIGHTS_FULL, W02: LIGHTS_FULL, W03: LIGHTS_FULL,
   W04: LIGHTS_FULL, W05: LIGHTS_FULL, W06: LIGHTS_FULL, W07: LIGHTS_FULL,
   W08: LIGHTS_FULL,
-  // Primer tap: se apaga la casa, pero el celular queda encendido e intacto.
-  W09: { ...LIGHTS_FULL, spot: 0, lamp: 0, pantry: 0, bounce: 0, window: 0, windowEmissive: 0, rim: 0, ambient: 0, hemi: 0, bulbEmissive: 0, strip: 0, screen: 1 },
-  // Segundo tap: se apaga el celular; el cuadro termina en negro absoluto.
+  // W09 es el único cierre lumínico: casa y teléfono terminan juntos en cero.
+  W09: { ...LIGHTS_FULL, spot: 0, lamp: 0, pantry: 0, bounce: 0, window: 0, windowEmissive: 0, rim: 0, ambient: 0, hemi: 0, bulbEmissive: 0, strip: 0, screen: 0 },
+  // Alias histórico para deep-links antiguos: estado final ya resuelto.
   W14: { ...LIGHTS_FULL, spot: 0, lamp: 0, pantry: 0, bounce: 0, window: 0, windowEmissive: 0, rim: 0, ambient: 0, hemi: 0, bulbEmissive: 0, strip: 0, screen: 0 },
 }
 
@@ -193,15 +192,17 @@ export class FinalDirector {
         target: lerp3(from.target, to.target, u),
         up: [0, 1, 0],
       }
-      stable = reducedMotion || t >= def.moveMs
+      stable = reducedMotion || t >= (beat === 'W06'
+        ? GESTURE_START_IN_W06 + GESTURE_MS
+        : def.moveMs)
     } else {
       // W08–W14: cámara fijada a A_WIDE (sin micro-push, sin zoom).
       cam = { pos: [...A_WIDE.position] as Vec3, target: [...A_WIDE.target] as Vec3, up: [0, 1, 0] }
-      stable = def.kind === 'hold' || reducedMotion ? true : t >= (beat === 'W14' ? BLACKOUT_FADE_MS : LIGHT_FADE_MS)
+      stable = def.kind === 'hold' || reducedMotion || beat === 'W14' ? true : t >= LIGHT_FADE_MS
     }
 
     // --- técnico ---
-    let techPose: TechPoseId = 'hidden'
+    let techPose: TechPoseId = beat === 'W00' ? 'hidden' : 'P0'
     let gestureT: number | null = null
     if (beat === 'W06') {
       techPose = 'P0'
@@ -220,28 +221,26 @@ export class FinalDirector {
     const target = LIGHT_TARGETS[beat]
     let lights: LightScales
     if (beat === 'W09' && !reducedMotion) {
-      const phases: { at: number; light: LightScales }[] = [
-        { at: 0, light: LIGHTS_FULL },
-        { at: 600, light: { ...LIGHTS_FULL, spot: 0.7, lamp: 0.7, pantry: 0.55, bounce: 0.7 } },
-        { at: 1250, light: { ...LIGHTS_FULL, spot: 0.5, lamp: 0.42, pantry: 0.25, bounce: 0.4, window: 0.3, rim: 0.3, windowEmissive: 0.3 } },
-        { at: 1900, light: { ...LIGHTS_FULL, spot: 0.05, lamp: 0.05, pantry: 0.05, bounce: 0.1, window: 0, rim: 0.05, windowEmissive: 0, bulbEmissive: 0.05 } },
-        { at: 2500, light: LIGHT_TARGETS.W09 },
-        { at: 3000, light: LIGHT_TARGETS.W09 },
-      ]
-      const nextIndex = phases.findIndex((p) => t < p.at)
-      const i = nextIndex < 0 ? phases.length - 1 : Math.max(0, nextIndex - 1)
-      const a = phases[i]
-      const b = phases[Math.min(i + 1, phases.length - 1)]
-      lights = mixLights(a.light, b.light, easeInOut(clamp01((t - a.at) / Math.max(1, b.at - a.at))))
+      const closingLightProgress = clamp01(t / LIGHT_FADE_MS)
+      const houseU = easeInOut(clamp01((closingLightProgress - 0.12) / 0.85))
+      const screenU = easeInOut(clamp01((closingLightProgress - 0.13) / 0.87))
+      lights = mixLights(LIGHTS_FULL, LIGHT_TARGETS.W09, houseU)
+      lights.screen = lerp(1, 0, screenU)
     } else if (def.kind === 'fade' && !reducedMotion) {
-      const fadeMs = beat === 'W14' ? BLACKOUT_FADE_MS : LIGHT_FADE_MS
+      const fadeMs = Math.max(1, def.moveMs)
       lights = mixLights(prev, target, easeInOut(clamp01(t / fadeMs)))
     } else {
       lights = { ...target }
     }
 
-    // --- blackout (negro puro #000, sólo W14) ---
-    const blackout = beat === 'W14' ? (reducedMotion ? 1 : easeInOut(clamp01(t / BLACKOUT_FADE_MS))) : 0
+    // --- negro puro al final del fundido compartido; W14 queda como alias. ---
+    const blackout = beat === 'W14'
+      ? 1
+      : beat === 'W09'
+        ? reducedMotion
+          ? 1
+          : easeInOut(clamp01((t / LIGHT_FADE_MS - 0.82) / 0.18))
+        : 0
 
     const bridge = finalDiveBridgeDebug()
 

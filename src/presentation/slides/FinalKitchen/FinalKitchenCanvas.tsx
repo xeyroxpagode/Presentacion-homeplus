@@ -5,6 +5,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
+import * as THREE from 'three'
 import type { S01FinalLive } from '../S01Chaos/three/S01CinematicProps'
 import { createHomeScreenTexture } from './homeScreenTexture'
 import FinalKitchenScene from './FinalKitchenScene'
@@ -16,17 +17,27 @@ import { exposeFinalQA } from './finalQA'
 import type { FinalBeatId } from './finalTimings'
 import { FINAL_BEATS } from './finalTimings'
 import { finalNext, finalPrev, finalJump, initialFinalNav, finalDebugEnabled, finalReducedMotion } from './finalState'
+import { getFinalQualityProfile } from './finalQuality'
 import './final-kitchen.css'
 
 // La llegada W02 ya sostiene el plano abierto: el siguiente NEXT va a mochila.
-export const INTEGRATED_FINAL_BEATS: FinalBeatId[] = ['W01', 'W04', 'W05', 'W06', 'W07', 'W08', 'W09', 'W14']
+export const INTEGRATED_FINAL_BEATS: FinalBeatId[] = ['W01', 'W04', 'W05', 'W06', 'W07', 'W08', 'W09']
 
-export default function FinalKitchenCanvas({ stepIndex = null, onNavigateReady }: {
+type FinalTransition = {
+  beat: FinalBeatId
+  seekToEnd: boolean
+  id: number
+}
+
+export default function FinalKitchenCanvas({ stepIndex = null, integrated = false, directSnapshot = false, reverseEntry = false }: {
   stepIndex?: number | null
-  onNavigateReady?: (ready: boolean) => void
+  integrated?: boolean
+  directSnapshot?: boolean
+  reverseEntry?: boolean
 }) {
-  const integrated = onNavigateReady !== undefined
-  const [beat, setBeat] = useState<FinalBeatId>(() => integrated ? (stepIndex === null ? 'W00' : INTEGRATED_FINAL_BEATS[stepIndex]) : initialFinalNav().beat)
+  const initialBeat = integrated ? (stepIndex === null ? 'W00' : INTEGRATED_FINAL_BEATS[stepIndex]) : initialFinalNav().beat
+  const [transition, setTransition] = useState<FinalTransition>({ beat: initialBeat, seekToEnd: directSnapshot || reverseEntry, id: 0 })
+  const beat = transition.beat
   const previousStep = useRef<number | null>(stepIndex)
   const clockRef = useRef<FinalClock>({ beat, t: 0, stable: false, frame: null })
   const techApiRef = useRef<TechRigApi | null>(null)
@@ -40,16 +51,24 @@ export default function FinalKitchenCanvas({ stepIndex = null, onNavigateReady }
   })
   const reducedMotion = useMemo(() => finalReducedMotion(), [])
   const debug = useMemo(() => finalDebugEnabled(), [])
+  const quality = useMemo(getFinalQualityProfile, [])
 
   useEffect(() => {
     if (!integrated) return
     const previous = previousStep.current
     previousStep.current = stepIndex
-    onNavigateReady?.(false)
-    if (stepIndex === null) setBeat('W00')
-    else if (stepIndex === 0 && previous !== null && previous > stepIndex) setBeat('W02')
-    else setBeat(INTEGRATED_FINAL_BEATS[stepIndex])
-  }, [integrated, stepIndex, onNavigateReady])
+    const backwards = previous !== null && stepIndex !== null && previous > stepIndex
+    const target = stepIndex === null
+      ? 'W00'
+      : stepIndex === 0 && backwards
+        ? 'W02'
+        : INTEGRATED_FINAL_BEATS[stepIndex]
+    setTransition((current) => ({
+      beat: target,
+      seekToEnd: directSnapshot || backwards || reverseEntry,
+      id: current.id + 1,
+    }))
+  }, [directSnapshot, integrated, reverseEntry, stepIndex])
 
   // Textura Home lista antes de W00 (composición determinista única).
   const screenMap = useMemo(() => {
@@ -68,27 +87,31 @@ export default function FinalKitchenCanvas({ stepIndex = null, onNavigateReady }
   }, [screenMap])
 
   const goNext = useCallback(() => {
-    // NEXT durante transición se ignora (pose íntegra, sin doble-pulso).
-    setBeat((b) => {
-      const c = clockRef.current
-      if (c.beat !== b || !c.stable) return b
-      return finalNext({ beat: b, localTime: 0 }, true).beat
+    setTransition((current) => {
+      const next = finalNext({ beat: current.beat, localTime: 0 }).beat
+      return next === current.beat ? current : { beat: next, seekToEnd: false, id: current.id + 1 }
     })
   }, [])
 
   const goPrev = useCallback(() => {
-    setBeat((b) => finalPrev({ beat: b, localTime: 0 }).beat)
+    setTransition((current) => {
+      const previous = finalPrev({ beat: current.beat, localTime: 0 }).beat
+      return previous === current.beat ? current : { beat: previous, seekToEnd: true, id: current.id + 1 }
+    })
   }, [])
 
   const goJump = useCallback((target: FinalBeatId) => {
-    setBeat(finalJump(target).beat)
+    setTransition((current) => ({ beat: finalJump(target).beat, seekToEnd: true, id: current.id + 1 }))
   }, [])
 
   // W01→W02 interno: al completar el travelling, el beat avanza solo.
   const onStable = useCallback((stableBeat: FinalBeatId) => {
-    if (stableBeat === 'W01') setBeat('W02')
-    else if (integrated && stableBeat !== 'W00') onNavigateReady?.(true)
-  }, [integrated, onNavigateReady])
+    if (stableBeat === 'W01') {
+      setTransition((current) => current.beat === 'W01'
+        ? { beat: 'W02', seekToEnd: true, id: current.id + 1 }
+        : current)
+    }
+  }, [])
 
   // Navegación manual (misma tecla que la presentación; sólo en el harness).
   useEffect(() => {
@@ -97,8 +120,7 @@ export default function FinalKitchenCanvas({ stepIndex = null, onNavigateReady }
       if (e.defaultPrevented || e.repeat) return
       if (e.key === 'ArrowRight' || e.key === ' ') {
         e.preventDefault()
-        // NEXT durante transición se ignora (pose íntegra, sin doble-pulso).
-        if (clockRef.current.stable) goNext()
+        goNext()
       } else if (e.key === 'ArrowLeft') {
         e.preventDefault()
         goPrev()
@@ -122,17 +144,22 @@ export default function FinalKitchenCanvas({ stepIndex = null, onNavigateReady }
     <div className="final-kitchen-stage" data-final-beat={beat} data-final-debug={debug} data-integrated={integrated} data-preparing={stepIndex === null && integrated}>
       <Canvas
         shadows
-        dpr={[1, 2]}
+        dpr={quality.dpr}
         frameloop="demand"
         camera={{ fov: 36, near: 0.015, far: 40 }}
-        gl={{ antialias: true, preserveDrawingBuffer: debug }}
+        gl={{ antialias: true, preserveDrawingBuffer: debug, powerPreference: 'high-performance', alpha: false }}
         onCreated={({ gl }) => {
-          gl.toneMappingExposure = 1
+          gl.toneMapping = THREE.ACESFilmicToneMapping
+          gl.toneMappingExposure = quality.exposure
+          gl.outputColorSpace = THREE.SRGBColorSpace
+          gl.shadowMap.type = THREE.PCFShadowMap
           ;(window as unknown as Record<string, unknown>).__finalDirector = finalDirector
         }}
       >
         <FinalKitchenScene
           beat={beat}
+          transitionId={transition.id}
+          seekToEnd={transition.seekToEnd}
           clockRef={clockRef}
           techApiRef={techApiRef}
           lightApiRef={lightApiRef}

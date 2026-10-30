@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { useRef } from 'react'
 import { useFrame } from '@react-three/fiber'
+import { RoundedBox } from '@react-three/drei'
 import { s01Palette as c } from './s01ThreeConfig'
 import S01CinematicProps, { S01FinalScope, useS01FinalLive, type S01FinalOverride } from './S01CinematicProps'
 import { s01Geo } from './s01CinematicConfig'
@@ -37,6 +38,32 @@ function Box({
       <boxGeometry args={size} />
       <meshStandardMaterial color={color} roughness={roughness} metalness={metalness} flatShading={flat} />
     </mesh>
+  )
+}
+
+function SoftBox({
+  size,
+  position,
+  color,
+  radius,
+  roughness = 0.8,
+  metalness = 0,
+  cast = false,
+  receive = false,
+}: {
+  size: Vec3
+  position: Vec3
+  color: string
+  radius: number
+  roughness?: number
+  metalness?: number
+  cast?: boolean
+  receive?: boolean
+}) {
+  return (
+    <RoundedBox args={size} position={position} radius={radius} smoothness={2} castShadow={cast} receiveShadow={receive}>
+      <meshStandardMaterial color={color} roughness={roughness} metalness={metalness} />
+    </RoundedBox>
   )
 }
 
@@ -199,7 +226,7 @@ function Island() {
       {/* Toe-kick en sombra */}
       <Box size={[2.2, 0.09, 0.85]} position={[0, 0.045, 0]} color={c.kick} />
       {/* Cuerpo del mueble */}
-      <Box size={[2.3, 0.77, 0.95]} position={[0, 0.475, 0]} color={c.cabinet} cast receive />
+      <SoftBox size={[2.3, 0.77, 0.95]} position={[0, 0.475, 0]} color={c.cabinet} radius={0.006} roughness={0.7} cast receive />
       {/* Frentes de cajón (lado cámara) con herrajes */}
       {drawers.map((d, i) => (
         <group key={i}>
@@ -212,7 +239,7 @@ function Island() {
       <Box size={[0.02, 0.34, 0.024]} position={[1.18, 0.53, 0.24]} color={c.fridgeHandle} roughness={0.35} metalness={0.8} />
       {/* Mesada de madera con vuelo — V5.1 §12: madera cálida mate,
           variación tenue por tablones, canto diferenciado, microbevel. */}
-      <Box size={[2.44, 0.055, 1.05]} position={[0, 0.8875, 0]} color={c.counter} roughness={0.78} cast receive />
+      <SoftBox size={[2.44, 0.055, 1.05]} position={[0, 0.8875, 0]} color={c.counter} radius={0.006} roughness={0.8} cast receive />
       {/* canto diferenciado (borde frontal más oscuro) */}
       <Box size={[2.44, 0.03, 0.015]} position={[0, 0.878, 0.525]} color="#5d452e" roughness={0.8} />
       {/* vetas tenues: 3 tablones con tono apenas distinto */}

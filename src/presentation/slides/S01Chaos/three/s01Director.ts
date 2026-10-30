@@ -11,6 +11,7 @@ import {
   s01AnchorByStep,
   s01Anchors,
   s01BeatDuration,
+  s01CameraPathControls,
   s01Dishes,
   s01Docs,
   s01Geo,
@@ -58,6 +59,22 @@ export type S01Frame = {
 type Ease = (u: number) => number
 const easeInOut: Ease = (u) => (u < 0.5 ? 4 * u * u * u : 1 - Math.pow(-2 * u + 2, 3) / 2)
 const easeOut: Ease = (u) => 1 - Math.pow(1 - u, 3)
+const easeObservational: Ease = (u) => {
+  const v = clamp01(u)
+  return v * v * v * (v * (v * 6 - 15) + 10)
+}
+const easeDiscovery: Ease = (u) => {
+  const v = clamp01(u)
+  return v < 0.5 ? 2 * v * v : 1 - Math.pow(-2 * v + 2, 2) / 2
+}
+const easeConsequence: Ease = (u) => {
+  const v = clamp01(u)
+  return 1 - Math.pow(1 - v, 4)
+}
+const easeCommit: Ease = (u) => {
+  const v = clamp01(u)
+  return v * v * (3 - 2 * v)
+}
 const easeOutBack: Ease = (u) => {
   const c = 0.55
   const t = u - 1
@@ -220,7 +237,7 @@ export class S01Director {
 
   /** ¿Sigue animando? El Canvas mantiene frameloop="demand" con invalidate. */
   get animating() {
-    return this.mode !== 'idle' || this.step === 3 || this.step === 4
+    return this.mode !== 'idle'
   }
 
   /* ---- Puente S01→S02 (handoff): HOLD en el final del portal ---------
@@ -297,13 +314,6 @@ export class S01Director {
   /** Actualiza el frame. Devuelve true si la animación sigue viva. */
   update(dt: number, aspect = 16 / 9) {
     if (this.mode === 'idle') {
-      if (this.step === 3 || this.step === 4) {
-        this.elapsed += dt
-        const smokeTime = this.step === 4 ? s01Timings.fridgeFail.end + this.elapsed : this.elapsed
-        this.sampleSmoke(smokeTime, this.params)
-        this.writeFrame()
-        return true
-      }
       return false
     }
     this.aspect = aspect
@@ -327,6 +337,8 @@ export class S01Director {
         for (const ch of this.channels) this.params[ch.key] = ch.to
       } else {
         this.f100(this.step, this.params)
+        if (this.step === 3) this.sampleSmoke(s01Timings.fridgeFail.end, this.params)
+        else if (this.step === 4) this.sampleSmoke(s01Timings.fridgeFail.end + s01Timings.enter4.end, this.params)
       }
       this.mode = 'idle'
       this.blendFrom = null
@@ -559,6 +571,22 @@ export class S01Director {
       const u = clamp01((this.elapsed - ch.t0) / Math.max(1, ch.t1 - ch.t0))
       this.params[ch.key] = lerp(ch.from, ch.to, ch.ease(u))
     }
+    if (this.step === 1) {
+      const T = s01Timings.enter1.cam
+      const u = easeObservational(clamp01((this.elapsed - T[0]) / (T[1] - T[0])))
+      setCameraPath(this.params, s01Anchors.A_INSURANCE_PRE, s01CameraPathControls.insurance, s01Anchors.A_INSURANCE, u)
+    } else if (this.step === 2) {
+      const T = s01Timings.enter2
+      if (this.elapsed <= T.camPantry[1]) {
+        const u = easeDiscovery(clamp01((this.elapsed - T.camPantry[0]) / (T.camPantry[1] - T.camPantry[0])))
+        setCameraPath(this.params, s01Anchors.A_INSURANCE, s01CameraPathControls.pantry, s01Anchors.A_PANTRY, u)
+      } else if (this.elapsed < T.camTravel[0]) {
+        setCameraAnchor(this.params, s01Anchors.A_PANTRY)
+      } else {
+        const u = easeDiscovery(clamp01((this.elapsed - T.camTravel[0]) / (T.camTravel[1] - T.camTravel[0])))
+        setCameraPath(this.params, s01Anchors.A_PANTRY, s01CameraPathControls.fridgeReveal, s01Anchors.A_FRIDGE_SIDE, u)
+      }
+    }
   }
 
   /* ---------------- beat 3: script de fallo ---------------- */
@@ -571,15 +599,17 @@ export class S01Director {
     // 0–320: SIDE→heladera completa; 320–500: lectura quieta. La avería
     // empieza recién después del asentamiento. 1850–2200: travelling al
     // área documental, sin corte.
-    const uCam = easeInOut(clamp01((t - T.reframe[0]) / (T.reframe[1] - T.reframe[0])))
+    const uCam = easeConsequence(clamp01((t - T.reframe[0]) / (T.reframe[1] - T.reframe[0])))
     const fridge = s01Anchors.A_FRIDGE
     const docs = s01Anchors.A_DOCS
+    const atFridgePos = cubic(this.camFrom, s01CameraPathControls.fridgeReframe.pos[0], s01CameraPathControls.fridgeReframe.pos[1], fridge.pos, uCam)
+    const atFridgeTarget = cubic(this.camTargetFrom, s01CameraPathControls.fridgeReframe.target[0], s01CameraPathControls.fridgeReframe.target[1], fridge.target, uCam)
+    const uDocs = easeObservational(clamp01((t - T.docReframe[0]) / (T.docReframe[1] - T.docReframe[0])))
+    const docPos = cubic(fridge.pos, s01CameraPathControls.documents.pos[0], s01CameraPathControls.documents.pos[1], docs.pos, uDocs)
+    const docTarget = cubic(fridge.target, s01CameraPathControls.documents.target[0], s01CameraPathControls.documents.target[1], docs.target, uDocs)
     for (let i = 0; i < 3; i++) {
-      const atFridgeP = lerp(this.camFrom[i], fridge.pos[i], uCam)
-      const atFridgeT = lerp(this.camTargetFrom[i], fridge.target[i], uCam)
-      const uDocs = easeInOut(clamp01((t - T.docReframe[0]) / (T.docReframe[1] - T.docReframe[0])))
-      this.params[`camPos.${i}`] = lerp(atFridgeP, docs.pos[i], uDocs)
-      this.params[`camTarget.${i}`] = lerp(atFridgeT, docs.target[i], uDocs)
+      this.params[`camPos.${i}`] = lerp(atFridgePos[i], docPos[i], uDocs)
+      this.params[`camTarget.${i}`] = lerp(atFridgeTarget[i], docTarget[i], uDocs)
       this.params[`camUp.${i}`] = i === 1 ? 1 : 0
     }
     this.params['blackout'] = 0
@@ -621,10 +651,19 @@ export class S01Director {
         setPose(this.params, `docs.${i}`, d.origin, d.originRot, 0)
         return
       }
+      const revealU = easeOut(clamp01((t - d.appear) / 260))
+      const revealP = cubic(
+        d.origin,
+        [d.origin[0], d.origin[1] + 0.025, d.origin[2] + 0.08],
+        [d.land[0], d.land[1] + 0.012, d.land[2] + 0.04],
+        d.land,
+        revealU,
+      )
+      const revealR = lerp3(d.originRot, d.landRot, revealU)
       const start = T.searchStart + i * T.searchStagger
       const u = easeInOut(clamp01((t - start) / T.searchEach))
-      const p = lerp3(d.land, add3(d.land, d.slide), u)
-      const r: Vec3 = [d.landRot[0], d.landRot[1] + d.slideRot * u, d.landRot[2]]
+      const p = lerp3(revealP, add3(d.land, d.slide), u)
+      const r: Vec3 = [revealR[0], lerp(revealR[1], d.landRot[1] + d.slideRot, u), revealR[2]]
       setPose(this.params, `docs.${i}`, p, r, 1)
     })
 
@@ -660,12 +699,10 @@ export class S01Director {
     out['kitchenLight'] = 1
 
     const wide = s01Anchors.A_WIDE
-    const uCam = easeInOut(clamp01((t - T.cam[0]) / (T.cam[1] - T.cam[0])))
-    for (let i = 0; i < 3; i++) {
-      out[`camPos.${i}`] = lerp(this.camFrom[i], wide.pos[i], uCam)
-      out[`camTarget.${i}`] = lerp(this.camTargetFrom[i], wide.target[i], uCam)
-      out[`camUp.${i}`] = i === 1 ? 1 : 0
-    }
+    const uCam = easeObservational(clamp01((t - T.cam[0]) / (T.cam[1] - T.cam[0])))
+    const widePos = cubic(this.camFrom, s01CameraPathControls.wide.pos[0], s01CameraPathControls.wide.pos[1], wide.pos, uCam)
+    const wideTarget = cubic(this.camTargetFrom, s01CameraPathControls.wide.target[0], s01CameraPathControls.wide.target[1], wide.target, uCam)
+    setCameraValues(out, widePos, wideTarget)
 
     s01Dishes.forEach((d, i) => {
       const u = easeOut(clamp01((t - d.reveal) / 180))
@@ -712,13 +749,15 @@ export class S01Director {
       out['camUp.2'] = up[2]
     }
     const pu = clamp01((t - T.portal[0]) / (T.portal[1] - T.portal[0]))
-    const ePos = easeInOut(pu)
-    const pos: Vec3 = lerp3(wide.pos, fin.pos, ePos)
+    const ePos = easeCommit(pu)
+    const c1: Vec3 = [1.8, 1.72, 2.18]
+    const c2: Vec3 = [0.46, 1.34, 0.72]
+    const pos = cubic(wide.pos, c1, c2, fin.pos, ePos)
     // Reframe monótono al centro: wide.target → screen center con easeOut
     // (el target lidera a la posición: convergencia monótona verificada
     // analíticamente, sin overshoot ni retorno lateral).
-    const uT = easeOut(pu)
-    const tgt = lerp3(wide.target, fin.target, uT)
+    const uT = easeCommit(Math.min(1, pu * 1.08))
+    const tgt = cubic(wide.target, [0.18, 0.84, -0.72], [0.1, 0.92, -0.18], fin.target, uT)
     // Align angular desde 15%: up wide→screen up gradual.
     const uU = smooth(clamp01((pu - 0.15) / 0.85))
     const up: Vec3 = [lerp(0, fin.up[0], uU), lerp(1, fin.up[1], uU), lerp(0, fin.up[2], uU)]
@@ -843,6 +882,32 @@ function cubic(p0: Vec3, p1: Vec3, p2: Vec3, p3: Vec3, u: number): Vec3 {
     a * p0[1] + b * p1[1] + c * p2[1] + d * p3[1],
     a * p0[2] + b * p1[2] + c * p2[2] + d * p3[2],
   ]
+}
+
+function setCameraValues(out: Record<string, number>, pos: Vec3, target: Vec3) {
+  for (let i = 0; i < 3; i++) {
+    out[`camPos.${i}`] = pos[i]
+    out[`camTarget.${i}`] = target[i]
+    out[`camUp.${i}`] = i === 1 ? 1 : 0
+  }
+}
+
+function setCameraAnchor(out: Record<string, number>, anchor: { pos: Vec3; target: Vec3 }) {
+  setCameraValues(out, anchor.pos, anchor.target)
+}
+
+function setCameraPath(
+  out: Record<string, number>,
+  from: { pos: Vec3; target: Vec3 },
+  controls: { pos: readonly [Vec3, Vec3]; target: readonly [Vec3, Vec3] },
+  to: { pos: Vec3; target: Vec3 },
+  u: number,
+) {
+  setCameraValues(
+    out,
+    cubic(from.pos, controls.pos[0], controls.pos[1], to.pos, u),
+    cubic(from.target, controls.target[0], controls.target[1], to.target, u),
+  )
 }
 
 /** Puerta con un solo rebound V5.1: parte de baseOpen (S01.2, 42°/0°),
