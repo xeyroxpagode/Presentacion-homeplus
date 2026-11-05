@@ -131,7 +131,7 @@ export default function FamilyMapStage({ active, stepIndex, stageEl, slotRef }: 
       <div className="family-map-glow ambient-glow" aria-hidden="true" />
       <div className="family-map-surface">
         <MapDemoScreen showSchool={stepIndex >= 1} showClub={stepIndex >= 2}
-          showPeople={stepIndex >= 3} showDelay={stepIndex >= 3} compact={!expanded} />
+          highlightClub={stepIndex >= 3} compact={!expanded} />
       </div>
     </div>
   )

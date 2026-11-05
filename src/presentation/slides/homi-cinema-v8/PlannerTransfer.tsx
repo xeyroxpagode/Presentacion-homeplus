@@ -5,14 +5,14 @@
 // visibles después del handoff. Estado final: Planner con la fila Coca real.
 
 import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
-import homiMark from '../../assets/illustrations/homi-mark.svg'
+import homiOrb from '../../assets/illustrations/homi-orb.svg'
 import PlannerDemoScreen from '../../app-screens/PlannerDemoScreen'
 import '../../app-screens/PlannerDemoScreen/planner-screen.css'
-import { COCA_OP_KIND, COCA_TASK_TITLE, COCA_TIME, D1_SHORT, PLANNER_AFTER_CONFIRM } from './homiV8Data'
+import { COCA_MESSAGE_FULL, COCA_OP_KIND, COCA_TASK_TITLE, COCA_TIME, D1_SHORT, PLANNER_AFTER_CONFIRM } from './homiV8Data'
 
 /**
  * Composición transitoria del morph:
- * - Homi reduce su protagonismo a izquierda.
+ * - La conversación de Homi queda persistente a izquierda con su confirmación.
  * - Planner aparece a derecha con la fila destino medible.
  * - El contenido Coca viaja como clon y transfiere visibilidad a la fila real.
  */
@@ -61,20 +61,25 @@ export function PlannerTransfer({ directSnapshot = false }: { directSnapshot?: b
       <div className="v8-morph-planner" aria-label="Planner: tarea creada">
         <PlannerDemoScreen view="tasks" tasks={PLANNER_AFTER_CONFIRM} emphasizeTasks settled={false} />
       </div>
-      {!landed && (
-        <div className="v8-morph-source" aria-hidden="true">
-          <div className="v8-morph-homi-head">
-            <img src={homiMark} alt="" width={44} height={44} draggable={false} />
-            <span><strong>Homi</strong><small>Asistente del hogar</small></span>
+      <div className="v8-morph-source" aria-label="Conversación con Homi">
+        <div className="v8-morph-homi-head">
+          <img className="v8-homi-orb" src={homiOrb} alt="" width={44} height={44} draggable={false} />
+          <span><strong>Homi</strong><small>Asistente del hogar</small></span>
+        </div>
+        <div className="v8-morph-chat">
+          <div className="v8-morph-user-message">{COCA_MESSAGE_FULL}</div>
+          <div className="v8-morph-success">
+            <strong>¡Listo!</strong>
+            <span>Ya creé la tarea <b>{COCA_TASK_TITLE}</b> en Planner.</span>
           </div>
-          <div className="v8-morph-card" data-morph-source>
+          <div className="v8-morph-card" data-morph-source aria-hidden="true">
             <p className="v8-proposal-kicker">{COCA_OP_KIND}</p>
             <span className="v8-proposal-divider" aria-hidden="true" />
             <p className="v8-proposal-title">{COCA_TASK_TITLE}</p>
             <p className="v8-proposal-date"><span>{D1_SHORT} · {COCA_TIME}</span></p>
           </div>
         </div>
-      )}
+      </div>
       {flight && !landed && (
         <div
           className="v8-morph-clone"

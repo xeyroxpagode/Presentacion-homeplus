@@ -5,7 +5,7 @@
 // etiquetas ni instrucciones adicionales.
 
 import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
-import homiMark from '../../assets/illustrations/homi-mark.svg'
+import homiOrb from '../../assets/illustrations/homi-orb.svg'
 import { homeVariables } from '../../app-screens/HomeDemoScreen/homeTokens'
 import '../../app-screens/HomeDemoScreen/home-screen.css'
 import '../../app-screens/HomiDemoScreen/homi-screen.css'
@@ -37,7 +37,7 @@ function HomiShell({ label, children, composer, overlay, lowExposure = false, sh
       aria-label={label}
     >
       <div className="homi-assistant-bar">
-        <img src={homiMark} alt="" aria-hidden="true" width={40} height={40} draggable={false} />
+        <img className="v8-homi-orb" src={homiOrb} alt="" aria-hidden="true" width={40} height={40} draggable={false} />
         <div className="homi-assistant-copy">
           <p className="homi-assistant-name">Homi</p>
           <p className="homi-assistant-sub">Asistente del hogar</p>

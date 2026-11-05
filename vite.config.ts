@@ -37,7 +37,11 @@ react(),
       watch: {
         ignored: [
           '**/.figma/**',
-],
+          // Backups and QA artifacts live inside the project root. Their large
+          // binary/checksum files are not part of the app and locking them
+          // (e.g. while a backup manifest is being written) crashes the watcher.
+          '**/_backups/**',
+        ],
       },
     },
     preview: {

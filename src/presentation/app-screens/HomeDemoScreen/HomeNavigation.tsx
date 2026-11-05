@@ -3,7 +3,7 @@ import HomeIcon from './HomeIcon'
 export default function HomeNavigation() {
   return (
     <nav className="home-navigation" aria-label="Navegación de HomePlus">
-      <div className="home-navigation-pill">
+      <div className="home-navigation-pill" data-active="home">
         <span className="home-navigation-item home-navigation-current" role="img" aria-label="Home, seleccionado"><HomeIcon name="home" /></span>
         <span className="home-navigation-item" role="img" aria-label="Familia"><HomeIcon name="family" /></span>
         <span className="home-navigation-add" role="img" aria-label="Crear"><HomeIcon name="add" size={22} /></span>

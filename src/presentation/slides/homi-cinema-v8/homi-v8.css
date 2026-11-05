@@ -137,6 +137,17 @@
 /* Tipografía editorial V8 sobre la anatomía nativa */
 .v8-stage .homi-assistant-bar { padding: 20px 30px 14px; }
 .v8-stage .homi-assistant-bar img { width: 56px; height: 56px; border-radius: 16px; }
+.v8-stage .homi-assistant-bar img.v8-homi-orb,
+.v8-stage .v8-morph-homi-head img.v8-homi-orb,
+.v8-stage .v8-lockup-side img.v8-homi-orb {
+  border-radius: 0;
+  object-fit: contain;
+  animation: v8-orb-breathe 5s ease-in-out infinite;
+}
+@keyframes v8-orb-breathe {
+  0%, 100% { transform: scale(.94) rotate(-3deg); }
+  50% { transform: scale(1.025) rotate(3deg); }
+}
 .v8-stage .homi-assistant-name { margin: 0; font-size: 36px; font-weight: 650; color: var(--app-text); }
 .v8-stage .homi-assistant-sub { margin: 0; font-size: 19px; color: rgb(26 24 22 / 0.6); }
 .v8-stage .homi-thread { gap: 14px; padding: 12px 30px 14px; justify-content: flex-end; }
@@ -337,17 +348,41 @@
   background: var(--app-background);
   border: 1px solid rgb(26 24 22 / 0.1);
   box-shadow: 0 14px 40px rgb(26 24 22 / 0.14);
-  opacity: 0.96;
-  transition: opacity 180ms var(--v8-fade);
+  opacity: 1;
 }
 .v8-stage .v8-morph-homi-head { display: flex; align-items: center; gap: 12px; color: var(--app-text); }
 .v8-stage .v8-morph-homi-head img { width: 48px; height: 48px; border-radius: 14px; }
 .v8-stage .v8-morph-homi-head span { display: flex; flex-direction: column; }
 .v8-stage .v8-morph-homi-head strong { font-size: 27px; line-height: 1.05; }
 .v8-stage .v8-morph-homi-head small { margin-top: 3px; font-size: 15px; color: rgb(26 24 22 / 0.58); }
+.v8-stage .v8-morph-chat { display: flex; flex: 1; flex-direction: column; align-items: flex-end; gap: 16px; padding-top: 38px; }
+.v8-stage .v8-morph-user-message,
+.v8-stage .v8-morph-success {
+  width: fit-content;
+  max-width: 100%;
+  padding: 18px 20px;
+  border-radius: 22px 22px 8px 22px;
+  font-size: 21px;
+  line-height: 1.35;
+}
+.v8-stage .v8-morph-user-message { color: #fff; background: var(--app-accent); }
+.v8-stage .v8-morph-success {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 7px;
+  color: var(--app-text);
+  background: var(--app-surface);
+  border: 1px solid rgb(26 24 22 / 0.1);
+  border-radius: 20px;
+}
+.v8-stage .v8-morph-success strong { font-size: 25px; }
+.v8-stage .v8-morph-success span { font-size: 19px; line-height: 1.4; }
 .v8-stage .v8-morph-card {
-  margin-top: auto;
-  margin-bottom: 72px;
+  align-self: stretch;
+  margin-top: 4px;
+  transition: opacity 240ms var(--v8-fade);
   border-radius: 22px;
   padding: 22px 24px;
   background: var(--app-surface);
@@ -381,8 +416,7 @@
   transition: opacity 300ms var(--v8-fade) 580ms;
 }
 .v8-stage[data-beat='P07'] .v8-morph-clone .v8-proposal-kicker { opacity: 0; }
-.v8-stage .v8-morph[data-landed='true'] .v8-morph-source { opacity: 0; }
-.v8-stage .v8-morph[data-flight='true'] .v8-morph-source { opacity: 0; }
+.v8-stage .v8-morph[data-landed='true'] .v8-morph-card { opacity: 0; }
 .v8-stage .v8-morph[data-landed='true'] .v8-morph-clone { opacity: 0; transition: opacity 240ms var(--v8-fade) 700ms; }
 .v8-stage .v8-morph[data-landed='true'] .v8-morph-planner [data-task-id='coca-homi-v8'] {
   animation: v8-coca-once 300ms ease-out both;
@@ -749,10 +783,14 @@
 .v8-stage[data-beat='P14'] .v8-fin-row { padding: 6px 0; gap: 12px; }
 .v8-stage[data-beat='P14'] .v8-fin-foot { margin-top: 8px; padding-top: 8px; }
 .v8-stage[data-beat='P14'] .v8-fin-head { animation: v8-rise 200ms var(--v8-enter) 160ms both; }
-.v8-stage[data-beat='P14'] .v8-fin-row[data-i='0'] { animation: v8-rise 200ms var(--v8-enter) 260ms both; }
-.v8-stage[data-beat='P14'] .v8-fin-row[data-i='1'] { animation: v8-rise 200ms var(--v8-enter) 340ms both; }
-.v8-stage[data-beat='P14'] .v8-fin-row[data-i='2'] { animation: v8-rise 200ms var(--v8-enter) 420ms both; }
+.v8-stage[data-beat='P14'] .v8-fin-row[data-i='0'] { animation: v8-rise 200ms var(--v8-enter) 260ms both, v8-row-review 850ms ease-out 1.05s both; }
+.v8-stage[data-beat='P14'] .v8-fin-row[data-i='1'] { animation: v8-rise 200ms var(--v8-enter) 340ms both, v8-row-review 850ms ease-out 1.45s both; }
+.v8-stage[data-beat='P14'] .v8-fin-row[data-i='2'] { animation: v8-rise 200ms var(--v8-enter) 420ms both, v8-row-review 850ms ease-out 1.85s both; }
 .v8-stage[data-beat='P14'] .v8-fin-foot { animation: v8-rise 200ms var(--v8-enter) 520ms both; }
+@keyframes v8-row-review {
+  0%, 100% { background-color: transparent; }
+  28%, 68% { background-color: rgb(201 107 69 / 0.11); }
+}
 
 /* ============ P22: lockup Homi ≋ HomePlus ============ */
 .v8-stage .v8-lockup-stage {

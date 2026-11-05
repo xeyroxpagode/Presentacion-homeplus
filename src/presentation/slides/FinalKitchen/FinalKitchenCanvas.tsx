@@ -3,10 +3,10 @@
 // los recursos críticos antes de W00 (textura Home síncrona, sin GLB en red,
 // sin reconstrucción por beat). Recursos liberados al desmontar.
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react'
 import { Canvas } from '@react-three/fiber'
 import type { S01FinalLive } from '../S01Chaos/three/S01CinematicProps'
-import { createHomeScreenTexture } from './homeScreenTexture'
+import { createHomeScreenTexture, homePortalScreenHeight, HOME_SURFACE_H, HOME_SURFACE_W } from './homeScreenTexture'
 import FinalKitchenScene from './FinalKitchenScene'
 import type { FinalClock } from './FinalCamera'
 import type { TechRigApi } from './TechnicianRig'
@@ -21,8 +21,33 @@ import './final-kitchen.css'
 // La llegada W02 ya sostiene el plano abierto: el siguiente NEXT va a mochila.
 export const INTEGRATED_FINAL_BEATS: FinalBeatId[] = ['W01', 'W04', 'W05', 'W06', 'W07', 'W08', 'W09', 'W14']
 
-export default function FinalKitchenCanvas({ stepIndex = null, onNavigateReady }: {
+function HomePortalStill({ source }: { source: HTMLCanvasElement }) {
+  const ref = useRef<HTMLCanvasElement>(null)
+  useLayoutEffect(() => {
+    const canvas = ref.current
+    const context = canvas?.getContext('2d')
+    if (!canvas || !context) return
+    const draw = () => {
+      const { clientWidth: width, clientHeight: height } = canvas
+      if (!width || !height) return
+      const dpr = Math.min(2, window.devicePixelRatio || 1)
+      canvas.width = Math.round(width * dpr)
+      canvas.height = Math.round(height * dpr)
+      const screenHeight = homePortalScreenHeight(width / height) * canvas.height
+      const screenWidth = screenHeight * HOME_SURFACE_W / HOME_SURFACE_H
+      context.drawImage(source, (canvas.width - screenWidth) / 2, (canvas.height - screenHeight) / 2, screenWidth, screenHeight)
+    }
+    draw()
+    const observer = new ResizeObserver(draw)
+    observer.observe(canvas)
+    return () => observer.disconnect()
+  }, [source])
+  return <canvas ref={ref} className="final-kitchen-portal-still" aria-hidden="true" />
+}
+
+export default function FinalKitchenCanvas({ stepIndex = null, portalPreview = false, onNavigateReady }: {
   stepIndex?: number | null
+  portalPreview?: boolean
   onNavigateReady?: (ready: boolean) => void
 }) {
   const integrated = onNavigateReady !== undefined
@@ -119,9 +144,10 @@ export default function FinalKitchenCanvas({ stepIndex = null, onNavigateReady }
   }, [goNext, goPrev, goJump])
 
   return (
-    <div className="final-kitchen-stage" data-final-beat={beat} data-final-debug={debug} data-integrated={integrated} data-preparing={stepIndex === null && integrated}>
+    <div className="final-kitchen-stage" data-final-beat={beat} data-final-debug={debug} data-integrated={integrated} data-preparing={stepIndex === null && integrated} data-portal-preview={portalPreview}>
       <Canvas
         shadows
+        resize={{ offsetSize: integrated }}
         dpr={[1, 2]}
         frameloop="demand"
         camera={{ fov: 36, near: 0.015, far: 40 }}
@@ -142,6 +168,7 @@ export default function FinalKitchenCanvas({ stepIndex = null, onNavigateReady }
           onStable={onStable}
         />
       </Canvas>
+      {integrated && stepIndex === null && screenMap && <HomePortalStill source={screenMap.image} />}
       {debug && (
         <div className="final-kitchen-hud" aria-hidden="true">
           <span className="final-kitchen-hud-beat">{beat}</span>

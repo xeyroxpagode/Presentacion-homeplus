@@ -1,0 +1,109 @@
+.family-map-intro {
+  --map-tomi: #697fad;
+  --map-ease: cubic-bezier(.22, 1, .36, 1);
+  z-index: 9;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 540ms var(--map-ease);
+}
+.family-map-intro[data-active='true'] { opacity: 1; }
+.family-map-canvas {
+  position: absolute;
+  inset: 77px 0 0;
+  background: #e9e6dd;
+  transition: filter 450ms ease;
+}
+.family-map-canvas > img { width: 100%; height: 100%; object-fit: cover; }
+.family-map-caption {
+  position: absolute;
+  top: 26px;
+  left: 60px;
+  padding: 16px 20px;
+  border: 1px solid #e5dcd4;
+  border-radius: 16px;
+  background: #fffdfb;
+  box-shadow: 0 8px 24px #35211016;
+}
+.family-map-caption h2 { margin: 0 0 4px; font-size: 20px; font-weight: 800; }
+.family-map-caption p { margin: 0; color: #625246; font-size: 15px; }
+.family-map-marker {
+  position: absolute;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+}
+.family-map-pin {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #c96b45;
+  border-radius: 50%;
+  background: #fffdfb;
+  color: #a34e2d;
+  box-shadow: 0 4px 14px #35211025;
+}
+.family-map-pin svg { width: 25px; height: 25px; }
+.family-map-marker strong {
+  border-radius: 8px;
+  padding: 4px 9px;
+  background: #fffdfb;
+  font-size: 14px;
+  box-shadow: 0 3px 9px #35211016;
+}
+.family-map-member { opacity: 0; transform: translate(-50%, -35%) scale(.85); transition: opacity 420ms ease, transform 480ms var(--map-ease); }
+.family-map-intro:not([data-phase='0']) .family-map-member { opacity: 1; transform: translate(-50%, -50%); }
+.family-map-mom { left: 82%; top: 14%; --member-color: #985e7e; }
+.family-map-dad { left: 53%; top: 53%; --member-color: #376f8c; }
+.family-map-member .family-map-pin { background: var(--member-color); border: 3px solid #fffdfb; color: white; font-weight: 800; font-size: 22px; }
+.family-map-profile { display: flex; align-items: center; gap: 13px; font-size: 18px; }
+.family-map-intro[data-phase='3'] .r01-j-avatar { background: var(--map-tomi); }
+.family-map-intro[data-phase='3']:not([data-snapshot='true']) .r01-j-avatar { animation: family-map-profile-in 1ms 560ms backwards; }
+@keyframes family-map-profile-in { from { opacity: 0; } }
+.family-map-dim { position: absolute; inset: 77px 0 0; background: #241d1caa; opacity: 0; transition: opacity 420ms ease; }
+.family-map-intro[data-phase='2'] .family-map-dim { opacity: 1; }
+.family-map-intro[data-phase='2'] .family-map-canvas { filter: blur(3px); }
+.family-map-hero {
+  position: absolute;
+  z-index: 12;
+  top: 170px;
+  left: 540px;
+  width: 200px;
+  height: 200px;
+  display: grid;
+  place-items: center;
+  border: 6px solid #fffdfb;
+  border-radius: 50%;
+  background: var(--map-tomi);
+  color: white;
+  font-size: 108px;
+  font-weight: 800;
+  box-shadow: 0 16px 48px #22191855;
+  opacity: 0;
+  transform: scale(.72);
+  transition: opacity 360ms ease, transform 560ms var(--map-ease);
+}
+.family-map-intro[data-phase='2'] .family-map-hero { opacity: 1; transform: none; }
+.family-map-intro[data-phase='3'] .family-map-hero { transform: translate(-557px, -232px) scale(.23); transition: opacity 1ms 560ms, transform 560ms var(--map-ease); }
+.family-map-intro-name {
+  position: absolute;
+  top: 386px;
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  color: white;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 250ms ease, transform 360ms var(--map-ease);
+}
+.family-map-intro-name strong { font-size: 44px; line-height: 1.1; }
+.family-map-intro-name span { font-size: 19px; font-weight: 700; }
+.family-map-intro[data-phase='2'] .family-map-intro-name { opacity: 1; transform: none; }
+.family-map-intro[data-snapshot='true'] .family-map-hero,
+.family-map-intro[data-snapshot='true'] .family-map-member { transition: none; }
+@media (prefers-reduced-motion: reduce) {
+  .family-map-intro, .family-map-intro * { transition: none !important; animation: none !important; }
+}

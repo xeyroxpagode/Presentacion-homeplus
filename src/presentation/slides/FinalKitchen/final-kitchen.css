@@ -13,12 +13,26 @@
 
 .final-kitchen-stage[data-preparing='true'] {
   visibility: hidden;
+  opacity: 0;
+}
+
+.final-kitchen-stage[data-preparing='true'][data-portal-preview='true'] {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 175ms ease;
 }
 
 .final-kitchen-stage canvas {
   display: block;
   width: 100%;
   height: 100%;
+}
+
+.final-kitchen-stage .final-kitchen-portal-still {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
 }
 
 .final-kitchen-hud {

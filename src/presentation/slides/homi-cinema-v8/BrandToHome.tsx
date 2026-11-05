@@ -9,7 +9,7 @@
 // abre desde el centro). La aplicación no se arma: se revela.
 
 import { useLayoutEffect, useRef, useState, type CSSProperties } from 'react'
-import homiMark from '../../assets/illustrations/homi-mark.svg'
+import homiOrb from '../../assets/illustrations/homi-orb.svg'
 import HomePlusLogo from '../../components/HomePlusLogo'
 import HomeDemoScreen from '../../app-screens/HomeDemoScreen'
 import { homeVariables } from '../../app-screens/HomeDemoScreen/homeTokens'
@@ -50,7 +50,7 @@ function LockupMark() {
   return (
     <div className="v8-lockup">
       <div className="v8-lockup-side v8-lockup-homi" role="img" aria-label="Homi">
-        <img src={homiMark} alt="" aria-hidden="true" width={64} height={64} draggable={false} />
+        <img className="v8-homi-orb" src={homiOrb} alt="" aria-hidden="true" width={64} height={64} draggable={false} />
         <span className="v8-lockup-word">Homi</span>
       </div>
       <WavyEquals />

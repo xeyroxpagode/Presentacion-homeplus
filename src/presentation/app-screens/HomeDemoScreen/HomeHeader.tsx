@@ -1,6 +1,6 @@
 import HomeIcon from './HomeIcon'
 
-export default function HomeHeader({ showJuli }: { showJuli: boolean }) {
+export default function HomeHeader({ showJuli, profile = 'Juli' }: { showJuli: boolean; profile?: 'Juli' | 'Tomi' }) {
   return (
     <>
       <div className="home-status-bar" aria-hidden="true">
@@ -14,9 +14,9 @@ export default function HomeHeader({ showJuli }: { showJuli: boolean }) {
         </svg>
       </div>
       <header className="home-top-bar">
-        <div className="home-account" data-person-focus={showJuli} aria-label="Perfil de Juli">
-          <span className="home-user-avatar" aria-hidden="true">J</span>
-          <span className="home-user-name">Juli</span>
+        <div className="home-account" data-person-focus={showJuli} aria-label={`Perfil de ${profile}`}>
+          <span className="home-user-avatar" aria-hidden="true">{profile[0]}</span>
+          <span className="home-user-name">{profile}</span>
         </div>
         <div className="home-household"><span>Familia García</span><HomeIcon name="down" size={14} /></div>
         <span className="home-shell-action" role="img" aria-label="Buscar"><HomeIcon name="search" size={22} /></span>

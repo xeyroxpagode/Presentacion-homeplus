@@ -14,6 +14,8 @@
 // Prohibido deformar textos: escala uniforme, sin reflow.
 
 import * as THREE from 'three'
+import { s01PortalDistance } from '../S01Chaos/three/s01Portal'
+import { s01Portal } from '../S01Chaos/three/s01CinematicConfig'
 
 /** Superficie física PHONE_SCREEN (m). */
 export const HOME_SURFACE_W = 0.066
@@ -25,6 +27,25 @@ export const HOME_TEX_H = Math.round((HOME_TEX_W * HOME_SURFACE_H) / HOME_SURFAC
 /** Espacio lógico de la referencia móvil Home (px). */
 const REF_W = 300
 const REF_H = 620
+const EVENT_TOP = 288
+const EVENT_HEIGHT = 64
+const EVENT_TITLE_X = 76
+const EVENT_TITLE_Y = EVENT_TOP + 28
+
+/** Encuadre del evento en el primer plano frontal de la cámara del cierre. */
+export function homePortalScreenHeight(aspect: number) {
+  const halfFov = s01Portal.fov * Math.PI / 360
+  return HOME_SURFACE_H / (2 * s01PortalDistance(aspect) * Math.tan(halfFov))
+}
+
+export function homeEventPortalFrame(aspect: number) {
+  const unit = homePortalScreenHeight(aspect) / REF_H
+  return {
+    titleX: .5 + (EVENT_TITLE_X - REF_W / 2) * unit / aspect,
+    titleY: .5 + (EVENT_TITLE_Y - REF_H / 2) * unit,
+    rowHeight: EVENT_HEIGHT * unit,
+  }
+}
 
 const C = {
   canvas: '#F6F5F2',
@@ -144,7 +165,7 @@ function drawEventRow(ctx: CanvasRenderingContext2D, y: number, title: string) {
   ctx.fillStyle = C.ink
   ctx.font = font(15, 600)
   ctx.textAlign = 'left'
-  ctx.fillText(title, 76, y + 22)
+  ctx.fillText(title, EVENT_TITLE_X, y + 22)
   ctx.fillStyle = C.subtle
   ctx.font = font(15, 400)
   ctx.textAlign = 'right'
@@ -193,11 +214,11 @@ function drawHome(ctx: CanvasRenderingContext2D) {
   ctx.fillText('PRÓXIMAMENTE', 16, y)
   y += 14
   ctx.fillStyle = C.surface
-  roundRect(ctx, 12, y, REF_W - 24, 64, 16)
+  roundRect(ctx, 12, EVENT_TOP, REF_W - 24, EVENT_HEIGHT, 16)
   ctx.fill()
   ctx.strokeStyle = C.border
   ctx.stroke()
-  drawEventRow(ctx, y + 6, 'Educación Física')
+  drawEventRow(ctx, EVENT_TOP + 6, 'Educación Física')
   // Barra de navegación inferior (silueta del sistema)
   ctx.fillStyle = C.surface
   roundRect(ctx, 60, REF_H - 34, REF_W - 120, 24, 12)

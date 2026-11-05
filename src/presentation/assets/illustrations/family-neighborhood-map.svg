@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 600" fill="none">
+  <defs>
+    <pattern id="blocks" width="236" height="192" patternUnits="userSpaceOnUse">
+      <g stroke="#ded9d1" stroke-width="1.5">
+        <path d="m13 13 48-7 8 31-49 9z" fill="#e7e2da"/>
+        <path d="m82 12 73 4-3 28-76-3z" fill="#eae5dd"/>
+        <path d="m173 6 47 8-9 39-45-9z" fill="#e5dfd7"/>
+        <path d="m18 67 35-4 13 35-42 11z" fill="#e9e4dd"/>
+        <path d="m80 63 54-6 10 42-58 8z" fill="#e4dfd7"/>
+        <path d="m163 68 55-10 6 31-58 12z" fill="#e9e5de"/>
+        <path d="m9 132 69-12 9 39-71 12z" fill="#e5e0d8"/>
+        <path d="m103 126 39 5 4 37-46-3z" fill="#eae5dd"/>
+        <path d="m168 126 52-5 8 42-55 7z" fill="#e6e1d9"/>
+      </g>
+      <g fill="#d9d4cb" opacity=".6">
+        <path d="m26 20 29-4 3 6-29 5zm67 1 43 2-1 4-43-1zm87-5 23 4-2 5-24-4z"/>
+        <path d="m21 80 20-3 2 5-20 4zm70-8 34-4 2 6-35 4zm88 5 29-5 1 6-29 5z"/>
+        <path d="m22 142 43-7 2 6-43 8zm79-5 23 2v6l-23-2zm79-1 34-3 2 6-34 4z"/>
+      </g>
+    </pattern>
+    <pattern id="trees" width="54" height="48" patternUnits="userSpaceOnUse">
+      <circle cx="13" cy="14" r="5" fill="#a5bd8b"/>
+      <circle cx="34" cy="32" r="6" fill="#b7c99d"/>
+      <circle cx="49" cy="9" r="3.5" fill="#c3d0aa"/>
+    </pattern>
+    <pattern id="grass" width="32" height="32" patternUnits="userSpaceOnUse" patternTransform="rotate(32)">
+      <path d="M0 0h32v32H0z" fill="#c8d9b5"/>
+      <path d="M0 0v32M16 0v32" stroke="#d8e3ca" stroke-width="1"/>
+    </pattern>
+    <filter id="soften" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation=".65"/>
+    </filter>
+  </defs>
+
+  <path fill="#f1eee8" d="M0 0h1000v600H0z"/>
+  <path fill="url(#blocks)" d="M0 0h1000v600H0z" opacity=".58"/>
+
+  <!-- A curving river and planted banks form a recognizable landmark without implying a real place. -->
+  <path d="M887-28c-34 92-8 146-47 218-35 64-5 112 31 162 46 63 33 140-8 276h137V-28H887Z" fill="#dce8dc"/>
+  <path d="M910-28c-35 93-10 145-48 216-36 66-7 111 30 162 47 64 35 139-8 278h89c37-126 57-214 2-292-40-58-60-83-26-145 39-71 15-125 51-219h-90Z" fill="#a9d5df"/>
+  <path d="M887-28c-34 92-8 146-47 218-35 64-5 112 31 162 46 63 33 140-8 276" stroke="#c6d8b7" stroke-width="5"/>
+
+  <!-- Parks and school/community sports grounds. -->
+  <path d="m55 54 161-22 52 72-40 115-146 21-58-86 31-100Z" fill="#cfddbd"/>
+  <path d="m55 54 161-22 52 72-40 115-146 21-58-86 31-100Z" fill="url(#trees)" opacity=".58"/>
+  <path d="m79 80 108-15 38 49-32 85-98 15-38-59 22-75Z" fill="#b8d1a4" stroke="#e9eee0" stroke-width="4"/>
+  <path d="M133 78v135m-53-67h108m-54-51a51 51 0 0 1 0 102 51 51 0 0 1 0-102Z" stroke="#e8eee0" stroke-width="2.5" opacity=".9"/>
+  <path d="m603 328 222-49 55 79-25 167-191 48-92-96 31-149Z" fill="#cbdcba"/>
+  <path d="m603 328 222-49 55 79-25 167-191 48-92-96 31-149Z" fill="url(#trees)" opacity=".6"/>
+  <path d="m632 351 160-36 39 51-21 124-142 35-67-72 31-102Z" fill="#aeca98" stroke="#edf0e6" stroke-width="4"/>
+  <path d="M712 334v174m-80-88h160m-80-65a65 65 0 0 1 0 130 65 65 0 0 1 0-130Z" stroke="#e7eee0" stroke-width="2.5" opacity=".88"/>
+  <path d="m345 70 116-31 54 67-23 72-106 28-60-57 19-79Z" fill="#d4e0c7"/>
+  <path d="m345 70 116-31 54 67-23 72-106 28-60-57 19-79Z" fill="url(#trees)" opacity=".48"/>
+  <path d="M424 57v131m-72-64h144m-72-44a44 44 0 0 1 0 88 44 44 0 0 1 0-88Z" stroke="#edf0e5" stroke-width="2"/>
+  <path d="m840 218 84-28 57 67-24 79-76 26-56-69 15-75Z" fill="#d0dfc0"/>
+  <path d="m840 218 84-28 57 67-24 79-76 26-56-69 15-75Z" fill="url(#trees)" opacity=".6"/>
+
+  <!-- A network of gently bending neighborhood streets, not a rectilinear grid. -->
+  <g stroke="#dedbd4" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-30 263c128-19 164 36 269 24s133-69 247-44 177 97 289 74 162-84 260-57" stroke-width="43"/>
+    <path d="M-24 519c95-75 157-99 247-88s145 63 224 32 91-104 184-115 145 25 204-16 95-124 188-132" stroke-width="39"/>
+    <path d="M174-20c34 92 18 151 76 214s76 91 45 169-21 132 47 258" stroke-width="35"/>
+    <path d="M524-25c-21 87-71 139-56 211s68 93 39 161-39 116 6 276" stroke-width="39"/>
+    <path d="M738-22c-15 85-62 138-46 194s62 98 46 156-38 121 18 294" stroke-width="36"/>
+    <path d="M320 600c31-75 92-116 160-121s112 20 177 9 118-55 159-90" stroke-width="25"/>
+    <path d="M-10 109c103 38 169 52 238 20s103-88 181-92 131 44 194 30 122-80 203-66" stroke-width="24"/>
+  </g>
+  <g stroke="#fff" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-30 263c128-19 164 36 269 24s133-69 247-44 177 97 289 74 162-84 260-57" stroke-width="37"/>
+    <path d="M-24 519c95-75 157-99 247-88s145 63 224 32 91-104 184-115 145 25 204-16 95-124 188-132" stroke-width="33"/>
+    <path d="M174-20c34 92 18 151 76 214s76 91 45 169-21 132 47 258" stroke-width="29"/>
+    <path d="M524-25c-21 87-71 139-56 211s68 93 39 161-39 116 6 276" stroke-width="33"/>
+    <path d="M738-22c-15 85-62 138-46 194s62 98 46 156-38 121 18 294" stroke-width="30"/>
+    <path d="M320 600c31-75 92-116 160-121s112 20 177 9 118-55 159-90" stroke-width="20"/>
+    <path d="M-10 109c103 38 169 52 238 20s103-88 181-92 131 44 194 30 122-80 203-66" stroke-width="19"/>
+  </g>
+  <g stroke="#d9d6cf" stroke-width="2" opacity=".8">
+    <path d="M-30 263c128-19 164 36 269 24s133-69 247-44 177 97 289 74 162-84 260-57"/>
+    <path d="M-24 519c95-75 157-99 247-88s145 63 224 32 91-104 184-115 145 25 204-16 95-124 188-132"/>
+    <path d="M174-20c34 92 18 151 76 214s76 91 45 169-21 132 47 258"/>
+    <path d="M524-25c-21 87-71 139-56 211s68 93 39 161-39 116 6 276"/>
+    <path d="M738-22c-15 85-62 138-46 194s62 98 46 156-38 121 18 294"/>
+  </g>
+
+  <!-- Small roundabouts and planted medians. -->
+  <g fill="#fff" stroke="#d8d6ce" stroke-width="3">
+    <circle cx="237" cy="286" r="12"/><circle cx="493" cy="233" r="11"/><circle cx="785" cy="317" r="12"/>
+    <circle cx="224" cy="431" r="11"/><circle cx="607" cy="347" r="12"/><circle cx="757" cy="437" r="10"/>
+  </g>
+  <g fill="#c2d4ad">
+    <circle cx="237" cy="286" r="7"/><circle cx="493" cy="233" r="6"/><circle cx="785" cy="317" r="7"/>
+    <circle cx="224" cy="431" r="6"/><circle cx="607" cy="347" r="7"/><circle cx="757" cy="437" r="5"/>
+  </g>
+
+  <!-- Quiet, varied building footprints beneath the roads. -->
+  <g fill="#ded9d1" opacity=".78" filter="url(#soften)">
+    <path d="m290 37 35-8 12 29-37 10zm36 39 43-11 10 29-43 12zm-35 37 26-6 11 25-30 8zm-79 19 26-8 15 31-31 9zm279 14 32-9 14 27-37 11zm71-79 31-9 12 29-36 10zm88 53 39-10 14 27-41 12zm103-72 42-11 10 28-39 11zm-281 262 37-10 12 28-40 12zm73 34 28-8 11 25-31 9zm166-63 33-10 15 32-37 11zm104 100 43-12 13 29-42 12zm-525 62 31-9 14 29-36 11zm72-43 36-10 12 26-35 10zm394-269 32-9 12 27-35 10z"/>
+  </g>
+</svg>
